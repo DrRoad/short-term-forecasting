@@ -71,6 +71,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+.ipynb_checkpoints/
 
 # pyenv
 .python-version
@@ -102,3 +103,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Visual Studio Code
+*.code-workspace
+.vscode/
+
+# Data folder (link to access this folder in README.md)
+DATA/ 
