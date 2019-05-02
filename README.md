@@ -17,7 +17,7 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 * [Code of conduct](/CODE_OF_CONDUCT.md)
 * [Contributing guidelines](/CONTRIBUTING.md)
 * [License](/LICENSE)
-* [DATA/](https://drive.google.com/drive/folders/1-YAgqBWYJmeo6Av3cpiP86zOMVn3_VDi) contains datasets and their terms of use (available externally on Google Drive)
+* [data/](https://drive.google.com/drive/folders/1-YAgqBWYJmeo6Av3cpiP86zOMVn3_VDi) contains datasets and their terms of use (available externally on Google Drive)
 * [docs/](/docs/) contains documentation (wiki markdown files)
 * [images/](/images/) contains images used
 * [scripts/](/scripts/) contains all Python scripts
@@ -39,6 +39,7 @@ The source code editor I use is [VSCodium](https://vscodium.github.io/) (fully o
 Computing:
 * Python version 3.6.8
 * conda version 4.6.11
+* git version 2.18.0.windows.1
 * Processor: Intel(R) Core(TM) i5-7200U CPU @ 250 GHz 2.71 GHz
 * RAM: 8 GB
 
@@ -56,4 +57,4 @@ Unless otherwise stated:
 
 The contributing guidelines were adapted from the [Open Science MOOC](https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/CONTRIBUTING.md).
 
-Licenses and terms of the data used can be found in their corresponding folders within the [DATA folder on Google Drive](https://drive.google.com/drive/folders/1-YAgqBWYJmeo6Av3cpiP86zOMVn3_VDi). More info provided in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).
+Licenses and terms of the data used can be found in their corresponding folders within the [data](https://drive.google.com/drive/folders/1-YAgqBWYJmeo6Av3cpiP86zOMVn3_VDi) folder on Google Drive. More information is provided in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).

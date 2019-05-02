@@ -109,4 +109,4 @@ venv.bak/
 .vscode/
 
 # Data folder (link to access this folder in README.md)
-DATA/ 
+data/ 
