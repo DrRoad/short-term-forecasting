@@ -1,0 +1,54 @@
+% ENSYSTRA (https://ensystra.eu) Report Template
+% LaTeX article document class
+% customised using 'ensystra-article.sty' by Nithiya Streethran (nmstreethan@gmail.com)
+% License: The LaTeX project public license (LPPL), version 1.3c (https://www.latex-project.org/lppl/lppl-1-3c/)
+%
+% Research and career development plans
+% by Nithiya Streethran (nmstreethan@gmail.com)
+
+% DOCUMENT CONFIGURATIONS ---------------------------------------
+\documentclass[11pt,twoside]{article}
+% define shortcuts to document properties
+\def \auth {Nithiya Mangala Streethran} % author
+\def \doctitle {Documentation} % document title
+\def \projtitle {Development of a real-time optimisation solution for dispatchable energy supply units} % project title
+\def \uni {University of Stavanger}
+\def \faculty {Faculty of Science and Technology}
+\def \dept {Department of Energy and Petroleum Engineering}
+\def \position {Research Fellow / Early-Stage Researcher}
+\def \keywords {documentation}
+\def \dat {\today} % date
+\def \email {nithiya.m.streethran@uis.no}
+% licenses and copyright notice
+\def \licenseurl {https://creativecommons.org/licenses/by/4.0/} % license URL
+\def \copyright {Copyright \textcopyright~\the\year{}~by \auth. Licensed under the Creative Commons Attribution 4.0 International license.}
+
+\usepackage{ensystra-article} % custom style with required packages and settings
+%\addto\captionsUKenglish{\renewcommand{\chaptername}{Part}} % change chapter name to "part"
+
+%\addbibresource{zotero.bib} % bibliography file
+
+%---------------------------------------------------------------
+\begin{document}
+\maketitle
+	%\input{glossaries} % import glossary entries
+
+% FRONTMATTER --------------------------------------------------
+%\frontmattersetup % frontmatter
+
+% \begin{titlepage}
+% 	\titlepagesetup 
+% \end{titlepage}
+
+%\input{frontmatter} % general information and lists
+
+% MAINMATTER ---------------------------------------------------
+%\mainmattersetup
+
+%\chapter{Documentation}
+	\input{documentation-input}
+
+% BACKMATTER --------------------------------------------------
+%\backmattersetup
+
+\end{document}

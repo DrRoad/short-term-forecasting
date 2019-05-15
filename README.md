@@ -2,13 +2,12 @@
 
 Short-term forecasting of electricity generation, demand and prices using machine learning, by Nithiya Streethran (nmstreethran@gmail.com).
 
-Documentation can be found in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).
-
 This is a work-in-progress. Please feel free to suggest improvements (see the [contributing guidelines](/CONTRIBUTING.md)). 
 
 ## Table of contents <!-- omit in toc -->
 - [Files and folders](#files-and-folders)
 - [Resources](#resources)
+- [Documentation](#documentation)
 - [Funding](#funding)
 - [Licenses and terms of use](#licenses-and-terms-of-use)
 - [Credits](#credits)
@@ -22,6 +21,7 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 * [images/](/images/) contains images used and [image license](/LICENSE-images.md)
 * [scripts/](/scripts/) contains all Python scripts
 * [jupyter-notebooks/](/jupyter-notebooks/) contains Python files in Jupyter notebook format
+* [docs/](/docs/) contains the documentation (wiki converted to .html, .tex and .pdf)
 
 ## Resources 
 
@@ -44,6 +44,22 @@ Computing:
 * RAM: 8 GB
 
 My coding notes can be found in my [coding](https://github.com/nmstreethran/coding) repository.
+
+## Documentation
+
+Documentation can be found in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also converted into the following formats and can be found in [docs/](/docs/):
+
+GitHub Wiki to HTML using [yakivmospan/github-wikito-converter](https://github.com/yakivmospan/github-wikito-converter):
+
+```
+$ gwtc ./wiki ./docs
+```
+
+HTML to TeX using [Pandoc](https://pandoc.org/MANUAL.html):
+
+```
+$ pandoc -o docs/documentation.tex docs/documentation-input.html
+```
 
 ## Funding
 

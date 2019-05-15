@@ -1,0 +1,200 @@
+%% ensystra-article.sty
+%% Copyright 2019 Nithiya Streethran (nmstreethran@gmail.com)
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Nithiya Streethran (nmstreethran@gmail.com).
+%
+% This work consists of the file ensystra-article.sty
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ensystra-article}
+
+% IMPORTANT PACKAGES ----------------------------
+\emergencystretch 3em % avoid overfulls in right margin 
+\usepackage[a4paper]{geometry}
+\geometry{lmargin=2.5cm,rmargin=2.5cm,tmargin=2.5cm,bmargin=2.5cm,headheight=34pt} % page margins and space for header and footer 
+%\let\cleardoublepage=\clearpage % remove blank pages after chapters
+\usepackage[UKenglish]{babel}
+\usepackage[utf8]{inputenc} % encoding
+\usepackage[T1]{fontenc} % ^
+\usepackage{textcomp} % symbols
+\usepackage{lmodern} % latin modern fonts % http://www.tug.dk/FontCatalogue/	
+\usepackage{mathpazo} % mathpazo serif font for body + math
+\usepackage{sectsty} % for setting frontmatter and section headings to sans serif
+\allsectionsfont{\raggedright\normalfont\sffamily\bfseries} % ^ bold + sans serif section headings; aligned left
+\usepackage{amsmath,amsfonts} % for equation / math typesetting
+\usepackage{enumitem} % to modify numbered lists
+\addto\captionsUKenglish{\renewcommand\contentsname{Table of Contents}} % change title of toc
+\usepackage{pdflscape} % for changing page orientation
+\usepackage[colorinlistoftodos]{todonotes} % for comments / to-do notes
+\usepackage{listings}
+\renewcommand{\lstlistlistingname}{List of Listings}
+\usepackage{csquotes}
+\usepackage{fontawesome,academicons} % icons
+\usepackage{pdfpages} % for inserting pdf documents
+\usepackage[nottoc,notbib]{tocbibind} % adding lists to the toc 
+
+% METADATA, HYPERLINKS AND COLOURS -------------------------
+\usepackage{hyperxmp} 
+\usepackage[hidelinks,pdftex,
+pdfauthor={\auth},
+pdftitle={\doctitle},
+pdfsubject={\projtitle},
+pdfkeywords={\keywords}]{hyperref} % hyperlinks without borders, pdf metadata
+\title{\sffamily\textbf{\doctitle}} % bold + sans serif title
+\author{\sffamily\auth\footnote{\uni} \footnote{Email: \href{mailto:\email}{\ttfamily\email}}} % sans serif author, with affiliation and email in footnotes
+\date{\sffamily\dat} % sans serif date
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,pdfcopyright=\copyright,pdflicenseurl=\licenseurl,pdfcontactemail=\email} % hyperlink formatting 
+
+% HEADER AND FOOTER -----------------------------
+\usepackage{fancyhdr} % for header and footer
+\pagestyle{fancy}
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyfoot[C]{\sffamily\thepage}
+} 
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt} % remove horizontal line from header 
+\fancyhead[LE,RO]{\includegraphics[width=0.2\textwidth]{logos/ensystra-ls.png}\vspace*{-.2cm}} % ENSYSTRA logo
+\fancyfoot[LE,RO]{\sffamily\thepage} % page number
+\fancyfoot[RE,LO]{\vspace*{-.4cm}\begin{tikzpicture}\node (A) {\includegraphics[scale=.018]{logos/eu.jpg}};\node (capt) [right=of A,text width=.45\linewidth,align=left,font=\tiny,xshift=-1cm]{\sffamily This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.};\end{tikzpicture}} % EU logo and funding info 
+\fancyhead[LO]{\auth} % author
+\fancyhead[RE]{\textit{\doctitle}} 
+% \makeatletter
+% \fancyhead[RE]{\if@mainmatter \sffamily\chaptername~\thechapter\fi} % "Chapter X"
+% \makeatother
+% \fancyhead[LO]{\textit{\sffamily\nouppercase{\leftmark}}} % Chapter title
+% \renewcommand{\chaptermark}[1]{\markboth{#1}{}} 
+
+% FLOATS ----------------------------
+\usepackage[font=small,labelfont=bf]{caption} % caption font size = small
+\usepackage{floatrow} % to modify float settings 
+\floatsetup[table]{capposition=top} % force table captions on top
+\usepackage[section]{placeins} % place floats (images/tables) within its specified (sub)(sub)section
+\makeatletter % keep in section / subsection
+\AtBeginDocument{%
+	\expandafter\renewcommand\expandafter\subsection\expandafter{%
+		\expandafter\@fb@secFB\subsection
+	}%
+}
+\makeatother %
+\usepackage{longtable,tabulary} % tables 
+\usepackage{booktabs} % 
+\usepackage{threeparttablex} % for "ThreePartTable" environment 
+\renewcommand{\arraystretch}{1.2} % More space between rows 
+\newcolumntype{P}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}} % sets table content to align left; for removing underfull hbox warning in table 
+\usepackage{graphicx}
+\graphicspath{ {../images/} } 
+\usepackage{tikz,shapepar,smartdiagram,tikzpagenodes,subfigure}
+\usetikzlibrary{positioning,decorations.pathreplacing,shapes.geometric,backgrounds,arrows.meta,arrows,shadows,trees}
+
+% BIBLIOGRAPHY --------------------------------------------------
+\usepackage[backend=biber,style=ieee,uniquename=init,giveninits,urldate=long]{biblatex} 
+\usepackage{xpatch} % to remove empty parentheses if year not provided for @online
+\xpatchbibdriver{online}
+{\printtext[parens]{\usebibmacro{date}}}
+{\iffieldundef{year}{}{\printtext[parens]{\usebibmacro{date}}}}
+{}{} 
+\renewbibmacro*{doi+eprint+url}{% % if DOI is not present, print eprint; if eprint is not present, print URL
+	\printfield{doi}%
+	\newunit\newblock%
+	\newunit\newblock%
+	\iffieldundef{doi}{%
+		\usebibmacro{eprint}%
+		\iffieldundef{eprint}{%
+			\usebibmacro{url+urldate}}}%
+	{}%
+}
+\appto{\bibsetup}{\sloppy} % ensure bibliography respects margins
+% removes unwanted fields for all references except misc
+\AtEveryBibitem{%
+	\ifboolexpr{not (test {\ifentrytype{misc}})}%
+	{\clearfield{issn}}{}
+}
+\DeclareBibliographyAlias{software}{online} % remap software entries to online 
+\usepackage{etoolbox} % fix underfull \hbox warnings in bibliography 
+\apptocmd{\sloppy}{\hbadness 10000\relax}{}{} 
+
+% GLOSSARIES -----------------------------------------------------
+% \usepackage[acronym,nomain,nonumberlist,nopostdot,nogroupskip,automake,toc]{glossaries} % glossary for abbreviation
+% \setglossarystyle{index}
+% \makeglossaries % generate glossaries
+
+% -------------------------------------------------------------------
+%\usepackage{lipsum} % for generating dummy text 
+
+% FRONTMATTER ----------------------------
+% \newcommand{\frontmattersetup}{
+% 	\frontmatter
+% 	\renewcommand{\thefootnote}{\fnsymbol{footnote}}} % set footnote numbering style to symbol 
+
+% TITLE PAGE ----------------------------------------
+% \newcommand{\titlepagesetup}{
+% 	\sffamily{	
+% 		\center % centre everything on the page
+		
+% 		\begin{tikzpicture} % ENSYSTRA logo
+% 		\node {\includegraphics[scale=.08]{logos/ensystra-pt.png}}; 
+% 		\end{tikzpicture}
+% 		\\[1cm]
+		
+% 		\huge \textbf{\projtitle}\\[.5cm] % project title
+% 		\Large \textbf{\textit{\doctitle}}\\[1cm] % document title
+		
+% 		\Large \textbf{\author}\\[.1cm] % author
+% 		\Large \position\\[2.5cm] % Position
+		
+% 		\Large \uni\\ % Name of your university/college
+% 		\Large \faculty\\ % faculty
+% 		\Large \dept\\[1cm] % department
+% 		{\Large \date} % date
+		
+% 		\vfill % Fill the rest of the page with whitespace
+		
+% 		\begin{tikzpicture}[remember picture,scale=2.2,every node/.style={transform shape}] % university logos
+% 		\node [xshift=-.2cm,yshift=-.05cm]{\includegraphics[scale=.185]{logos/euf.png}}; % Flensburg
+% 		\node [xshift=-2.5cm,yshift=-.1cm]{\includegraphics[scale=.34]{logos/aau.png}}; % Aalborg
+% 		\node [xshift=-4.6cm,yshift=-.07cm]{\includegraphics[scale=.185]{logos/uis.png}}; % Stavanger
+% 		\node [xshift=-.2cm,yshift=.92cm]{\includegraphics[scale=.19]{logos/chalmers.png}}; % Chalmers
+% 		\node [xshift=-2.5cm,yshift=.92cm]{\includegraphics[scale=.27]{logos/uoe.png}}; % Edinburgh
+% 		\node [xshift=-4.6cm,yshift=.92cm]{\includegraphics[scale=.27]{logos/rug.png}}; % Groningen
+% 		\end{tikzpicture}
+		
+% 		\begin{tikzpicture} % EU logo
+% 		\node (A) {\includegraphics[width=0.17\textwidth]{logos/eu.jpg}};
+% 		\node (capt) [right=of A,text width=.76\linewidth, align=left,font=\normalsize,xshift=-1cm]{This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.};
+% 		\end{tikzpicture}
+% }}
+
+% MAINMATTER -------------------------
+% \newcommand{\mainmattersetup}{
+% 	\mainmatter
+% 	\renewcommand{\thefootnote}{\arabic{footnote}} % change footnote numbering style to arabic 
+% 	\setcounter{footnote}{0} % reset footnote counter for front matter
+% }
+
+% BACKMATTER -------------------------
+% \newcommand{\backmattersetup}{
+% 	{\backmatter 
+% 		\section{References}
+% 		\printbibliography[heading=none]
+% 		%\clearpage % to remove "Chapter X" from heading
+% 	}  
+% 	\appendix
+% 	%\renewcommand\sectionname{Appendix} % rename chapter to appendix
+% 	\setcounter{footnote}{0} % reset footnote counter for appendix 
+% }
+
+% Pandoc ----------------------
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
