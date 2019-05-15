@@ -10,16 +10,16 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 - [Files and folders](#files-and-folders)
 - [Resources](#resources)
 - [Funding](#funding)
-- [Licenses, credits and terms of use](#licenses-credits-and-terms-of-use)
+- [Licenses and terms of use](#licenses-and-terms-of-use)
+- [Credits](#credits)
 
 ## Files and folders
 
 * [Code of conduct](/CODE_OF_CONDUCT.md)
 * [Contributing guidelines](/CONTRIBUTING.md)
-* [License](/LICENSE)
-* [data/](https://drive.google.com/drive/folders/1-YAgqBWYJmeo6Av3cpiP86zOMVn3_VDi) contains datasets and their terms of use (available externally on Google Drive)
-* [docs/](/docs/) contains documentation (wiki markdown files)
-* [images/](/images/) contains images used
+* [Code license](/LICENSE.md)
+* [data/](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) contains datasets and their terms of use (available externally on Google Drive)
+* [images/](/images/) contains images used and [image license](/LICENSE-images.md)
 * [scripts/](/scripts/) contains all Python scripts
 * [jupyter-notebooks/](/jupyter-notebooks/) contains Python files in Jupyter notebook format
 
@@ -49,13 +49,19 @@ My coding notes can be found in my [coding](https://github.com/nmstreethran/codi
 
 This work is part of my research as Early-Stage Researcher (ESR) 9 of the [ENSYSTRA (ENergy SYStems in TRAnsition)](https://ensystra.eu/) Innovative Training Network. ENSYSTRA is funded by the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.
 
-## Licenses, credits and terms of use
+## Licenses and terms of use
 
 Unless otherwise stated:
 * Code: [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 * Documentation: [![License: FDL 1.3](https://img.shields.io/badge/License-FDL%20v1.3-blue.svg)](https://www.gnu.org/licenses/fdl-1.3)
-* Images: [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+* Images: [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-The contributing guidelines were adapted from the [Open Science MOOC](https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/CONTRIBUTING.md).
+Licenses and terms of the data used can be found in their corresponding folders within the [data](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) folder on Google Drive. More information is provided in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).
 
-Licenses and terms of the data used can be found in their corresponding folders within the [data](https://drive.google.com/drive/folders/1-YAgqBWYJmeo6Av3cpiP86zOMVn3_VDi) folder on Google Drive. More information is provided in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).
+## Credits
+
+Contributing guidelines: adapted from the [Open Science MOOC](https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/CONTRIBUTING.md)
+
+License badges: [lukas-h/license-badges.md](https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba); made with [Shields.io](http://shields.io/)
+
+Markdown-formatted Creative Commons licenses: [idleberg/Creative-Commons-Markdown](https://github.com/idleberg/Creative-Commons-Markdown)
