@@ -21,7 +21,7 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 * [images/](/images/) contains images used and [image license](/LICENSE-images.md)
 * [scripts/](/scripts/) contains all Python scripts
 * [jupyter-notebooks/](/jupyter-notebooks/) contains Python files in Jupyter notebook format
-* [docs/](/docs/) contains the documentation (wiki converted to .html, .tex and .pdf)
+* [docs](/docs.pdf) is the documentation ([GitHub Wiki (Markdown)](https://github.com/ENSYSTRA/short-term-forecasting/wiki) converted to PDF format)
 
 ## Resources 
 
@@ -47,18 +47,11 @@ My coding notes can be found in my [coding](https://github.com/nmstreethran/codi
 
 ## Documentation
 
-Documentation can be found in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also converted into the following formats and can be found in [docs/](/docs/):
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also converted from Markdown into [PDF](/docs.pdf) using [Pandoc](https://pandoc.org/MANUAL.html) and PDFTeX:
 
-GitHub Wiki to HTML using [yakivmospan/github-wikito-converter](https://github.com/yakivmospan/github-wikito-converter):
-
-```
-$ gwtc ./wiki ./docs
-```
-
-HTML to TeX using [Pandoc](https://pandoc.org/MANUAL.html):
-
-```
-$ pandoc -o docs/documentation.tex docs/documentation-input.html
+```shell
+$ cd wiki
+$ pandoc -V fontsize="10pt" -V papersize="a4" -V geometry:margin="2.5cm" --metadata date="`date '+%-d %B %Y'`" --metadata author="Nithiya Streethran" --metadata title="Documentation" --toc -o ../docs.pdf Home.md
 ```
 
 ## Funding
