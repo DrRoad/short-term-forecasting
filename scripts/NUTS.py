@@ -25,7 +25,7 @@ nuts=nuts.sort_values(by=['NUTS_ID'])
 # ## By country
 
 #%%
-# countries
+# countries (NUTS 0)
 nuts0=nuts.loc[nuts['NUTS_ID'].str.len()==2]
 nuts0
 
