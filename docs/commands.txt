@@ -1,0 +1,5 @@
+pandoc -s wiki/Home.md wiki/License.md --toc --metadata date="`date '+%-d %B %Y'`" --metadata author="Nithiya Streethran" --metadata title="Documentation" -c pandoc.css -A wiki/_Footer.md -o docs/docs.html
+
+pandoc wiki/Home.md -o docs/docs-home.tex
+
+cp -a wiki/* docs/

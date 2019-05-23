@@ -1,4 +1,12 @@
-### GNU Free Documentation License
+<!--  
+- [License](#license)
+  - [GNU Free Documentation License](#gnu-free-documentation-license)
+    - [ADDENDUM: How to use this License for your documents](#addendum-how-to-use-this-license-for-your-documents)
+-->
+
+# License
+
+## GNU Free Documentation License
 
 Version 1.3, 3 November 2008
 

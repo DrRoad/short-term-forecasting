@@ -3,13 +3,13 @@
 [![Code License: GPL v3](https://img.shields.io/badge/Code%20License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 [![Documentation License: FDL 1.3](https://img.shields.io/badge/Documentation%20License-FDL%20v1.3-blue.svg)](https://www.gnu.org/licenses/fdl-1.3) 
 [![Image license: CC BY-SA 4.0](https://img.shields.io/badge/Image%20License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Output Data License: ODbL](https://img.shields.io/badge/Output%20Data%20License-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/)
 
 Short-term forecasting of electricity generation, demand and prices using machine learning, by Nithiya Streethran (nmstreethran@gmail.com).
 
 This is a work-in-progress. Please feel free to suggest improvements (see the [code of conduct](/CODE_OF_CONDUCT.md) and [contributing guidelines](/CONTRIBUTING.md)). 
 
 ## Table of contents <!-- omit in toc -->
-- [Files](#files)
 - [Folders](#folders)
 - [Resources](#resources)
 - [Documentation](#documentation)
@@ -17,18 +17,12 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 - [Licenses and terms of use](#licenses-and-terms-of-use)
 - [Credits](#credits)
 
-## Files 
-
-* [Code of conduct](/CODE_OF_CONDUCT.md)
-* [Contributing guidelines](/CONTRIBUTING.md)
-* [Code license](/LICENSE.md)
-
 ## Folders
-* [data/](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) contains datasets and their terms of use (available externally on Google Drive)
+* [data/](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) contains datasets (both input and output) and their terms of use (available externally on Google Drive)
 * [scripts/](/scripts/) contains all Python scripts
 * [jupyter-notebooks/](/jupyter-notebooks/) contains Python files in Jupyter notebook format
 * [docs/](/docs/) contains the documentation ([GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki) (Markdown) converted to other formats) 
-* [images/](/images/)
+* [images/](/images/) contains images and their license
 
 ## Resources 
 
@@ -54,19 +48,17 @@ My coding notes can be found in my [coding](https://github.com/nmstreethran/codi
 
 ## Documentation
 
-Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder as a subtree and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) subtree contains all the files. The wiki documentation is converted from Markdown into formats, including [PDF](/docs/docs.pdf), using [Pandoc](https://pandoc.org/MANUAL.html) and pdfTeX:
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files. The wiki documentation is converted from Markdown into the [LaTeX](/docs/docs-home.tex) and [HTML](/docs/docs.html) formats using [Pandoc](https://pandoc.org/MANUAL.html). The Pandoc commands and the command to copy wiki markdown files to [docs/](/docs/) are written in [`commands.txt`](/docs/commands.txt), which is run in Bash using:
 
-```shell
-$ cd wiki
+```sh
+bash docs/commands.txt
+```
+
+A [PDF](/docs/docs.pdf) version is then compiled with [`docs.tex`](/docs/docs.tex) and [`ensystra-article.sty`](/docs/ensystra-article.sty) using pdfLaTeX.
+
+<!-- ```shell
 $ pandoc -V fontsize="10pt" -V papersize="a4" -V geometry:margin="2.5cm" -V linkcolor="blue" -V urlcolor="blue" -V toccolor="blue" --metadata date="`date '+%-d %B %Y'`" --metadata author="Nithiya Streethran" --metadata title="Documentation" --toc -o docs.pdf Home.md
-```
-
-To update the [docs/](/docs/) subtree:
-
-```shell
-$ cd ..
-$ git pull -s subtree docs master
-```
+```  -->
 
 ## Funding
 
@@ -77,10 +69,11 @@ This work is part of my research as Early-Stage Researcher (ESR) 9 of the [ENSYS
 Where sources have not been specified:
 
 * Code license: [GNU General Public License Version 3](/LICENSE.md)
-* Documentation license: [GNU Free Documentation License Version 1.3](/docs/LICENSE.md)
+* Documentation license: [GNU Free Documentation License Version 1.3](/docs/License.md)
 * Image license: [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](/images/LICENSE.md)
+* Output data license: [ODC Open Database License (ODbL)](/data/output/LICENSE.md)
 
-Licenses and terms of the data used can be found in their corresponding folders within the [data](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) folder on Google Drive. More information is provided in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).
+Licenses and terms of the input data used can be found in their corresponding folders within the [data](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) folder on Google Drive. More information is provided in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).
 
 ## Credits
 

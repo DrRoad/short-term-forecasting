@@ -1,4 +1,5 @@
-# Python
+# Python ---------------------------------------
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -105,7 +106,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# LaTeX
+# LaTeX ----------------------------------------
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -362,13 +364,18 @@ TSWLatexianTemp*
 # standalone packages
 *.sta
 
-# Other
+# Other ------------------------------------------
+
 ## Visual Studio Code
 #*.code-workspace
 .vscode/
 
 ## Data folder (link to access this folder in README.md)
-data/ 
+data/*
+!data/output
+data/output/*
+# keep license
+!data/output/LICENSE.md
 
-## Archive
+## Archive folder
 archive/

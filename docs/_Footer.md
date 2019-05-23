@@ -1,1 +1,1 @@
-[ENSYSTRA/short-term-forecasting](https://github.com/ENSYSTRA/short-term-forecasting)
+<p align="center"><a href="https://ensystra.eu/"><img src="logos/ensystra-ls.png" alt="ENSYSTRA" height="100"></a>&nbsp;&nbsp;&nbsp;<img src="logos/eu.jpg" alt="European Union" height="100"></p>
