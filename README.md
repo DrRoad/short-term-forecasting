@@ -48,7 +48,7 @@ My coding notes can be found in my [coding](https://github.com/nmstreethran/codi
 
 ## Documentation
 
-Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files. The wiki documentation is converted from Markdown into the [LaTeX](/docs/docs-home.tex) and [HTML](/docs/docs.html) formats using [Pandoc](https://pandoc.org/MANUAL.html). The Pandoc commands and the command to copy wiki markdown files to [docs/](/docs/) are written in [`commands.txt`](/docs/commands.txt), which is run in Bash using:
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files. The wiki documentation is converted from Markdown into LaTeX and [HTML](/docs/docs.html) formats using [Pandoc](https://pandoc.org/MANUAL.html). The Pandoc commands and the command to copy wiki markdown files to [docs/](/docs/) are written in [`commands.txt`](/docs/commands.txt), which is executed in Bash using:
 
 ```sh
 bash docs/commands.txt

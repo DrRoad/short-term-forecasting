@@ -21,6 +21,7 @@
 \def \copyright {Copyright \textcopyright~\the\year{}~by \auth. Licensed under the GNU Free Documentation License Version 1.3.}
 
 \usepackage{ensystra-article} % custom style with required packages and settings
+\addbibresource{References.bib} % bibliography file
 
 %---------------------------------------------------------------
 \begin{document}
@@ -31,7 +32,19 @@
 \listoftables
 
 \section{Preface}
-\input{docs-home}
-\input{docs-license}
+\input{Home}
+
+\input{Background}
+\input{Problem-definition}
+\input{Objectives}
+\input{Regions}
+\input{Data}
+\input{Methodology}
+
+\nocite{*}
+\section{References}
+\printbibliography[heading=none]
+
+\input{License}
 
 \end{document}

@@ -43,8 +43,6 @@
 \usepackage{fontawesome,academicons} % icons
 \usepackage{pdfpages} % for inserting pdf documents
 \usepackage[nottoc,notbib]{tocbibind} % adding lists to the toc 
-\usepackage{etoolbox,xpatch}
-%\apptocmd{\sloppy}{\hbadness 10000\relax}{}{} 
 
 % METADATA, HYPERLINKS AND COLOURS -------------------------
 \usepackage{hyperxmp} 
@@ -97,6 +95,48 @@ pdfkeywords={\keywords}]{hyperref} % hyperlinks without borders, pdf metadata
 \usepackage{tikz,shapepar,smartdiagram,tikzpagenodes,subfigure}
 \usetikzlibrary{positioning,decorations.pathreplacing,shapes.geometric,backgrounds,arrows.meta,arrows,shadows,trees}
 
+% BIBLIOGRAPHY --------------------------------------------------
+\usepackage[backend=biber,style=alphabetic,urldate=long]{biblatex} 
+\usepackage{xpatch} % to remove empty parentheses if year not provided for @online
+\xpatchbibdriver{online}
+{\printtext[parens]{\usebibmacro{date}}}
+{\iffieldundef{year}{}{\printtext[parens]{\usebibmacro{date}}}}
+{}{} 
+\renewbibmacro*{doi+eprint+url}{% % if DOI is not present, print eprint; if eprint is not present, print URL
+	\printfield{doi}%
+	\newunit\newblock%
+	\newunit\newblock%
+	\iffieldundef{doi}{%
+		\usebibmacro{eprint}%
+		\iffieldundef{eprint}{%
+			\usebibmacro{url+urldate}}}%
+	{}%
+}
+\appto{\bibsetup}{\sloppy} % ensure bibliography respects margins
+% removes unwanted fields for all references except misc
+\AtEveryBibitem{%
+	\ifboolexpr{not (test {\ifentrytype{misc}})}%
+	{\clearfield{issn}}{}
+}
+\DeclareBibliographyAlias{software}{online} % remap software entries to online 
+\usepackage{etoolbox} % fix underfull \hbox warnings in bibliography 
+\apptocmd{\sloppy}{\hbadness 10000\relax}{}{} 
+% Biblatex alphanumeric label - edit to include title for entries with no author and 'ND' for entries with no date; minimum 4 characters
+\renewcommand*{\labelalphaothers}{}
+\DeclareLabelalphaTemplate{
+  \labelelement{
+    \field[final]{shorthand}
+    \field{label}
+    \field[strwidth=4,strside=left,ifnames=1]{labelname}
+	\field[strwidth=1,strside=left]{labelname}
+	\field[strwidth=4,strside=left,ifnames=1]{title}
+  }
+  \labelelement{
+		\field[strwidth=2,strside=right]{year}
+		\field[strwidth=2,strside=right]{ND}
+  }
+}
+
 % PANDOC ----------------------
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -124,7 +164,6 @@ pdfkeywords={\keywords}]{hyperref} % hyperlinks without borders, pdf metadata
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-%\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
