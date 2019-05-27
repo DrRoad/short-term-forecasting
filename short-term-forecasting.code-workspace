@@ -142,7 +142,8 @@
 			"**/*.el": true,
 			"**/*-tags.tex": true,
 			"**/*.sta": true,
-			"**/.vscode/": true
+			"**/.vscode/": true,
+			"**/tex2pdf*/": true
 		}
 	}
 }

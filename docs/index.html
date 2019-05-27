@@ -5,8 +5,8 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Nithiya Streethran" />
-  <meta name="dcterms.date" content="2019-05-24" />
-  <title>Documentation</title>
+  <meta name="dcterms.date" content="2019-05-27" />
+  <title>Short-term Forecasting Documentation</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -20,13 +20,19 @@
 </head>
 <body>
 <header>
-<h1 class="title">Documentation</h1>
+<h1 class="title">Short-term Forecasting Documentation</h1>
 <p class="author">Nithiya Streethran</p>
-<p class="date">24 May 2019</p>
+<p class="date">27 May 2019</p>
 </header>
 <nav id="TOC">
 <ul>
 <li><a href="#background">Background</a></li>
+<li><a href="#problem-definition">Problem definition</a><ul>
+<li><a href="#electricity-system">Electricity system</a></li>
+<li><a href="#generation-technologies">Generation technologies</a></li>
+<li><a href="#electricity-market">Electricity market</a></li>
+</ul></li>
+<li><a href="#objectives">Objectives</a></li>
 <li><a href="#regions">Regions</a><ul>
 <li><a href="#north-sea-countries">North Sea countries</a><ul>
 <li><a href="#nuts-nomenclature-of-territorial-units-for-statistics"><span>NUTS (Nomenclature of territorial units for statistics)</span></a></li>
@@ -47,6 +53,9 @@
 <li><a href="#methodology">Methodology</a><ul>
 <li><a href="#modelling-framework">Modelling framework</a></li>
 </ul></li>
+<li><a href="#glossary">Glossary</a><ul>
+<li><a href="#abbreviations">Abbreviations</a></li>
+</ul></li>
 <li><a href="#references">References</a></li>
 <li><a href="#license">License</a><ul>
 <li><a href="#gnu-free-documentation-license">GNU Free Documentation License</a><ul>
@@ -57,12 +66,16 @@
 </nav>
 <p>Welcome to the <a href="https://github.com/ENSYSTRA/short-term-forecasting">short-term-forecasting</a> wiki!</p>
 <p>Short-term forecasting of electricity generation, demand and prices using machine learning.</p>
-<p>Copyright (C) 2019 Nithiya Streethran.</p>
-<p>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled “GNU Free Documentation License”.</p>
-<p>Images are licensed under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license, where the image source has not been specified.</p>
-<p>This work is part of Nithiya Streethran’s research as Early-Stage Researcher (ESR) 9 of the <a href="https://ensystra.eu/">ENSYSTRA - ENergy SYStems in TRAnsition</a> Innovative Training Network. ENSYSTRA is funded by the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515. <!-- 
+<p>Copyright (C) 2019 <a href="https://nmstreethran.github.io/">Nithiya Streethran</a>.</p>
+<p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="https://www.gnu.org/licenses/fdl-1.3">GNU Free Documentation License</a>, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled “GNU Free Documentation License”.</p>
+<p>Images are licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a> license, where the image source has not been specified.</p>
+<p>This work is part of Nithiya Streethran’s research as Early-Stage Researcher (ESR) 9 of the <a href="https://ensystra.eu/">ENSYSTRA - ENergy SYStems in TRAnsition</a> Innovative Training Network. ENSYSTRA is funded by the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.</p>
+<p align="center">
+<a href="https://ensystra.eu/"><img src="logos/ensystra-ls.png" alt="ENSYSTRA" height="50" title="ENSYSTRA"></a>   <img src="logos/eu.jpg" alt="European Union" height="50" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.">
+</p>
+<!-- 
 - [Background](#background)
- --></p>
+ -->
 <h1 id="background">Background</h1>
 <p>The transition towards a future low-carbon economy is driven globally by the Paris Agreement [Pari15], which recognises the need for sustainable development worldwide to counter the threats of climate change. The European Union (EU) is committed to reduce greenhouse gas (GHG) emissions by 2050 to 80-90 % below 1990 levels [Ener12]. As the energy industry is responsible for the highest share of anthropogenic GHG emissions, importance is placed on how changes in energy systems can help achieve these GHG emission reduction targets [Ener12].</p>
 <p>A number of opportunities exist for the decarbonisation of the energy industry. The International Renewable Energy Agency (IRENA), in their renewable energy roadmap study, has identified renewable energy as having the highest potential in reducing energy-related carbon dioxide (CO<sub>2</sub>) emissions globally, which is closely followed by energy efficiency and electrification with renewable energy [Glob18]. In a 2018 political agreement, the EU member states agreed upon a target of at least 32 % of the demand being met with renewables by 2030, through national targets of the individual member states [ReneND]. The electricity demand in the transport sector is also expected to increase due to expected petrol and diesel engine bans and subsequently the electrification of road transport [Worl17].</p>
@@ -73,7 +86,179 @@
 <img src="images/system-analysis.png" title="The system analysis approach applied on the energy system modelling process, adapted from Krook-Riekkola 2015 [Kroo15]." alt="The system analysis approach applied on the energy system modelling process, adapted from Krook-Riekkola 2015 [Kroo15]." /><figcaption>The system analysis approach applied on the energy system modelling process, adapted from Krook-Riekkola 2015 [Kroo15].</figcaption>
 </figure>
 <p>There are 15 early-stage researchers (ESRs) across four work packages (WPs) in ENSYSTRA, as shown in the figure below. The research project entitled “Development of a real-time optimisation solution for dispatchable energy supply units” is conducted by ESR 9, who is enrolled as a PhD student at University of Stavanger (UiS) in Norway. This project is within WP 2 (technology prospects and development pathways), which focusses on technological options for the energy transition, mainly in terms of techno-economic performance over time. For this research project, the technology focus is on the digitalisation of the electricity sector. As the electricity system transitions into smart systems, the system will have an increasing amount of sensors and controllers that continuously record measurements of the system [Lund17]. Advancements in these technologies mean that data that is fast, heterogeneous and high in volume from the electricity system will be generated. Data with these characteristics must be managed and analysed effectively to gain insights on the electricity system, which can then be converted to strategies that optimise the system [Mana12]. This project will specifically investigate how artificial intelligence (AI) can play a role in the transition to a low-carbon electricity system by utilising high resolution data of the system. The next section will investigate this, as well as explain what is meant by “real-time” and “dispatchable” in the context of electricity systems in this project.</p>
-<p><img src="images/wp.png" title="Interactions between the four WPs of the ENSYSTRA project. Source: ENSYSTRA [AbouND]." alt="Interactions between the four WPs of the ENSYSTRA project. Source: ENSYSTRA [AbouND]." /> <!-- 
+<figure>
+<img src="images/wp.png" title="Interactions between the four WPs of the ENSYSTRA project. Source: ENSYSTRA [AbouND]." alt="Interactions between the four WPs of the ENSYSTRA project. Source: ENSYSTRA [AbouND]." /><figcaption>Interactions between the four WPs of the ENSYSTRA project. Source: ENSYSTRA [AbouND].</figcaption>
+</figure>
+<!-- 
+- [Problem definition](#problem-definition)
+  - [Electricity system](#electricity-system)
+  - [Generation technologies](#generation-technologies)
+  - [Electricity market](#electricity-market)
+ -->
+<h1 id="problem-definition">Problem definition</h1>
+<h2 id="electricity-system">Electricity system</h2>
+<p>The electricity system can be seen as having two components; the physical grid consisting of generators and transmission and distribution systems, and the electricity market consisting of a number of actors [Erba16].</p>
+<p>Electricity systems exist in different resolutions and levels of uncertainty. The figure below represents the different scales of electricity systems, mainly in terms of temporal resolution, but also uncertainty and spatial resolution [Glis18], [Pfen14]. Temporally, “real-time” is referred to as the time of dispatch. It can be observed that the operational planning scale has high spatial and temporal resolution, and relatively low uncertainty. Operational planning includes dispatch planning and plant scheduling (i.e., unit commitment), which ranges from a few minutes to a week before dispatch. Maintenance planning can take a few weeks to years, as it involves upgrade and maintenance work which may require shut-down of units or assets, in turn affecting the availability of generation units and grid infrastructure. Adequacy assessments, which takes years, involve assessing the existing generation and storage capacities and planning for new installations based on demand projections, to ensure this demand will be met in the future. Finally, grid investment decisions, including planning transmission and distribution grid networks, cross-border and regional interconnections and grid capacity expansions, take many years to decades and have very high uncertainty as a result.</p>
+<figure>
+<img src="images/resolution.png" title="The various scales of electricity systems in terms of their approximate temporal resolution, as well as spatial resolution and uncertainty, adapted from Glismann 2018 and Pfenninger, et al. 2014 [Glis18], [Pfen14]." alt="The various scales of electricity systems in terms of their approximate temporal resolution, as well as spatial resolution and uncertainty, adapted from Glismann 2018 and Pfenninger, et al. 2014 [Glis18], [Pfen14]." /><figcaption>The various scales of electricity systems in terms of their approximate temporal resolution, as well as spatial resolution and uncertainty, adapted from Glismann 2018 and Pfenninger, et al. 2014 [Glis18], [Pfen14].</figcaption>
+</figure>
+<h2 id="generation-technologies">Generation technologies</h2>
+<p>The table below shows the characteristics of the main energy generation technologies, including their costs. These generation sources have different variabilities, fuel types, flexibilities, costs and carbon emissions. According to the EU reference scenario 2016 [EnerND], wind and solar energy resources, which are VRE resources, are expected to generate a total of 35 % of EU’s electricity by 2050, which is a significant increase (23 %) from 2015 levels. Conversely, generation from nuclear and solids, which are not variable and provide base load generation, are expected to decrease significantly. Unlike conventional generators, VRE are intermittent as they are dependent on atmospheric conditions, such as wind speed and cloud cover, and they vary both spatially (i.e., location-dependent) and temporally [Josk11]. Therefore, VRE generation cannot be controlled to meet the demand patterns and needs of the energy system [Josk11], which is a challenge to electricity and energy system operators in general. The costs listed in this table are derived based on National Renewable Energy Laboratory (NREL)’s NREL-SEAC 2008 Data Set [Tidb10]. VRE generation technologies have high capital expenditure (CAPEX) compared to conventional fossil-powered and biomass generation. Conversely, the operational expenditure (OPEX), which includes fuel and fixed operational and maintenance (O&amp;M) costs, is low for VRE generation technologies, as they have no fuel costs unlike conventional generators.</p>
+<table>
+<caption>Characteristics of the main energy generation technologies, adapted from Erbach 2016 [Erba16] and Tidball, et al. 2010 [Tidb10].</caption>
+<thead>
+<tr class="header">
+<th>Type<sup><a href="#f1">[f1]</a></sup></th>
+<th>Variable</th>
+<th>Fuel type</th>
+<th>Flexibility</th>
+<th>Low carbon</th>
+<th>CAPEX</th>
+<th>OPEX</th>
+<th>LCOE<sup><a href="#f2">[f2]</a></sup></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coal</td>
+<td>no</td>
+<td>fossil</td>
+<td>medium</td>
+<td>no</td>
+<td>low</td>
+<td>high</td>
+<td>very low</td>
+</tr>
+<tr class="even">
+<td>Natural gas</td>
+<td>no</td>
+<td>fossil</td>
+<td>high</td>
+<td>no</td>
+<td>very low</td>
+<td>very high</td>
+<td>low</td>
+</tr>
+<tr class="odd">
+<td>Biomass</td>
+<td>no</td>
+<td>renewable</td>
+<td>medium</td>
+<td>yes<sup><a href="#f3">[f3]</a></sup></td>
+<td>low</td>
+<td>very high</td>
+<td>very high</td>
+</tr>
+<tr class="even">
+<td>Nuclear</td>
+<td>no</td>
+<td>nuclear</td>
+<td>low</td>
+<td>zero-emission</td>
+<td>medium</td>
+<td>medium</td>
+<td>medium</td>
+</tr>
+<tr class="odd">
+<td>Hydro</td>
+<td>no</td>
+<td>renewable</td>
+<td>very high</td>
+<td>zero-emission</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Solar</td>
+<td>yes</td>
+<td>renewable</td>
+<td>very low</td>
+<td>zero-emission</td>
+<td>very high</td>
+<td>very low</td>
+<td>very high</td>
+</tr>
+<tr class="odd">
+<td>Wind</td>
+<td>yes</td>
+<td>renewable</td>
+<td>very low</td>
+<td>zero-emission</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>Onshore wind</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>high</td>
+<td>very low</td>
+<td>very low</td>
+</tr>
+<tr class="odd">
+<td><em>Offshore wind</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>very high</td>
+<td>low</td>
+<td>high</td>
+</tr>
+<tr class="even">
+<td>Geothermal</td>
+<td>no</td>
+<td>renewable</td>
+<td>high</td>
+<td>zero-emission</td>
+<td>high</td>
+<td>medium</td>
+<td>high</td>
+</tr>
+</tbody>
+</table>
+<p><a name="f1">[f1]</a> <em>Costs for natural gas, biomass, solar and geothermal are that of advanced combustion turbine, biomass gasification plant, utility-scale photovoltaic and hydrothermal plant respectively</em></p>
+<p><a name="f2">[f2]</a> <em>LCOE - levelised cost of electricity</em></p>
+<p><a name="f3">[f3]</a> <em>regrowth of biomass compensates emissions</em></p>
+<h2 id="electricity-market">Electricity market</h2>
+<p>The actors in the electricity market include [Erba16], [PinsND], [TheC15]:</p>
+<ul>
+<li>Generator</li>
+<li>Retailer</li>
+<li>Large and small consumer</li>
+<li>Transmission system operator (TSO)</li>
+<li>Distribution network operator (DNO)</li>
+<li>Balance responsible party (BRP)</li>
+<li>Aggregator</li>
+<li>Regulator</li>
+<li>Market operator</li>
+</ul>
+<p>There are two types of electricity markets; the retail market and the wholesale market [Erba16]. The retail market involves the retailers buying electricity from generators and selling it to consumers. The wholesale market involves generators, retailers and (large) consumers, who buy and sell electricity. Energy-only transactions in the wholesale market have different temporal resolutions [PinsND], [TheC15] and take place before dispatch, shown in green in the figure below. Balancing markets, shown in pink in the figure below, which involve both energy and services, operate both before and after dispatch [TheC15]. The energy-only markets are operated by the market operator or power exchanges, while the balancing market is operated by the system operator. The day-ahead and intra-day markets can be considered short-term electricity markets, as the former takes place 24 hours in advance of dispatch, while the latter takes place continuously after the day-ahead market, up to minutes before dispatch [Over16].</p>
+<figure>
+<img src="images/market-resolution.png" title="The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [PinsND], [TheC15]." alt="The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [PinsND], [TheC15]." /><figcaption>The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [PinsND], [TheC15].</figcaption>
+</figure>
+<!-- 
+- [Objectives](#objectives)
+ -->
+<h1 id="objectives">Objectives</h1>
+<p>The main research objective of this project is:</p>
+<blockquote>
+<p><em>To develop an open-source, machine learning-based electricity market model for the North Sea region which will help electricity generators, retailers, large consumers, BRPs and system operators in short-term electricity markets (i.e., day-ahead and intra-day markets) to develop operational and bidding strategies that maximise their profits under uncertainty of VRE generation. The model will consist of a forecaster based on machine learning, which will use high resolution time series weather forecasts for the upcoming period, and recent historical measurements of electricity generation, demand and market prices, to forecast the latter three quantities for the upcoming period. These forecasts will serve as inputs to an optimiser, which maximises social welfare in the electricity market.</em></p>
+</blockquote>
+<p>Based on the main research objective, the following research questions have been derived:</p>
+<ul>
+<li>What methods and resources are needed to process and store the large volume of high resolution data required for this model?</li>
+<li>What type of machine learning algorithms are suited for the time series forecasting of electricity prices, demand and generation?</li>
+<li>What optimisation methods are suitable for maximising the social welfare problem in the electricity market, and what are the constraints to this optimisation problem?</li>
+<li>What methods can be used to analyse the inputs and outputs of the model and translate them into operational strategies relevant to the market participant?</li>
+<li>How can this model be standardised and published so that it is available for use openly by any participant in the electricity market, as well as other interested parties, such as policymakers?</li>
+<li>How can this high resolution electricity market operational model be integrated with the overall North Sea energy systems model to provide insights on long-term planning and investments in the energy sector?</li>
+</ul>
+<!-- 
 - [Regions](#regions)
   - [North Sea countries](#north-sea-countries)
     - [NUTS (Nomenclature of territorial units for statistics)](#nuts-nomenclature-of-territorial-units-for-statistics)
@@ -81,7 +266,7 @@
     - [Definition](#definition)
     - [Bidding zones in the North Sea region](#bidding-zones-in-the-north-sea-region)
     - [Transmission system operators and interconnections](#transmission-system-operators-and-interconnections)
- --></p>
+ -->
 <h1 id="regions">Regions</h1>
 <h2 id="north-sea-countries">North Sea countries</h2>
 <p>As per the definition provided by the European MSP Platform [NortND] and the CPMR North Sea Commission [Memb15], the North Sea region consists of eight countries: Belgium, Denmark, France, Germany, Netherlands, Norway, Sweden and United Kingdom.</p>
@@ -155,7 +340,7 @@
 </table>
 <p><a name="f4">[f4]</a> <em>Austria (AT / AU); Luxembourg (LU); Great Britain (GB); Irish single electricity market (I-SEM), which includes Republic of Ireland (IE) and UK’s Northern Ireland (NI).</em></p>
 <h3 id="transmission-system-operators-and-interconnections">Transmission system operators and interconnections</h3>
-<p>The power exchanges that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [See ND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16]. The North Sea region consists of multiple TSOs, cross-border interconnections and bidding zones, as listed in the table below.</p>
+<p>The power exchanges that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16]. The North Sea region consists of multiple TSOs, cross-border interconnections and bidding zones, as listed in the table below.</p>
 <table>
 <caption>TSOs and cross-border interconnections in the North Sea region. Data: European Network of Transmission System Operators for Electricity [ENTSND], [RegiND].</caption>
 <colgroup>
@@ -223,15 +408,16 @@
 </tr>
 </tbody>
 </table>
-<p><a name="f4">[f5]</a> <em>Ctry. - Country; AT - Austria; BE - Belgium; CH - Switzerland; CZ - Czech Republic; DE - Germany; DK - Denmark; ES - Spain; FI - Finland; FR - France; GB - Great Britain; IE - Ireland; IT - Italy; LT - Lithuania; LU - Luxembourg; NL - Netherlands; NO - Norway; PL - Poland; SE - Sweden; SK - Slovakia; UK - United Kingdom; SEM - Single electricity market.</em></p>
-<p><a name="f4">[f6]</a> <em>These countries are not part of the North Sea region: AT, CH, CZ, ES, FI, IE, IT, LT, LU, PL.</em> <!-- 
+<p><a name="f5">[f5]</a> <em>Ctry. - Country; AT - Austria; BE - Belgium; CH - Switzerland; CZ - Czech Republic; DE - Germany; DK - Denmark; ES - Spain; FI - Finland; FR - France; GB - Great Britain; IE - Ireland; IT - Italy; LT - Lithuania; LU - Luxembourg; NL - Netherlands; NO - Norway; PL - Poland; SE - Sweden; SK - Slovakia; UK - United Kingdom; SEM - Single electricity market.</em></p>
+<p><a name="f6">[f6]</a> <em>These countries are not part of the North Sea region: AT, CH, CZ, ES, FI, IE, IT, LT, LU, PL.</em></p>
+<!-- 
 - [Data](#data)
   - [Data folder navigation](#data-folder-navigation)
   - [Met data](#met-data)
   - [Generation and demand data](#generation-and-demand-data)
   - [Market data](#market-data)
   - [Other data](#other-data)
- --></p>
+ -->
 <h1 id="data">Data</h1>
 <h2 id="data-folder-navigation"><a href="https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB">Data folder</a> navigation</h2>
 <ul>
@@ -304,35 +490,82 @@
 <figure>
 <img src="images/model_framework.png" title="Modelling framework. License: CC BY-SA 4.0." alt="Modelling framework. License: CC BY-SA 4.0." /><figcaption>Modelling framework. License: CC BY-SA 4.0.</figcaption>
 </figure>
+<!-- 
+- [Glossary](#glossary)
+  - [Abbreviations](#abbreviations)
+ -->
+<h1 id="glossary">Glossary</h1>
+<h2 id="abbreviations">Abbreviations</h2>
+<ul>
+<li>AI - artificial intelligence</li>
+<li>BRP - balance responsible party</li>
+<li>CAPEX - capital expenditure</li>
+<li>CO<sub>2</sub> - carbon dioxide</li>
+<li>COMPETES - COmprehensive Market Power in Electricity Transmission and Energy Simulator</li>
+<li>DC - direct current</li>
+<li>DNO - distribution network operator</li>
+<li>DSM - demand-side management</li>
+<li>EMMA - The European Electricity Market Model</li>
+<li>ENSYSTRA - ENergy SYStems in TRAnsition</li>
+<li>ENTSO-E - European Network of Transmission Systems Operators for Electricity</li>
+<li>ESR - early-stage researcher</li>
+<li>ETSAP - Energy Technology Systems Analysis Program</li>
+<li>EU - European Union</li>
+<li>GAMS - General Algebraic Modeling System</li>
+<li>GHG - greenhouse gas</li>
+<li>IEA - International Energy Agency</li>
+<li>IRENA - International Renewable Energy Agency</li>
+<li>IRiE - Integrated Regulating power market in Europe</li>
+<li>JRC-IDEES - Joint Research Centre Integrated Database of the European Energy System</li>
+<li>MARKAL - MARKet ALlocation</li>
+<li>NREL - National Renewable Energy Laboratory</li>
+<li>O&amp;M - operation and maintenance</li>
+<li>openmod - Open Energy Modelling Initiative</li>
+<li>OPEX - operational expenditure</li>
+<li>PCR - Price Coupling of Regions</li>
+<li>PhD - Doctor of Philosophy</li>
+<li>renpass - Renewable Energy Pathways Simulation System</li>
+<li>stELMOD - Stochastic Electricity Market Model</li>
+<li>TIMES - The Integrated MARKAL-EFOM System</li>
+<li>TSO - transmission system operator</li>
+<li>UiS - University of Stavanger</li>
+<li>VRE - variable renewable energy</li>
+<li>WP - work package</li>
+</ul>
 <h1 id="references">References</h1>
-<p>[AbouND] ‘About the Project | ENSYSTRA’. Accessed 23 April 2018. https://ensystra.eu/about-the-project/.</p>
-<p>[Bidd14] ‘Bidding Zones Literature Review’. Ofgem, July 2014. https://www.ofgem.gov.uk/sites/default/files/docs/2014/10/fta_bidding_zone_configuration_literature_review_1.pdf.</p>
-<p>[EnerND] ‘Energy Modelling - EU Reference Scenario 2016’. Accessed 1 November 2018. https://data.europa.eu/euodp/data/dataset/energy-modelling.</p>
-<p>[Ener12] ‘Energy Roadmap 2050’. Luxembourg: Publications Office of the European Union, 2012. https://doi.org/10.2833/10759.</p>
-<p>[ENTSND] ‘ENTSO-E Transparency Platform’. Accessed 7 November 2018. https://transparency.entsoe.eu/.</p>
-<p>[EPEXND] ‘EPEX SPOT SE: About EPEX SPOT’. Accessed 23 November 2018. http://www.epexspot.com/en/company-info/about_epex_spot.</p>
-<p>[Erba16] Erbach, Gregor. ‘Understanding Electricity Markets in the EU’. Briefing. European Union, November 2016. http://www.europarl.europa.eu/RegData/etudes/BRIE/2016/593519/EPRS_BRI(2016)593519_EN.pdf.</p>
-<p>[Glob18] ‘Global Energy Transformation: A Roadmap to 2050’. International Renewable Energy Agency, 2018. http://www.irena.org/publications/2018/Apr/Global-Energy-Transition-A-Roadmap-to-2050.</p>
-<p>[Herb12] Herbst, Andrea, Felipe Toro, Felix Reitze, and Eberhard Jochem. ‘Introduction to Energy Systems Modelling’. Swiss Journal of Economics and Statistics 148, no. 2 (1 April 2012): 111–35. https://doi.org/10.1007/BF03399363.</p>
-<p>[Josk11] Joskow, Paul L. ‘Comparing the Costs of Intermittent and Dispatchable Electricity Generating Technologies’. American Economic Review 101, no. 3 (May 2011): 238–41. https://doi.org/10.1257/aer.101.3.238.</p>
-<p>[Kroo15] Krook-Riekkola, Anna. ‘National Energy System Modelling for Supporting Energy and Climate Policy Decision-Making : The Case of Sweden’. Chalmers University of Technology, 2015. http://urn.kb.se/resolve?urn=urn:nbn:se:ltu:diva-17594.</p>
-<p>[Lund17] Lund, Henrik, Poul Alberg Østergaard, David Connolly, and Brian Vad Mathiesen. ‘Smart Energy and Smart Energy Systems’. Energy 137 (15 October 2017): 556–65. https://doi.org/10.1016/j.energy.2017.05.123.</p>
-<p>[Mana12] ‘Managing Big Data for Smart Grids and Smart Meters’. Somers, NY, USA: IBM Corporation, 2012. http://www.ibmbigdatahub.com/whitepaper/managing-big-data-smart-grids-and-smart-meters.</p>
-<p>[Memb15] ‘Member Directory &amp; Map – CPMR North Sea Commission’, 21 October 2015. https://cpmr-northsea.org/who-we-are/member-directory-map/.</p>
-<p>[NortND] ‘North Sea | European MSP Platform’. Accessed 1 June 2018. https://www.msp-platform.eu/sea-basins/north-sea-0.</p>
-<p>[Over16] ‘Overview of European Electricity Markets’. METIS Technical Notes. Brussels, Belgium: European Union, February 2016. https://ec.europa.eu/energy/sites/ener/files/documents/overview_of_european_electricity_markets.pdf.</p>
-<p>[Pari15] ‘Paris Agreement’. United Nations Framework Convention on Climate Change, 2015. https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement.</p>
-<p>[RegiND] ‘Regional Security Coordinators FAQ’. Accessed 18 November 2018. https://www.entsoe.eu/major-projects/rscis/.</p>
-<p>[ReneND] ‘Renewable Energy - Energy - European Commission’. Energy. Accessed 12 October 2018. https://ec.europa.eu/energy/en/topics/renewable-energy.</p>
-<p>[See ND] ‘See Market Data for All Areas | Nord Pool’. Accessed 23 November 2018. http://www.nordpoolspot.com/Market-data1/.</p>
-<p>[Tidb10] Tidball, R, J Bluestein, N Rodriguez, S Knoke, and J Macknick. ‘Cost and Performance Assumptions for Modeling Electricity Generation Technologies’. Subcontract Report. National Renewable Energy Laboratory, 2010. https://www.nrel.gov/docs/fy11osti/48595.pdf.</p>
-<p>[Towa18] ‘Towards a Consumer-Centric System’. Brussels, Belgium: Elia Group, 2018. http://www.elia.be/~/media/files/Elia/StakeholderDay/Elia-Vision-paper-2018_Front-Spreads-Back.pdf.</p>
-<p>[Tren17] ‘Trends and Market Context’. PSE Impact Report. PSE, 2017. http://raport.pse.pl/en/trends-and-market-context.</p>
-<p>[Worl17] ‘World Energy Outlook 2017’. Paris, France: International Energy Agency, 2017. https://www.iea.org/weo2017/. <!--  
+<p>[AbouND] ‘<a href="https://ensystra.eu/about-the-project/">About the Project | ENSYSTRA</a>’. Accessed 23 April 2018.</p>
+<p>[Bidd14] ‘<a href="https://www.ofgem.gov.uk/sites/default/files/docs/2014/10/fta_bidding_zone_configuration_literature_review_1.pdf">Bidding Zones Literature Review</a>’. Ofgem, July 2014.</p>
+<p>[EnerND] ‘<a href="https://data.europa.eu/euodp/data/dataset/energy-modelling">Energy Modelling - EU Reference Scenario 2016</a>’. Accessed 1 November 2018.</p>
+<p>[Ener12] ‘<a href="https://doi.org/10.2833/10759">Energy Roadmap 2050</a>’. Luxembourg: Publications Office of the European Union, 2012.</p>
+<p>[ENTSND] ‘<a href="https://transparency.entsoe.eu/">ENTSO-E Transparency Platform</a>’. Accessed 7 November 2018.</p>
+<p>[EPEXND] ‘<a href="http://www.epexspot.com/en/company-info/about_epex_spot">EPEX SPOT SE: About EPEX SPOT</a>’. Accessed 23 November 2018.</p>
+<p>[Erba16] Erbach, Gregor. ‘<a href="http://www.europarl.europa.eu/RegData/etudes/BRIE/2016/593519/EPRS_BRI(2016)593519_EN.pdf">Understanding Electricity Markets in the EU</a>’. Briefing. European Union, November 2016.</p>
+<p>[Glis18] Glismann, Samuel. ‘Modelling from a TSO Perspective - TenneT NL’. 6 September 2018.</p>
+<p>[Glob18] ‘<a href="http://www.irena.org/publications/2018/Apr/Global-Energy-Transition-A-Roadmap-to-2050">Global Energy Transformation: A Roadmap to 2050</a>’. International Renewable Energy Agency, 2018.</p>
+<p>[Herb12] Herbst, Andrea, Felipe Toro, Felix Reitze, and Eberhard Jochem. ‘<a href="https://doi.org/10.1007/BF03399363">Introduction to Energy Systems Modelling</a>’. Swiss Journal of Economics and Statistics 148, no. 2 (1 April 2012): 111–35.</p>
+<p>[Josk11] Joskow, Paul L. ‘<a href="https://doi.org/10.1257/aer.101.3.238">Comparing the Costs of Intermittent and Dispatchable Electricity Generating Technologies</a>’. American Economic Review 101, no. 3 (May 2011): 238–41.</p>
+<p>[Kroo15] Krook-Riekkola, Anna. ‘<a href="http://urn.kb.se/resolve?urn=urn:nbn:se:ltu:diva-17594">National Energy System Modelling for Supporting Energy and Climate Policy Decision-Making : The Case of Sweden</a>’. Chalmers University of Technology, 2015.</p>
+<p>[Lund17] Lund, Henrik, Poul Alberg Østergaard, David Connolly, and Brian Vad Mathiesen. ‘<a href="https://doi.org/10.1016/j.energy.2017.05.123">Smart Energy and Smart Energy Systems</a>’. Energy 137 (15 October 2017): 556–65.</p>
+<p>[Mana12] ‘<a href="http://www.ibmbigdatahub.com/whitepaper/managing-big-data-smart-grids-and-smart-meters">Managing Big Data for Smart Grids and Smart Meters</a>’. Somers, NY, USA: IBM Corporation, 2012.</p>
+<p>[Memb15] ‘<a href="https://cpmr-northsea.org/who-we-are/member-directory-map/">Member Directory &amp; Map – CPMR North Sea Commission</a>’, 21 October 2015.</p>
+<p>[NortND] ‘<a href="https://www.msp-platform.eu/sea-basins/north-sea-0">North Sea | European MSP Platform</a>’. Accessed 1 June 2018.</p>
+<p>[Over16] ‘<a href="https://ec.europa.eu/energy/sites/ener/files/documents/overview_of_european_electricity_markets.pdf">Overview of European Electricity Markets</a>’. METIS Technical Notes. Brussels, Belgium: European Union, February 2016.</p>
+<p>[Pari15] ‘<a href="https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement">Paris Agreement</a>’. United Nations Framework Convention on Climate Change, 2015.</p>
+<p>[Pfen14] Pfenninger, Stefan, Adam Hawkes, and James Keirstead. ‘<a href="https://doi.org/10.1016/j.rser.2014.02.003">Energy Systems Modeling for Twenty-First Century Energy Challenges</a>’. Renewable and Sustainable Energy Reviews 33 (1 May 2014): 74–86.</p>
+<p>[PinsND] Pinson, Pierre. ‘<a href="http://pierrepinson.com/?page_id=913">Renewables in Electricity Markets « Pierre Pinson</a>’. Accessed 9 December 2018.</p>
+<p>[RegiND] ‘<a href="https://www.entsoe.eu/major-projects/rscis/">Regional Security Coordinators FAQ</a>’. Accessed 18 November 2018.</p>
+<p>[ReneND] ‘<a href="https://ec.europa.eu/energy/en/topics/renewable-energy">Renewable Energy - Energy - European Commission</a>’. Energy. Accessed 12 October 2018.</p>
+<p>[SeeMND] ‘<a href="http://www.nordpoolspot.com/Market-data1/">See Market Data for All Areas | Nord Pool</a>’. Accessed 23 November 2018.</p>
+<p>[TheC15] ‘<a href="https://set.kuleuven.be/ei/factsheets">The Current Electricity Market Design in Europe</a>’. EI Fact Sheet. Heverlee, Belgium: KU Leuven Energy Institute, January 2015.</p>
+<p>[Tidb10] Tidball, R, J Bluestein, N Rodriguez, and S Knoke. ‘<a href="https://www.nrel.gov/docs/fy11osti/48595.pdf">Cost and Performance Assumptions for Modeling Electricity Generation Technologies</a>’. Subcontract Report. National Renewable Energy Laboratory, 2010.</p>
+<p>[Towa18] ‘<a href="http://www.elia.be/~/media/files/Elia/StakeholderDay/Elia-Vision-paper-2018_Front-Spreads-Back.pdf">Towards a Consumer-Centric System</a>’. Brussels, Belgium: Elia Group, 2018.</p>
+<p>[Tren17] ‘<a href="http://raport.pse.pl/en/trends-and-market-context">Trends and Market Context</a>’. PSE Impact Report. PSE, 2017.</p>
+<p>[Worl17] ‘<a href="https://www.iea.org/weo2017/">World Energy Outlook 2017</a>’. Paris, France: International Energy Agency, 2017.</p>
+<!--  
 - [License](#license)
   - [GNU Free Documentation License](#gnu-free-documentation-license)
     - [ADDENDUM: How to use this License for your documents](#addendum-how-to-use-this-license-for-your-documents)
---></p>
+-->
 <h1 id="license">License</h1>
 <h2 id="gnu-free-documentation-license">GNU Free Documentation License</h2>
 <p>Version 1.3, 3 November 2008</p>
@@ -426,6 +659,5 @@
     Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.</code></pre>
 <p>If you have Invariant Sections without Cover Texts, or some other combination of the three, merge those two alternatives to suit the situation.</p>
 <p>If your document contains nontrivial examples of program code, we recommend releasing these examples in parallel under your choice of free software license, such as the GNU General Public License, to permit their use in free software.</p>
-<p align="center"><a href="https://ensystra.eu/"><img src="logos/ensystra-ls.png" alt="ENSYSTRA" height="100" title="ENSYSTRA"></a>&nbsp;&nbsp;&nbsp;<img src="logos/eu.jpg" alt="European Union" height="100" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515."></p>
 </body>
 </html>

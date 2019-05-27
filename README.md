@@ -48,17 +48,15 @@ My coding notes can be found in my [coding](https://github.com/nmstreethran/codi
 
 ## Documentation
 
-Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files. The wiki documentation is converted from Markdown into LaTeX and [HTML](/docs/docs.html) formats using [Pandoc](https://pandoc.org/MANUAL.html). The Pandoc commands and the command to copy wiki markdown files to [docs/](/docs/) are written in [`commands.txt`](/docs/commands.txt), which is executed in Bash using:
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files. The wiki documentation is converted from Markdown into LaTeX and [HTML](/docs/index.html) formats using [Pandoc](https://pandoc.org/MANUAL.html). The Pandoc commands and the command to copy wiki markdown files to [docs/](/docs/) are written in [`commands.txt`](/docs/commands.txt), which is executed in Bash using:
 
 ```sh
 bash docs/commands.txt
 ```
 
-A [PDF](/docs/docs.pdf) version is then compiled with [`docs.tex`](/docs/docs.tex) and [`ensystra-article.sty`](/docs/ensystra-article.sty) using pdfLaTeX.
+A [PDF](/docs/docs.pdf) version is then compiled using pdfLaTeX.
 
-<!-- ```shell
-$ pandoc -V fontsize="10pt" -V papersize="a4" -V geometry:margin="2.5cm" -V linkcolor="blue" -V urlcolor="blue" -V toccolor="blue" --metadata date="`date '+%-d %B %Y'`" --metadata author="Nithiya Streethran" --metadata title="Documentation" --toc -o docs.pdf Home.md
-```  -->
+<!-- The [HTML file](/docs/index.html) is published at [ensystra.github.io/short-term-forecasting](https://ensystra.github.io/short-term-forecasting/). -->
 
 ## Funding
 
@@ -82,3 +80,5 @@ Contributing guidelines: adapted from the [Open Science MOOC](https://github.com
 License badges: [lukas-h/license-badges.md](https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba); made with [Shields.io](http://shields.io/)
 
 Markdown-formatted Creative Commons licenses: [idleberg/Creative-Commons-Markdown](https://github.com/idleberg/Creative-Commons-Markdown)
+
+pandoc.css: modified using the original version by [killercup](https://gist.github.com/killercup/5917178#file-pandoc-css)

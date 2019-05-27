@@ -1,0 +1,34 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your entire site, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# `jekyll serve`. If you change this file, please restart the server process.
+
+# Reading Files
+exclude:
+  - Gemfile
+  - "*.md" ## markdown
+  - "*.tex"
+  - "*.sty"
+  - "*.bib"
+  - "*.aux"
+  - "*.lof"
+  - "*.log"
+  - "*.lot"
+  - "*.fls"
+  - "*.out"
+  - "*.toc"
+  - "*.fmt"
+  - "*.fot"
+  - "*.pdf"
+  - "*.bbl"
+  - "*.bcf"
+  - "*.blg"
+  - "*.run.xml"
+  - "*.fdb_latexmk"
+  - "*.synctex"
+  - "*.synctex(busy)"
+  - "*.synctex.gz"
+  - "*.synctex.gz(busy)"
+  - "*.pdfsync"

@@ -1,1 +1,3 @@
-<p align="center"><a href="https://ensystra.eu/"><img src="logos/ensystra-ls.png" alt="ENSYSTRA" height="100" title="ENSYSTRA"></a>&nbsp;&nbsp;&nbsp;<img src="logos/eu.jpg" alt="European Union" height="100" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515."></p>
+<!-- <p align="center"><a href="https://ensystra.eu/"><img src="logos/ensystra-ls.png" alt="ENSYSTRA" height="100" title="ENSYSTRA"></a>&nbsp;&nbsp;&nbsp;<img src="logos/eu.jpg" alt="European Union" height="100" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515."></p> -->
+
+This is a work-in-progress. Please feel free to contribute or suggest improvements (see the [code of conduct](/CODE_OF_CONDUCT.md) and [contributing guidelines](/CONTRIBUTING.md)).

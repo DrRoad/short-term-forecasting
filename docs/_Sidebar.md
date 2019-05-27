@@ -1,8 +1,13 @@
 ### Table of contents
 
+[**Home**](../wiki)
+
 [**Background**](../wiki/Background)
 
 [**Problem definition**](../wiki/Problem-definition)
+  - [Electricity system](../wiki/Problem-definition#electricity-system)
+  - [Generation technologies](../wiki/Problem-definition#generation-technologies)
+  - [Electricity market](../wiki/Problem-definition#electricity-market)
 
 [**Objectives**](../wiki/Objectives)
 
@@ -23,6 +28,9 @@
 
 [**Methodology**](../wiki/Methodology)
   - [Modelling framework](../wiki/Methodology#modelling-framework)
+
+[**Glossary**](../wiki/Glossary)
+  - [Abbreviations](../wiki/Glossary#abbreviations)
 
 [**References**](../wiki/References)
 

@@ -1,11 +1,7 @@
-pandoc -s wiki/Home.md wiki/Background.md wiki/Regions.md wiki/Data.md wiki/Methodology.md wiki/References.md wiki/License.md --toc --metadata date="`date '+%-d %B %Y'`" --metadata author="Nithiya Streethran" --metadata title="Documentation" -c pandoc.css -A wiki/_Footer.md -o docs/docs.html
+pandoc -s wiki/Home.md wiki/Background.md wiki/Problem-definition.md wiki/Objectives.md wiki/Regions.md wiki/Data.md wiki/Methodology.md wiki/Glossary.md wiki/References.md wiki/License.md --metadata date="`date '+%-d %B %Y'`" --metadata author="Nithiya Streethran" --toc --metadata title="Short-term Forecasting Documentation" -c pandoc.css -o docs/index.html
 
-pandoc wiki/Home.md -o docs/Home.tex
-pandoc wiki/Background.md -o docs/Background.tex
-pandoc wiki/Problem-definition.md -o docs/Problem-definition.tex
-pandoc wiki/Objectives.md -o docs/Objectives.tex
-pandoc wiki/Regions.md -o docs/Regions.tex
-pandoc wiki/Data.md -o docs/Data.tex
-pandoc wiki/Methodology.md -o docs/Methodology.tex
+pandoc -s wiki/Home.md wiki/Background.md wiki/Problem-definition.md wiki/Objectives.md wiki/Regions.md wiki/Data.md wiki/Methodology.md wiki/Glossary.md --metadata title="Short-term Forecasting Documentation" -o docs/docs-input.html
+
+pandoc docs/docs-input.html -o docs/docs-input.tex
 
 cp -a wiki/* docs/

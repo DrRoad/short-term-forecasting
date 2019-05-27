@@ -23,20 +23,19 @@
 % IMPORTANT PACKAGES ----------------------------
 \emergencystretch 3em % avoid overfulls in right margin 
 \usepackage[a4paper]{geometry}
-\geometry{lmargin=2.5cm,rmargin=2.5cm,tmargin=2.5cm,bmargin=2.5cm,headheight=34pt} % page margins and space for header and footer 
+\geometry{margin=2.5cm,headheight=34pt} % page margins and space for header and footer 
 \usepackage[UKenglish]{babel}
 \usepackage[utf8]{inputenc} % encoding
 \usepackage[T1]{fontenc} % ^
 \usepackage{textcomp} % symbols
 \usepackage{lmodern} % latin modern fonts % http://www.tug.dk/FontCatalogue/	
-\usepackage{mathpazo} % mathpazo serif font for body + math
+\usepackage{mathpazo} % mathpazo (palatino) serif font for body + math
 \usepackage{sectsty} % for setting frontmatter and section headings to sans serif
 \allsectionsfont{\raggedright\normalfont\sffamily\bfseries} % ^ bold + sans serif section headings; aligned left
 \usepackage{amsmath,amsfonts} % for equation / math typesetting
 \usepackage{enumitem} % to modify numbered lists
 \addto\captionsUKenglish{\renewcommand\contentsname{Table of Contents}} % change title of toc
 \usepackage{pdflscape} % for changing page orientation
-\usepackage[colorinlistoftodos]{todonotes} % for comments / to-do notes
 \usepackage{listings}
 \renewcommand{\lstlistlistingname}{List of Listings}
 \usepackage{csquotes}
@@ -79,8 +78,8 @@ pdfkeywords={\keywords}]{hyperref} % hyperlinks without borders, pdf metadata
 \usepackage[section]{placeins} % place floats (images/tables) within its specified (sub)(sub)section
 \makeatletter % keep in section / subsection
 \AtBeginDocument{%
-	\expandafter\renewcommand\expandafter\subsection\expandafter{%
-		\expandafter\@fb@secFB\subsection
+	\expandafter\renewcommand\expandafter\section\expandafter{%
+		\expandafter\@fb@secFB\section
 	}%
 }
 \makeatother %
@@ -96,7 +95,7 @@ pdfkeywords={\keywords}]{hyperref} % hyperlinks without borders, pdf metadata
 \usetikzlibrary{positioning,decorations.pathreplacing,shapes.geometric,backgrounds,arrows.meta,arrows,shadows,trees}
 
 % BIBLIOGRAPHY --------------------------------------------------
-\usepackage[backend=biber,style=alphabetic,urldate=long]{biblatex} 
+\usepackage[backend=biber,style=alphabetic,urldate=long,maxalphanames=1]{biblatex} % only first author's name will be used in the alphanumeric label
 \usepackage{xpatch} % to remove empty parentheses if year not provided for @online
 \xpatchbibdriver{online}
 {\printtext[parens]{\usebibmacro{date}}}
@@ -136,16 +135,16 @@ pdfkeywords={\keywords}]{hyperref} % hyperlinks without borders, pdf metadata
 		\field[strwidth=2,strside=right]{ND}
   }
 }
+% ignore spaces in author name or title
+\DeclareNolabel{
+  \nolabel{\regexp{[\p{Z}\p{P}\p{S}\p{C}]+}}
+}
 
 % PANDOC ----------------------
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-% \IfFileExists{microtype.sty}{%
-% \usepackage[]{microtype}
-% \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-% }{}
 \usepackage{microtype}
+% \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 \IfFileExists{parskip.sty}{%
 \usepackage{parskip}
 }{% else
@@ -177,6 +176,6 @@ pdfkeywords={\keywords}]{hyperref} % hyperlinks without borders, pdf metadata
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 % set default figure placement to htbp
-% \makeatletter
-% \def\fps@figure{htbp}
-% \makeatother
+\makeatletter
+\def\fps@figure{!htb}
+\makeatother
