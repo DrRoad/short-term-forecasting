@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Nithiya Streethran" />
-  <meta name="dcterms.date" content="2019-05-27" />
+  <meta name="dcterms.date" content="2019-06-04" />
   <title>Short-term Forecasting Documentation</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -22,7 +22,7 @@
 <header>
 <h1 class="title">Short-term Forecasting Documentation</h1>
 <p class="author">Nithiya Streethran</p>
-<p class="date">27 May 2019</p>
+<p class="date">4 June 2019</p>
 </header>
 <nav id="TOC">
 <ul>
@@ -52,6 +52,12 @@
 </ul></li>
 <li><a href="#methodology">Methodology</a><ul>
 <li><a href="#modelling-framework">Modelling framework</a></li>
+<li><a href="#data-management">Data management</a></li>
+<li><a href="#time-series-forecasting">Time series forecasting</a></li>
+<li><a href="#market-optimisation">Market optimisation</a></li>
+<li><a href="#translating-inputs-and-outputs-into-operational-strategies">Translating inputs and outputs into operational strategies</a></li>
+<li><a href="#standardisation-and-publication-of-model">Standardisation and publication of model</a></li>
+<li><a href="#integrating-operational-time-scales-with-long-term-energy-systems-models">Integrating operational time scales with long-term energy systems models</a></li>
 </ul></li>
 <li><a href="#glossary">Glossary</a><ul>
 <li><a href="#abbreviations">Abbreviations</a></li>
@@ -241,13 +247,16 @@
 <figure>
 <img src="images/market-resolution.png" title="The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [PinsND], [TheC15]." alt="The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [PinsND], [TheC15]." /><figcaption>The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [PinsND], [TheC15].</figcaption>
 </figure>
+<figure>
+<img src="images/merit-order.png" title="Merit order ranking of supply and demand bids in an electricity market auction, illustrating the equilibrium point and maximisation of the social welfare. Source: Pinson 2018 [Pins18]." alt="Merit order ranking of supply and demand bids in an electricity market auction, illustrating the equilibrium point and maximisation of the social welfare. Source: Pinson 2018 [Pins18]." /><figcaption>Merit order ranking of supply and demand bids in an electricity market auction, illustrating the equilibrium point and maximisation of the social welfare. Source: Pinson 2018 [Pins18].</figcaption>
+</figure>
 <!-- 
 - [Objectives](#objectives)
  -->
 <h1 id="objectives">Objectives</h1>
 <p>The main research objective of this project is:</p>
 <blockquote>
-<p><em>To develop an open-source, machine learning-based electricity market model for the North Sea region which will help electricity generators, retailers, large consumers, BRPs and system operators in short-term electricity markets (i.e., day-ahead and intra-day markets) to develop operational and bidding strategies that maximise their profits under uncertainty of VRE generation. The model will consist of a forecaster based on machine learning, which will use high resolution time series weather forecasts for the upcoming period, and recent historical measurements of electricity generation, demand and market prices, to forecast the latter three quantities for the upcoming period. These forecasts will serve as inputs to an optimiser, which maximises social welfare in the electricity market.</em></p>
+<p><em>To develop an open-source, machine learning-based electricity market model for the North Sea region which will help electricity generators, retailers, large consumers, BRPs and system operators in short-term electricity markets (i.e., day-ahead and intra-day markets) to develop operational and bidding strategies that maximise their revenue under uncertainty of VRE generation. The model will consist of a forecaster based on machine learning, which will use high resolution time series weather forecasts for the upcoming period, and recent historical measurements of electricity generation, demand and market prices, to forecast the latter three quantities for the upcoming period. These forecasts will serve as inputs to an optimiser, which maximises social welfare in the electricity market and produces a list of offers, which will be translated into operational strategies.</em></p>
 </blockquote>
 <p>Based on the main research objective, the following research questions have been derived:</p>
 <ul>
@@ -484,12 +493,24 @@
 <!-- 
 - [Methodology](#methodology)
   - [Modelling framework](#modelling-framework)
+  - [Data management](#data-management)
+  - [Time series forecasting](#time-series-forecasting)
+  - [Market optimisation](#market-optimisation)
+  - [Translating inputs and outputs into operational strategies](#translating-inputs-and-outputs-into-operational-strategies)
+  - [Standardisation and publication of model](#standardisation-and-publication-of-model)
+  - [Integrating operational time scales with long-term energy systems models](#integrating-operational-time-scales-with-long-term-energy-systems-models)
  -->
 <h1 id="methodology">Methodology</h1>
 <h2 id="modelling-framework">Modelling framework</h2>
 <figure>
 <img src="images/model_framework.png" title="Modelling framework. License: CC BY-SA 4.0." alt="Modelling framework. License: CC BY-SA 4.0." /><figcaption>Modelling framework. License: CC BY-SA 4.0.</figcaption>
 </figure>
+<h2 id="data-management">Data management</h2>
+<h2 id="time-series-forecasting">Time series forecasting</h2>
+<h2 id="market-optimisation">Market optimisation</h2>
+<h2 id="translating-inputs-and-outputs-into-operational-strategies">Translating inputs and outputs into operational strategies</h2>
+<h2 id="standardisation-and-publication-of-model">Standardisation and publication of model</h2>
+<h2 id="integrating-operational-time-scales-with-long-term-energy-systems-models">Integrating operational time scales with long-term energy systems models</h2>
 <!-- 
 - [Glossary](#glossary)
   - [Abbreviations](#abbreviations)

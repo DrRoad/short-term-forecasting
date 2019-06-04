@@ -5,7 +5,7 @@
 # import libraries
 import pandas as pd
 import numpy as np
-pd.set_option('display.max_rows',500) # set up display area to show dataframe
+pd.set_option('display.max_rows',900) # set up display area to show dataframe
 pd.options.display.max_rows # prevent truncation of text strings in columns
 pd.set_option('display.max_colwidth',-1)
 
