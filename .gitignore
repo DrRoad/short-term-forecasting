@@ -389,8 +389,8 @@ _site/
 .sass-cache
 _asset_bundler_cache
 ### 
-# Gemfile 
-# _config.yml
+Gemfile 
+_config.yml
 
 # Pandoc
 tex2pdf*

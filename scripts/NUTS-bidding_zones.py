@@ -1,5 +1,5 @@
 #%% [markdown]
-# # NUTS (Nomenclature of territorial units for statistics) with market bidding zones
+# # Nomenclature of territorial units for statistics (NUTS) with market bidding zones
 
 #%%
 # import libraries
@@ -112,9 +112,11 @@ nuts3.loc[nuts3['NUTS_ID'].str.contains("UKC|UKD|UKE|UKF|UKG|UKH|UKI|UKJ|UKK|UKL
 # IE-SEM - Northern Ireland
 nuts3.loc[nuts3['NUTS_ID'].str.contains("UKN"),'BIDDING_ZONE']="IE-SEM"
 
+#%% [markdown]
+# ## Save North Sea NUTS 3 data with bidding zones as csv file
+
 #%%
-# NUTS 3 to csv
-# encoding used for latin characters
+# cp1252 encoding used for latin characters
 nuts3.to_csv('data/output/NUTS3_BIDDING.csv',index=None,encoding="cp1252")
 
 #%%

@@ -1,5 +1,5 @@
 #%% [markdown]
-# # NUTS (Nomenclature of territorial units for statistics)
+# # Nomenclature of territorial units for statistics (NUTS)
 
 #%%
 # import libraries
@@ -329,9 +329,11 @@ uk_nuts3
 # number of NUTS 3 territories
 len(uk_nuts3)
 
+#%% [markdown]
+# ## Save North Sea NUTS data as csv file
+
 #%%
-# save nuts to csv
-# encoding used for latin characters
+# cp1252 encoding used for latin characters
 nuts.to_csv('data/output/NUTS_NS_2016.csv',index=None,encoding="cp1252")
 
 #%% [markdown]
