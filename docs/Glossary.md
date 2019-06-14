@@ -29,6 +29,7 @@
 * JRC-IDEES - Joint Research Centre Integrated Database of the European Energy System
 * MARKAL - MARKet ALlocation
 * NREL - National Renewable Energy Laboratory
+* NUTS - Nomenclature of territorial units for statistics
 * O&M - operation and maintenance
 * openmod - Open Energy Modelling Initiative
 * OPEX - operational expenditure 

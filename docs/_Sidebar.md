@@ -12,12 +12,9 @@
 [**Objectives**](../wiki/Objectives)
 
 [**Regions**](../wiki/Regions)
-  - [North Sea countries](../wiki/Regions#north-sea-countries)
-    - [NUTS (Nomenclature of territorial units for statistics)](../wiki/Regions#nuts-nomenclature-of-territorial-units-for-statistics)
-  - [Bidding zones](../wiki/Regions#bidding-zones)
-    - [Definition](../wiki/Regions#definition)
-    - [Bidding zones in the North Sea region](../wiki/Regions#bidding-zones-in-the-north-sea-region)
-    - [Transmission system operators and interconnections](../wiki/Regions#transmission-system-operators-and-interconnections)
+  - [Territories in the North Sea region](../wiki/Regions#territories-in-the-north-sea-region)
+  - [Bidding zones in the North Sea region](../wiki/Regions#bidding-zones-in-the-north-sea-region)
+  - [Transmission system operators and interconnections](../wiki/Regions#transmission-system-operators-and-interconnections)
 
 [**Data**](../wiki/Data)
   - [Data folder navigation](../wiki/Data#data-folder-navigation)
@@ -28,6 +25,12 @@
 
 [**Methodology**](../wiki/Methodology)
   - [Modelling framework](../wiki/Methodology#modelling-framework)
+  - [Data management](../wiki/Methodology#data-management)
+  - [Time series forecasting](../wiki/Methodology#time-series-forecasting)
+  - [Market optimisation](../wiki/Methodology#market-optimisation)
+  - [Translating inputs and outputs into operational strategies](../wiki/Methodology#translating-inputs-and-outputs-into-operational-strategies)
+  - [Standardisation and publication of model](../wiki/Methodology#standardisation-and-publication-of-model)
+  - [Integrating operational time scales with long-term energy systems models](../wiki/Methodology#integrating-operational-time-scales-with-long-term-energy-systems-models)
 
 [**Glossary**](../wiki/Glossary)
   - [Abbreviations](../wiki/Glossary#abbreviations)

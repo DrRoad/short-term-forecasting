@@ -1,43 +1,50 @@
 <!-- 
 - [Regions](#regions)
-  - [North Sea countries](#north-sea-countries)
-    - [NUTS (Nomenclature of territorial units for statistics)](#nuts-nomenclature-of-territorial-units-for-statistics)
-  - [Bidding zones](#bidding-zones)
-    - [Definition](#definition)
-    - [Bidding zones in the North Sea region](#bidding-zones-in-the-north-sea-region)
-    - [Transmission system operators and interconnections](#transmission-system-operators-and-interconnections)
+  - [Territories in the North Sea region](#territories-in-the-north-sea-region)
+  - [Bidding zones in the North Sea region](#bidding-zones-in-the-north-sea-region)
+  - [Transmission system operators and interconnections](#transmission-system-operators-and-interconnections)
  -->
 
 # Regions
 
-## North Sea countries
+## Territories in the North Sea region
 
 As per the definition provided by the European MSP Platform [NortND] and the CPMR North Sea Commission [Memb15], the North Sea region consists of eight countries: Belgium, Denmark, France, Germany, Netherlands, Norway, Sweden and United Kingdom.
 
-### [NUTS (Nomenclature of territorial units for statistics)](https://ec.europa.eu/eurostat/web/nuts/background)
+The nomenclature of territorial units for statistics (NUTS) classifies territorial units in Europe in different levels [NUTSND]:
 
-[See the Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS.ipynb).
+* NUTS 0: country-level
+* NUTS 1: major socio-economic regions
+* NUTS 2: basic regions for the application of regional policies
+* NUTS 3: small regions for specific diagnoses
 
-## Bidding zones
+As explained in the problem definition section, short-term operational planning and systems with a high penetration of VRE must be described using data of high temporal and spatial resolutions. Therefore, NUTS 3 territories will be used as a standard in this project for aggregating short-term forecasting data.
 
-### Definition
+This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS.ipynb) lists the NUTS territories in the North Sea region at all four NUTS levels. France is the only North Sea country with overseas territories included in the NUTS data (RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES), so these were removed accordingly.
 
-According to [Bidd14]:
+Performing the forecasting task at NUTS 3 level would be straightforward if it does not include the electricity market. Since the electricity market is considered in this project, it is important to look at how the bidding zones overlap with NUTS 3 territories.
 
-* The largest geographical area within which market participants are able to exchange energy without capacity allocation. 
-* The majority of bidding zones in Europe are defined by national borders (e.g., France or the Netherlands).
-* Some are larger than national borders (e.g., Austria, Germany and Luxembourg or the Single Electricity Market for the island of Ireland) 
-* Some are smaller zones within individual countries (e.g., Italy, Norway or Sweden). 
+## Bidding zones in the North Sea region
 
-### Bidding zones in the North Sea region
+A bidding zone is the largest geographical area within which market participants are able to exchange energy without capacity allocation [Bidd14]. According to [Bidd14], there are three types of bidding zones:
 
-The bidding zones in the European electricity market are illustrated in the map below [Tren17].
+1. national borders (e.g., France or the Netherlands) - majority of bidding zones in Europe
+2. larger than national borders (e.g., Austria, Germany and Luxembourg or the Single Electricity Market for the island of Ireland) 
+3. smaller zones within individual countries (e.g., Italy, Norway or Sweden)
 
-![Bidding zones in the European electricity market. Source: [Polskie Sieci Elektroenergetyczne](http://raport.pse.pl/en/trends-and-market-context) [Tren17].](images/market-map.png "Bidding zones in the European electricity market. Source: Polskie Sieci Elektroenergetyczne [Tren17].")
+The bidding zones in European electricity markets are illustrated in the map below [Tren17].
 
-Table: Bidding zones in the North Sea region.
+![Bidding zones in European electricity markets. Source: [Polskie Sieci Elektroenergetyczne](http://raport.pse.pl/en/trends-and-market-context) [Tren17].](images/market-map.png "Bidding zones in European electricity markets. Source: Polskie Sieci Elektroenergetyczne [Tren17].")
 
-**Country** | **Market(s)** | **Zone(s)**
+The power exchanges (market operators) that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16].
+
+Both Nord Pool and EPEX SPOT are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [PCR&17].
+
+The table below lists all bidding zones in the North Sea region by country and market operator.  
+
+Table: Bidding zones and market operators in the North Sea region.
+
+**Country** | **Markets** | **Zones**
 --- | --- | ---
 Belgium (BE) | EPEX SPOT | BE
 Germany (DE / GE) | EPEX SPOT | DE-AT-LU<sup>[[f4]](#f4)</sup>
@@ -50,13 +57,35 @@ United Kingdom (UK) | EPEX SPOT, Nord Pool | GB, I-SEM<sup>[[f4]](#f4)</sup>
 
 <a name="f4">[f4]</a> *Austria (AT / AU); Luxembourg (LU); Great Britain (GB); Irish single electricity market (I-SEM), which includes Republic of Ireland (IE) and UK's Northern Ireland (NI).*
 
-### Transmission system operators and interconnections
+Mapping bidding zones to NUTS 3 territories is straightforward for Belgium, Germany, France and Netherlands (bidding zone type 1 or 2) -- all NUTS 3 territories in these countries have the same bidding zone. 
 
-The power exchanges that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16]. The North Sea region consists of multiple TSOs, cross-border interconnections and bidding zones, as listed in the table below.
+Denmark and United Kingdom are both conveniently separated into two zones that are easily distinguishable. For Denmark, these are Western Denmark (NUTS IDs containing DK03-DK05) and Southern Denmark (NUTS IDs containing DK01-DK02). For United Kingdom, these are Great Britain (NUTS IDs containing UKC-UKM) and Northern Ireland (NUTS IDs containing UKN). 
+
+There is no clear indication of the bidding zone boundaries for Norway and Sweden, so some assumptions were made. Both countries have multiple smaller bidding zones (type 3); Norway has five and Sweden has four. Based on Nord Pool market data [SeeMND], NUTS 3 data and county maps of Norway [Coun19a] and Sweden [Coun19b], the territories are split into the bidding zones as shown in the table below. Nord Pool associates each bidding zone with a major city in that zone. However, there were six cities for Norway instead of the expected five. Historical Nord Pool market data for Norway suggests that two cities, Trondheim and Molde, have had the same system price since 2003. Therefore, these two cities are grouped into the same bidding zone, which also satisfies what the maps suggest.
+
+Table: Bidding zones and their territories for Norway and Sweden, approximated based on Nord Pool market data [SeeMND], NUTS 3 data and county maps of Norway [Coun19a] and Sweden [Coun19b].
+
+**Bidding zone** | **Nord Pool** | **Counties** | **NUTS 3 IDs**
+-- | -- | ------ | ---
+NO1 | Oslo | Oslo, Akershus, Hedmark, Oppland, Østfold, Buskerud, Vestfold, Telemark | NO011-034
+NO2 | Kristiansand | Aust-Agder, Vest-Agder, Rogaland | NO041-043
+NO3 | Trondheim, Molde | Sogn og Fjordane, Møre og Romsdal, Trøndelag | NO052-060
+NO4 | Tromsø | Nordland, Troms, Finnmark | NO071-073
+NO5 | Bergen | Hordaland | NO051
+SE1 | Luleå | Norrbotten | SE332
+SE2 | Sundsvall | Gävleborg, Västernorrland, Jämtland, Västerbotten | SE313-331
+SE3 | Stockholm | Stockholm, Uppsala, Södermanland, Östergötland, Örebro, Västmanland, Jönköping, Gotland, Västra Götaland, Värmland, Dalarna | SE110-211, SE214, SE232-312
+SE4 | Malmö | Kronoberg, Kalmar, Blekinge, Halland, Skåne | SE212-213, SE221-231
+
+This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS-bidding_zones.ipynb) lists all NUTS 3 territories and their bidding zones in the North Sea region, and explains how the different bidding zones were assigned to the territories.
+
+## Transmission system operators and interconnections
+
+The North Sea region consists of multiple TSOs and cross-border interconnections. These are listed, along with the bidding zones bidding zones, in the table below.
 
 Table: TSOs and cross-border interconnections in the North Sea region. Data: European Network of Transmission System Operators for Electricity [ENTSND], [RegiND].
 
-Ctry.<sup>[[f5]](#f5)</sup> | TSOs | Cross-border interconnection<sup>[[f5]](#f5),[[f6]](#f6)</sup> | Bidding zones<sup>[[f5]](#f5),[[f6]](#f6)</sup>
+**Ctry.**<sup>[[f5]](#f5)</sup> | **TSOs** | **Cross-border interconnection**<sup>[[f5]](#f5),[[f6]](#f6)</sup> | **Bidding zones**<sup>[[f5]](#f5),[[f6]](#f6)</sup>
 -|-----|---|---
 BE | Elia System Operator | FR, LU, NL, UK | BE 
 DK | Energinet | DE, NO, SE | DK1, DK2 

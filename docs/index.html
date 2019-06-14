@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Nithiya Streethran" />
-  <meta name="dcterms.date" content="2019-06-11" />
+  <meta name="dcterms.date" content="2019-06-14" />
   <title>Short-term Forecasting Documentation</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -22,7 +22,7 @@
 <header>
 <h1 class="title">Short-term Forecasting Documentation</h1>
 <p class="author">Nithiya Streethran</p>
-<p class="date">11 June 2019</p>
+<p class="date">14 June 2019</p>
 </header>
 <nav id="TOC">
 <ul>
@@ -34,14 +34,9 @@
 </ul></li>
 <li><a href="#objectives">Objectives</a></li>
 <li><a href="#regions">Regions</a><ul>
-<li><a href="#north-sea-countries">North Sea countries</a><ul>
-<li><a href="#nuts-nomenclature-of-territorial-units-for-statistics"><span>NUTS (Nomenclature of territorial units for statistics)</span></a></li>
-</ul></li>
-<li><a href="#bidding-zones">Bidding zones</a><ul>
-<li><a href="#definition">Definition</a></li>
+<li><a href="#territories-in-the-north-sea-region">Territories in the North Sea region</a></li>
 <li><a href="#bidding-zones-in-the-north-sea-region">Bidding zones in the North Sea region</a></li>
 <li><a href="#transmission-system-operators-and-interconnections">Transmission system operators and interconnections</a></li>
-</ul></li>
 </ul></li>
 <li><a href="#data">Data</a><ul>
 <li><a href="#data-folder-navigation"><span>Data folder</span> navigation</a></li>
@@ -74,11 +69,13 @@
 <p>Short-term forecasting of electricity generation, demand and prices using machine learning.</p>
 <p>Copyright (C) 2019 <a href="https://nmstreethran.github.io/">Nithiya Streethran</a>.</p>
 <p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="https://www.gnu.org/licenses/fdl-1.3">GNU Free Documentation License</a>, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled “GNU Free Documentation License”.</p>
-<p>Content has been attributed where appropriate. Images are licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a> license, where the image source has not been specified.</p>
+<p>Content sources have been attributed where appropriate. Images are licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a> license, where the image source has not been specified.</p>
 <p>This work is part of Nithiya Streethran’s research as Early-Stage Researcher (ESR) 9 of the <a href="https://ensystra.eu/">ENSYSTRA - ENergy SYStems in TRAnsition</a> Innovative Training Network. ENSYSTRA is funded by the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.</p>
-<p align="center">
+<center>
+<p>
 <a href="https://ensystra.eu/"><img src="logos/ensystra-ls.png" alt="ENSYSTRA" height="50" title="ENSYSTRA"></a>   <img src="logos/eu.jpg" alt="European Union" height="50" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.">
 </p>
+</center>
 <!-- 
 - [Background](#background)
  -->
@@ -114,14 +111,14 @@
 <caption>Characteristics of the main energy generation technologies, adapted from Erbach 2016 [Erba16] and Tidball, et al. 2010 [Tidb10].</caption>
 <thead>
 <tr class="header">
-<th>Type<sup><a href="#f1">[f1]</a></sup></th>
-<th>Variable</th>
-<th>Fuel type</th>
-<th>Flexibility</th>
-<th>Low carbon</th>
-<th>CAPEX</th>
-<th>OPEX</th>
-<th>LCOE<sup><a href="#f2">[f2]</a></sup></th>
+<th><strong>Type</strong><sup><a href="#f1">[f1]</a></sup></th>
+<th><strong>Variable</strong></th>
+<th><strong>Fuel type</strong></th>
+<th><strong>Flexibility</strong></th>
+<th><strong>Low carbon</strong></th>
+<th><strong>CAPEX</strong></th>
+<th><strong>OPEX</strong></th>
+<th><strong>LCOE</strong><sup><a href="#f2">[f2]</a></sup></th>
 </tr>
 </thead>
 <tbody>
@@ -231,25 +228,16 @@
 <p><a name="f2">[f2]</a> <em>LCOE - levelised cost of electricity</em></p>
 <p><a name="f3">[f3]</a> <em>regrowth of biomass compensates emissions</em></p>
 <h2 id="electricity-market">Electricity market</h2>
-<p>The actors in the electricity market include [Erba16], [PinsND], [TheC15]:</p>
-<ul>
-<li>Generator</li>
-<li>Retailer</li>
-<li>Large and small consumer</li>
-<li>Transmission system operator (TSO)</li>
-<li>Distribution network operator (DNO)</li>
-<li>Balance responsible party (BRP)</li>
-<li>Aggregator</li>
-<li>Regulator</li>
-<li>Market operator</li>
-</ul>
+<p>The actors in the electricity market include generators, retailers, large and small consumers, transmission system operators (TSOs), distribution network operators (DNOs), balance responsible parties (BRPs), aggregators, regulators, and market operators [Erba16], [PinsND], [TheC15].</p>
 <p>There are two types of electricity markets; the retail market and the wholesale market [Erba16]. The retail market involves the retailers buying electricity from generators and selling it to consumers. The wholesale market involves generators, retailers and (large) consumers, who buy and sell electricity. Energy-only transactions in the wholesale market have different temporal resolutions [PinsND], [TheC15] and take place before dispatch, shown in green in the figure below. Balancing markets, shown in pink in the figure below, which involve both energy and services, operate both before and after dispatch [TheC15]. The energy-only markets are operated by the market operator or power exchanges, while the balancing market is operated by the system operator. The day-ahead and intra-day markets can be considered short-term electricity markets, as the former takes place 24 hours in advance of dispatch, while the latter takes place continuously after the day-ahead market, up to minutes before dispatch [Over16].</p>
 <figure>
 <img src="images/market-resolution.png" title="The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [PinsND], [TheC15]." alt="The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [PinsND], [TheC15]." /><figcaption>The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [PinsND], [TheC15].</figcaption>
 </figure>
+<p>The figure below is a typical supply and demand curve with merit order ranking [Pins18]. In an electricity market auction, the demand bids are ranked in descending order of price, and the generation bids are ranked in ascending order of price. An equilibrium point is formed at the intersection between the supply and demand curves, which allows the social welfare to be maximised. Maximisation of social welfare means that both the supply and demand sides do not suffer from revenue losses.</p>
 <figure>
 <img src="images/merit-order.png" title="Merit order ranking of supply and demand bids in an electricity market auction, illustrating the equilibrium point and maximisation of the social welfare. Source: Pinson 2018 [Pins18]." alt="Merit order ranking of supply and demand bids in an electricity market auction, illustrating the equilibrium point and maximisation of the social welfare. Source: Pinson 2018 [Pins18]." /><figcaption>Merit order ranking of supply and demand bids in an electricity market auction, illustrating the equilibrium point and maximisation of the social welfare. Source: Pinson 2018 [Pins18].</figcaption>
 </figure>
+<p>Increase in revenue for generators due to electricity generated by VRE resources, and increased utilisation of renewable electricity in the demand side would facilitate more investments in renewable electricity technologies and infrastructure. Current energy systems models focus more on longer time horizons and therefore lack the spatial and temporal resolution that appropriately includes VRE and their intermittent nature. Increased investments and utilisation of renewables is important to ensure cheaper electricity for consumers and enable the transition to a low-carbon electricity system.</p>
 <!-- 
 - [Objectives](#objectives)
  -->
@@ -269,39 +257,44 @@
 </ul>
 <!-- 
 - [Regions](#regions)
-  - [North Sea countries](#north-sea-countries)
-    - [NUTS (Nomenclature of territorial units for statistics)](#nuts-nomenclature-of-territorial-units-for-statistics)
-  - [Bidding zones](#bidding-zones)
-    - [Definition](#definition)
-    - [Bidding zones in the North Sea region](#bidding-zones-in-the-north-sea-region)
-    - [Transmission system operators and interconnections](#transmission-system-operators-and-interconnections)
+  - [Territories in the North Sea region](#territories-in-the-north-sea-region)
+  - [Bidding zones in the North Sea region](#bidding-zones-in-the-north-sea-region)
+  - [Transmission system operators and interconnections](#transmission-system-operators-and-interconnections)
  -->
 <h1 id="regions">Regions</h1>
-<h2 id="north-sea-countries">North Sea countries</h2>
+<h2 id="territories-in-the-north-sea-region">Territories in the North Sea region</h2>
 <p>As per the definition provided by the European MSP Platform [NortND] and the CPMR North Sea Commission [Memb15], the North Sea region consists of eight countries: Belgium, Denmark, France, Germany, Netherlands, Norway, Sweden and United Kingdom.</p>
-<h3 id="nuts-nomenclature-of-territorial-units-for-statistics"><a href="https://ec.europa.eu/eurostat/web/nuts/background">NUTS (Nomenclature of territorial units for statistics)</a></h3>
-<p><a href="https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS.ipynb">See the Jupyter notebook</a>.</p>
-<h2 id="bidding-zones">Bidding zones</h2>
-<h3 id="definition">Definition</h3>
-<p>According to [Bidd14]:</p>
+<p>The nomenclature of territorial units for statistics (NUTS) classifies territorial units in Europe in different levels [NUTSND]:</p>
 <ul>
-<li>The largest geographical area within which market participants are able to exchange energy without capacity allocation.</li>
-<li>The majority of bidding zones in Europe are defined by national borders (e.g., France or the Netherlands).</li>
-<li>Some are larger than national borders (e.g., Austria, Germany and Luxembourg or the Single Electricity Market for the island of Ireland)</li>
-<li>Some are smaller zones within individual countries (e.g., Italy, Norway or Sweden).</li>
+<li>NUTS 0: country-level</li>
+<li>NUTS 1: major socio-economic regions</li>
+<li>NUTS 2: basic regions for the application of regional policies</li>
+<li>NUTS 3: small regions for specific diagnoses</li>
 </ul>
-<h3 id="bidding-zones-in-the-north-sea-region">Bidding zones in the North Sea region</h3>
-<p>The bidding zones in the European electricity market are illustrated in the map below [Tren17].</p>
+<p>As explained in the problem definition section, short-term operational planning and systems with a high penetration of VRE must be described using data of high temporal and spatial resolutions. Therefore, NUTS 3 territories will be used as a standard in this project for aggregating short-term forecasting data.</p>
+<p>This <a href="https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS.ipynb">Jupyter notebook</a> lists the NUTS territories in the North Sea region at all four NUTS levels. France is the only North Sea country with overseas territories included in the NUTS data (RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES), so these were removed accordingly.</p>
+<p>Performing the forecasting task at NUTS 3 level would be straightforward if it does not include the electricity market. Since the electricity market is considered in this project, it is important to look at how the bidding zones overlap with NUTS 3 territories.</p>
+<h2 id="bidding-zones-in-the-north-sea-region">Bidding zones in the North Sea region</h2>
+<p>A bidding zone is the largest geographical area within which market participants are able to exchange energy without capacity allocation [Bidd14]. According to [Bidd14], there are three types of bidding zones:</p>
+<ol type="1">
+<li>national borders (e.g., France or the Netherlands) - majority of bidding zones in Europe</li>
+<li>larger than national borders (e.g., Austria, Germany and Luxembourg or the Single Electricity Market for the island of Ireland)</li>
+<li>smaller zones within individual countries (e.g., Italy, Norway or Sweden)</li>
+</ol>
+<p>The bidding zones in European electricity markets are illustrated in the map below [Tren17].</p>
 <figure>
-<img src="images/market-map.png" title="Bidding zones in the European electricity market. Source: Polskie Sieci Elektroenergetyczne [Tren17]." alt="Bidding zones in the European electricity market. Source: Polskie Sieci Elektroenergetyczne [Tren17]." /><figcaption>Bidding zones in the European electricity market. Source: <a href="http://raport.pse.pl/en/trends-and-market-context">Polskie Sieci Elektroenergetyczne</a> [Tren17].</figcaption>
+<img src="images/market-map.png" title="Bidding zones in European electricity markets. Source: Polskie Sieci Elektroenergetyczne [Tren17]." alt="Bidding zones in European electricity markets. Source: Polskie Sieci Elektroenergetyczne [Tren17]." /><figcaption>Bidding zones in European electricity markets. Source: <a href="http://raport.pse.pl/en/trends-and-market-context">Polskie Sieci Elektroenergetyczne</a> [Tren17].</figcaption>
 </figure>
+<p>The power exchanges (market operators) that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16].</p>
+<p>Both Nord Pool and EPEX SPOT are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [PCR&amp;17].</p>
+<p>The table below lists all bidding zones in the North Sea region by country and market operator.</p>
 <table>
-<caption>Bidding zones in the North Sea region.</caption>
+<caption>Bidding zones and market operators in the North Sea region.</caption>
 <thead>
 <tr class="header">
 <th><strong>Country</strong></th>
-<th><strong>Market(s)</strong></th>
-<th><strong>Zone(s)</strong></th>
+<th><strong>Markets</strong></th>
+<th><strong>Zones</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -348,8 +341,85 @@
 </tbody>
 </table>
 <p><a name="f4">[f4]</a> <em>Austria (AT / AU); Luxembourg (LU); Great Britain (GB); Irish single electricity market (I-SEM), which includes Republic of Ireland (IE) and UK’s Northern Ireland (NI).</em></p>
-<h3 id="transmission-system-operators-and-interconnections">Transmission system operators and interconnections</h3>
-<p>The power exchanges that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16]. The North Sea region consists of multiple TSOs, cross-border interconnections and bidding zones, as listed in the table below.</p>
+<p>Mapping bidding zones to NUTS 3 territories is straightforward for Belgium, Germany, France and Netherlands (bidding zone type 1 or 2) – all NUTS 3 territories in these countries have the same bidding zone.</p>
+<p>Denmark and United Kingdom are both conveniently separated into two zones that are easily distinguishable. For Denmark, these are Western Denmark (NUTS IDs containing DK03-DK05) and Southern Denmark (NUTS IDs containing DK01-DK02). For United Kingdom, these are Great Britain (NUTS IDs containing UKC-UKM) and Northern Ireland (NUTS IDs containing UKN).</p>
+<p>There is no clear indication of the bidding zone boundaries for Norway and Sweden, so some assumptions were made. Both countries have multiple smaller bidding zones (type 3); Norway has five and Sweden has four. Based on Nord Pool market data [SeeMND], NUTS 3 data and county maps of Norway [Coun19a] and Sweden [Coun19b], the territories are split into the bidding zones as shown in the table below. Nord Pool associates each bidding zone with a major city in that zone. However, there were six cities for Norway instead of the expected five. Historical Nord Pool market data for Norway suggests that two cities, Trondheim and Molde, have had the same system price since 2003. Therefore, these two cities are grouped into the same bidding zone, which also satisfies what the maps suggest.</p>
+<table>
+<caption>Bidding zones and their territories for Norway and Sweden, approximated based on Nord Pool market data [SeeMND], NUTS 3 data and county maps of Norway [Coun19a] and Sweden [Coun19b].</caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 46%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Bidding zone</strong></th>
+<th><strong>Nord Pool</strong></th>
+<th><strong>Counties</strong></th>
+<th><strong>NUTS 3 IDs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NO1</td>
+<td>Oslo</td>
+<td>Oslo, Akershus, Hedmark, Oppland, Østfold, Buskerud, Vestfold, Telemark</td>
+<td>NO011-034</td>
+</tr>
+<tr class="even">
+<td>NO2</td>
+<td>Kristiansand</td>
+<td>Aust-Agder, Vest-Agder, Rogaland</td>
+<td>NO041-043</td>
+</tr>
+<tr class="odd">
+<td>NO3</td>
+<td>Trondheim, Molde</td>
+<td>Sogn og Fjordane, Møre og Romsdal, Trøndelag</td>
+<td>NO052-060</td>
+</tr>
+<tr class="even">
+<td>NO4</td>
+<td>Tromsø</td>
+<td>Nordland, Troms, Finnmark</td>
+<td>NO071-073</td>
+</tr>
+<tr class="odd">
+<td>NO5</td>
+<td>Bergen</td>
+<td>Hordaland</td>
+<td>NO051</td>
+</tr>
+<tr class="even">
+<td>SE1</td>
+<td>Luleå</td>
+<td>Norrbotten</td>
+<td>SE332</td>
+</tr>
+<tr class="odd">
+<td>SE2</td>
+<td>Sundsvall</td>
+<td>Gävleborg, Västernorrland, Jämtland, Västerbotten</td>
+<td>SE313-331</td>
+</tr>
+<tr class="even">
+<td>SE3</td>
+<td>Stockholm</td>
+<td>Stockholm, Uppsala, Södermanland, Östergötland, Örebro, Västmanland, Jönköping, Gotland, Västra Götaland, Värmland, Dalarna</td>
+<td>SE110-211, SE214, SE232-312</td>
+</tr>
+<tr class="odd">
+<td>SE4</td>
+<td>Malmö</td>
+<td>Kronoberg, Kalmar, Blekinge, Halland, Skåne</td>
+<td>SE212-213, SE221-231</td>
+</tr>
+</tbody>
+</table>
+<p>This <a href="https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS-bidding_zones.ipynb">Jupyter notebook</a> lists all NUTS 3 territories and their bidding zones in the North Sea region, and explains how the different bidding zones were assigned to the territories.</p>
+<h2 id="transmission-system-operators-and-interconnections">Transmission system operators and interconnections</h2>
+<p>The North Sea region consists of multiple TSOs and cross-border interconnections. These are listed, along with the bidding zones bidding zones, in the table below.</p>
 <table>
 <caption>TSOs and cross-border interconnections in the North Sea region. Data: European Network of Transmission System Operators for Electricity [ENTSND], [RegiND].</caption>
 <colgroup>
@@ -360,10 +430,10 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th>Ctry.<sup><a href="#f5">[f5]</a></sup></th>
-<th>TSOs</th>
-<th>Cross-border interconnection<sup><a href="#f5">[f5]</a>,<a href="#f6">[f6]</a></sup></th>
-<th>Bidding zones<sup><a href="#f5">[f5]</a>,<a href="#f6">[f6]</a></sup></th>
+<th><strong>Ctry.</strong><sup><a href="#f5">[f5]</a></sup></th>
+<th><strong>TSOs</strong></th>
+<th><strong>Cross-border interconnection</strong><sup><a href="#f5">[f5]</a>,<a href="#f6">[f6]</a></sup></th>
+<th><strong>Bidding zones</strong><sup><a href="#f5">[f5]</a>,<a href="#f6">[f6]</a></sup></th>
 </tr>
 </thead>
 <tbody>
@@ -489,7 +559,7 @@
 <li><a href="https://www.epexspot.com/en/membership/list_of_members">EPEX SPOT Exchange Members</a></li>
 </ul>
 <h2 id="other-data">Other data</h2>
-<h4 id="nuts-nomenclature-of-territorial-units-for-statistics-1"><a href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">NUTS (Nomenclature of territorial units for statistics)</a></h4>
+<h4 id="nuts-nomenclature-of-territorial-units-for-statistics"><a href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">NUTS (Nomenclature of territorial units for statistics)</a></h4>
 <!-- 
 - [Methodology](#methodology)
   - [Modelling framework](#modelling-framework)
@@ -540,6 +610,7 @@
 <li>JRC-IDEES - Joint Research Centre Integrated Database of the European Energy System</li>
 <li>MARKAL - MARKet ALlocation</li>
 <li>NREL - National Renewable Energy Laboratory</li>
+<li>NUTS - Nomenclature of territorial units for statistics</li>
 <li>O&amp;M - operation and maintenance</li>
 <li>openmod - Open Energy Modelling Initiative</li>
 <li>OPEX - operational expenditure</li>
@@ -556,6 +627,8 @@
 <h1 id="references">References</h1>
 <p>[AbouND] ‘<a href="https://ensystra.eu/about-the-project/">About the Project | ENSYSTRA</a>’. Accessed 23 April 2018.</p>
 <p>[Bidd14] ‘<a href="https://www.ofgem.gov.uk/sites/default/files/docs/2014/10/fta_bidding_zone_configuration_literature_review_1.pdf">Bidding Zones Literature Review</a>’. Ofgem, July 2014.</p>
+<p>[Coun19] ‘<a href="https://en.wikipedia.org/w/index.php?title=Counties_of_Norway&amp;oldid=890663009">Counties of Norway</a>’. In Wikipedia, 2 April 2019.</p>
+<p>[Coun19] ‘<a href="https://en.wikipedia.org/w/index.php?title=Counties_of_Sweden&amp;oldid=882806371">Counties of Sweden</a>’. In Wikipedia, 11 February 2019.</p>
 <p>[EnerND] ‘<a href="https://data.europa.eu/euodp/data/dataset/energy-modelling">Energy Modelling - EU Reference Scenario 2016</a>’. Accessed 1 November 2018.</p>
 <p>[Ener12] ‘<a href="https://doi.org/10.2833/10759">Energy Roadmap 2050</a>’. Luxembourg: Publications Office of the European Union, 2012.</p>
 <p>[ENTSND] ‘<a href="https://transparency.entsoe.eu/">ENTSO-E Transparency Platform</a>’. Accessed 7 November 2018.</p>
@@ -570,8 +643,10 @@
 <p>[Mana12] ‘<a href="http://www.ibmbigdatahub.com/whitepaper/managing-big-data-smart-grids-and-smart-meters">Managing Big Data for Smart Grids and Smart Meters</a>’. Somers, NY, USA: IBM Corporation, 2012.</p>
 <p>[Memb15] ‘<a href="https://cpmr-northsea.org/who-we-are/member-directory-map/">Member Directory &amp; Map – CPMR North Sea Commission</a>’, 21 October 2015.</p>
 <p>[NortND] ‘<a href="https://www.msp-platform.eu/sea-basins/north-sea-0">North Sea | European MSP Platform</a>’. Accessed 1 June 2018.</p>
+<p>[NUTSND] ‘<a href="https://ec.europa.eu/eurostat/web/nuts/background">NUTS - Nomenclature of Territorial Units for Statistics - Eurostat</a>’. Accessed 11 June 2019.</p>
 <p>[Over16] ‘<a href="https://ec.europa.eu/energy/sites/ener/files/documents/overview_of_european_electricity_markets.pdf">Overview of European Electricity Markets</a>’. METIS Technical Notes. Brussels, Belgium: European Union, February 2016.</p>
 <p>[Pari15] ‘<a href="https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement">Paris Agreement</a>’. United Nations Framework Convention on Climate Change, 2015.</p>
+<p>[PCR&amp;17] ‘<a href="https://www.n-side.com/pcr-euphemia-algorithm-european-power-exchanges-price-coupling-electricity-market/">PCR &amp; EUPHEMIA Algorithm, the European Power Exchanges Project to Couple Electricity Market!</a>’ N-SIDE, 9 September 2017.</p>
 <p>[Pfen14] Pfenninger, Stefan, Adam Hawkes, and James Keirstead. ‘<a href="https://doi.org/10.1016/j.rser.2014.02.003">Energy Systems Modeling for Twenty-First Century Energy Challenges</a>’. Renewable and Sustainable Energy Reviews 33 (1 May 2014): 74–86.</p>
 <p>[PinsND] Pinson, Pierre. ‘<a href="http://pierrepinson.com/?page_id=913">Renewables in Electricity Markets « Pierre Pinson</a>’. Accessed 9 December 2018.</p>
 <p>[RegiND] ‘<a href="https://www.entsoe.eu/major-projects/rscis/">Regional Security Coordinators FAQ</a>’. Accessed 18 November 2018.</p>

@@ -5,6 +5,10 @@
 
 [Bidd14] ‘[Bidding Zones Literature Review](https://www.ofgem.gov.uk/sites/default/files/docs/2014/10/fta_bidding_zone_configuration_literature_review_1.pdf)’. Ofgem, July 2014.
 
+[Coun19] ‘[Counties of Norway](https://en.wikipedia.org/w/index.php?title=Counties_of_Norway&oldid=890663009)’. In Wikipedia, 2 April 2019. 
+
+[Coun19] ‘[Counties of Sweden](https://en.wikipedia.org/w/index.php?title=Counties_of_Sweden&oldid=882806371)’. In Wikipedia, 11 February 2019.
+
 [EnerND] ‘[Energy Modelling - EU Reference Scenario 2016](https://data.europa.eu/euodp/data/dataset/energy-modelling)’. Accessed 1 November 2018.
 
 [Ener12] ‘[Energy Roadmap 2050](https://doi.org/10.2833/10759)’. Luxembourg: Publications Office of the European Union, 2012.
@@ -33,9 +37,13 @@
 
 [NortND] ‘[North Sea | European MSP Platform](https://www.msp-platform.eu/sea-basins/north-sea-0)’. Accessed 1 June 2018.
 
+[NUTSND] ‘[NUTS - Nomenclature of Territorial Units for Statistics - Eurostat](https://ec.europa.eu/eurostat/web/nuts/background)’. Accessed 11 June 2019.
+
 [Over16] ‘[Overview of European Electricity Markets](https://ec.europa.eu/energy/sites/ener/files/documents/overview_of_european_electricity_markets.pdf)’. METIS Technical Notes. Brussels, Belgium: European Union, February 2016.
 
 [Pari15] ‘[Paris Agreement](https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement)’. United Nations Framework Convention on Climate Change, 2015.
+
+[PCR&17] ‘[PCR & EUPHEMIA Algorithm, the European Power Exchanges Project to Couple Electricity Market!](https://www.n-side.com/pcr-euphemia-algorithm-european-power-exchanges-price-coupling-electricity-market/)’ N-SIDE, 9 September 2017.
 
 [Pfen14] Pfenninger, Stefan, Adam Hawkes, and James Keirstead. ‘[Energy Systems Modeling for Twenty-First Century Energy Challenges](https://doi.org/10.1016/j.rser.2014.02.003)’. Renewable and Sustainable Energy Reviews 33 (1 May 2014): 74–86.
 

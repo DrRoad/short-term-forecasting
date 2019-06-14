@@ -1,0 +1,11 @@
+cp -a wiki/* docs/
+
+cd docs
+
+pandoc -s ../wiki/Home.md ../wiki/Background.md ../wiki/Problem-definition.md ../wiki/Objectives.md ../wiki/Regions.md ../wiki/Data.md ../wiki/Methodology.md ../wiki/Glossary.md ../wiki/References.md ../wiki/License.md --metadata date="`date '+%-d %B %Y'`" --metadata author="Nithiya Streethran" --toc --metadata title="Short-term Forecasting Documentation" -c pandoc.css -o index.html
+
+pandoc -s --metadata title="Short-term Forecasting Documentation" ../wiki/Home.md ../wiki/Background.md ../wiki/Problem-definition.md ../wiki/Objectives.md ../wiki/Regions.md ../wiki/Data.md ../wiki/Methodology.md ../wiki/Glossary.md ../wiki/References.md ../wiki/License.md -o docs-input.html
+
+pandoc -N --template=template.tex --metadata author="Nithiya Streethran" --variable date="`date '+%-d %B %Y'`" --variable fontsize=10pt -V geometry:margin="2.5cm" -V papersize="a4" -V secnumdepth="0" -V fontfamily="mathpazo" -V classoption="twoside" --variable linkcolor=blue --variable toccolor=blue --variable urlcolor=blue docs-input.html --pdf-engine=pdflatex --toc --variable toc-title="Table of Contents" --variable lof=true --variable lot=true -o docs.pdf
+
+cd ..

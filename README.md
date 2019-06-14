@@ -33,28 +33,26 @@ The source code editor I use is [VSCodium](https://vscodium.github.io/) (fully o
 * [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 * [Markdown All in One](https://marketplace.visualstudio.com/itemdetails?itemName=yzhang.markdown-all-in-one)
-* [GitHub Pull Requests](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
 * [YAML](https://marketplace.visualstudio.com/itemdetails?itemName=redhat.vscode-yaml)
-* [VS Code Jupyter Notebook Previewer](https://marketplace.visualstudio.com/items?itemName=jithurjacob.nbpreviewer)
+* [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 
-Computing:
+My current computing specifications:
 * Python version 3.6.8
 * conda version 4.6.11
 * git version 2.18.0.windows.1
 * Processor: Intel(R) Core(TM) i5-7200U CPU @ 250 GHz 2.71 GHz
 * RAM: 8 GB
+* Default shell: Bash
 
 My coding notes can be found in my [coding](https://github.com/nmstreethran/coding) repository.
 
 ## Documentation
 
-Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files. The wiki documentation is converted from Markdown into LaTeX and [HTML](/docs/index.html) formats using [Pandoc](https://pandoc.org/MANUAL.html). The Pandoc commands and the command to copy wiki markdown files to [docs/](/docs/) are written in [`commands.txt`](/docs/commands.txt), which is executed in Bash using:
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files in Markdown, HTML and PDF formats. The wiki documentation is converted from Markdown into other formats using [Pandoc](https://pandoc.org/MANUAL.html). The shell commands used are written in [`commands.txt`](/commands.txt), which is executed in Bash using:
 
 ```sh
-bash docs/commands.txt
+bash commands.txt
 ```
-
-A [PDF](/docs/docs.pdf) version is then compiled using pdfLaTeX.
 
 <!-- The [HTML file](/docs/index.html) is published at [ensystra.github.io/short-term-forecasting](https://ensystra.github.io/short-term-forecasting/). -->
 
