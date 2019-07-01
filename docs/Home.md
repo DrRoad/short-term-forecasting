@@ -11,6 +11,4 @@ Content sources have been attributed where appropriate. Images are licensed unde
 
 This work is part of Nithiya Streethran's research as Early-Stage Researcher (ESR) 9 of the [ENSYSTRA - ENergy SYStems in TRAnsition](https://ensystra.eu/) Innovative Training Network. ENSYSTRA is funded by the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.
 
-<center>
-<p><a href="https://ensystra.eu/"><img src="logos/ensystra-ls.png" alt="ENSYSTRA" height="50" title="ENSYSTRA"></a>&nbsp;&nbsp;&nbsp;<img src="logos/eu.jpg" alt="European Union" height="50" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515."></p>
-</center>
+<p align=center><a href="https://ensystra.eu/"><img src="logos/ensystra-ls.png" alt="ENSYSTRA" height="50" title="ENSYSTRA"></a>&nbsp;&nbsp;&nbsp;<img src="logos/eu.jpg" alt="European Union" height="50" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515."></p>

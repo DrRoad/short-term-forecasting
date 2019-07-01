@@ -48,10 +48,10 @@ My coding notes can be found in my [coding](https://github.com/nmstreethran/codi
 
 ## Documentation
 
-Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files in Markdown, HTML and PDF formats. The wiki documentation is converted from Markdown into other formats using [Pandoc](https://pandoc.org/MANUAL.html). The shell commands used are written in [`commands.txt`](/commands.txt), which is executed in Bash using:
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files in Markdown, HTML and PDF formats. The wiki documentation is converted from Markdown into other formats using [Pandoc](https://pandoc.org/MANUAL.html). The shell commands used are written in [`docs_commands.txt`](/docs_commands.txt), which is executed in Bash using:
 
 ```sh
-bash commands.txt
+bash docs_commands.txt
 ```
 
 <!-- The [HTML file](/docs/index.html) is published at [ensystra.github.io/short-term-forecasting](https://ensystra.github.io/short-term-forecasting/). -->

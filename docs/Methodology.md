@@ -1,28 +1,37 @@
 <!-- 
-- [Methodology](#methodology)
-  - [Modelling framework](#modelling-framework)
-  - [Data management](#data-management)
-  - [Time series forecasting](#time-series-forecasting)
-  - [Market optimisation](#market-optimisation)
-  - [Translating inputs and outputs into operational strategies](#translating-inputs-and-outputs-into-operational-strategies)
-  - [Standardisation and publication of model](#standardisation-and-publication-of-model)
-  - [Integrating operational time scales with long-term energy systems models](#integrating-operational-time-scales-with-long-term-energy-systems-models)
+- [Methodology](#Methodology)
+  - [Modelling framework](#Modelling-framework)
+  - [Data management](#Data-management)
+  - [Time series forecasting](#Time-series-forecasting)
  -->
 
 # Methodology
 
 ## Modelling framework
 
-![Modelling framework. License: CC BY-SA 4.0.](images/model_framework.png "Modelling framework. License: CC BY-SA 4.0.")
+<!-- ![Modelling framework. License: CC BY-SA 4.0.](images/model_framework.png "Modelling framework. License: CC BY-SA 4.0.") -->
 
 ## Data management
 
 ## Time series forecasting
 
-## Market optimisation
+<!-- * Variable renewable energy generators
+  * Installed capacity
+  * Capacity factor
+  * Available capacity (installed capacity * capacity factor)
+* Conventional generators
+  * Installed capacity
+  * Fuel efficiency
+  * Availability (either available or unavailable)
+  * Fuel cost
+  * Fuel consumption
+  * Fuel price
+  * Fuel energy value -->
 
-## Translating inputs and outputs into operational strategies
+<!-- ## Market optimisation -->
 
-## Standardisation and publication of model
+<!-- ## Translating inputs and outputs into operational strategies -->
 
-## Integrating operational time scales with long-term energy systems models
+<!-- ## Standardisation and publication of model -->
+
+<!-- ## Integrating operational time scales with long-term energy systems models  -->

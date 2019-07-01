@@ -19,6 +19,8 @@
 
 [Erba16] Erbach, Gregor. ‘[Understanding Electricity Markets in the EU](http://www.europarl.europa.eu/RegData/etudes/BRIE/2016/593519/EPRS_BRI(2016)593519_EN.pdf)’. Briefing. European Union, November 2016.
 
+[Euro10] ‘[European Commission - PRESS RELEASES - Press Release - Antitrust: Commission Increases Electricity Trading Capacity on the Swedish Borders](http://europa.eu/rapid/press-release_IP-10-425_en.htm)’, 14 April 2010. Accessed 25 June 2019.
+
 [Glis18] Glismann, Samuel. ‘Modelling from a TSO Perspective - TenneT NL’. 6 September 2018.
 
 [Glob18] ‘[Global Energy Transformation: A Roadmap to 2050](http://www.irena.org/publications/2018/Apr/Global-Energy-Transition-A-Roadmap-to-2050)’. International Renewable Energy Agency, 2018.
@@ -28,6 +30,8 @@
 [Josk11] Joskow, Paul L. ‘[Comparing the Costs of Intermittent and Dispatchable Electricity Generating Technologies](https://doi.org/10.1257/aer.101.3.238)’. American Economic Review 101, no. 3 (May 2011): 238–41.
 
 [Kroo15] Krook-Riekkola, Anna. ‘[National Energy System Modelling for Supporting Energy and Climate Policy Decision-Making : The Case of Sweden](http://urn.kb.se/resolve?urn=urn:nbn:se:ltu:diva-17594)’. Chalmers University of Technology, 2015.
+
+[ListND] ‘[List of Changes in Day-Ahead and Intraday Areas](https://www.nordpoolspot.com/globalassets/download-center/day-ahead/elspot-area-change-log.pdf)’. Nord Pool. Accessed 24 June 2019. 
 
 [Lund17] Lund, Henrik, Poul Alberg Østergaard, David Connolly, and Brian Vad Mathiesen. ‘[Smart Energy and Smart Energy Systems](https://doi.org/10.1016/j.energy.2017.05.123)’. Energy 137 (15 October 2017): 556–65.
 

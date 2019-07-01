@@ -1,8 +1,8 @@
 <!-- 
-- [Regions](#regions)
-  - [Territories in the North Sea region](#territories-in-the-north-sea-region)
-  - [Bidding zones in the North Sea region](#bidding-zones-in-the-north-sea-region)
-  - [Transmission system operators and interconnections](#transmission-system-operators-and-interconnections)
+- [Regions](#Regions)
+  - [Territories in the North Sea region](#Territories-in-the-North-Sea-region)
+  - [Bidding zones in the North Sea region](#Bidding-zones-in-the-North-Sea-region)
+  - [Transmission system operators and interconnections](#Transmission-system-operators-and-interconnections)
  -->
 
 # Regions
@@ -29,12 +29,14 @@ Performing the forecasting task at NUTS 3 level would be straightforward if it d
 A bidding zone is the largest geographical area within which market participants are able to exchange energy without capacity allocation [Bidd14]. According to [Bidd14], there are three types of bidding zones:
 
 1. national borders (e.g., France or the Netherlands) - majority of bidding zones in Europe
-2. larger than national borders (e.g., Austria, Germany and Luxembourg or the Single Electricity Market for the island of Ireland) 
+2. larger than national borders (e.g., Germany and Luxembourg or the Single Electricity Market for the island of Ireland) 
 3. smaller zones within individual countries (e.g., Italy, Norway or Sweden)
 
 The bidding zones in European electricity markets are illustrated in the map below [Tren17].
 
-![Bidding zones in European electricity markets. Source: [Polskie Sieci Elektroenergetyczne](http://raport.pse.pl/en/trends-and-market-context) [Tren17].](images/market-map.png "Bidding zones in European electricity markets. Source: Polskie Sieci Elektroenergetyczne [Tren17].")
+![Bidding zones in European electricity markets. Source: [Polskie Sieci Elektroenergetyczne](http://raport.pse.pl/en/trends-and-market-context) [Tren17].](images/market-map.png)
+
+*Bidding zones in European electricity markets, adapted from [PSE](http://raport.pse.pl/en/trends-and-market-context) [Tren17]. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple.*
 
 The power exchanges (market operators) that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16].
 
@@ -42,30 +44,30 @@ Both Nord Pool and EPEX SPOT are part of the Price Coupling of Regions (PCR) pro
 
 The table below lists all bidding zones in the North Sea region by country and market operator.  
 
-Table: Bidding zones and market operators in the North Sea region.
+*Bidding zones and market operators in the North Sea region.*
 
 **Country** | **Markets** | **Zones**
 --- | --- | ---
 Belgium (BE) | EPEX SPOT | BE
-Germany (DE / GE) | EPEX SPOT | DE-AT-LU<sup>[[f4]](#f4)</sup>
+Germany (DE) | EPEX SPOT | DE-LU<sup>[[f4]](#f4)</sup>
 Denmark (DK) | Nord Pool | DK1, DK2
 France (FR) | EPEX SPOT | FR
 Netherlands (NL) | EPEX SPOT | NL
 Norway (NO) | Nord Pool | NO1, NO2, NO3, NO4, NO5
-Sweden (SE / SW) | Nord Pool | SE1, SE2, SE3, SE4
+Sweden (SE) | Nord Pool | SE1, SE2, SE3, SE4
 United Kingdom (UK) | EPEX SPOT, Nord Pool | GB, I-SEM<sup>[[f4]](#f4)</sup>
 
-<a name="f4">[f4]</a> *Austria (AT / AU); Luxembourg (LU); Great Britain (GB); Irish single electricity market (I-SEM), which includes Republic of Ireland (IE) and UK's Northern Ireland (NI).*
+<a name="f4">[f4]</a> *Luxembourg (LU); Great Britain (GB); Irish single electricity market (I-SEM), which includes Republic of Ireland and UK's Northern Ireland.*
 
 Mapping bidding zones to NUTS 3 territories is straightforward for Belgium, Germany, France and Netherlands (bidding zone type 1 or 2) -- all NUTS 3 territories in these countries have the same bidding zone. 
 
 Denmark and United Kingdom are both conveniently separated into two zones that are easily distinguishable. For Denmark, these are Western Denmark (NUTS IDs containing DK03-DK05) and Southern Denmark (NUTS IDs containing DK01-DK02). For United Kingdom, these are Great Britain (NUTS IDs containing UKC-UKM) and Northern Ireland (NUTS IDs containing UKN). 
 
-There is no clear indication of the bidding zone boundaries for Norway and Sweden, so some assumptions were made. Both countries have multiple smaller bidding zones (type 3); Norway has five and Sweden has four. Based on Nord Pool market data [SeeMND], NUTS 3 data and county maps of Norway [Coun19a] and Sweden [Coun19b], the territories are split into the bidding zones as shown in the table below. Nord Pool associates each bidding zone with a major city in that zone. However, there were six cities for Norway instead of the expected five. Historical Nord Pool market data for Norway suggests that two cities, Trondheim and Molde, have had the same system price since 2003. Therefore, these two cities are grouped into the same bidding zone, which also satisfies what the maps suggest.
+There is no clear indication of the bidding zone boundaries for Norway and Sweden, so some assumptions were made. Both countries have multiple smaller bidding zones (type 3) with flexible borders [Euro10], [ListND]. This was done to optimise allocation of resources and reduce the overall price of electricity [Euro10], [ListND]. Norway has five zones and Sweden has four zones. By cross-referencing Nord Pool market data [SeeMND], NUTS 3 data and county maps of Norway [Coun19a] and Sweden [Coun19b], the territories are split into the bidding zones as shown in the table below. Nord Pool associates each bidding zone with a major reference city in that zone. However, there were six cities for Norway instead of the expected five. Historical Nord Pool market data for Norway suggests that two cities, Trondheim and Molde, have had the same system price since 2003. The ELSPOT area change log [ListND] also confirms that Trondheim and Molde are city references for the NO3 bidding zone . Therefore, these two cities are grouped into the same bidding zone, which also satisfies what the maps suggest.
 
-Table: Bidding zones and their territories for Norway and Sweden, approximated based on Nord Pool market data [SeeMND], NUTS 3 data and county maps of Norway [Coun19a] and Sweden [Coun19b].
+*Bidding zones and their territories for Norway and Sweden, approximated based on Nord Pool market data [SeeMND], [ListND], NUTS 3 data and county maps of Norway [Coun19a] and Sweden [Coun19b].*
 
-**Bidding zone** | **Nord Pool** | **Counties** | **NUTS 3 IDs**
+**Bidding zone** | **Reference cities** | **Counties** | **NUTS 3 IDs**
 -- | -- | ------ | ---
 NO1 | Oslo | Oslo, Akershus, Hedmark, Oppland, Østfold, Buskerud, Vestfold, Telemark | NO011-034
 NO2 | Kristiansand | Aust-Agder, Vest-Agder, Rogaland | NO041-043
@@ -83,13 +85,13 @@ This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/
 
 The North Sea region consists of multiple TSOs and cross-border interconnections. These are listed, along with the bidding zones bidding zones, in the table below.
 
-Table: TSOs and cross-border interconnections in the North Sea region. Data: European Network of Transmission System Operators for Electricity [ENTSND], [RegiND].
+*TSOs and cross-border interconnections in the North Sea region. Data: European Network of Transmission System Operators for Electricity [ENTSND], [RegiND].*
 
 **Ctry.**<sup>[[f5]](#f5)</sup> | **TSOs** | **Cross-border interconnection**<sup>[[f5]](#f5),[[f6]](#f6)</sup> | **Bidding zones**<sup>[[f5]](#f5),[[f6]](#f6)</sup>
 -|-----|---|---
 BE | Elia System Operator | FR, LU, NL, UK | BE 
 DK | Energinet | DE, NO, SE | DK1, DK2 
-DE | TransnetBW, TenneT TSO, Amprion, 50Hertz Transmission | AT, CH, CZ, DK, FR, LU, NL, PL, SE | CZ+DE+SK, DE-AT-LU, DE-LU 
+DE | TransnetBW, TenneT TSO, Amprion, 50Hertz Transmission | AT, CH, CZ, DK, FR, LU, NL, PL, SE | DE-LU 
 FR | Réseau de Transport d'Electricité | BE, CH, DE, ES, IT, UK | FR 
 NL | TenneT TSO | BE, DE, NO, UK | NL 
 NO | Statnett | DK, FI, NL, SE | NO1, NO2, NO3, NO4, NO5 

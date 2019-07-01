@@ -1,6 +1,6 @@
 <!-- 
-- [Glossary](#glossary)
-  - [Abbreviations](#abbreviations)
+- [Glossary](#Glossary)
+  - [Abbreviations](#Abbreviations)
  -->
 
 # Glossary
@@ -25,8 +25,8 @@
 * GHG - greenhouse gas
 * IEA - International Energy Agency
 * IRENA - International Renewable Energy Agency
-* IRiE - Integrated Regulating power market in Europe
-* JRC-IDEES - Joint Research Centre Integrated Database of the European Energy System
+<!-- * IRiE - Integrated Regulating power market in Europe -->
+<!-- * JRC-IDEES - Joint Research Centre Integrated Database of the European Energy System -->
 * MARKAL - MARKet ALlocation
 * NREL - National Renewable Energy Laboratory
 * NUTS - Nomenclature of territorial units for statistics
