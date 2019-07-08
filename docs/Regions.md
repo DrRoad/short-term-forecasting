@@ -32,17 +32,17 @@ A bidding zone is the largest geographical area within which market participants
 2. larger than national borders (e.g., Germany and Luxembourg or the Single Electricity Market for the island of Ireland) 
 3. smaller zones within individual countries (e.g., Italy, Norway or Sweden)
 
-The bidding zones in European electricity markets are illustrated in the map below [Tren17].
+The bidding zones in the North Sea electricity markets and surrounding regions are illustrated in the map below.
 
-![Bidding zones in European electricity markets. Source: [Polskie Sieci Elektroenergetyczne](http://raport.pse.pl/en/trends-and-market-context) [Tren17].](images/market-map.png)
+![](images/market-map.png)
 
-*Bidding zones in European electricity markets, adapted from [PSE](http://raport.pse.pl/en/trends-and-market-context) [Tren17]. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple.*
+*Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) [Nord15].*
 
 The power exchanges (market operators) that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16].
 
 Both Nord Pool and EPEX SPOT are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [PCR&17].
 
-The table below lists all bidding zones in the North Sea region by country and market operator.  
+The table below lists all bidding zones in the North Sea region by country and market operator. 
 
 *Bidding zones and market operators in the North Sea region.*
 

@@ -39,6 +39,8 @@
 
 [Memb15] ‘[Member Directory & Map -- CPMR North Sea Commission](https://cpmr-northsea.org/who-we-are/member-directory-map/)’, 21 October 2015.
 
+[Nord15] Nordwestern, of derivative work: [English: A Blank Map of Europe in SVG Format without Disputed Areas and Conflict Regions](https://commons.wikimedia.org/wiki/File:Blank_map_of_Europe_(without_disputed_regions).svg). 18 April 2015. File:Blank map of Europe.svg.
+
 [NortND] ‘[North Sea | European MSP Platform](https://www.msp-platform.eu/sea-basins/north-sea-0)’. Accessed 1 June 2018.
 
 [NUTSND] ‘[NUTS - Nomenclature of Territorial Units for Statistics - Eurostat](https://ec.europa.eu/eurostat/web/nuts/background)’. Accessed 11 June 2019.
@@ -65,6 +67,6 @@
 
 [Towa18] ‘[Towards a Consumer-Centric System](http://www.elia.be/~/media/files/Elia/StakeholderDay/Elia-Vision-paper-2018_Front-Spreads-Back.pdf)’. Brussels, Belgium: Elia Group, 2018.
 
-[Tren17] ‘[Trends and Market Context](http://raport.pse.pl/en/trends-and-market-context)’. PSE Impact Report. PSE, 2017.
+<!-- [Tren17] ‘[Trends and Market Context](http://raport.pse.pl/en/trends-and-market-context)’. PSE Impact Report. PSE, 2017. -->
 
 [Worl17] ‘[World Energy Outlook 2017](https://www.iea.org/weo2017/)’. Paris, France: International Energy Agency, 2017.
