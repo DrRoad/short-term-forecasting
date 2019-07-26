@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Nithiya Streethran" />
-  <meta name="dcterms.date" content="2019-07-08" />
+  <meta name="dcterms.date" content="2019-07-26" />
   <title>Short-term Forecasting Documentation</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -22,7 +22,7 @@
 <header>
 <h1 class="title">Short-term Forecasting Documentation</h1>
 <p class="author">Nithiya Streethran</p>
-<p class="date">8 July 2019</p>
+<p class="date">26 July 2019</p>
 </header>
 <nav id="TOC">
 <ul>
@@ -39,7 +39,7 @@
 <li><a href="#transmission-system-operators-and-interconnections">Transmission system operators and interconnections</a></li>
 </ul></li>
 <li><a href="#data">Data</a><ul>
-<li><a href="#data-folder-navigation"><span>Data folder</span> navigation</a></li>
+<li><a href="#folder-navigation">Folder navigation</a></li>
 <li><a href="#met-data">Met data</a></li>
 <li><a href="#generation-and-demand-data">Generation and demand data</a></li>
 <li><a href="#market-data">Market data</a></li>
@@ -273,8 +273,8 @@
 <p>The bidding zones in the North Sea electricity markets and surrounding regions are illustrated in the map below.</p>
 <p><img src="images/market-map.png" /></p>
 <p><em>Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) [Nord15].</em></p>
-<p>The power exchanges (market operators) that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16].</p>
-<p>Both Nord Pool and EPEX SPOT are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [PCR&amp;17].</p>
+<p>The power exchanges (market operators) that operate in the North Sea region are APX (Netherlands, United Kingdom), Belpex (Belgium), EEX (Germany, Denmark, France, Norway, Sweden), EPEX (Germany, France), N2EX (United Kingdom) and Nord Pool (Denmark, Norway, Sweden) [PoweND], [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16].</p>
+<p>Both Nord Pool and EPEX are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [PCR&amp;17].</p>
 <p>The table below lists all bidding zones in the North Sea region by country and market operator.</p>
 <p><em>Bidding zones and market operators in the North Sea region.</em></p>
 <table>
@@ -288,42 +288,42 @@
 <tbody>
 <tr class="odd">
 <td>Belgium (BE)</td>
-<td>EPEX SPOT</td>
+<td>Belpex</td>
 <td>BE</td>
 </tr>
 <tr class="even">
 <td>Germany (DE)</td>
-<td>EPEX SPOT</td>
+<td>EEX, EPEX</td>
 <td>DE-LU<sup><a href="#f4">[f4]</a></sup></td>
 </tr>
 <tr class="odd">
 <td>Denmark (DK)</td>
-<td>Nord Pool</td>
+<td>EEX, Nord Pool</td>
 <td>DK1, DK2</td>
 </tr>
 <tr class="even">
 <td>France (FR)</td>
-<td>EPEX SPOT</td>
+<td>EEX, EPEX</td>
 <td>FR</td>
 </tr>
 <tr class="odd">
 <td>Netherlands (NL)</td>
-<td>EPEX SPOT</td>
+<td>APX</td>
 <td>NL</td>
 </tr>
 <tr class="even">
 <td>Norway (NO)</td>
-<td>Nord Pool</td>
+<td>EEX, Nord Pool</td>
 <td>NO1, NO2, NO3, NO4, NO5</td>
 </tr>
 <tr class="odd">
 <td>Sweden (SE)</td>
-<td>Nord Pool</td>
+<td>EEX, Nord Pool</td>
 <td>SE1, SE2, SE3, SE4</td>
 </tr>
 <tr class="even">
 <td>United Kingdom (UK)</td>
-<td>EPEX SPOT, Nord Pool</td>
+<td>APX, N2EX</td>
 <td>GB, I-SEM<sup><a href="#f4">[f4]</a></sup></td>
 </tr>
 </tbody>
@@ -478,15 +478,16 @@
 <p><a name="f5">[f5]</a> <em>Ctry. - Country; AT - Austria; BE - Belgium; CH - Switzerland; CZ - Czech Republic; DE - Germany; DK - Denmark; ES - Spain; FI - Finland; FR - France; GB - Great Britain; IE - Ireland; IT - Italy; LT - Lithuania; LU - Luxembourg; NL - Netherlands; NO - Norway; PL - Poland; SE - Sweden; SK - Slovakia; UK - United Kingdom; SEM - Single electricity market.</em></p>
 <p><a name="f6">[f6]</a> <em>These countries are not part of the North Sea region: AT, CH, CZ, ES, FI, IE, IT, LT, LU, PL.</em></p>
 <!-- 
-- [Data](#data)
-  - [Data folder navigation](#data-folder-navigation)
-  - [Met data](#met-data)
-  - [Generation and demand data](#generation-and-demand-data)
-  - [Market data](#market-data)
-  - [Other data](#other-data)
+- [Data](#Data)
+  - [Folder navigation](#Folder-navigation)
+  - [Met data](#Met-data)
+  - [Generation and demand data](#Generation-and-demand-data)
+  - [Market data](#Market-data)
+  - [Other data](#Other-data)
  -->
 <h1 id="data">Data</h1>
-<h2 id="data-folder-navigation"><a href="https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB">Data folder</a> navigation</h2>
+<p>All input and output data can be found in the <a href="https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB">data</a> folder on Google Drive. Licenses and terms of the input data used can be found in their corresponding folders within the folder.</p>
+<h2 id="folder-navigation">Folder navigation</h2>
 <ul>
 <li>ENTSO-E
 <ul>
@@ -498,7 +499,10 @@
 <li>output - output or modified data from this project</li>
 </ul>
 <h2 id="met-data">Met data</h2>
-<h4 id="deutscher-wetterdienst"><a href="https://www.dwd.de/EN/climate_environment/cdc/cdc_node.html">Deutscher Wetterdienst</a></h4>
+<h4 id="belgium">Belgium</h4>
+<p><a href="https://opendata.meteo.be/">The Royal Meteorological Institute of Belgium</a></p>
+<h4 id="germany">Germany</h4>
+<p><a href="https://www.dwd.de/EN/climate_environment/cdc/cdc_node.html">Deutscher Wetterdienst</a></p>
 <ul>
 <li><a href="https://cdc.dwd.de/portal/">CDC (Climate Data Center) portal</a></li>
 <li><a href="https://opendata.dwd.de/climate_environment/CDC/">CDC OpenData</a></li>
@@ -518,15 +522,20 @@
 </ul></li>
 <li><a href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/">Hourly wind data</a></li>
 </ul>
-<h4 id="royal-netherlands-meteorological-institute"><a href="https://data.knmi.nl/datasets">Royal Netherlands Meteorological Institute</a></h4>
-<h4 id="met-office"><a href="https://www.metoffice.gov.uk/datapoint">Met Office</a></h4>
-<h4 id="norwegian-meteorological-institute"><a href="https://www.met.no/en/free-meteorological-data">Norwegian Meteorological Institute</a></h4>
-<h4 id="swedish-meteorological-and-hydrological-institute"><a href="https://www.smhi.se/en/services/professional-services/data-and-statistics">Swedish Meteorological and Hydrological Institute</a></h4>
-<h4 id="danish-meteorological-institute"><a href="http://research.dmi.dk/data/">Danish Meteorological Institute</a></h4>
-<h4 id="météo-france"><a href="https://donneespubliques.meteofrance.fr/">Météo-France</a></h4>
-<h4 id="the-royal-meteorological-institute-of-belgium"><a href="https://opendata.meteo.be/">The Royal Meteorological Institute of Belgium</a></h4>
+<h4 id="denmark">Denmark</h4>
+<p><a href="http://research.dmi.dk/data/">Danish Meteorological Institute</a></p>
+<h4 id="france">France</h4>
+<p><a href="https://donneespubliques.meteofrance.fr/">Météo-France</a></p>
+<h4 id="netherlands">Netherlands</h4>
+<p><a href="https://data.knmi.nl/datasets">Royal Netherlands Meteorological Institute</a></p>
+<h4 id="norway">Norway</h4>
+<p><a href="https://www.met.no/en/free-meteorological-data">Norwegian Meteorological Institute</a></p>
+<h4 id="sweden">Sweden</h4>
+<p><a href="https://www.smhi.se/en/services/professional-services/data-and-statistics">Swedish Meteorological and Hydrological Institute</a></p>
+<h4 id="united-kingdom">United Kingdom</h4>
+<p><a href="https://www.metoffice.gov.uk/datapoint">Met Office</a></p>
 <h2 id="generation-and-demand-data">Generation and demand data</h2>
-<h4 id="entso-e-transparency-platform"><a href="https://transparency.entsoe.eu/">ENTSO-E Transparency Platform</a></h4>
+<p><a href="https://transparency.entsoe.eu/">ENTSO-E Transparency Platform</a></p>
 <ul>
 <li><a href="https://docstore.entsoe.eu/Documents/MC%20documents/Transparency%20Platform/ENTSOE_Transparency_Terms_Conditions.pdf">GENERAL TERMS AND CONDITIONS FOR THE USE OF THE ENTSO-E TRANSPARENCY PLATFORM</a></li>
 <li><a href="https://docstore.entsoe.eu/Documents/MC%20documents/Transparency%20Platform/List_of_Data_available_for_reuse.pdf">LIST OF DATA AVAILABLE FOR FREE RE-USE</a></li>
@@ -537,17 +546,17 @@
 </ul></li>
 </ul>
 <h2 id="market-data">Market data</h2>
-<h4 id="nord-pool"><a href="https://www.nordpoolgroup.com/historical-market-data/">Nord Pool</a></h4>
+<p><a href="https://www.nordpoolgroup.com/historical-market-data/">Nord Pool</a></p>
 <ul>
 <li><a href="https://www.nordpoolgroup.com/trading/join-our-markets/membership/">Membership list - Nord Pool</a></li>
 <li><a href="https://www.nordpoolgroup.com/About-us/Terms-and-conditions-for-use/">Terms and conditions for use</a></li>
 </ul>
-<h4 id="epex-spot"><a href="https://www.epexspot.com/en/extras/download-center/market_data">EPEX Spot</a></h4>
+<p><a href="https://www.epexspot.com/en/extras/download-center/market_data">EPEX Spot</a></p>
 <ul>
 <li><a href="https://www.epexspot.com/en/membership/list_of_members">EPEX SPOT Exchange Members</a></li>
 </ul>
 <h2 id="other-data">Other data</h2>
-<h4 id="nuts-nomenclature-of-territorial-units-for-statistics"><a href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">NUTS (Nomenclature of territorial units for statistics)</a></h4>
+<p><a href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">NUTS (Nomenclature of territorial units for statistics)</a></p>
 <!-- 
 - [Methodology](#Methodology)
   - [Modelling framework](#Modelling-framework)
@@ -644,6 +653,7 @@
 <p>[PCR&amp;17] ‘<a href="https://www.n-side.com/pcr-euphemia-algorithm-european-power-exchanges-price-coupling-electricity-market/">PCR &amp; EUPHEMIA Algorithm, the European Power Exchanges Project to Couple Electricity Market!</a>’ N-SIDE, 9 September 2017.</p>
 <p>[Pfen14] Pfenninger, Stefan, Adam Hawkes, and James Keirstead. ‘<a href="https://doi.org/10.1016/j.rser.2014.02.003">Energy Systems Modeling for Twenty-First Century Energy Challenges</a>’. Renewable and Sustainable Energy Reviews 33 (1 May 2014): 74–86.</p>
 <p>[PinsND] Pinson, Pierre. ‘<a href="http://pierrepinson.com/?page_id=913">Renewables in Electricity Markets « Pierre Pinson</a>’. Accessed 9 December 2018.</p>
+<p>[PoweND] ‘<a href="https://www.statkraft.com/market-operations/standard-energy-products/power-electricity/">Power | Statkraft</a>’. Accessed 26 July 2019.</p>
 <p>[RegiND] ‘<a href="https://www.entsoe.eu/major-projects/rscis/">Regional Security Coordinators FAQ</a>’. Accessed 18 November 2018.</p>
 <p>[ReneND] ‘<a href="https://ec.europa.eu/energy/en/topics/renewable-energy">Renewable Energy - Energy - European Commission</a>’. Energy. Accessed 12 October 2018.</p>
 <p>[SeeMND] ‘<a href="http://www.nordpoolspot.com/Market-data1/">See Market Data for All Areas | Nord Pool</a>’. Accessed 23 November 2018.</p>

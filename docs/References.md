@@ -55,6 +55,8 @@
 
 [PinsND] Pinson, Pierre. ‘[Renewables in Electricity Markets « Pierre Pinson](http://pierrepinson.com/?page_id=913)’. Accessed 9 December 2018.
 
+[PoweND] ‘[Power | Statkraft](https://www.statkraft.com/market-operations/standard-energy-products/power-electricity/)’. Accessed 26 July 2019.
+
 [RegiND] ‘[Regional Security Coordinators FAQ](https://www.entsoe.eu/major-projects/rscis/)’. Accessed 18 November 2018.
 
 [ReneND] ‘[Renewable Energy - Energy - European Commission](https://ec.europa.eu/energy/en/topics/renewable-energy)’. Energy. Accessed 12 October 2018.

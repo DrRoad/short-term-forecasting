@@ -1,15 +1,17 @@
 <!-- 
-- [Data](#data)
-  - [Data folder navigation](#data-folder-navigation)
-  - [Met data](#met-data)
-  - [Generation and demand data](#generation-and-demand-data)
-  - [Market data](#market-data)
-  - [Other data](#other-data)
+- [Data](#Data)
+  - [Folder navigation](#Folder-navigation)
+  - [Met data](#Met-data)
+  - [Generation and demand data](#Generation-and-demand-data)
+  - [Market data](#Market-data)
+  - [Other data](#Other-data)
  -->
 
 # Data
 
-## [Data folder](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) navigation
+All input and output data can be found in the [data](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) folder on Google Drive. Licenses and terms of the input data used can be found in their corresponding folders within the folder.
+
+## Folder navigation
 
 * ENTSO-E 
   * generation and load data for each bidding zone in the North Sea region, grouped by country
@@ -18,9 +20,15 @@
 * NUTS - territorial units
 * output - output or modified data from this project
 
-## Met data
+## Met data 
 
-#### [Deutscher Wetterdienst](https://www.dwd.de/EN/climate_environment/cdc/cdc_node.html)
+#### Belgium
+
+[The Royal Meteorological Institute of Belgium](https://opendata.meteo.be/)
+
+#### Germany
+
+[Deutscher Wetterdienst](https://www.dwd.de/EN/climate_environment/cdc/cdc_node.html)
 
 * [CDC (Climate Data Center) portal](https://cdc.dwd.de/portal/)
 * [CDC OpenData](https://opendata.dwd.de/climate_environment/CDC/)
@@ -38,23 +46,33 @@
   * [Hourly station observations of cloud coverage in eighths for Germany](https://cdc.dwd.de/sdi/pid/N_MN008/DESCRIPTION_N_MN008_en.pdf)
 * [Hourly wind data](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/)
 
-#### [Royal Netherlands Meteorological Institute](https://data.knmi.nl/datasets)
-  
-#### [Met Office](https://www.metoffice.gov.uk/datapoint)
+#### Denmark
 
-#### [Norwegian Meteorological Institute](https://www.met.no/en/free-meteorological-data)
+[Danish Meteorological Institute](http://research.dmi.dk/data/)
 
-#### [Swedish Meteorological and Hydrological Institute](https://www.smhi.se/en/services/professional-services/data-and-statistics)
+#### France
 
-#### [Danish Meteorological Institute](http://research.dmi.dk/data/)
+[Météo-France](https://donneespubliques.meteofrance.fr/)
 
-#### [Météo-France](https://donneespubliques.meteofrance.fr/)
+#### Netherlands
 
-#### [The Royal Meteorological Institute of Belgium](https://opendata.meteo.be/)
+[Royal Netherlands Meteorological Institute](https://data.knmi.nl/datasets)
+
+#### Norway
+
+[Norwegian Meteorological Institute](https://www.met.no/en/free-meteorological-data)
+
+#### Sweden
+
+[Swedish Meteorological and Hydrological Institute](https://www.smhi.se/en/services/professional-services/data-and-statistics)
+
+#### United Kingdom
+
+[Met Office](https://www.metoffice.gov.uk/datapoint)
 
 ## Generation and demand data
 
-#### [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/)
+[ENTSO-E Transparency Platform](https://transparency.entsoe.eu/)
 
 * [GENERAL TERMS AND CONDITIONS FOR THE USE OF THE ENTSO-E TRANSPARENCY PLATFORM](https://docstore.entsoe.eu/Documents/MC%20documents/Transparency%20Platform/ENTSOE_Transparency_Terms_Conditions.pdf)
 * [LIST OF DATA AVAILABLE FOR FREE RE-USE](https://docstore.entsoe.eu/Documents/MC%20documents/Transparency%20Platform/List_of_Data_available_for_reuse.pdf)
@@ -64,15 +82,15 @@
 
 ## Market data
 
-#### [Nord Pool](https://www.nordpoolgroup.com/historical-market-data/)
+[Nord Pool](https://www.nordpoolgroup.com/historical-market-data/)
 
 * [Membership list - Nord Pool](https://www.nordpoolgroup.com/trading/join-our-markets/membership/)
 * [Terms and conditions for use](https://www.nordpoolgroup.com/About-us/Terms-and-conditions-for-use/)
 
-#### [EPEX Spot](https://www.epexspot.com/en/extras/download-center/market_data)
+[EPEX Spot](https://www.epexspot.com/en/extras/download-center/market_data)
 
 * [EPEX SPOT Exchange Members](https://www.epexspot.com/en/membership/list_of_members)
 
 ## Other data
 
-#### [NUTS (Nomenclature of territorial units for statistics)](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts)
+[NUTS (Nomenclature of territorial units for statistics)](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts)

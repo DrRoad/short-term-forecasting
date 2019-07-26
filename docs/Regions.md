@@ -38,9 +38,9 @@ The bidding zones in the North Sea electricity markets and surrounding regions a
 
 *Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) [Nord15].*
 
-The power exchanges (market operators) that operate in the North Sea region are EPEX SPOT (Belgium, France, Germany, Netherlands, United Kingdom) and Nord Pool (Denmark, Norway, Sweden, United Kingdom) [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16].
+The power exchanges (market operators) that operate in the North Sea region are APX (Netherlands, United Kingdom), Belpex (Belgium), EEX (Germany, Denmark, France, Norway, Sweden), EPEX (Germany, France), N2EX (United Kingdom) and Nord Pool (Denmark, Norway, Sweden) [PoweND], [Over16], [SeeMND], [EPEXND]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [Over16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [Over16].
 
-Both Nord Pool and EPEX SPOT are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [PCR&17].
+Both Nord Pool and EPEX are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [PCR&17].
 
 The table below lists all bidding zones in the North Sea region by country and market operator. 
 
@@ -48,14 +48,14 @@ The table below lists all bidding zones in the North Sea region by country and m
 
 **Country** | **Markets** | **Zones**
 --- | --- | ---
-Belgium (BE) | EPEX SPOT | BE
-Germany (DE) | EPEX SPOT | DE-LU<sup>[[f4]](#f4)</sup>
-Denmark (DK) | Nord Pool | DK1, DK2
-France (FR) | EPEX SPOT | FR
-Netherlands (NL) | EPEX SPOT | NL
-Norway (NO) | Nord Pool | NO1, NO2, NO3, NO4, NO5
-Sweden (SE) | Nord Pool | SE1, SE2, SE3, SE4
-United Kingdom (UK) | EPEX SPOT, Nord Pool | GB, I-SEM<sup>[[f4]](#f4)</sup>
+Belgium (BE) | Belpex | BE
+Germany (DE) | EEX, EPEX | DE-LU<sup>[[f4]](#f4)</sup>
+Denmark (DK) | EEX, Nord Pool | DK1, DK2
+France (FR) | EEX, EPEX | FR
+Netherlands (NL) | APX | NL
+Norway (NO) | EEX, Nord Pool | NO1, NO2, NO3, NO4, NO5
+Sweden (SE) | EEX, Nord Pool | SE1, SE2, SE3, SE4
+United Kingdom (UK) | APX, N2EX | GB, I-SEM<sup>[[f4]](#f4)</sup>
 
 <a name="f4">[f4]</a> *Luxembourg (LU); Great Britain (GB); Irish single electricity market (I-SEM), which includes Republic of Ireland and UK's Northern Ireland.*
 

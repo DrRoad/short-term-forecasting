@@ -17,7 +17,7 @@
   - [Transmission system operators and interconnections](../wiki/Regions#transmission-system-operators-and-interconnections)
 
 [**Data**](../wiki/Data)
-  - [Data folder navigation](../wiki/Data#data-folder-navigation)
+  - [Folder navigation](../wiki/Data#folder-navigation)
   - [Met data](../wiki/Data#met-data)
   - [Generation and demand data](../wiki/Data#generation-and-demand-data)
   - [Market data](../wiki/Data#market-data)
