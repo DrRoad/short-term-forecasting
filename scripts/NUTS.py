@@ -303,7 +303,7 @@ len(se_nuts3)
 
 #%%
 # filter for UK
-uk=nuts.loc[nuts['CNTR_CODE'] == 'UK'].copy()
+uk = nuts.loc[nuts['CNTR_CODE'] == 'UK'].copy()
 
 #%%
 # NUTS 1

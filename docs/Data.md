@@ -9,7 +9,7 @@
 
 # Data
 
-All input and output data can be found in the [data](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) folder on Google Drive. Licenses and terms of the input data used can be found in their corresponding folders within the folder.
+All input and output data can be found in the [data](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) folder on Dropbox. Licenses and terms of the input data used can be found in their corresponding folders within the folder.
 
 ## Folder navigation
 

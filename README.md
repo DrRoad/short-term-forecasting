@@ -10,15 +10,15 @@ Short-term forecasting of electricity generation, demand and prices using machin
 This is a work-in-progress. Please feel free to suggest improvements (see the [code of conduct](/CODE_OF_CONDUCT.md) and [contributing guidelines](/CONTRIBUTING.md)). 
 
 ## Table of contents <!-- omit in toc -->
-- [Folders](#folders)
-- [Resources](#resources)
-- [Documentation](#documentation)
-- [Funding](#funding)
-- [Licenses and terms of use](#licenses-and-terms-of-use)
-- [Credits](#credits)
+- [Folders](#Folders)
+- [Resources](#Resources)
+- [Documentation](#Documentation)
+- [Funding](#Funding)
+- [Licenses and terms of use](#Licenses-and-terms-of-use)
+- [Credits](#Credits)
 
 ## Folders
-* [data/](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) contains datasets (both input and output) and their terms of use (available externally on Google Drive)
+* [data/](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) contains datasets (both input and output) and their terms of use (available externally on Dropbox)
 * [scripts/](/scripts/) contains all Python scripts
 * [jupyter-notebooks/](/jupyter-notebooks/) contains Python files in Jupyter notebook format
 * [docs/](/docs/) contains the documentation ([GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki) (Markdown) converted to other formats) 
@@ -69,7 +69,7 @@ Where sources have not been specified:
 * Image license: [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](/images/LICENSE.md)
 * Output data license: [ODC Open Database License (ODbL)](/data/output/LICENSE.md)
 
-Licenses and terms of the input data used can be found in their corresponding folders within the [data](https://drive.google.com/drive/folders/1_3Y30j_c-4iai0WuhcrysXHYdZ4F2AKB) folder on Google Drive. More information is provided in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).
+Licenses and terms of the input data used can be found in their corresponding folders within the [data](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) folder on Dropbox. More information is provided in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).
 
 ## Credits
 

@@ -55,9 +55,9 @@ France (FR) | EEX, EPEX | FR
 Netherlands (NL) | APX | NL
 Norway (NO) | EEX, Nord Pool | NO1, NO2, NO3, NO4, NO5
 Sweden (SE) | EEX, Nord Pool | SE1, SE2, SE3, SE4
-United Kingdom (UK) | APX, N2EX | GB, I-SEM<sup>[[f4]](#f4)</sup>
+United Kingdom (UK) | APX, N2EX | GB, IE-SEM<sup>[[f4]](#f4)</sup>
 
-<a name="f4">[f4]</a> *Luxembourg (LU); Great Britain (GB); Irish single electricity market (I-SEM), which includes Republic of Ireland and UK's Northern Ireland.*
+<a name="f4">[f4]</a> *Luxembourg (LU); Great Britain (GB); Irish single electricity market (IE-SEM), which includes Republic of Ireland and UK's Northern Ireland.*
 
 Mapping bidding zones to NUTS 3 territories is straightforward for Belgium, Germany, France and Netherlands (bidding zone type 1 or 2) -- all NUTS 3 territories in these countries have the same bidding zone. 
 
@@ -96,7 +96,7 @@ FR | Réseau de Transport d'Electricité | BE, CH, DE, ES, IT, UK | FR
 NL | TenneT TSO | BE, DE, NO, UK | NL 
 NO | Statnett | DK, FI, NL, SE | NO1, NO2, NO3, NO4, NO5 
 SE | Svenska Kraftnät | DK, FI, DE, LT, NO, PL | SE1, SE2, SE3, SE4 
-UK | National Grid Electricity Transmission, System Operator for Northern Ireland, Scottish Hydro Electric Transmission, ScottishPower Transmission | BE, FR, IE, NL | GB, IE (SEM)
+UK | National Grid Electricity Transmission, System Operator for Northern Ireland, Scottish Hydro Electric Transmission, ScottishPower Transmission | BE, FR, IE, NL | GB, IE-SEM
 
 <a name="f5">[f5]</a> *Ctry. - Country; AT - Austria; BE - Belgium; CH - Switzerland; CZ - Czech Republic; DE - Germany; DK - Denmark; ES - Spain; FI - Finland; FR - France; GB - Great Britain; IE - Ireland; IT - Italy; LT - Lithuania; LU - Luxembourg; NL - Netherlands; NO - Norway; PL - Poland; SE - Sweden; SK - Slovakia; UK - United Kingdom; SEM - Single electricity market.*
 
