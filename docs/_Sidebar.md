@@ -18,19 +18,16 @@
 
 [**Data**](../wiki/Data)
   - [Folder navigation](../wiki/Data#folder-navigation)
-  - [Met data](../wiki/Data#met-data)
   - [Generation and demand data](../wiki/Data#generation-and-demand-data)
   - [Market data](../wiki/Data#market-data)
+  - [Meteorological data](../wiki/Data#meteorological-data)
   - [Other data](../wiki/Data#other-data)
+  - [Terms of use](../wiki/Data#terms-of-use)
 
 [**Methodology**](../wiki/Methodology)
-  - [Modelling framework](../wiki/Methodology#modelling-framework)
+  <!-- - [Modelling framework](../wiki/Methodology#modelling-framework)
   - [Data management](../wiki/Methodology#data-management)
-  - [Time series forecasting](../wiki/Methodology#time-series-forecasting)
-  <!-- - [Market optimisation](../wiki/Methodology#market-optimisation)
-  - [Translating inputs and outputs into operational strategies](../wiki/Methodology#translating-inputs-and-outputs-into-operational-strategies)
-  - [Standardisation and publication of model](../wiki/Methodology#standardisation-and-publication-of-model)
-  - [Integrating operational time scales with long-term energy systems models](../wiki/Methodology#integrating-operational-time-scales-with-long-term-energy-systems-models) -->
+  - [Time series forecasting](../wiki/Methodology#time-series-forecasting) -->
 
 [**Glossary**](../wiki/Glossary)
   - [Abbreviations](../wiki/Glossary#abbreviations)

@@ -1,5 +1,5 @@
 
-# References
+# References 
 
 [AbouND] ‘[About the Project | ENSYSTRA](https://ensystra.eu/about-the-project/)’. Accessed 23 April 2018.
 
@@ -24,6 +24,8 @@
 [Glis18] Glismann, Samuel. ‘Modelling from a TSO Perspective - TenneT NL’. 6 September 2018.
 
 [Glob18] ‘[Global Energy Transformation: A Roadmap to 2050](http://www.irena.org/publications/2018/Apr/Global-Energy-Transition-A-Roadmap-to-2050)’. International Renewable Energy Agency, 2018.
+
+[HelpND] ‘[Help Page - ENTSO-E Transparency Platform](https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/knowledge%20base.html)’. Accessed 12 August 2019.
 
 [Herb12] Herbst, Andrea, Felipe Toro, Felix Reitze, and Eberhard Jochem. ‘[Introduction to Energy Systems Modelling](https://doi.org/10.1007/BF03399363)’. Swiss Journal of Economics and Statistics 148, no. 2 (1 April 2012): 111–35.
 
@@ -68,7 +70,5 @@
 [Tidb10] Tidball, R, J Bluestein, N Rodriguez, and S Knoke. ‘[Cost and Performance Assumptions for Modeling Electricity Generation Technologies](https://www.nrel.gov/docs/fy11osti/48595.pdf)’. Subcontract Report. National Renewable Energy Laboratory, 2010.
 
 [Towa18] ‘[Towards a Consumer-Centric System](http://www.elia.be/~/media/files/Elia/StakeholderDay/Elia-Vision-paper-2018_Front-Spreads-Back.pdf)’. Brussels, Belgium: Elia Group, 2018.
-
-<!-- [Tren17] ‘[Trends and Market Context](http://raport.pse.pl/en/trends-and-market-context)’. PSE Impact Report. PSE, 2017. -->
 
 [Worl17] ‘[World Energy Outlook 2017](https://www.iea.org/weo2017/)’. Paris, France: International Energy Agency, 2017.

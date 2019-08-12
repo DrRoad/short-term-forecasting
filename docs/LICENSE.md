@@ -1,8 +1,9 @@
 <!--  
-- [License](#license)
-  - [GNU Free Documentation License](#gnu-free-documentation-license)
-    - [ADDENDUM: How to use this License for your documents](#addendum-how-to-use-this-license-for-your-documents)
+- [License](#License)
+  - [GNU Free Documentation License](#GNU-Free-Documentation-License)
+    - [ADDENDUM: How to use this License for your documents](#ADDENDUM-How-to-use-this-License-for-your-documents)
 -->
+
 
 # License
 

@@ -2,10 +2,8 @@
 # import libraries
 import pandas as pd
 
-#%%
-# # Weather data from meteorological service
-
 #%% 
+# weather data from meteorological service
 # read fixed width formatted text file with list of weather stations in DE
 # first, extract list of column names (separated by space(s))
 cols_stn = pd.read_csv('data/Meteo/DE/wind_hourly/FF_Stundenwerte_Beschreibung_Stationen.txt', sep = r"\s+", nrows = 1).columns.tolist()
@@ -14,7 +12,6 @@ cols_stn = pd.read_csv('data/Meteo/DE/wind_hourly/FF_Stundenwerte_Beschreibung_S
 # then, extract the data, skipping first two rows and assigning column names
 # encoding used due to presence of accented latin characters (e.g., ü)
 df_stn = pd.read_fwf('data/Meteo/DE/wind_hourly/FF_Stundenwerte_Beschreibung_Stationen.txt', encoding = "ISO-8859-1", skiprows = 2, names = cols_stn)
-df_stn.dtypes # return data types of each column
 
 #%%
 # tanslate column titles to English
@@ -23,20 +20,11 @@ df_stn = df_stn.set_axis(['station_id', 'start_date', 'end_date', 'station_heigh
 #%%
 # filter stations with data between 2018-01-01 and 2018-12-31
 df_stn = df_stn.drop(df_stn[(df_stn.start_date > 20180101) | (df_stn.end_date < 20181231)].index)
-df_stn # return dataframe
 
 #%%
 # convert dtypes for start_date and end_date to datetime
 df_stn['start_date'] = pd.to_datetime(df_stn['start_date'], format = "%Y%m%d")
 df_stn['end_date'] = pd.to_datetime(df_stn['end_date'], format = "%Y%m%d")
-df_stn # return dataframe
-
-#%%
-df_stn.dtypes # return data types of each column
-
-#%%
-# states with data available
-df_stn.state.unique()
 
 #%%
 # filter for Schleswig-Holstein
