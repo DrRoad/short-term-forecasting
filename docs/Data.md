@@ -40,6 +40,28 @@ Generation and demand data for each bidding zone are downloaded from the [ENTSO-
 
 Information about the production and generation units, including their code, name, validity dates, status (commissioned, decommissioned or cancelled), type (e.g., fossil gas, wind offshore), location, installed capacity (MW) and voltage.
 
+The codes for production unit types in the downloaded data (cross-referenced with the tables rendered on the transparency platform):
+- B01: Biomass
+- B02: Fossil brown coal / lignite
+- B03: Fossil coal-derived gas
+- B04: Fossil gas
+- B05: Fossil hard coal
+- B06: Fossil oil
+- B07: Fossil oil shale
+- B08: Fossil peat 
+- B09: Geothermal
+- B10: Hydro pumped storage
+- B11: Hydro run-of-river and poundage
+- B12: Hydro water reservoir
+- B13: Marine
+- B14: Nuclear
+- B15: Other renewable
+- B16: Solar
+- B17: Waste
+- B18: Wind offshore
+- B19: Wind onshore
+- B20: Other
+
 #### [Total Load - Day Ahead / Actual](https://transparency.entsoe.eu/load-domain/r2/totalLoadR2/show)
 
 - Actual total load per bidding zone per market time unit
