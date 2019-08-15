@@ -39,6 +39,7 @@ The source code editor I use is [VSCodium](https://vscodium.github.io/) (fully o
 * [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 
 My current computing specifications:
+
 * Python version 3.6.8
 * conda version 4.6.11
 * git version 2.18.0.windows.1
@@ -50,7 +51,7 @@ My coding notes can be found in my [coding](https://github.com/nmstreethran/codi
 
 ## Documentation
 
-Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs/](/docs/) folder and the [wiki/](/wiki/) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files in Markdown, [HTML](/docs/docs.html) and [PDF](/docs/docs.pdf) formats. The wiki documentation is converted from Markdown into these formats using [Pandoc](https://pandoc.org/MANUAL.html). The shell commands used are written in [`docs_commands.txt`](/docs_commands.txt), which is then executed in Bash using:
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs](/docs/) folder and the [wiki](/wiki7) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files in Markdown, [HTML](/docs/docs.html) and [PDF](/docs/docs.pdf) formats. The wiki documentation is converted from Markdown into these formats using [Pandoc](https://pandoc.org/MANUAL.html). The shell commands used are written in [`docs_commands.txt`](/docs_commands.txt), which is then executed in Bash using:
 
 ```sh
 bash docs_commands.txt

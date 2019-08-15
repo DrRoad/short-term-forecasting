@@ -12,7 +12,7 @@
 * AI - artificial intelligence
 * BRP - balance responsible party
 * CAPEX - capital expenditure
-* CO<sub>2</sub> - carbon dioxide
+* CO~2~ - carbon dioxide
 * COMPETES - COmprehensive Market Power in Electricity Transmission and Energy Simulator
 * DC - direct current
 * DNO - distribution network operator

@@ -252,7 +252,7 @@
           <if type="article-journal">
             <group delimiter=", ">
               <text macro="title"/>
-              <text variable="container-title" font-style="italic" form="short"/>
+              <text variable="container-title" font-style="italic" form="long"/>
               <text macro="locators"/>
               <text macro="page"/>
               <text macro="issued"/>
