@@ -380,18 +380,5 @@ data/output/*
 ## Archive folder
 archive/
 
-## GitHub Pages
-Gemfile.lock
-_site/
-*.gem
-.bundle
-.jekyll-metadata
-.sass-cache
-_asset_bundler_cache
-### 
-Gemfile 
-_config.yml
-
 # Pandoc
 tex2pdf*
-docs-input.html

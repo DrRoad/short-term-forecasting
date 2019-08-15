@@ -32,7 +32,7 @@
 [**Glossary**](../wiki/Glossary)
   - [Abbreviations](../wiki/Glossary#abbreviations)
 
-[**References**](../wiki/References)
+[**Bibliography**](../wiki/Bibliography)
 
 [**License**](../wiki/License)
   - [GNU Free Documentation License](../wiki/License#gnu-free-documentation-license)

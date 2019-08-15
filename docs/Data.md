@@ -38,9 +38,14 @@ Generation and demand data for each bidding zone are downloaded from the [ENTSO-
 
 #### [Production and Generation Units](https://transparency.entsoe.eu/generation/r2/productionAndGenerationUnits/show)
 
-Information about the production and generation units, including their code, name, validity dates, status (commissioned, decommissioned or cancelled), type (e.g., fossil gas, wind offshore), location, installed capacity (MW) and voltage.
+The knowledge base did not provide any information about this data.
+
+Based on available information, the data describes the production and generation units, including their code, name, validity dates, status (commissioned, decommissioned or cancelled), type (e.g., fossil gas, wind offshore), location, installed capacity (MW) and voltage. 
+
+<!-- The data on [Installed Capacity Per Production Unit](https://transparency.entsoe.eu/generation/r2/installedCapacityPerProductionUnit/show) includes only power plants with an installed generation capacity equalling to or exceeding 100 MW. This is assumed to also apply for the Production and Generating Units data. -->
 
 The codes for production unit types in the downloaded data (cross-referenced with the tables rendered on the transparency platform):
+
 - B01: Biomass
 - B02: Fossil brown coal / lignite
 - B03: Fossil coal-derived gas
@@ -61,6 +66,32 @@ The codes for production unit types in the downloaded data (cross-referenced wit
 - B18: Wind offshore
 - B19: Wind onshore
 - B20: Other
+
+#### [Installed Capacity Per Production Unit](https://transparency.entsoe.eu/generation/r2/installedCapacityPerProductionUnit/show)
+
+Information about production units (existing and planned) with an installed generation capacity equalling to or exceeding 100 MW. The information shall contain:
+
+- the unit name
+- the installed net generation capacity (MW)
+- the location
+- the voltage connection levels
+- the bidding zone
+- the control area
+- the production type
+- the commissioning date (when available)
+- the decommissioning date (when available)
+
+<!-- Note: The definitions of the commissioning and decommissioning date are out of scope for TSOs and, in order to ensure qualitative data publications, it shall be drafted by NRAs in coordination with primary owners of the data taking into account the ongoing discussions. -->
+
+The information shall be published annually for the three following years no later than one week before the beginning of the first year to which the data refers. Information should refer to January 1st of each year for the 3 following years.
+
+#### [Installed Capacity per Production Type](https://transparency.entsoe.eu/generation/r2/installedGenerationCapacityAggregation/show)
+
+The sum of installed net generation capacity (MW) per control area for all existing production units equalling to or exceeding 1 MW installed generation capacity, per production type. The information shall be published annually no later than one week before the end of the previous year. The installed net generation capacity refers to to the generation capacity which is effectively installed on January 1st of the following year.
+
+**Incomplete data**: 
+
+- Data for Sweden is unavailable at the bidding zone level for 2018 and 2019 (last checked on 15/08/2019)
 
 #### [Total Load - Day Ahead / Actual](https://transparency.entsoe.eu/load-domain/r2/totalLoadR2/show)
 
