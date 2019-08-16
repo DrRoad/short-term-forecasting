@@ -6,7 +6,8 @@ cd docs
 
 # convert wiki to html
 pandoc \
-    -s ../wiki/Home.md logos.html \
+    -s ../wiki/Home.md \
+    logos.html \
     ../wiki/Background.md \
     ../wiki/Problem-definition.md \
     ../wiki/Objectives.md \
@@ -43,7 +44,8 @@ pandoc \
     --variable linkcolor=blue \
     --variable toccolor=blue \
     --variable urlcolor=blue \
-    ../wiki/Home.md logos.tex \
+    ../wiki/Home.md \
+    logos.tex \
     ../wiki/Background.md \
     ../wiki/Problem-definition.md \
     ../wiki/Objectives.md \

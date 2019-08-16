@@ -1,7 +1,7 @@
 
-Welcome to the [short-term-forecasting](https://github.com/ENSYSTRA/short-term-forecasting) wiki! 
+# Preface 
 
-Short-term forecasting of electricity generation, demand and prices using machine learning.
+Short-term forecasting of electricity generation, demand and prices using machine learning [WIP].
 
 Copyright (C)  2019  [Nithiya Streethran](https://nmstreethran.github.io/).
 
