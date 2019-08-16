@@ -23,7 +23,7 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 * [data](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) contains datasets (both input and output) and their terms of use (available externally on Dropbox)
 * [scripts](/scripts/) contains all Python scripts
 * [jupyter-notebooks](/jupyter-notebooks/) contains Python files in Jupyter notebook format
-* [docs](/docs/) contains the documentation ([GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki) (Markdown) converted to [HTML](/docs/docs.html) and [PDF](/docs/docs.pdf)) 
+* [docs](/docs/) contains the documentation and associated files 
 * [images](/images/) contains images and their license
 
 ## Resources 
@@ -51,7 +51,7 @@ My coding notes can be found in my [coding](https://github.com/nmstreethran/codi
 
 ## Documentation
 
-Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The documentation is also imported to the [docs](/docs/) folder and the [wiki](/wiki7) folder as a submodule. The [docs/](/docs/) folder contains all the documentation files in Markdown, [HTML](/docs/docs.html) and [PDF](/docs/docs.pdf) formats. The wiki documentation is converted from Markdown into these formats using [Pandoc](https://pandoc.org/MANUAL.html). The shell commands used are written in [`docs_commands.txt`](/docs_commands.txt), which is then executed in Bash using:
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](/docs/) folder contains the documentation and associated files in Markdown, [HTML](/docs/docs.html) and [PDF](/docs/docs.pdf) formats. Document conversion is performed using [Pandoc](https://pandoc.org/MANUAL.html). The HTML is formatted using [pandoc.css by killercup](https://gist.github.com/killercup/5917178#file-pandoc-css). The shell commands used are written in [`docs_commands.txt`](/docs_commands.txt), which is then executed in Bash using:
 
 ```sh
 bash docs_commands.txt
@@ -82,6 +82,4 @@ License badges: [lukas-h/license-badges.md](https://gist.github.com/lukas-h/2a5d
 
 Markdown-formatted Creative Commons licenses: [idleberg/Creative-Commons-Markdown](https://github.com/idleberg/Creative-Commons-Markdown)
 
-pandoc.css: modified using the original version by [killercup](https://gist.github.com/killercup/5917178#file-pandoc-css)
-
-IEEEurl.csl: Citation Style Language for [Zotero](https://www.zotero.org/), by [Michael Berkowitz](mailto:mberkowi@gmu.edu), [Julian Onions](mailto:julian.onions@gmail.com), [Rintze Zelle](http://twitter.com/rintzezelle), [Stephen Frank](http://www.zotero.org/sfrank) and Sebastian Karcher.
+IEEEurl.csl: Citation Style Language for [Zotero](https://www.zotero.org/), originally by [Michael Berkowitz](mailto:mberkowi@gmu.edu), [Julian Onions](mailto:julian.onions@gmail.com), [Rintze Zelle](http://twitter.com/rintzezelle), [Stephen Frank](http://www.zotero.org/sfrank) and Sebastian Karcher.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
   <info>
-    <title>IEEE (modified)</title>
+    <title>IEEE (modified by nmstreethran)</title>
     <id>http://www.zotero.org/styles/ieee-with-url</id>
     <link href="http://www.zotero.org/styles/ieee-with-url" rel="self"/>
     <link href="http://www.ieee.org/documents/style_manual.pdf" rel="documentation"/>
@@ -24,10 +24,6 @@
     </contributor>
     <contributor>
       <name>Sebastian Karcher</name>
-    </contributor>
-    <contributor>
-      <name>Nithiya Streethran (mod)</name>
-      <email>nithiya05@gmail.com</email>
     </contributor>
     <category citation-format="numeric"/>
     <category field="engineering"/>

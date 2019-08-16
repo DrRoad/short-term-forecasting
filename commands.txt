@@ -19,13 +19,14 @@ pandoc \
     --metadata date="`date '+%-d %B %Y'`" \
     --metadata author="Nithiya Streethran" \
     --toc \
+    --toc-depth=1 \
     --metadata title="Short-term Forecasting Documentation" \
     -c pandoc.css \
     --bibliography References.bib \
     --filter pandoc-citeproc \
     --csl IEEEurl.csl \
     --metadata link-citations=true \
-    -o docs.html
+    -o index.html
 
 # convert wiki to pdf
 pandoc \
