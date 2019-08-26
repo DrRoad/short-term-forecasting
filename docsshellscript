@@ -29,14 +29,15 @@ pandoc \
     --metadata link-citations=true \
     -o index.html
 
-# convert wiki to pdf
+# convert wiki to pdf via pdflatex
 pandoc \
     -N --template=template.tex \
+    --metadata documentclass="article" \
     --metadata title="Short-term Forecasting Documentation" \
     --metadata author="Nithiya Streethran" \
     --variable date="`date '+%-d %B %Y'`" \
     --variable fontsize=10pt \
-    -V geometry:margin="2.5cm" \
+    -V geometry:margin=2.9cm \
     -V papersize="a4" \
     -V secnumdepth="0" \
     -V fontfamily="mathpazo" \
