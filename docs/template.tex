@@ -98,8 +98,6 @@ $if(fontfamily)$
   %%%
   \usepackage{sectsty} % for setting section headings to sans serif
   \allsectionsfont{\normalfont\sffamily\bfseries} % ^ bold + sans serif section headings
-  % \usepackage{titlesec}
-  % \newcommand{\sectionbreak}{\clearpage}
   %%%
 $else$
   \usepackage{lmodern}
@@ -214,27 +212,40 @@ $if(verbatim-in-note)$
 $endif$
 \usepackage{xcolor}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}} 
+\usepackage{hyperxmp} %%% added hyperxmp for additional metadata
 \hypersetup{
-$if(title-meta)$
-  pdftitle={$title-meta$},
-$endif$
-$if(author-meta)$
-  pdfauthor={$author-meta$},
-$endif$
-$if(keywords)$
-  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
-$endif$
-$if(colorlinks)$
-  colorlinks=true,
-  linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
-  filecolor=$if(filecolor)$$filecolor$$else$Maroon$endif$,
-  citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
-  urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
-$else$
-  pdfborder={0 0 0},
-$endif$
-  breaklinks=true}
+  $if(title-meta)$
+    pdftitle={$title-meta$},
+  $endif$
+  $if(author-meta)$
+    pdfauthor={$author-meta$},
+  $endif$
+  $if(keywords)$
+    pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+  $endif$
+  $if(subject)$
+    pdfsubject={$subject$},
+  $endif$
+  $if(colorlinks)$
+    colorlinks=true,
+    linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
+    filecolor=$if(filecolor)$$filecolor$$else$Maroon$endif$,
+    citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+    urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+  $else$
+    pdfborder={0 0 0},
+  $endif$
+  $if(copyright)$
+    pdfcopyright={$copyright$},
+  $endif$
+  $if(licenseurl)$
+    pdflicenseurl={$licenseurl$},
+  $endif$
+  $if(contactemail)$
+    pdfcontactemail={$contactemail$},
+  $endif$
+breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 $if(verbatim-in-note)$
   \VerbatimFootnotes % allows verbatim text in footnotes
@@ -261,6 +272,7 @@ $if(listings)$
   \lstset{defaultdialect=[5.3]Lua}
   \lstset{defaultdialect=[x86masm]Assembler}
 $endif$
+\usepackage[nottoc,notbib]{tocbibind} % adding lists to the toc
 $if(lhs)$
   \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
@@ -287,7 +299,8 @@ $if(tables)$
   $endif$
 $endif$
 $if(graphics)$
-  \usepackage{graphicx,grffile}
+  \usepackage{graphicx,grffile,tikz,tikzpagenodes}
+  \usetikzlibrary{positioning}
   \makeatletter
   \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
   \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -415,8 +428,9 @@ $if(title)$
   $if(beamer)$
     \frame{\titlepage}
   $else$
-    \maketitle
+    \IfFileExists{titlepage.tex}{\input{titlepage.tex}}{\maketitle}
   $endif$
+  \IfFileExists{preface.tex}{\input{preface.tex}}{}
   $if(abstract)$
     \begin{abstract}
       $abstract$
@@ -428,7 +442,7 @@ $for(include-before)$
 $endfor$
 $if(toc)$
   $if(toc-title)$
-    \renewcommand*\contentsname{$toc-title$}
+    \renewcommand*\contentsname{$toc-title$} 
   $endif$
   $if(beamer)$
     \begin{frame}

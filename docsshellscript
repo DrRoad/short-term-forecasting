@@ -5,8 +5,8 @@ cp -a wiki/* docs/
 cd docs
 
 # convert wiki to html
-pandoc \
-    -s ../wiki/Home.md \
+pandoc -s \
+    ../wiki/Home.md \
     logos.html \
     ../wiki/Background.md \
     ../wiki/Problem-definition.md \
@@ -21,23 +21,29 @@ pandoc \
     --metadata author="Nithiya Streethran" \
     --toc \
     --toc-depth=1 \
-    --metadata title="Short-term Forecasting Documentation" \
+    --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
     -c pandoc.css \
+    --filter pandoc-crossref \
+    --metadata autoSectionLabels=true \
     --bibliography References.bib \
     --filter pandoc-citeproc \
     --csl IEEEurl.csl \
     --metadata link-citations=true \
     -o index.html
 
+# convert homepage to tex, which will be inserted via the template
+pandoc ../wiki/Home.md -o preface.tex
+
 # convert wiki to pdf via pdflatex
 pandoc \
     -N --template=template.tex \
-    --metadata documentclass="article" \
-    --metadata title="Short-term Forecasting Documentation" \
+    --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
     --metadata author="Nithiya Streethran" \
+    --metadata subject="ENergy SYStems in TRAnsition (ENSYSTRA)" \
     --variable date="`date '+%-d %B %Y'`" \
+    --variable keywords="forecasting, electricity market, machine learning, energy transition" \
     --variable fontsize=10pt \
-    -V geometry:margin=2.9cm \
+    -V geometry:margin=2.5cm \
     -V papersize="a4" \
     -V secnumdepth="0" \
     -V fontfamily="mathpazo" \
@@ -45,8 +51,9 @@ pandoc \
     --variable linkcolor=blue \
     --variable toccolor=blue \
     --variable urlcolor=blue \
-    ../wiki/Home.md \
-    logos.tex \
+    --metadata copyright="Copyright (C) 2019 by Nithiya Streethran. Licensed under the GNU Free Documentation License Version 1.3." \
+    --metadata licenseurl="https://www.gnu.org/licenses/fdl-1.3" \
+    --metadata contactemail="nmstreethran@gmail.com" \
     ../wiki/Background.md \
     ../wiki/Problem-definition.md \
     ../wiki/Objectives.md \
@@ -61,6 +68,8 @@ pandoc \
     --variable toc-title="Table of Contents" \
     --variable lof=true \
     --variable lot=true \
+    --filter pandoc-crossref \
+    --metadata autoSectionLabels=true \
     --bibliography References.bib \
     --filter pandoc-citeproc \
     --csl IEEEurl.csl \

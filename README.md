@@ -1,9 +1,9 @@
 # short-term-forecasting <!-- omit in toc -->
 
-[![Code License: GPL v3](https://img.shields.io/badge/Code%20License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
-[![Documentation License: FDL 1.3](https://img.shields.io/badge/Documentation%20License-FDL%20v1.3-blue.svg)](https://www.gnu.org/licenses/fdl-1.3) 
-[![Image license: CC BY-SA 4.0](https://img.shields.io/badge/Image%20License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![Output Data License: ODbL](https://img.shields.io/badge/Output%20Data%20License-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/)
+[![Code License: GPL v3](https://img.shields.io/badge/code-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
+[![Documentation License: FDL 1.3](https://img.shields.io/badge/docs-FDL%20v1.3-blue.svg)](https://www.gnu.org/licenses/fdl-1.3) 
+[![Image License: CC BY-SA 4.0](https://img.shields.io/badge/images-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Output Data License: ODbL](https://img.shields.io/badge/output%20data-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/)
 
 Short-term forecasting of electricity generation, demand and prices using machine learning, by Nithiya Streethran (nmstreethran@gmail.com).
 
@@ -11,12 +11,12 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 
 ## Table of contents <!-- omit in toc -->
 
-- [Folders](#Folders)
-- [Resources](#Resources)
-- [Documentation](#Documentation)
-- [Funding](#Funding)
-- [Licenses and terms of use](#Licenses-and-terms-of-use)
-- [Credits](#Credits)
+- [Folders](#folders)
+- [Resources](#resources)
+- [Documentation](#documentation)
+- [Funding](#funding)
+- [Licenses and terms of use](#licenses-and-terms-of-use)
+- [Credits](#credits)
 
 ## Folders
 
@@ -51,7 +51,7 @@ My coding notes can be found in my [coding](https://github.com/nmstreethran/codi
 
 ## Documentation
 
-Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](/docs/) folder contains the documentation and associated files in Markdown, [HTML](/docs/docs.html) and [PDF](/docs/docs.pdf) formats. Document conversion is performed using [Pandoc](https://pandoc.org/MANUAL.html). The HTML is formatted using [pandoc.css by killercup](https://gist.github.com/killercup/5917178#file-pandoc-css). The shell commands used are written in [`docsshellscript`](/docsshellscript), which is then executed in Bash using:
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](/docs/) folder contains the documentation and associated files in Markdown, [HTML](/docs/docs.html) and [PDF](/docs/docs.pdf) formats. Document conversion is performed using [Pandoc](https://pandoc.org/MANUAL.html), with [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc) and [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref). The HTML is formatted using [pandoc.css by killercup](https://gist.github.com/killercup/5917178#file-pandoc-css). The shell commands used are written in [`docsshellscript`](/docsshellscript), which is then executed in Bash using:
 
 ```sh
 bash docsshellscript
@@ -61,7 +61,11 @@ bash docsshellscript
 
 This work is part of my research as Early-Stage Researcher (ESR) 9 of the [ENSYSTRA (ENergy SYStems in TRAnsition)](https://ensystra.eu/) Innovative Training Network. ENSYSTRA is funded by the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.
 
-<p align=center><a href="https://ensystra.eu/"><img src="docs/logos/ensystra-ls.png" alt="ENSYSTRA" height="50" title="ENSYSTRA"></a>&nbsp;&nbsp;&nbsp;<img src="docs/logos/eu.jpg" alt="European Union" height="50" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515."></p>
+<p align=center><img src="docs/logos/ensystra-ls.png" alt="ENSYSTRA" height="50" title="ENSYSTRA">&nbsp;&nbsp;&nbsp;<img src="docs/logos/eu.jpg" alt="European Union" height="50" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515."></p>
+
+<p align=center><img src="docs/logos/rug.png" alt="University of Groningen" height="25" title="University of Groningen">&nbsp;&nbsp;&nbsp;<img src="docs/logos/uoe.png" alt="University of Edinburgh" height="25" title="University of Edinburgh">&nbsp;&nbsp;&nbsp;<img src="docs/logos/chalmers.png" alt="Chalmers University of Technology" height="25" title="Chalmers University of Technology"></p>
+
+<p align=center><img src="docs/logos/uis.png" alt="University of Stavanger" height="50" title="University of Stavanger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="docs/logos/aau.png" alt="Aalborg University" height="60" title="Aalborg University">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="docs/logos/euf.png" alt="University of Flensburg" height="50" title="University of Flensburg"></p>
 
 ## Licenses and terms of use
 
@@ -76,10 +80,10 @@ Licenses and terms of the input data used can be found in their corresponding fo
 
 ## Credits
 
-Contributing guidelines: adapted from the [Open Science MOOC](https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/CONTRIBUTING.md)
+Contributing guidelines: adapted from the [Open Science MOOC](https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/CONTRIBUTING.md).
 
-License badges: [lukas-h/license-badges.md](https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba); made with [Shields.io](http://shields.io/)
+License badges: [lukas-h/license-badges.md](https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba); made with [Shields.io](http://shields.io/).
 
-Markdown-formatted Creative Commons licenses: [idleberg/Creative-Commons-Markdown](https://github.com/idleberg/Creative-Commons-Markdown)
+Markdown-formatted Creative Commons licenses: [idleberg/Creative-Commons-Markdown](https://github.com/idleberg/Creative-Commons-Markdown).
 
 IEEEurl.csl: Citation Style Language for [Zotero](https://www.zotero.org/), originally by [Michael Berkowitz](mailto:mberkowi@gmu.edu), [Julian Onions](mailto:julian.onions@gmail.com), [Rintze Zelle](http://twitter.com/rintzezelle), [Stephen Frank](http://www.zotero.org/sfrank) and Sebastian Karcher.

@@ -1,0 +1,30 @@
+\begin{titlepage}
+  \maketitle
+  \vspace{2.5cm}
+
+  \center % centre everything on the page
+
+  \begin{tikzpicture} % ENSYSTRA logo
+    \node {\includegraphics[height=2cm]{logos/ensystra-ls.png}}; 
+  \end{tikzpicture}
+
+  \vfill % fill the rest of the page with whitespace
+
+  \begin{tikzpicture}[remember picture,scale=2.2,every node/.style={transform shape}] % university logos
+    \node [xshift=-.2cm,yshift=-.05cm]{\includegraphics[height=1cm]{logos/euf.png}}; % Flensburg
+    \node [xshift=-2.8cm,yshift=-.1cm]{\includegraphics[height=1.2cm]{logos/aau.png}}; % Aalborg
+    \node [xshift=-4.6cm,yshift=-.07cm]{\includegraphics[height=1cm]{logos/uis.png}}; % Stavanger
+    \node [xshift=-.2cm,yshift=.92cm]{\includegraphics[height=.5cm]{logos/chalmers.png}}; % Chalmers
+    \node [xshift=-2.5cm,yshift=.92cm]{\includegraphics[height=.5cm]{logos/uoe.png}}; % Edinburgh
+    \node [xshift=-4.6cm,yshift=.92cm]{\includegraphics[height=.5cm]{logos/rug.png}}; % Groningen
+  \end{tikzpicture}
+  \vspace{1.5cm}
+
+  \sffamily{	
+    \begin{tikzpicture} % EU logo
+      \node (A) {\includegraphics[width=.17\textwidth]{logos/eu.jpg}};
+      \node (capt) [right=of A,text width=.76\linewidth, align=left,font=\normalsize,xshift=-1cm]{This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.};
+    \end{tikzpicture}
+  }
+  \vspace{1cm}
+\end{titlepage}
