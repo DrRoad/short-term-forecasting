@@ -1,11 +1,13 @@
 <!-- 
-- [Data](#Data)
-  - [Folder navigation](#Folder-navigation)
-  - [Generation and demand data](#Generation-and-demand-data)
-  - [Market data](#Market-data)
-  - [Meteorological data](#Meteorological-data)
-  - [Other data](#Other-data)
-  - [Terms of use](#Terms-of-use)
+- [Data](#data)
+  - [Folder navigation](#folder-navigation)
+  - [Generation and demand data](#generation-and-demand-data)
+    - [ENTSO-E Transparency Platform](#entso-e-transparency-platform)
+    - [REMIT UMM](#remit-umm)
+  - [Market data](#market-data)
+  - [Meteorological data](#meteorological-data)
+  - [Other data](#other-data)
+  - [Terms of use](#terms-of-use)
  -->
 
 
@@ -25,6 +27,8 @@ All input and output data can be found in the [data](https://www.dropbox.com/sh/
 
 
 ## Generation and demand data
+
+### ENTSO-E Transparency Platform
 
 Generation and demand data for each bidding zone are downloaded from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/). The following descriptions of the data are from ENTSO-E Transparency Platform's [Knowledge Base](https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/knowledge%20base.html).
 
@@ -106,6 +110,31 @@ The sum of installed net generation capacity (MW) per control area for all exist
 - TSOs should decide gross or net generation will be used but the net/gross characteristic should be consistent per bidding zone
 - Absorbed energy is also provided as separate information with the aggregated generation output of the hydro pumped storage
 - The physical flow on the tie line is measured as agreed by neighbouring TSOs or bidding zones, where applicable
+
+### REMIT UMM
+
+REMIT UMM is used by market operators and companies involved in balancing and settlements, including Nord Pool and ELEXON, for market members and participants to publish information on outages in production, consumption and transmission and other relevant market information according to European transparency regulations [@REMIT16], [@NordP], [@Abouta], [@Aboutb]. The information is publicly available and is classified as follows:
+
+- Event
+  - Unavailability of electrical facilities (production, consumption, transmission)
+  - Market information
+- Infrastructure (the electrical facility(ies) that are affected)
+- Areas (bidding zone and/or country and/or control area)
+- Types of unavailability (planned or unplanned)
+- Stations (production and consumption units)
+- Fuel types (same as the production units used by ENTSO-E)
+- Connections (between control areas and/or bidding zone)
+- Status (active or cancelled)
+- Publishers (companies that publish the information)
+- Market participants
+- Publication time
+- Event start and stop time
+- Duration of event
+- Unavailable capacity (MW)
+- Available capacity (MW)
+- Assets (grid components, e.g., AC link, DC link, transformer, substation)
+- Remarks
+
 
 ## Market data
 

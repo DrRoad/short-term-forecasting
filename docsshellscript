@@ -5,7 +5,19 @@ cp -a wiki/* docs/
 cd docs
 
 # convert wiki to html
-pandoc -s \
+pandoc --standalone \
+    --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
+    --metadata author="Nithiya Streethran" \
+    --metadata date="`date '+%-d %B %Y'`" \
+    --toc \
+    --toc-depth=1 \
+    --css pandoc.css \
+    --filter pandoc-crossref \
+    --metadata autoSectionLabels=true \
+    --bibliography References.bib \
+    --filter pandoc-citeproc \
+    --csl IEEEurl.csl \
+    --metadata link-citations=true \
     ../wiki/Home.md \
     logos.html \
     ../wiki/Background.md \
@@ -17,53 +29,30 @@ pandoc -s \
     ../wiki/Glossary.md \
     References.md \
     ../wiki/License.md \
-    --metadata date="`date '+%-d %B %Y'`" \
-    --metadata author="Nithiya Streethran" \
-    --toc \
-    --toc-depth=1 \
-    --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
-    -c pandoc.css \
-    --filter pandoc-crossref \
-    --metadata autoSectionLabels=true \
-    --bibliography References.bib \
-    --filter pandoc-citeproc \
-    --csl IEEEurl.csl \
-    --metadata link-citations=true \
-    -o index.html
+    --output index.html
 
 # convert homepage to tex, which will be inserted via the template
-pandoc ../wiki/Home.md -o preface.tex
+pandoc ../wiki/Home.md --output preface.tex
 
 # convert wiki to pdf via pdflatex
 pandoc \
-    -N --template=template.tex \
+    --template=template.tex \
     --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
     --metadata author="Nithiya Streethran" \
     --metadata subject="ENergy SYStems in TRAnsition (ENSYSTRA)" \
     --variable date="`date '+%-d %B %Y'`" \
     --variable keywords="forecasting, electricity market, machine learning, energy transition" \
+    --metadata copyright="Copyright (C) 2019 Nithiya Streethran. Licensed under the GNU Free Documentation License Version 1.3." \
+    --metadata licenseurl="https://www.gnu.org/licenses/fdl-1.3" \
+    --metadata contactemail="nmstreethran@gmail.com" \
     --variable fontsize=10pt \
-    -V geometry:margin=2.5cm \
-    -V papersize="a4" \
-    -V secnumdepth="0" \
-    -V fontfamily="mathpazo" \
-    -V classoption="twoside" \
+    --variable geometry:margin=2.5cm \
+    --variable papersize="a4" \
+    --variable fontfamily="mathpazo" \
+    --variable classoption="twoside" \
     --variable linkcolor=blue \
     --variable toccolor=blue \
     --variable urlcolor=blue \
-    --metadata copyright="Copyright (C) 2019 by Nithiya Streethran. Licensed under the GNU Free Documentation License Version 1.3." \
-    --metadata licenseurl="https://www.gnu.org/licenses/fdl-1.3" \
-    --metadata contactemail="nmstreethran@gmail.com" \
-    ../wiki/Background.md \
-    ../wiki/Problem-definition.md \
-    ../wiki/Objectives.md \
-    ../wiki/Regions.md \
-    ../wiki/Data.md \
-    ../wiki/Methodology.md \
-    ../wiki/Glossary.md \
-    References.md \
-    ../wiki/License.md \
-    --pdf-engine=pdflatex \
     --toc \
     --variable toc-title="Table of Contents" \
     --variable lof=true \
@@ -75,7 +64,17 @@ pandoc \
     --csl IEEEurl.csl \
     --metadata link-citations=true \
     --reference-location=block \
-    -o docs.pdf
+    --pdf-engine=pdflatex \
+    ../wiki/Background.md \
+    ../wiki/Problem-definition.md \
+    ../wiki/Objectives.md \
+    ../wiki/Regions.md \
+    ../wiki/Data.md \
+    ../wiki/Methodology.md \
+    ../wiki/Glossary.md \
+    References.md \
+    ../wiki/License.md \
+    --output docs.pdf
 
 # change directory back to the previous level
 cd ..

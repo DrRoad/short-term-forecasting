@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Nithiya Streethran" />
-  <meta name="dcterms.date" content="2019-08-27" />
+  <meta name="dcterms.date" content="2019-08-29" />
   <title>Short-term forecasting of electricity generation, demand and market prices using machine learning</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -22,7 +22,7 @@
 <header>
 <h1 class="title">Short-term forecasting of electricity generation, demand and market prices using machine learning</h1>
 <p class="author">Nithiya Streethran</p>
-<p class="date">27 August 2019</p>
+<p class="date">29 August 2019</p>
 </header>
 <nav id="TOC">
 <ul>
@@ -55,7 +55,7 @@
 <img src="logos/uis.png" alt="University of Stavanger" height="100" title="University of Stavanger">      <img src="logos/aau.png" alt="Aalborg University" height="120" title="Aalborg University">      <img src="logos/euf.png" alt="University of Flensburg" height="100" title="University of Flensburg">
 </p>
 <p align="center">
-<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/code-GPL%20v3-blue.svg" title="Code License: GPL v3" alt="Code License: GPL v3"></a>    <a href="https://www.gnu.org/licenses/fdl-1.3"><img src="https://img.shields.io/badge/docs-FDL%20v1.3-blue.svg" title="Documentation License: FDL 1.3" alt="Documentation License: FDL 1.3"></a>    <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/images-CC%20BY--SA%204.0-lightgrey.svg" title="Image license: CC BY-SA 4.0" alt="Image license: CC BY-SA 4.0"></a>    <a href="https://opendatacommons.org/licenses/odbl/"><img src="https://img.shields.io/badge/output%20data-ODbL-brightgreen.svg" title="Output Data License: ODbL" alt="Output Data License: ODbL"></a>
+<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/code-GPL%20v3-blue.svg" title="Code License: GPL v3" alt="Code License: GPL v3"></a>    <a href="https://www.gnu.org/licenses/fdl-1.3"><img src="https://img.shields.io/badge/docs-FDL%20v1.3-blue.svg" title="Documentation License: FDL 1.3" alt="Documentation License: FDL 1.3"></a>    <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/images-CC%20BY--SA%204.0-lightgrey.svg" title="Image License: CC BY-SA 4.0" alt="Image License: CC BY-SA 4.0"></a>    <a href="https://opendatacommons.org/licenses/odbl/"><img src="https://img.shields.io/badge/output%20data-ODbL-brightgreen.svg" title="Output Data License: ODbL" alt="Output Data License: ODbL"></a>
 </p>
 <!-- 
 - [Background](#background)
@@ -472,13 +472,15 @@
 </table>
 </div>
 <!-- 
-- [Data](#Data)
-  - [Folder navigation](#Folder-navigation)
-  - [Generation and demand data](#Generation-and-demand-data)
-  - [Market data](#Market-data)
-  - [Meteorological data](#Meteorological-data)
-  - [Other data](#Other-data)
-  - [Terms of use](#Terms-of-use)
+- [Data](#data)
+  - [Folder navigation](#folder-navigation)
+  - [Generation and demand data](#generation-and-demand-data)
+    - [ENTSO-E Transparency Platform](#entso-e-transparency-platform)
+    - [REMIT UMM](#remit-umm)
+  - [Market data](#market-data)
+  - [Meteorological data](#meteorological-data)
+  - [Other data](#other-data)
+  - [Terms of use](#terms-of-use)
  -->
 <h1 id="sec:data">Data</h1>
 <p>All input and output data can be found in the <a href="https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0">data</a> folder on Dropbox. Licenses and terms of the input data used can be found in their corresponding folders within the folder.</p>
@@ -494,6 +496,7 @@
 <li>output - output or modified data from this project</li>
 </ul>
 <h2 id="sec:generation-and-demand-data">Generation and demand data</h2>
+<h3 id="sec:entso-e-transparency-platform">ENTSO-E Transparency Platform</h3>
 <p>Generation and demand data for each bidding zone are downloaded from the <a href="https://transparency.entsoe.eu/">ENTSO-E Transparency Platform</a>. The following descriptions of the data are from ENTSO-E Transparency Platform’s <a href="https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/knowledge%20base.html">Knowledge Base</a>.</p>
 <h4 id="sec:actual-generation-per-production-type"><a href="https://transparency.entsoe.eu/generation/r2/actualGenerationPerProductionType/show">Actual Generation per Production Type</a></h4>
 <ul>
@@ -567,6 +570,31 @@
 <li>Absorbed energy is also provided as separate information with the aggregated generation output of the hydro pumped storage</li>
 <li>The physical flow on the tie line is measured as agreed by neighbouring TSOs or bidding zones, where applicable</li>
 </ul>
+<h3 id="sec:remit-umm">REMIT UMM</h3>
+<p>REMIT UMM is used by market operators and companies involved in balancing and settlements, including Nord Pool and ELEXON, for market members and participants to publish information on outages in production, consumption and transmission and other relevant market information according to European transparency regulations <span class="citation" data-cites="REMIT16">[<a href="#ref-REMIT16">36</a>]</span>, <span class="citation" data-cites="NordP">[<a href="#ref-NordP">37</a>]</span>, <span class="citation" data-cites="Abouta">[<a href="#ref-Abouta">38</a>]</span>, <span class="citation" data-cites="Aboutb">[<a href="#ref-Aboutb">39</a>]</span>. The information is publicly available and is classified as follows:</p>
+<ul>
+<li>Event
+<ul>
+<li>Unavailability of electrical facilities (production, consumption, transmission)</li>
+<li>Market information</li>
+</ul></li>
+<li>Infrastructure (the electrical facility(ies) that are affected)</li>
+<li>Areas (bidding zone and/or country and/or control area)</li>
+<li>Types of unavailability (planned or unplanned)</li>
+<li>Stations (production and consumption units)</li>
+<li>Fuel types (same as the production units used by ENTSO-E)</li>
+<li>Connections (between control areas and/or bidding zone)</li>
+<li>Status (active or cancelled)</li>
+<li>Publishers (companies that publish the information)</li>
+<li>Market participants</li>
+<li>Publication time</li>
+<li>Event start and stop time</li>
+<li>Duration of event</li>
+<li>Unavailable capacity (MW)</li>
+<li>Available capacity (MW)</li>
+<li>Assets (grid components, e.g., AC link, DC link, transformer, substation)</li>
+<li>Remarks</li>
+</ul>
 <h2 id="sec:market-data">Market data</h2>
 <p><a href="https://www.nordpoolgroup.com/historical-market-data/">Nord Pool</a></p>
 <ul>
@@ -619,7 +647,7 @@
 <ul>
 <li><a href="https://opendata.dwd.de/climate_environment/CDC/Terms_of_use.pdf">Terms of use for data on the CDC ftp server</a></li>
 </ul>
-<h4 id="sec:entso-e-transparency-platform">ENTSO-E Transparency Platform</h4>
+<h4 id="sec:entso-e-transparency-platform-1">ENTSO-E Transparency Platform</h4>
 <ul>
 <li><a href="https://docstore.entsoe.eu/Documents/MC%20documents/Transparency%20Platform/ENTSOE_Transparency_Terms_Conditions.pdf">GENERAL TERMS AND CONDITIONS FOR THE USE OF THE ENTSO-E TRANSPARENCY PLATFORM</a></li>
 <li><a href="https://docstore.entsoe.eu/Documents/MC%20documents/Transparency%20Platform/List_of_Data_available_for_reuse.pdf">LIST OF DATA AVAILABLE FOR FREE RE-USE</a></li>
@@ -805,6 +833,18 @@
 </div>
 <div id="ref-Regio">
 <p>[35] “Regional Security Coordinators FAQ.” [Online]. Available: <a href="https://www.entsoe.eu/major-projects/rscis/" class="uri">https://www.entsoe.eu/major-projects/rscis/</a>. [Accessed: 18 November 2018]</p>
+</div>
+<div id="ref-REMIT16">
+<p>[36] “REMIT UMM User Manual,” Nord Pool [Online]. Available: <a href="https://www.nordpoolspot.com/globalassets/download-center/remit/remit-umm-user-manual-20161130.pdf" class="uri">https://www.nordpoolspot.com/globalassets/download-center/remit/remit-umm-user-manual-20161130.pdf</a></p>
+</div>
+<div id="ref-NordP">
+<p>[37] “NordPool - REMIT UMM.” [Online]. Available: <a href="https://umm.nordpoolgroup.com/" class="uri">https://umm.nordpoolgroup.com/</a>. [Accessed: 26 July 2019]</p>
+</div>
+<div id="ref-Abouta">
+<p>[38] “About Us | BMRS.” [Online]. Available: <a href="https://www2.bmreports.com/bmrs/?q=help/about-us" class="uri">https://www2.bmreports.com/bmrs/?q=help/about-us</a>. [Accessed: 29 August 2019]</p>
+</div>
+<div id="ref-Aboutb">
+<p>[39] “About ELEXON - ELEXON.” [Online]. Available: <a href="https://www.elexon.co.uk/about/about-elexon/" class="uri">https://www.elexon.co.uk/about/about-elexon/</a>. [Accessed: 29 August 2019]</p>
 </div>
 </div>
 <!--  

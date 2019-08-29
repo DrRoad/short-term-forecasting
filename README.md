@@ -12,8 +12,8 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 ## Table of contents <!-- omit in toc -->
 
 - [Folders](#folders)
-- [Resources](#resources)
 - [Documentation](#documentation)
+- [Resources](#resources)
 - [Funding](#funding)
 - [Licenses and terms of use](#licenses-and-terms-of-use)
 - [Credits](#credits)
@@ -25,6 +25,10 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 * [jupyter-notebooks](/jupyter-notebooks/) contains Python files in Jupyter notebook format
 * [docs](/docs/) contains the documentation and associated files 
 * [images](/images/) contains images and their license
+
+## Documentation
+
+Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](/docs/) folder contains the documentation and associated files in Markdown, [HTML](/docs/index.html) and [PDF](/docs/docs.pdf) formats. 
 
 ## Resources 
 
@@ -38,6 +42,12 @@ The source code editor I use is [VSCodium](https://vscodium.github.io/) (fully o
 * [YAML](https://marketplace.visualstudio.com/itemdetails?itemName=redhat.vscode-yaml)
 * [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 
+Document conversion is performed using [Pandoc](https://pandoc.org/MANUAL.html), with [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc) and [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref). The shell commands used are written in [`docsshellscript`](/docsshellscript), which is then executed in Bash using the following command:
+
+```sh
+bash docsshellscript
+```
+
 My current computing specifications:
 
 * Python version 3.6.8
@@ -49,23 +59,15 @@ My current computing specifications:
 
 My coding notes can be found in my [coding](https://github.com/nmstreethran/coding) repository.
 
-## Documentation
-
-Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](/docs/) folder contains the documentation and associated files in Markdown, [HTML](/docs/docs.html) and [PDF](/docs/docs.pdf) formats. Document conversion is performed using [Pandoc](https://pandoc.org/MANUAL.html), with [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc) and [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref). The HTML is formatted using [pandoc.css by killercup](https://gist.github.com/killercup/5917178#file-pandoc-css). The shell commands used are written in [`docsshellscript`](/docsshellscript), which is then executed in Bash using:
-
-```sh
-bash docsshellscript
-```
-
 ## Funding
 
 This work is part of my research as Early-Stage Researcher (ESR) 9 of the [ENSYSTRA (ENergy SYStems in TRAnsition)](https://ensystra.eu/) Innovative Training Network. ENSYSTRA is funded by the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.
 
-<p align=center><img src="docs/logos/ensystra-ls.png" alt="ENSYSTRA" height="50" title="ENSYSTRA">&nbsp;&nbsp;&nbsp;<img src="docs/logos/eu.jpg" alt="European Union" height="50" title="This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515."></p>
+<p align=center><img src="docs/logos/ensystra-ls.png" alt="ENSYSTRA" height="50" title="ENSYSTRA">&nbsp;&nbsp;&nbsp;<img src="docs/logos/eu.jpg" alt="European Union" height="50" title="European Union"></p>
 
-<p align=center><img src="docs/logos/rug.png" alt="University of Groningen" height="25" title="University of Groningen">&nbsp;&nbsp;&nbsp;<img src="docs/logos/uoe.png" alt="University of Edinburgh" height="25" title="University of Edinburgh">&nbsp;&nbsp;&nbsp;<img src="docs/logos/chalmers.png" alt="Chalmers University of Technology" height="25" title="Chalmers University of Technology"></p>
+<p align=center><img src="docs/logos/rug.png" alt="University of Groningen" height="35" title="University of Groningen">&nbsp;&nbsp;&nbsp;<img src="docs/logos/uoe.png" alt="University of Edinburgh" height="35" title="University of Edinburgh">&nbsp;&nbsp;&nbsp;<img src="docs/logos/chalmers.png" alt="Chalmers University of Technology" height="35" title="Chalmers University of Technology"></p>
 
-<p align=center><img src="docs/logos/uis.png" alt="University of Stavanger" height="50" title="University of Stavanger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="docs/logos/aau.png" alt="Aalborg University" height="60" title="Aalborg University">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="docs/logos/euf.png" alt="University of Flensburg" height="50" title="University of Flensburg"></p>
+<p align=center><img src="docs/logos/uis.png" alt="University of Stavanger" height="60" title="University of Stavanger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="docs/logos/aau.png" alt="Aalborg University" height="70" title="Aalborg University">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="docs/logos/euf.png" alt="University of Flensburg" height="60" title="University of Flensburg"></p>
 
 ## Licenses and terms of use
 
@@ -86,4 +88,8 @@ License badges: [lukas-h/license-badges.md](https://gist.github.com/lukas-h/2a5d
 
 Markdown-formatted Creative Commons licenses: [idleberg/Creative-Commons-Markdown](https://github.com/idleberg/Creative-Commons-Markdown).
 
-IEEEurl.csl: Citation Style Language for [Zotero](https://www.zotero.org/), originally by [Michael Berkowitz](mailto:mberkowi@gmu.edu), [Julian Onions](mailto:julian.onions@gmail.com), [Rintze Zelle](http://twitter.com/rintzezelle), [Stephen Frank](http://www.zotero.org/sfrank) and Sebastian Karcher.
+[IEEEurl.csl](/docs/IEEEurl.csl): Citation Style Language for [Zotero](https://www.zotero.org/), originally by [Michael Berkowitz](mailto:mberkowi@gmu.edu), [Julian Onions](mailto:julian.onions@gmail.com), [Rintze Zelle](http://twitter.com/rintzezelle), [Stephen Frank](http://www.zotero.org/sfrank) and Sebastian Karcher.
+
+[pandoc.css](/docs/pandoc.css): CSS for HTML documents generated using Pandoc, originally by [killercup](https://gist.github.com/killercup/5917178#file-pandoc-css).
+
+[template.tex](/docs/template.tex): LaTeX template for formatting PDFs generated using Pandoc and a LaTeX PDF engine, originally downloaded from Pandoc's [demo page](https://pandoc.org/demo/template.tex).
