@@ -32,15 +32,15 @@ Documentation is kept in the repository's [GitHub Wiki](https://github.com/ENSYS
 
 ## Resources 
 
-The source code editor I use is [VSCodium](https://vscodium.github.io/) (fully open-source alternative to [Visual Studio Code](https://code.visualstudio.com/)), with Git integration and the following extensions:
+The source code editor I use is [VSCodium](https://vscodium.github.io/) (fully open-source alternative to [Visual Studio Code](https://code.visualstudio.com/)), with Git integration and the following useful extensions:
 
 * [Anaconda Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-python.anaconda-extension-pack)
 * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 * [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 * [Markdown All in One](https://marketplace.visualstudio.com/itemdetails?itemName=yzhang.markdown-all-in-one)
-* [YAML](https://marketplace.visualstudio.com/itemdetails?itemName=redhat.vscode-yaml)
 * [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+<!-- * [YAML](https://kmarketplace.visualstudio.com/itemdetails?itemName=redhat.vscode-yaml) -->
 
 Document conversion is performed using [Pandoc](https://pandoc.org/MANUAL.html), with [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc) and [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref). The shell commands used are written in [`docsshellscript`](/docsshellscript), which is then executed in Bash using the following command:
 
@@ -56,8 +56,6 @@ My current computing specifications:
 * Processor: Intel(R) Core(TM) i5-7200U CPU @ 250 GHz 2.71 GHz
 * RAM: 8 GB
 * Default shell: Bash
-
-My coding notes can be found in my [coding](https://github.com/nmstreethran/coding) repository.
 
 ## Funding
 

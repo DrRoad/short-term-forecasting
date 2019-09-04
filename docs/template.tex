@@ -93,7 +93,8 @@ $if(beamerarticle)$
 $endif$
 
 $if(fontfamily)$
-  \usepackage{lmodern} %%%
+  \usepackage{lmodern}
+  \usepackage[defaultsans]{lato} %%%
   \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
   %%%
   \usepackage{sectsty} % for setting section headings to sans serif
@@ -260,7 +261,7 @@ $endif$
 %%%
 \fancyhf{} % sets both header and footer to nothing
 \renewcommand{\headrulewidth}{0pt} % remove horizontal line from header 
-\fancyfoot[LE,RO]{\sffamily\thepage} % page number
+\fancyfoot[LE,RO]{\thepage} % page number
 \fancyhead[RE,LO]{\textit{$title$}}
 %%%
 $if(beamer)$

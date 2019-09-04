@@ -113,7 +113,7 @@ The sum of installed net generation capacity (MW) per control area for all exist
 
 ### REMIT UMM
 
-REMIT UMM is used by market operators and companies involved in balancing and settlements, including Nord Pool and ELEXON, for market members and participants to publish information on outages in production, consumption and transmission and other relevant market information according to European transparency regulations [@REMIT16], [@NordP], [@Abouta], [@Aboutb]. The information is publicly available and is classified as follows:
+REMIT Urgent Market Messaging (UMM) is used by market operators and companies involved in balancing and settlements, including Nord Pool and ELEXON, for market members and participants to publish information on outages in production, consumption and transmission and other relevant market information according to European transparency regulations [@REMIT16], [@NordP], [@Abouta], [@Aboutb], [@Publi]. The information is publicly available and is classified as follows:
 
 - Event
   - Unavailability of electrical facilities (production, consumption, transmission)
