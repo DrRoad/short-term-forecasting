@@ -370,15 +370,15 @@ TSWLatexianTemp*
 #*.code-workspace
 .vscode/
 
-## Data folder (link to access this folder in README.md)
-data/*
+## Data folder (link to access this folder on Dropbox is in README.md)
+data/* 
 !data/output
 data/output/*
-# keep license
+### keep license
 !data/output/LICENSE.md
 
 ## Archive folder
 archive/
 
-# Pandoc
+## Pandoc
 tex2pdf*

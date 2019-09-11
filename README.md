@@ -40,7 +40,6 @@ The source code editor I use is [VSCodium](https://vscodium.github.io/) (fully o
 * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 * [Markdown All in One](https://marketplace.visualstudio.com/itemdetails?itemName=yzhang.markdown-all-in-one)
 * [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-<!-- * [YAML](https://kmarketplace.visualstudio.com/itemdetails?itemName=redhat.vscode-yaml) -->
 
 Document conversion is performed using [Pandoc](https://pandoc.org/MANUAL.html), with [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc) and [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref). The shell commands used are written in [`docsshellscript`](/docsshellscript), which is then executed in Bash using the following command:
 
