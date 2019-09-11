@@ -1,1 +1,2 @@
-jupyter-notebooks/* linguist-generated
+# exclude generated jupyter notebooks in linguist's language definition
+jupyter-notebooks/* linguist-documentation
