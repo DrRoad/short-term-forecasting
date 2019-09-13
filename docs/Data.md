@@ -4,6 +4,7 @@
   - [Generation and demand data](#generation-and-demand-data)
     - [ENTSO-E Transparency Platform](#entso-e-transparency-platform)
     - [REMIT UMM](#remit-umm)
+    - [Extracting data using ENTSO-E Transparency Platform's Restful API](#extracting-data-using-entso-e-transparency-platforms-restful-api)
   - [Market data](#market-data)
   - [Meteorological data](#meteorological-data)
   - [Other data](#other-data)
@@ -14,7 +15,6 @@
 # Data
 
 All input and output data can be found in the [data](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) folder on Dropbox. Licenses and terms of the input data used can be found in their corresponding folders within the folder.
-
 
 ## Folder navigation
 
@@ -135,6 +135,14 @@ REMIT Urgent Market Messaging (UMM) is used by market operators and companies in
 - Assets (grid components, e.g., AC link, DC link, transformer, substation)
 - Remarks
 
+
+### Extracting data using ENTSO-E Transparency Platform's Restful API
+
+ENTSO-E Transparency Platform's Restful Application Programming Interface (API) can be used to automate the data extraction process [@ENTSO16], [@Trans]. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk. For example, to access article 6.1.A, the following URL is used:
+
+```
+https://transparency.entsoe.eu/api?securityToken=MYTOKEN&documentType=A65&processType=A16&outBiddingZone_Domain=10YCZ-CEPS-----N&periodStart=201512312300&periodEnd=201612312300
+```
 
 ## Market data
 

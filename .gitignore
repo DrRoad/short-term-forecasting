@@ -382,3 +382,7 @@ archive/
 
 ## Pandoc
 tex2pdf*
+
+## login information to access API
+
+login.py

@@ -1,2 +1,2 @@
-# exclude generated jupyter notebooks in linguist's language definition
+# exclude folder with generated jupyter notebooks in github linguist's language definition
 jupyter-notebooks/* linguist-documentation

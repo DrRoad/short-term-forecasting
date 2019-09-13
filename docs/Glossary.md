@@ -1,7 +1,7 @@
 <!-- 
-- [Glossary](#Glossary)
-  - [Abbreviations](#Abbreviations)
-  - [Units](#Units)
+- [Glossary](#glossary)
+  - [Abbreviations](#abbreviations)
+  - [Units](#units)
  -->
 
 
@@ -10,6 +10,7 @@
 ## Abbreviations
 
 * AI - artificial intelligence
+* API - application programming interface
 * BRP - balance responsible party
 * CAPEX - capital expenditure
 * CO~2~ - carbon dioxide

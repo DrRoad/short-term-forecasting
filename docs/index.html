@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Nithiya Streethran" />
-  <meta name="dcterms.date" content="2019-09-04" />
+  <meta name="dcterms.date" content="2019-09-13" />
   <title>Short-term forecasting of electricity generation, demand and market prices using machine learning</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -22,7 +22,7 @@
 <header>
 <h1 class="title">Short-term forecasting of electricity generation, demand and market prices using machine learning</h1>
 <p class="author">Nithiya Streethran</p>
-<p class="date">4 September 2019</p>
+<p class="date">13 September 2019</p>
 </header>
 <nav id="TOC">
 <ul>
@@ -477,6 +477,7 @@
   - [Generation and demand data](#generation-and-demand-data)
     - [ENTSO-E Transparency Platform](#entso-e-transparency-platform)
     - [REMIT UMM](#remit-umm)
+    - [Extracting data using ENTSO-E Transparency Platform's Restful API](#extracting-data-using-entso-e-transparency-platforms-restful-api)
   - [Market data](#market-data)
   - [Meteorological data](#meteorological-data)
   - [Other data](#other-data)
@@ -595,6 +596,9 @@
 <li>Assets (grid components, e.g., AC link, DC link, transformer, substation)</li>
 <li>Remarks</li>
 </ul>
+<h3 id="sec:extracting-data-using-entso-e-transparency-platforms-restful-api">Extracting data using ENTSO-E Transparency Platform’s Restful API</h3>
+<p>ENTSO-E Transparency Platform’s Restful Application Programming Interface (API) can be used to automate the data extraction process <span class="citation" data-cites="ENTSO16">[<a href="#ref-ENTSO16">41</a>]</span>, <span class="citation" data-cites="Trans">[<a href="#ref-Trans">42</a>]</span>. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk. For example, to access article 6.1.A, the following URL is used:</p>
+<pre><code>https://transparency.entsoe.eu/api?securityToken=MYTOKEN&amp;documentType=A65&amp;processType=A16&amp;outBiddingZone_Domain=10YCZ-CEPS-----N&amp;periodStart=201512312300&amp;periodEnd=201612312300</code></pre>
 <h2 id="sec:market-data">Market data</h2>
 <p><a href="https://www.nordpoolgroup.com/historical-market-data/">Nord Pool</a></p>
 <ul>
@@ -682,14 +686,15 @@
   - [Standardisation and publication of model](../wiki/Methodology#standardisation-and-publication-of-model)
   - [Integrating operational time scales with long-term energy systems models](../wiki/Methodology#integrating-operational-time-scales-with-long-term-energy-systems-models) --></p>
 <!-- 
-- [Glossary](#Glossary)
-  - [Abbreviations](#Abbreviations)
-  - [Units](#Units)
+- [Glossary](#glossary)
+  - [Abbreviations](#abbreviations)
+  - [Units](#units)
  -->
 <h1 id="sec:glossary">Glossary</h1>
 <h2 id="sec:abbreviations">Abbreviations</h2>
 <ul>
 <li>AI - artificial intelligence</li>
+<li>API - application programming interface</li>
 <li>BRP - balance responsible party</li>
 <li>CAPEX - capital expenditure</li>
 <li>CO<sub>2</sub> - carbon dioxide</li>
@@ -848,6 +853,12 @@
 </div>
 <div id="ref-Publi">
 <p>[40] “Publish and receive urgent market messages quickly and easily | Nord Pool.” [Online]. Available: <a href="http://www.nordpoolgroup.com/services/compliance/umm/" class="uri">http://www.nordpoolgroup.com/services/compliance/umm/</a>. [Accessed: 29 August 2019]</p>
+</div>
+<div id="ref-ENTSO16">
+<p>[41] “ENTSO-E Transparency Platform Data Extraction Process Implementation Guide,” ENTSO-E AISBL, Brussels, Belgium, July 2016 [Online]. Available: <a href="https://transparency.entsoe.eu/content/static_content/download?path=/Static%20content/web%20api/RestfulAPI_IG.pdf">https://transparency.entsoe.eu/content/static_content/download?path=/Static%20content/web%20api/RestfulAPI_IG.pdf</a></p>
+</div>
+<div id="ref-Trans">
+<p>[42] “Transparency Platform restful API - user guide.” [Online]. Available: <a href="https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html">https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html</a>. [Accessed: 13 September 2019]</p>
 </div>
 </div>
 <!--  
