@@ -58,7 +58,7 @@ My current computing specifications:
 
 ## Funding
 
-This work is part of my research as Early-Stage Researcher (ESR) 9 of the [ENSYSTRA (ENergy SYStems in TRAnsition)](https://ensystra.eu/) Innovative Training Network. ENSYSTRA is funded by the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.
+This work is part of my research as Early-Stage Researcher (ESR) 9 of the [ENSYSTRA (ENergy SYStems in TRAnsition)](https://ensystra.eu/) Innovative Training Network at the University of Stavanger. ENSYSTRA is funded by the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.
 
 <p align=center><img src="docs/logos/ensystra-ls.png" alt="ENSYSTRA" height="50" title="ENSYSTRA">&nbsp;&nbsp;&nbsp;<img src="docs/logos/eu.jpg" alt="European Union" height="50" title="European Union"></p>
 
@@ -89,4 +89,4 @@ Markdown-formatted Creative Commons licenses: [idleberg/Creative-Commons-Markdow
 
 [pandoc.css](docs/pandoc.css): CSS for HTML documents generated using Pandoc, originally by [killercup](https://gist.github.com/killercup/5917178#file-pandoc-css).
 
-[template.tex](docs/template.tex): LaTeX template for formatting PDFs generated using Pandoc and a LaTeX PDF engine, originally downloaded from Pandoc's [demo page](https://pandoc.org/demo/template.tex).
+[pandoc.tex](docs/pandoc.tex): LaTeX template for formatting PDFs generated using Pandoc and a LaTeX PDF engine, originally downloaded from Pandoc's [demo page](https://pandoc.org/demo/template.tex).

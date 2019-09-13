@@ -36,7 +36,7 @@ pandoc ../wiki/Home.md --output preface.tex
 
 # convert wiki to pdf via pdflatex
 pandoc \
-    --template=template.tex \
+    --template=pandoc.tex \
     --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
     --metadata author="Nithiya Streethran" \
     --metadata subject="ENergy SYStems in TRAnsition (ENSYSTRA)" \

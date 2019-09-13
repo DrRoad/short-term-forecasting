@@ -141,7 +141,7 @@ REMIT Urgent Market Messaging (UMM) is used by market operators and companies in
 ENTSO-E Transparency Platform's Restful Application Programming Interface (API) can be used to automate the data extraction process [@ENTSO16], [@Trans]. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk. For example, to access article 6.1.A, the following URL is used:
 
 ```
-https://transparency.entsoe.eu/api?securityToken=MYTOKEN&documentType=A65&processType=A16&outBiddingZone_Domain=10YCZ-CEPS-----N&periodStart=201512312300&periodEnd=201612312300
+https://transparency.entsoe.eu/api?securityToken=TOKEN&documentType=A65&processType=A16&outBiddingZone_Domain=10YCZ-CEPS-----N&periodStart=201512312300&periodEnd=201612312300
 ```
 
 ## Market data
