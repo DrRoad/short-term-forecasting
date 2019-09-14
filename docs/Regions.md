@@ -22,7 +22,7 @@ The nomenclature of territorial units for statistics (NUTS) classifies territori
 
 As explained in the problem definition section, short-term operational planning and systems with a high penetration of VRE must be described using data of high temporal and spatial resolutions. Therefore, NUTS 3 territories will be used as a standard in this project for aggregating short-term forecasting data.
 
-This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS.ipynb) lists the NUTS territories in the North Sea region at all four NUTS levels. France is the only North Sea country with overseas territories included in the NUTS data (RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES), so these were removed accordingly.
+This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts.ipynb) lists the NUTS territories in the North Sea region at all four NUTS levels. France is the only North Sea country with overseas territories included in the NUTS data (RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES), so these were removed accordingly.
 
 Performing the forecasting task at NUTS 3 level would be straightforward if it does not include the electricity market. Since the electricity market is considered in this project, it is important to look at how the bidding zones overlap with NUTS 3 territories.
 
@@ -80,7 +80,7 @@ SE4 | Malmö | Kronoberg, Kalmar, Blekinge, Halland, Skåne | SE212-213, SE221-2
 
 : Bidding zones and their territories for Norway and Sweden, approximated based on Nord Pool market data [@Seem], [@List], NUTS 3 data and county maps of Norway [@Count19] and Sweden [@Count19a]. {#tbl:nord}
 
-This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS-bidding_zones.ipynb) lists all NUTS 3 territories and their bidding zones in the North Sea region, and explains how the different bidding zones were assigned to the territories.
+This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts_biddingZones.ipynb) lists all NUTS 3 territories and their bidding zones in the North Sea region, and explains how the different bidding zones were assigned to the territories.
 
 
 ## Transmission system operators and interconnections

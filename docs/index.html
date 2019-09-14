@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Nithiya Streethran" />
-  <meta name="dcterms.date" content="2019-09-13" />
+  <meta name="dcterms.date" content="2019-09-14" />
   <title>Short-term forecasting of electricity generation, demand and market prices using machine learning</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -22,7 +22,7 @@
 <header>
 <h1 class="title">Short-term forecasting of electricity generation, demand and market prices using machine learning</h1>
 <p class="author">Nithiya Streethran</p>
-<p class="date">13 September 2019</p>
+<p class="date">14 September 2019</p>
 </header>
 <nav id="TOC">
 <ul>
@@ -251,7 +251,7 @@
 <li>NUTS 3: small regions for specific diagnoses</li>
 </ul>
 <p>As explained in the problem definition section, short-term operational planning and systems with a high penetration of VRE must be described using data of high temporal and spatial resolutions. Therefore, NUTS 3 territories will be used as a standard in this project for aggregating short-term forecasting data.</p>
-<p>This <a href="https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS.ipynb">Jupyter notebook</a> lists the NUTS territories in the North Sea region at all four NUTS levels. France is the only North Sea country with overseas territories included in the NUTS data (RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES), so these were removed accordingly.</p>
+<p>This <a href="https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts.ipynb">Jupyter notebook</a> lists the NUTS territories in the North Sea region at all four NUTS levels. France is the only North Sea country with overseas territories included in the NUTS data (RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES), so these were removed accordingly.</p>
 <p>Performing the forecasting task at NUTS 3 level would be straightforward if it does not include the electricity market. Since the electricity market is considered in this project, it is important to look at how the bidding zones overlap with NUTS 3 territories.</p>
 <h2 id="sec:bidding-zones-in-the-north-sea-region">Bidding zones in the North Sea region</h2>
 <p>A bidding zone is the largest geographical area within which market participants are able to exchange energy without capacity allocation <span class="citation" data-cites="Biddi14">[<a href="#ref-Biddi14">24</a>]</span>. According to <span class="citation" data-cites="Biddi14">[<a href="#ref-Biddi14">24</a>]</span>, there are three types of bidding zones:</p>
@@ -399,7 +399,7 @@
 </tbody>
 </table>
 </div>
-<p>This <a href="https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/NUTS-bidding_zones.ipynb">Jupyter notebook</a> lists all NUTS 3 territories and their bidding zones in the North Sea region, and explains how the different bidding zones were assigned to the territories.</p>
+<p>This <a href="https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts_biddingZones.ipynb">Jupyter notebook</a> lists all NUTS 3 territories and their bidding zones in the North Sea region, and explains how the different bidding zones were assigned to the territories.</p>
 <h2 id="sec:transmission-system-operators-and-interconnections">Transmission system operators and interconnections</h2>
 <p>The North Sea region consists of multiple TSOs and cross-border interconnections. These are listed, along with the bidding zones bidding zones, in tbl. 4.</p>
 <div id="tbl:tso">
