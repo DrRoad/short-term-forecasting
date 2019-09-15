@@ -30,7 +30,7 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 
 Documentation is written in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](docs/) folder contains the documentation and associated files in Markdown, [HTML](docs/index.html) and [PDF](docs/docs.pdf) formats. 
 
-The file [`docsshellscript`](docsshellscript) contains shell commands to perform the document conversions. It is executed in Bash using the following command:
+The file [`docsshellscript`](docsshellscript) contains shell commands to perform the document conversions, and also copies the files from the wiki (which is a separate repository) into this repository. It is executed in Bash using the following command:
 
 ```sh
 bash docsshellscript
@@ -42,7 +42,15 @@ The following programmes and packages are required to successfully execute the a
 - [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc)
 - [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref)
 - [Git Bash](https://git-scm.com/downloads) (if using Windows)
-- LaTeX (I use the [TeX Live](http://tug.org/texlive/) distribution)
+- LaTeX (or a TeX distribution, such as [TeX Live](http://tug.org/texlive/))
+
+The GitHub wiki has been [included in this repository as a submodule](https://brendancleary.com/2013/03/08/including-a-github-wiki-in-a-repository-as-a-submodule/) using the following command:
+
+```sh
+git submodule add https://github.com/ENSYSTRA/short-term-forecasting.wiki.git wiki
+```
+
+The submodule allows the wiki to be cloned locally into the same directory as the main repository, which allows its [inclusion in releases](https://brendancleary.com/2013/03/08/including-a-github-wiki-in-a-repository-as-a-submodule/). Once changes to the wiki within the submodule are made (e.g., new markdown files, images), these changes are first committed and pushed to the wiki's branch, before committing and pushing to the main repository's branch.
 
 The list of works cited can be found in [Zotero](https://www.zotero.org/groups/2327899/nmstreethrans_library/items/collectionKey/FLUWHNV2), and in this repository as a [BibTeX bibliography database (.bib)](docs/References.bib) file. 
 
@@ -91,7 +99,7 @@ Where sources have not been specified:
 * Image license: [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](images/LICENSE.md)
 * Output data license: [ODC Open Database License (ODbL)](data/output/LICENSE.md)
 
-Licenses and terms of the input data used can be found in their corresponding folders within the [data](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) folder on Dropbox. More information is provided in the [wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki).
+Licenses and terms of the input data used can be found in their corresponding folders within the [data](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) folder on Dropbox. For more information, please see the [documentation](https://github.com/ENSYSTRA/short-term-forecasting/wiki/Data#terms-of-use).
 
 ## Credits
 
