@@ -247,7 +247,7 @@ $endif$
     pdfcontactemail={$contactemail$},
   $endif$
 breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
+% \urlstyle{same}  % don't use monospace font for urls
 $if(verbatim-in-note)$
   \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
@@ -267,12 +267,15 @@ $endif$
 $if(beamer)$
   \newif\ifbibliography
 $endif$
-$if(listings)$
-  \usepackage{listings}
-  \newcommand{\passthrough}[1]{#1}
-  \lstset{defaultdialect=[5.3]Lua}
-  \lstset{defaultdialect=[x86masm]Assembler}
-$endif$
+\usepackage{listings} 
+% removed listings from 'if' macro as it causes '! LaTeX Error: Environment lstlisting undefined.' when compiling PDF
+\lstset{
+  breaklines=true, % add automatic line breaks
+  basicstyle=\small\ttfamily,
+  defaultdialect=[5.3]Lua,
+  defaultdialect=[x86masm]Assembler
+  }
+\newcommand{\passthrough}[1]{#1}
 \usepackage[nottoc,notbib]{tocbibind} % adding lists to the toc
 $if(lhs)$
   \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}

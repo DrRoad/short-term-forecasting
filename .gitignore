@@ -367,7 +367,7 @@ TSWLatexianTemp*
 # Other ------------------------------------------
 
 ## Visual Studio Code
-#*.code-workspace
+*.code-workspace
 .vscode/
 
 ## Data folder (link to access this folder on Dropbox is in README.md)

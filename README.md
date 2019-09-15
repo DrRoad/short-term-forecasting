@@ -13,7 +13,7 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 
 - [Folders](#folders)
 - [Documentation](#documentation)
-- [Resources](#resources)
+- [My specifications](#my-specifications)
 - [Funding](#funding)
 - [Licenses and terms of use](#licenses-and-terms-of-use)
 - [Credits](#credits)
@@ -30,7 +30,29 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 
 Documentation is written in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](docs/) folder contains the documentation and associated files in Markdown, [HTML](docs/index.html) and [PDF](docs/docs.pdf) formats. 
 
-## Resources 
+The file [`docsshellscript`](docsshellscript) contains shell commands to perform the document conversions. It is executed in Bash using the following command:
+
+```sh
+bash docsshellscript
+```
+
+The following programmes and packages are required to successfully execute the above script:
+
+- [Pandoc](https://pandoc.org/MANUAL.html)
+- [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc)
+- [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref)
+- [Git Bash](https://git-scm.com/downloads) (if using Windows)
+- LaTeX (I use the [TeX Live](http://tug.org/texlive/) distribution)
+
+The list of works cited can be found in [Zotero](https://www.zotero.org/groups/2327899/nmstreethrans_library/items/collectionKey/FLUWHNV2), and in this repository as a [BibTeX bibliography database (.bib)](docs/References.bib) file. 
+
+The in-text citation keys used are automatically generated using [Zotero](https://www.zotero.org/) with the [Better BibTeX](https://retorque.re/zotero-better-bibtex/) extension using the following format (changed via `Edit > Preferences > Better BibTeX > Citation keys` in the Zotero desktop application):
+
+```
+[auth5_1][>0][shortyear] | [title:substring=1,5][shortyear]
+```
+
+## My specifications
 
 The source code editor I use is [VSCodium](https://vscodium.github.io/) (fully open-source alternative to [Visual Studio Code](https://code.visualstudio.com/)), with Git integration and the following useful extensions:
 
@@ -40,12 +62,6 @@ The source code editor I use is [VSCodium](https://vscodium.github.io/) (fully o
 * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 * [Markdown All in One](https://marketplace.visualstudio.com/itemdetails?itemName=yzhang.markdown-all-in-one)
 * [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-
-Document conversion is performed using [Pandoc](https://pandoc.org/MANUAL.html), with [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc) and [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref). The shell commands used are written in [`docsshellscript`](docsshellscript), which is then executed in Bash using the following command:
-
-```sh
-bash docsshellscript
-```
 
 My current computing specifications:
 

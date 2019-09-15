@@ -64,6 +64,7 @@ pandoc \
     --csl IEEEurl.csl \
     --metadata link-citations=true \
     --reference-location=block \
+    --listings \
     --pdf-engine=pdflatex \
     ../wiki/Background.md \
     ../wiki/Problem-definition.md \
