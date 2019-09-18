@@ -39,6 +39,18 @@ The bidding zones in the North Sea electricity markets and surrounding regions a
 
 ![Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) [@Nordw15].](images/market-map.png "Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) [@Nordw15]."){#fig:map}
 
+Prior to 01/10/2018, Germany was part of the DE-AT-LU bidding zone, together with Austria and Luxembourg, which had split into the DE-LU and AT bidding zones, as reported by ENTSO-E below [@DEATL] (EIC stands for Energy Identification Code [@Energa]).
+
+> [...] DE-AT-LU bidding zone split on the 23rd of August. BZN|DE-AT-LU will be separated into 2 new bidding zones BZN|DE-LU and BZN|AT.
+>
+>New bidding zones will be active from the 1st of October, however, first data submissions, like month ahead forecasts, are expected from the 1st of September. 
+>
+>Validity end date for BZN|DE-AT-LU is the end of September 2018. 
+>
+>EIC codes for new bidding zones: \
+BZN|DE-LU - 10Y1001A1001A82H \
+BZN|AT - 10YAT-APG------L (same as control area or country)
+
 The power exchanges (market operators) that operate in the North Sea region are APX (Netherlands, United Kingdom), Belpex (Belgium), EEX (Germany, Denmark, France, Norway, Sweden), EPEX (Germany, France), N2EX (United Kingdom) and Nord Pool (Denmark, Norway, Sweden) [@Power], [@Overv16], [@Seem], [@EPEX]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [@Overv16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [@Overv16].
 
 Both Nord Pool and EPEX are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [@PCRE17].

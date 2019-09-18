@@ -18,6 +18,7 @@ COMPETES - COmprehensive Market Power in Electricity Transmission and Energy Sim
 DC - direct current \
 DNO - distribution network operator \
 DSM - demand-side management \
+EIC - Energy Identification Code \
 EMMA - The European Electricity Market Model \
 ENSYSTRA - ENergy SYStems in TRAnsition \
 ENTSO-E - European Network of Transmission Systems Operators for Electricity  \

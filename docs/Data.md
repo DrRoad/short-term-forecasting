@@ -119,13 +119,19 @@ ENTSO-E Transparency Platform's Restful Application Programming Interface (API) 
 https://transparency.entsoe.eu/api?securityToken=TOKEN&documentType=A44&in_Domain=10Y1001A1001A63L&out_Domain=10Y1001A1001A63L&periodStart=201809242300&periodEnd=201809302300
 ```
 
-The [ENTSO-E API Python client](https://github.com/EnergieID/entsoe-py) is used to easily extract the required data and return them as Pandas dataframes or series.
+The [ENTSO-E API Python client](https://github.com/EnergieID/entsoe-py) is used to easily extract the required data and return them as Pandas dataframes or series [@Energ19].
 
-The following bidding zones in the North Sea region can be used when querying using the Python client:
+The following bidding zones, mapped to their corresponding EIC, in the North Sea region are used when querying using the Python client:
 
 ```
-'DE': '10Y1001A1001A63L',  # DE-AT-LU
-'LU': '10Y1001A1001A63L',  # DE-AT-LU
+'BE': '10YBE----------2',
+'DE-LU': '10Y1001A1001A82H',
+'DK-1': '10YDK-1--------W',
+'DK-2': '10YDK-2--------M',
+'FR': '10YFR-RTE------C',
+'GB': '10YGB----------A',
+'IE-SEM': '10Y1001A1001A59C',
+'NL': '10YNL----------L',
 'NO-1': '10YNO-1--------2',
 'NO-2': '10YNO-2--------T',
 'NO-3': '10YNO-3--------J',
@@ -134,27 +140,10 @@ The following bidding zones in the North Sea region can be used when querying us
 'SE-1': '10Y1001A1001A44P',
 'SE-2': '10Y1001A1001A45N',
 'SE-3': '10Y1001A1001A46L',
-'SE-4': '10Y1001A1001A47J',
-'DK-1': '10YDK-1--------W',
-'DK-2': '10YDK-2--------M'
+'SE-4': '10Y1001A1001A47J'
 ```
 
-The following domains may also be used in place of the bidding zones:
-
-```
-'BE': '10YBE----------2',
-'DE': '10Y1001A1001A83F',
-'DK': '10Y1001A1001A65H',
-'FR': '10YFR-RTE------C',
-'GB': '10YGB----------A',
-'GB-NIR': '10Y1001A1001A016',
-'NL': '10YNL----------L',
-'NO': '10YNO-0--------C',
-'SE': '10YSE-1--------K',
-'DE-AT-LU': '10Y1001A1001A63L'
-```
-
-If bidding zones are used, `lookup_bzones=True` must be used in the query.
+If bidding zones are used, `lookup_bzones=True` must be used in the query. Note that `DE-LU` only works for timestamps starting 01/10/2018. Use `DE-AT-LU` for timestamps prior to this date. [entsoe_api.py](https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py) is the script used to extract this data.
 
 #### Queries that return a Pandas series
 
