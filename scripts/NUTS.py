@@ -14,7 +14,7 @@ pd.set_option('display.max_colwidth', -1)
 
 #%%
 # read csv files with NUTS data
-nuts = pd.read_csv('data/NUTS/NUTS_AT_2016.csv')
+nuts = pd.read_csv('https://ec.europa.eu/eurostat/cache/GISCO/distribution/v2/nuts/csv/NUTS_AT_2016.csv')
 nuts.dtypes # return columns and their datatypes
 
 #%% [markdown]

@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Nithiya Streethran" />
-  <meta name="dcterms.date" content="2019-09-18" />
+  <meta name="dcterms.date" content="2019-09-19" />
   <title>Short-term forecasting of electricity generation, demand and market prices using machine learning</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -85,7 +85,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header>
 <h1 class="title">Short-term forecasting of electricity generation, demand and market prices using machine learning</h1>
 <p class="author">Nithiya Streethran</p>
-<p class="date">18 September 2019</p>
+<p class="date">19 September 2019</p>
 </header>
 <nav id="TOC">
 <ul>
@@ -327,17 +327,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <figure>
 <img src="images/market-map.png" title="Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) [@Nordw15]." alt="Figure 5: Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) [25]." id="fig:map" /><figcaption>Figure 5: Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) <span class="citation" data-cites="Nordw15">[<a href="#ref-Nordw15">25</a>]</span>.</figcaption>
 </figure>
-<p>Prior to 01/10/2018, Germany was part of the DE-AT-LU bidding zone, together with Austria and Luxembourg, which had split into the DE-LU and AT bidding zones, as reported by ENTSO-E below <span class="citation" data-cites="DEATL">[<a href="#ref-DEATL">26</a>]</span> (EIC stands for Energy Identification Code <span class="citation" data-cites="Energa">[<a href="#ref-Energa">27</a>]</span>).</p>
-<blockquote>
-<p>[…] DE-AT-LU bidding zone split on the 23rd of August. BZN|DE-AT-LU will be separated into 2 new bidding zones BZN|DE-LU and BZN|AT.</p>
-<p>New bidding zones will be active from the 1st of October, however, first data submissions, like month ahead forecasts, are expected from the 1st of September.</p>
-<p>Validity end date for BZN|DE-AT-LU is the end of September 2018.</p>
-<p>EIC codes for new bidding zones:<br />
-BZN|DE-LU - 10Y1001A1001A82H<br />
-BZN|AT - 10YAT-APG——L (same as control area or country)</p>
-</blockquote>
-<p>The power exchanges (market operators) that operate in the North Sea region are APX (Netherlands, United Kingdom), Belpex (Belgium), EEX (Germany, Denmark, France, Norway, Sweden), EPEX (Germany, France), N2EX (United Kingdom) and Nord Pool (Denmark, Norway, Sweden) <span class="citation" data-cites="Power">[<a href="#ref-Power">28</a>]</span>, <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>, <span class="citation" data-cites="Seem">[<a href="#ref-Seem">29</a>]</span>, <span class="citation" data-cites="EPEX">[<a href="#ref-EPEX">30</a>]</span>. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>.</p>
-<p>Both Nord Pool and EPEX are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities <span class="citation" data-cites="PCRE17">[<a href="#ref-PCRE17">31</a>]</span>.</p>
+<p>The power exchanges (market operators) that operate in the North Sea region are APX (Netherlands, United Kingdom), Belpex (Belgium), EEX (Germany, Denmark, France, Norway, Sweden), EPEX (Germany, France), N2EX (United Kingdom) and Nord Pool (Denmark, Norway, Sweden) <span class="citation" data-cites="Power">[<a href="#ref-Power">26</a>]</span>, <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>, <span class="citation" data-cites="Seem">[<a href="#ref-Seem">27</a>]</span>, <span class="citation" data-cites="EPEX">[<a href="#ref-EPEX">28</a>]</span>. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>.</p>
+<p>Both Nord Pool and EPEX are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities <span class="citation" data-cites="PCRE17">[<a href="#ref-PCRE17">29</a>]</span>.</p>
 <p>Tbl. 2 below lists all bidding zones in the North Sea region by country and market operator.</p>
 <div id="tbl:zones">
 <table>
@@ -393,12 +384,21 @@ BZN|AT - 10YAT-APG——L (same as control area or country)</p>
 </tbody>
 </table>
 </div>
+<p>Prior to 01/10/2018, Germany was part of the DE-AT-LU bidding zone, together with Austria and Luxembourg, which had split into the DE-LU and AT bidding zones, as reported by ENTSO-E below <span class="citation" data-cites="DEATL">[<a href="#ref-DEATL">30</a>]</span> (EIC stands for Energy Identification Code <span class="citation" data-cites="Energa">[<a href="#ref-Energa">31</a>]</span>).</p>
+<blockquote>
+<p><em>[…] DE-AT-LU bidding zone split on the 23rd of August. BZN|DE-AT-LU will be separated into 2 new bidding zones BZN|DE-LU and BZN|AT.</em></p>
+<p><em>New bidding zones will be active from the 1st of October, however, first data submissions, like month ahead forecasts, are expected from the 1st of September.</em></p>
+<p><em>Validity end date for BZN|DE-AT-LU is the end of September 2018.</em></p>
+<p><em>EIC codes for new bidding zones:</em><br />
+<em>BZN|DE-LU - 10Y1001A1001A82H</em><br />
+<em>BZN|AT - 10YAT-APG——L (same as control area or country)</em></p>
+</blockquote>
 <p>Mapping bidding zones to NUTS 3 territories is straightforward for Belgium, Germany, France and Netherlands (bidding zone type 1 or 2) – all NUTS 3 territories in these countries have the same bidding zone.</p>
 <p>Denmark and United Kingdom are both conveniently separated into two zones that are easily distinguishable. For Denmark, these are Western Denmark (NUTS IDs containing DK03-DK05) and Southern Denmark (NUTS IDs containing DK01-DK02). For United Kingdom, these are Great Britain (NUTS IDs containing UKC-UKM) and Northern Ireland (NUTS IDs containing UKN).</p>
-<p>There is no clear indication of the bidding zone boundaries for Norway and Sweden, so some assumptions were made. Both countries have multiple smaller bidding zones (type 3) with flexible borders <span class="citation" data-cites="Europ10">[<a href="#ref-Europ10">32</a>]</span>, <span class="citation" data-cites="List">[<a href="#ref-List">33</a>]</span>. This was done to optimise allocation of resources and reduce the overall price of electricity <span class="citation" data-cites="Europ10">[<a href="#ref-Europ10">32</a>]</span>, <span class="citation" data-cites="List">[<a href="#ref-List">33</a>]</span>. Norway has five zones and Sweden has four zones. By cross-referencing Nord Pool market data <span class="citation" data-cites="Seem">[<a href="#ref-Seem">29</a>]</span>, NUTS 3 data and county maps of Norway <span class="citation" data-cites="Count19">[<a href="#ref-Count19">34</a>]</span> and Sweden <span class="citation" data-cites="Count19a">[<a href="#ref-Count19a">35</a>]</span>, the territories are split into the bidding zones as shown in tbl. 3. Nord Pool associates each bidding zone with a major reference city in that zone. However, there were six cities for Norway instead of the expected five. Historical Nord Pool market data for Norway suggests that two cities, Trondheim and Molde, have had the same system price since 2003. The ELSPOT area change log <span class="citation" data-cites="List">[<a href="#ref-List">33</a>]</span> also confirms that Trondheim and Molde are city references for the NO3 bidding zone . Therefore, these two cities are grouped into the same bidding zone, which also satisfies what the maps suggest.</p>
+<p>There is no clear indication of the bidding zone boundaries for Norway and Sweden, so some assumptions were made. Both countries have multiple smaller bidding zones (type 3) with flexible borders <span class="citation" data-cites="Europ10">[<a href="#ref-Europ10">32</a>]</span>, <span class="citation" data-cites="List">[<a href="#ref-List">33</a>]</span>. This was done to optimise allocation of resources and reduce the overall price of electricity <span class="citation" data-cites="Europ10">[<a href="#ref-Europ10">32</a>]</span>, <span class="citation" data-cites="List">[<a href="#ref-List">33</a>]</span>. Norway has five zones and Sweden has four zones. By cross-referencing Nord Pool market data <span class="citation" data-cites="Seem">[<a href="#ref-Seem">27</a>]</span>, NUTS 3 data and county maps of Norway <span class="citation" data-cites="Count19">[<a href="#ref-Count19">34</a>]</span> and Sweden <span class="citation" data-cites="Count19a">[<a href="#ref-Count19a">35</a>]</span>, the territories are split into the bidding zones as shown in tbl. 3. Nord Pool associates each bidding zone with a major reference city in that zone. However, there were six cities for Norway instead of the expected five. Historical Nord Pool market data for Norway suggests that two cities, Trondheim and Molde, have had the same system price since 2003. The ELSPOT area change log <span class="citation" data-cites="List">[<a href="#ref-List">33</a>]</span> also confirms that Trondheim and Molde are city references for the NO3 bidding zone . Therefore, these two cities are grouped into the same bidding zone, which also satisfies what the maps suggest.</p>
 <div id="tbl:nord">
 <table>
-<caption>Table 3: Bidding zones and their territories for Norway and Sweden, approximated based on Nord Pool market data <span class="citation" data-cites="Seem">[<a href="#ref-Seem">29</a>]</span>, <span class="citation" data-cites="List">[<a href="#ref-List">33</a>]</span>, NUTS 3 data and county maps of Norway <span class="citation" data-cites="Count19">[<a href="#ref-Count19">34</a>]</span> and Sweden <span class="citation" data-cites="Count19a">[<a href="#ref-Count19a">35</a>]</span>.</caption>
+<caption>Table 3: Bidding zones and their territories for Norway and Sweden, approximated based on Nord Pool market data <span class="citation" data-cites="Seem">[<a href="#ref-Seem">27</a>]</span>, <span class="citation" data-cites="List">[<a href="#ref-List">33</a>]</span>, NUTS 3 data and county maps of Norway <span class="citation" data-cites="Count19">[<a href="#ref-Count19">34</a>]</span> and Sweden <span class="citation" data-cites="Count19a">[<a href="#ref-Count19a">35</a>]</span>.</caption>
 <colgroup>
 <col style="width: 15%" />
 <col style="width: 15%" />
@@ -647,49 +647,33 @@ BZN|AT - 10YAT-APG——L (same as control area or country)</p>
 <p>ENTSO-E Transparency Platform’s Restful Application Programming Interface (API) can be used to automate the data extraction process <span class="citation" data-cites="ENTSO16">[<a href="#ref-ENTSO16">38</a>]</span>, <span class="citation" data-cites="Trans">[<a href="#ref-Trans">39</a>]</span>. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk. For example, to access article 6.1.A, the following URL is used:</p>
 <pre><code>https://transparency.entsoe.eu/api?securityToken=TOKEN&amp;documentType=A44&amp;in_Domain=10Y1001A1001A63L&amp;out_Domain=10Y1001A1001A63L&amp;periodStart=201809242300&amp;periodEnd=201809302300</code></pre>
 <p>The <a href="https://github.com/EnergieID/entsoe-py">ENTSO-E API Python client</a> is used to easily extract the required data and return them as Pandas dataframes or series <span class="citation" data-cites="Energ19">[<a href="#ref-Energ19">40</a>]</span>.</p>
-<p>The following bidding zones, mapped to their corresponding EIC, in the North Sea region are used when querying using the Python client:</p>
+<p>The following country codes and bidding zones, mapped to their corresponding EIC, in the North Sea region are used when querying using the Python client:</p>
 <pre><code>&#39;BE&#39;: &#39;10YBE----------2&#39;,
 &#39;DE-LU&#39;: &#39;10Y1001A1001A82H&#39;,
+&#39;DK&#39;: &#39;10Y1001A1001A65H&#39;,
 &#39;DK-1&#39;: &#39;10YDK-1--------W&#39;,
 &#39;DK-2&#39;: &#39;10YDK-2--------M&#39;,
 &#39;FR&#39;: &#39;10YFR-RTE------C&#39;,
 &#39;GB&#39;: &#39;10YGB----------A&#39;,
+&#39;GB-NIR&#39;: &#39;10Y1001A1001A016&#39;,
 &#39;IE-SEM&#39;: &#39;10Y1001A1001A59C&#39;,
 &#39;NL&#39;: &#39;10YNL----------L&#39;,
+&#39;NO&#39;: &#39;10YNO-0--------C&#39;,
 &#39;NO-1&#39;: &#39;10YNO-1--------2&#39;,
 &#39;NO-2&#39;: &#39;10YNO-2--------T&#39;,
 &#39;NO-3&#39;: &#39;10YNO-3--------J&#39;,
 &#39;NO-4&#39;: &#39;10YNO-4--------9&#39;,
 &#39;NO-5&#39;: &#39;10Y1001A1001A48H&#39;,
+&#39;SE&#39;: &#39;10YSE-1--------K&#39;,
 &#39;SE-1&#39;: &#39;10Y1001A1001A44P&#39;,
 &#39;SE-2&#39;: &#39;10Y1001A1001A45N&#39;,
 &#39;SE-3&#39;: &#39;10Y1001A1001A46L&#39;,
 &#39;SE-4&#39;: &#39;10Y1001A1001A47J&#39;</code></pre>
-<p>If bidding zones are used, <code>lookup_bzones=True</code> must be used in the query. Note that <code>DE-LU</code> only works for timestamps starting 01/10/2018. Use <code>DE-AT-LU</code> for timestamps prior to this date. <a href="https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py">entsoe_api.py</a> is the script used to extract this data.</p>
-<h4 id="sec:queries-that-return-a-pandas-series">Queries that return a Pandas series</h4>
-<p>Day-ahead prices</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">client.query_day_ahead_prices(country_code, start<span class="op">=</span>start,end<span class="op">=</span>end)</a></code></pre></div>
-<p>Load</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">client.query_load(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end)</a></code></pre></div>
-<p>Load forecasts</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1">client.query_load_forecast(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end)</a></code></pre></div>
-<p>Generation forecasts</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" data-line-number="1">client.query_generation_forecast(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end)</a></code></pre></div>
-<h4 id="sec:examples-that-return-a-pandas-dataframe">Examples that return a Pandas dataframe</h4>
-<p>Wind and solar forecasts</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" data-line-number="1">client.query_wind_and_solar_forecast(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end, psr_type<span class="op">=</span><span class="va">None</span>)</a></code></pre></div>
-<p>Generation</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" data-line-number="1">client.query_generation(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end, psr_type<span class="op">=</span><span class="va">None</span>)</a></code></pre></div>
-<p>Installed generation capacity</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" data-line-number="1">client.query_installed_generation_capacity(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end, psr_type<span class="op">=</span><span class="va">None</span>)</a></code></pre></div>
-<p>Cross-border flows</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" data-line-number="1">client.query_crossborder_flows(<span class="st">&#39;DE&#39;</span>, <span class="st">&#39;DK&#39;</span>, start<span class="op">=</span>start, end<span class="op">=</span>end)</a></code></pre></div>
-<p>Imbalance prices</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" data-line-number="1">client.query_imbalance_prices(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end, psr_type<span class="op">=</span><span class="va">None</span>)</a></code></pre></div>
-<p>Unavailability of generation units</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" data-line-number="1">client.query_unavailability_of_generation_units(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end, docstatus<span class="op">=</span><span class="va">None</span>)</a></code></pre></div>
-<p>Withdrawn unavailability of generation units</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" data-line-number="1">client.query_withdrawn_unavailability_of_generation_units(<span class="st">&#39;DE&#39;</span>, start<span class="op">=</span>start, end<span class="op">=</span>end)</a></code></pre></div>
+<p>If bidding zones are used, <code>lookup_bzones=True</code> must be used in the query. Note that <code>DE-LU</code> only works for timestamps starting 01/10/2018. Use <code>DE-AT-LU</code> for timestamps prior to this date. <a href="https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py"><code>entsoe_api.py</code></a> is the script used to extract this data.</p>
+<p>Load (returns a series)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">client.query_load(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end)</a></code></pre></div>
+<p>Generation (returns a dataframe)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">client.query_generation(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end, psr_type<span class="op">=</span><span class="va">None</span>)</a></code></pre></div>
 <h2 id="sec:market-data">Market data</h2>
 <p><a href="https://www.nordpoolgroup.com/historical-market-data/">Nord Pool</a></p>
 <p>Historical market data from Nord Pool is stored as .xls files can be accessed using the following URL:</p>
@@ -924,23 +908,23 @@ WP - work package</p>
 <div id="ref-Nordw15">
 <p>[25] of derivative work: Nordwestern, <em>English: A blank Map of Europe in SVG format without disputed areas and conflict regions.</em> 2015 [Online]. Available: <a href="https://commons.wikimedia.org/wiki/File:Blank_map_of_Europe_(without_disputed_regions).svg" class="uri">https://commons.wikimedia.org/wiki/File:Blank_map_of_Europe_(without_disputed_regions).svg</a>. [Accessed: 8 July 2019]</p>
 </div>
-<div id="ref-DEATL">
-<p>[26] “DE-AT-LU Bidding zone split - News - ENTSO-E Transparency Platform.” [Online]. Available: <a href="https://transparency.entsoe.eu/news/widget?id=5b7c1e9b5092e75a10bab903" class="uri">https://transparency.entsoe.eu/news/widget?id=5b7c1e9b5092e75a10bab903</a>. [Accessed: 18 September 2019]</p>
-</div>
-<div id="ref-Energa">
-<p>[27] “Energy Identification Codes (EICs).” [Online]. Available: <a href="https://www.entsoe.eu/data/energy-identification-codes-eic/" class="uri">https://www.entsoe.eu/data/energy-identification-codes-eic/</a>. [Accessed: 18 September 2019]</p>
-</div>
 <div id="ref-Power">
-<p>[28] “Power | Statkraft.” [Online]. Available: <a href="https://www.statkraft.com/market-operations/standard-energy-products/power-electricity/" class="uri">https://www.statkraft.com/market-operations/standard-energy-products/power-electricity/</a>. [Accessed: 26 July 2019]</p>
+<p>[26] “Power | Statkraft.” [Online]. Available: <a href="https://www.statkraft.com/market-operations/standard-energy-products/power-electricity/" class="uri">https://www.statkraft.com/market-operations/standard-energy-products/power-electricity/</a>. [Accessed: 26 July 2019]</p>
 </div>
 <div id="ref-Seem">
-<p>[29] “See market data for all areas | Nord Pool.” [Online]. Available: <a href="http://www.nordpoolspot.com/Market-data1/" class="uri">http://www.nordpoolspot.com/Market-data1/</a>. [Accessed: 23 November 2018]</p>
+<p>[27] “See market data for all areas | Nord Pool.” [Online]. Available: <a href="http://www.nordpoolspot.com/Market-data1/" class="uri">http://www.nordpoolspot.com/Market-data1/</a>. [Accessed: 23 November 2018]</p>
 </div>
 <div id="ref-EPEX">
-<p>[30] “EPEX SPOT SE: About EPEX SPOT.” [Online]. Available: <a href="http://www.epexspot.com/en/company-info/about_epex_spot" class="uri">http://www.epexspot.com/en/company-info/about_epex_spot</a>. [Accessed: 23 November 2018]</p>
+<p>[28] “EPEX SPOT SE: About EPEX SPOT.” [Online]. Available: <a href="http://www.epexspot.com/en/company-info/about_epex_spot" class="uri">http://www.epexspot.com/en/company-info/about_epex_spot</a>. [Accessed: 23 November 2018]</p>
 </div>
 <div id="ref-PCRE17">
-<p>[31] “PCR &amp; EUPHEMIA algorithm, the European Power Exchanges project to couple electricity market!” <em>N-SIDE</em>, 9 September 2017. [Online]. Available: <a href="https://www.n-side.com/pcr-euphemia-algorithm-european-power-exchanges-price-coupling-electricity-market/" class="uri">https://www.n-side.com/pcr-euphemia-algorithm-european-power-exchanges-price-coupling-electricity-market/</a>. [Accessed: 29 January 2019]</p>
+<p>[29] “PCR &amp; EUPHEMIA algorithm, the European Power Exchanges project to couple electricity market!” <em>N-SIDE</em>, 9 September 2017. [Online]. Available: <a href="https://www.n-side.com/pcr-euphemia-algorithm-european-power-exchanges-price-coupling-electricity-market/" class="uri">https://www.n-side.com/pcr-euphemia-algorithm-european-power-exchanges-price-coupling-electricity-market/</a>. [Accessed: 29 January 2019]</p>
+</div>
+<div id="ref-DEATL">
+<p>[30] “DE-AT-LU Bidding zone split - News - ENTSO-E Transparency Platform.” [Online]. Available: <a href="https://transparency.entsoe.eu/news/widget?id=5b7c1e9b5092e75a10bab903" class="uri">https://transparency.entsoe.eu/news/widget?id=5b7c1e9b5092e75a10bab903</a>. [Accessed: 18 September 2019]</p>
+</div>
+<div id="ref-Energa">
+<p>[31] “Energy Identification Codes (EICs).” [Online]. Available: <a href="https://www.entsoe.eu/data/energy-identification-codes-eic/" class="uri">https://www.entsoe.eu/data/energy-identification-codes-eic/</a>. [Accessed: 18 September 2019]</p>
 </div>
 <div id="ref-Europ10">
 <p>[32] “European Commission - PRESS RELEASES - Press release - Antitrust: Commission increases electricity trading capacity on the Swedish borders,” 14 April 2010. [Online]. Available: <a href="http://europa.eu/rapid/press-release_IP-10-425_en.htm?locale=en" class="uri">http://europa.eu/rapid/press-release_IP-10-425_en.htm?locale=en</a>. [Accessed: 25 June 2019]</p>
