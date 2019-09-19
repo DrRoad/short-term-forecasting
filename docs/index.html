@@ -647,33 +647,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ENTSO-E Transparency Platform’s Restful Application Programming Interface (API) can be used to automate the data extraction process <span class="citation" data-cites="ENTSO16">[<a href="#ref-ENTSO16">38</a>]</span>, <span class="citation" data-cites="Trans">[<a href="#ref-Trans">39</a>]</span>. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk. For example, to access article 6.1.A, the following URL is used:</p>
 <pre><code>https://transparency.entsoe.eu/api?securityToken=TOKEN&amp;documentType=A44&amp;in_Domain=10Y1001A1001A63L&amp;out_Domain=10Y1001A1001A63L&amp;periodStart=201809242300&amp;periodEnd=201809302300</code></pre>
 <p>The <a href="https://github.com/EnergieID/entsoe-py">ENTSO-E API Python client</a> is used to easily extract the required data and return them as Pandas dataframes or series <span class="citation" data-cites="Energ19">[<a href="#ref-Energ19">40</a>]</span>.</p>
-<p>The following country codes and bidding zones, mapped to their corresponding EIC, in the North Sea region are used when querying using the Python client:</p>
-<pre><code>&#39;BE&#39;: &#39;10YBE----------2&#39;,
-&#39;DE-LU&#39;: &#39;10Y1001A1001A82H&#39;,
-&#39;DK&#39;: &#39;10Y1001A1001A65H&#39;,
-&#39;DK-1&#39;: &#39;10YDK-1--------W&#39;,
-&#39;DK-2&#39;: &#39;10YDK-2--------M&#39;,
-&#39;FR&#39;: &#39;10YFR-RTE------C&#39;,
-&#39;GB&#39;: &#39;10YGB----------A&#39;,
-&#39;GB-NIR&#39;: &#39;10Y1001A1001A016&#39;,
-&#39;IE-SEM&#39;: &#39;10Y1001A1001A59C&#39;,
-&#39;NL&#39;: &#39;10YNL----------L&#39;,
-&#39;NO&#39;: &#39;10YNO-0--------C&#39;,
-&#39;NO-1&#39;: &#39;10YNO-1--------2&#39;,
-&#39;NO-2&#39;: &#39;10YNO-2--------T&#39;,
-&#39;NO-3&#39;: &#39;10YNO-3--------J&#39;,
-&#39;NO-4&#39;: &#39;10YNO-4--------9&#39;,
-&#39;NO-5&#39;: &#39;10Y1001A1001A48H&#39;,
-&#39;SE&#39;: &#39;10YSE-1--------K&#39;,
-&#39;SE-1&#39;: &#39;10Y1001A1001A44P&#39;,
-&#39;SE-2&#39;: &#39;10Y1001A1001A45N&#39;,
-&#39;SE-3&#39;: &#39;10Y1001A1001A46L&#39;,
-&#39;SE-4&#39;: &#39;10Y1001A1001A47J&#39;</code></pre>
-<p>If bidding zones are used, <code>lookup_bzones=True</code> must be used in the query. Note that <code>DE-LU</code> only works for timestamps starting 01/10/2018. Use <code>DE-AT-LU</code> for timestamps prior to this date. <a href="https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py"><code>entsoe_api.py</code></a> is the script used to extract this data.</p>
+<p>The following bidding zones, mapped to their corresponding EIC, in the North Sea region are used when querying using the Python client:</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Bidding zone</strong></th>
+<th><strong>EIC</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BE</td>
+<td>10YBE———-2</td>
+</tr>
+<tr class="even">
+<td>DE-LU</td>
+<td>10Y1001A1001A82H</td>
+</tr>
+<tr class="odd">
+<td>DK-1</td>
+<td>10YDK-1——–W</td>
+</tr>
+<tr class="even">
+<td>DK-2</td>
+<td>10YDK-2——–M</td>
+</tr>
+<tr class="odd">
+<td>FR</td>
+<td>10YFR-RTE——C</td>
+</tr>
+<tr class="even">
+<td>GB</td>
+<td>10YGB———-A</td>
+</tr>
+<tr class="odd">
+<td>IE-SEM</td>
+<td>10Y1001A1001A59C</td>
+</tr>
+<tr class="even">
+<td>NL</td>
+<td>10YNL———-L</td>
+</tr>
+<tr class="odd">
+<td>NO-1</td>
+<td>10YNO-1——–2</td>
+</tr>
+<tr class="even">
+<td>NO-2</td>
+<td>10YNO-2——–T</td>
+</tr>
+<tr class="odd">
+<td>NO-3</td>
+<td>10YNO-3——–J</td>
+</tr>
+<tr class="even">
+<td>NO-4</td>
+<td>10YNO-4——–9</td>
+</tr>
+<tr class="odd">
+<td>NO-5</td>
+<td>10Y1001A1001A48H</td>
+</tr>
+<tr class="even">
+<td>SE-1</td>
+<td>10Y1001A1001A44P</td>
+</tr>
+<tr class="odd">
+<td>SE-2</td>
+<td>10Y1001A1001A45N</td>
+</tr>
+<tr class="even">
+<td>SE-3</td>
+<td>10Y1001A1001A46L</td>
+</tr>
+<tr class="odd">
+<td>SE-4</td>
+<td>10Y1001A1001A47</td>
+</tr>
+</tbody>
+</table>
+<p>Note that <code>DE-LU</code> only works for timestamps starting 01/10/2018. Use <code>DE-AT-LU</code> for timestamps prior to this date. <a href="https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py"><code>entsoe_api.py</code></a> is the script used to extract this data.</p>
 <p>Load (returns a series)</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">client.query_load(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1">client.query_load(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end)</a></code></pre></div>
 <p>Generation (returns a dataframe)</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">client.query_generation(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end, psr_type<span class="op">=</span><span class="va">None</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">client.query_generation(country_code, start<span class="op">=</span>start, end<span class="op">=</span>end, psr_type<span class="op">=</span><span class="va">None</span>)</a></code></pre></div>
 <h2 id="sec:market-data">Market data</h2>
 <p><a href="https://www.nordpoolgroup.com/historical-market-data/">Nord Pool</a></p>
 <p>Historical market data from Nord Pool is stored as .xls files can be accessed using the following URL:</p>
@@ -716,24 +773,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://opendata.meteo.be/">The Royal Meteorological Institute of Belgium</a></p>
 <h4 id="sec:germany">Germany</h4>
 <p><a href="https://www.dwd.de/EN/climate_environment/cdc/cdc_node.html">Deutscher Wetterdienst</a></p>
-<ul>
-<li><a href="https://cdc.dwd.de/portal/">CDC (Climate Data Center) portal</a></li>
-<li><a href="https://opendata.dwd.de/climate_environment/CDC/">CDC OpenData</a></li>
-<li>Data set descriptions
-<ul>
-<li><a href="https://cdc.dwd.de/sdi/pid/TT_TU_MN009/DESCRIPTION_TT_TU_MN009_en.pdf">Hourly station observations of air temperature at 2 m above ground in °C for Germany</a></li>
-<li><a href="https://cdc.dwd.de/sdi/pid/RF_TU_MN009/DESCRIPTION_RF_TU_MN009_en.pdf">Hourly station observations of relative humidity in % for Germany</a></li>
-<li><a href="https://cdc.dwd.de/sdi/pid/R1_MN008/DESCRIPTION_R1_MN008_en.pdf">Hourly station observations of precipitation amount in mm for Germany</a></li>
-<li><a href="https://cdc.dwd.de/sdi/pid/WRTR_MN008/DESCRIPTION_WRTR_MN008_en.pdf">Hourly station observations of form of precipitation (WR code) for Germany</a></li>
-<li><a href="https://cdc.dwd.de/sdi/pid/RS_IND_MN008/DESCRIPTION_RS_IND_MN008_en.pdf">Hourly station observations of index whether precipitation has fallen for Germany</a></li>
-<li><a href="https://cdc.dwd.de/sdi/pid/F_MN003/DESCRIPTION_F_MN003_en.pdf">Hourly mean of station observations of wind speed ca. 10 m above ground in m/s for Germany</a></li>
-<li><a href="https://cdc.dwd.de/sdi/pid/D_MN003/DESCRIPTION_D_MN003_en.pdf">Hourly mean of station observations of wind direction at ca. 10 m above ground in degree for Germany</a></li>
-<li><a href="https://cdc.dwd.de/sdi/pid/P0_MN008/DESCRIPTION_P0_MN008_en.pdf">Hourly station observations of air pressure at station level in hpa for Germany</a></li>
-<li><a href="https://cdc.dwd.de/sdi/pid/P_MN008/DESCRIPTION_P_MN008_en.pdf">Hourly station observations of air pressure at mean sea level in hpa for Germany</a></li>
-<li><a href="https://cdc.dwd.de/sdi/pid/N_MN008/DESCRIPTION_N_MN008_en.pdf">Hourly station observations of cloud coverage in eighths for Germany</a></li>
-</ul></li>
-<li><a href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/">Hourly wind data</a></li>
-</ul>
+<p><a href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/">Hourly wind data</a></p>
+<!-- * [CDC (Climate Data Center) portal](https://cdc.dwd.de/portal/)
+* [CDC OpenData](https://opendata.dwd.de/climate_environment/CDC/)
+* Data set descriptions
+  * [Hourly station observations of air temperature at 2 m above ground in °C for Germany](https://cdc.dwd.de/sdi/pid/TT_TU_MN009/DESCRIPTION_TT_TU_MN009_en.pdf)
+  * [Hourly station observations of relative humidity in % for Germany](https://cdc.dwd.de/sdi/pid/RF_TU_MN009/DESCRIPTION_RF_TU_MN009_en.pdf)
+  * [Hourly station observations of precipitation amount in mm for Germany](https://cdc.dwd.de/sdi/pid/R1_MN008/DESCRIPTION_R1_MN008_en.pdf)
+  * [Hourly station observations of form of precipitation (WR code) for Germany](https://cdc.dwd.de/sdi/pid/WRTR_MN008/DESCRIPTION_WRTR_MN008_en.pdf)
+  * [Hourly station observations of index whether precipitation has fallen for Germany](https://cdc.dwd.de/sdi/pid/RS_IND_MN008/DESCRIPTION_RS_IND_MN008_en.pdf)
+  * [Hourly mean of station observations of wind speed ca. 10 m above ground in m/s for Germany](https://cdc.dwd.de/sdi/pid/F_MN003/DESCRIPTION_F_MN003_en.pdf)
+  * [Hourly mean of station observations of wind direction at ca. 10 m above ground in degree for Germany](https://cdc.dwd.de/sdi/pid/D_MN003/DESCRIPTION_D_MN003_en.pdf)
+  * [Hourly station observations of air pressure at station level in hpa for Germany](https://cdc.dwd.de/sdi/pid/P0_MN008/DESCRIPTION_P0_MN008_en.pdf)
+  * [Hourly station observations of air pressure at mean sea level in hpa for Germany](https://cdc.dwd.de/sdi/pid/P_MN008/DESCRIPTION_P_MN008_en.pdf)
+  * [Hourly station observations of cloud coverage in eighths for Germany](https://cdc.dwd.de/sdi/pid/N_MN008/DESCRIPTION_N_MN008_en.pdf)
+  -->
 <h4 id="sec:denmark">Denmark</h4>
 <p><a href="http://research.dmi.dk/data/">Danish Meteorological Institute</a></p>
 <h4 id="sec:france">France</h4>

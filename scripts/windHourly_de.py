@@ -2,8 +2,8 @@
 # import libraries
 import pandas as pd
 import os, errno
-import urllib.request
-import requests, zipfile, io
+import urllib.request, requests
+import glob, zipfile, io
 
 #%% 
 # weather data from meteorological service
@@ -35,7 +35,13 @@ states = df_stn['state'].unique()
 for state in states:
   # create directories to store files for each state if it does not exist
   path = "data/met/de/wind_hourly/"+str(state).replace(" ", "")
-
+  try:
+      os.makedirs(path)
+  except OSError as exception:
+      if exception.errno != errno.EEXIST:
+          raise
+      else:
+          print ("\nBE CAREFUL! Directory %s already exists." % path)
   # list of station ids in the state
   df_state = df_stn.loc[df_stn['state']==str(state)]
   stations = df_state['station_id'].tolist()
@@ -44,103 +50,31 @@ for state in states:
   # download and extract data 
   for station in stations:
     station = str(station).zfill(5) # add leading zeros to station ids if less than 5 digits
+    url = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/recent/stundenwerte_FF_"+str(station)+"_akt.zip" # zip file url
     dest = "data/met/de/wind_hourly/"+str(state).replace(" ", "")+"/"+str(station) # file download directory
 
-# #%%
-#     # read weather data for station 
-#     df_station = pd.read_csv('data/Meteo/DE/wind_hourly/Schleswig-Holstein/stundenwerte_FF_01200_20071120_20181231_hist/produkt_ff_stunde_20071120_20181231_01200.txt', sep=';')
+    # download contents of zip file into directory
+    try:
+      r = requests.get(url)
+      z = zipfile.ZipFile(io.BytesIO(r.content))
+      z.extractall(dest)
+    except zipfile.BadZipFile: # exception if no zip file exists
+      print ("No data exists for station "+str(station)+" in "+str(state))
 
-#     # tanslate column titles to English
-#     df_1200 = df_1200.set_axis(['station_id', 'timestamp_end', 'QLoNC', 'mean_wind_speed', 'mean_wind_direction', 'end_of_record'], axis='columns', inplace=False)
+#%%
+    # read weather data for station 
+    for file in glob.glob(str(dest)+'/produkt*.txt'):
+      df_station = pd.read_csv(file, sep=';')
 
-#     # filter date range for 2018
-#     df_1200 = df_1200.drop(df_1200[(df_1200.timestamp_end<2018010100)|(df_1200.timestamp_end>2018123123)].index)
+      # tanslate column titles to English
+      df_station = df_station.set_axis(['station_id', 'timestamp_end', 'QLoNC', 'mean_wind_speed', 'mean_wind_direction', 'end_of_record'], axis='columns', inplace=False)
 
-#     # convert to datetime
-#     df_1200['timestamp_end'] = pd.to_datetime(df_1200['timestamp_end'], format="%Y%m%d%H")
+      # filter date range for first half of 2019
+      df_station = df_station.drop(df_station[(df_station.timestamp_end<2019010100)|(df_station.timestamp_end>2019060123)].index)
 
-#     # set end timestamps as index 
-#     df_1200.set_index(['timestamp_end'], inplace=True)
+      # convert to datetime
+      df_station['timestamp_end'] = pd.to_datetime(df_station['timestamp_end'], format="%Y%m%d%H")
 
-# #%%
-# # filter for Schleswig-Holstein
-# df_sh = df_stn.loc[df_stn['state']=='Schleswig-Holstein']
-# df_sh
-
-# #%%
-# # list of station ids
-# df_sh['station_id'].tolist()
-
-# #%%
-# # read weather data for station 1200
-# df_1200 = pd.read_csv('data/Meteo/DE/wind_hourly/Schleswig-Holstein/stundenwerte_FF_01200_20071120_20181231_hist/produkt_ff_stunde_20071120_20181231_01200.txt', sep=';')
-# df_1200 # return dataframe
- 
-# #%%
-# # tanslate column titles to English
-# df_1200 = df_1200.set_axis(['station_id', 'timestamp_end', 'QLoNC', 'mean_wind_speed', 'mean_wind_direction', 'end_of_record'], axis='columns', inplace=False)
-
-# #%%
-# # filter date range for 2018
-# df_1200 = df_1200.drop(df_1200[(df_1200.timestamp_end<2018010100)|(df_1200.timestamp_end>2018123123)].index)
-# df_1200 # return dataframe
-
-# #%%
-# # convert to datetime
-# df_1200['timestamp_end'] = pd.to_datetime(df_1200['timestamp_end'], format="%Y%m%d%H")
-
-# #%%
-# # set end timestamps as index 
-# df_1200.set_index(['timestamp_end'], inplace=True)
-# df_1200 # return dataframe
-
-# #%% [markdown]
-# # # Generation data from ENTSO-E Transparency Platform
-
-# #%%
-# # read data from csv
-# gen_de = pd.read_csv('data/ENTSO-E/DE/DE-LU/Actual Generation per Production Type_201801010000-201901010000.csv')
-
-# #%%
-# # split time in MTU to extract the start and end timestamps (and remove "(CET)") using the '-' delimiter
-# gen_de['timestamp_start'] = [x.split('-')[0].replace('', '') for x in gen_de['MTU']]
-# gen_de['timestamp_end'] = [x.split('-')[1].replace(' (CET)', '') for x in gen_de['MTU']]
-
-# #%%
-# # convert timestamps to datetime dtype
-# gen_de['timestamp_start'] = pd.to_datetime(gen_de['timestamp_start'])
-# gen_de['timestamp_end'] = pd.to_datetime(gen_de['timestamp_end'])
-
-# #%%
-# # drop unnecessary columns - area and MTU
-# gen_de = gen_de.drop(columns=['Area', 'MTU'])
-
-# #%%
-# # set timestamps as index
-# gen_de.set_index(['timestamp_start'], inplace=True)
-# gen_de # return dataframe
-
-# #%%
-# # keep only wind data
-# gen_de = gen_de[['Wind Offshore  - Actual Aggregated [MW]', 'Wind Onshore  - Actual Aggregated [MW]']]
-
-# #%%
-# # rename columns
-# gen_de = gen_de.set_axis(['wind_ofshore_MW', 'wind_onshore_MW'], axis='columns', inplace=False)
-
-# #%% [markdown]
-# # # Merge weather and generation data
-
-# #%%
-# gen_de = gen_de.join(df_1200, how='outer')
-# gen_de # return dataframe
-
-# #%%
-# # drop NaN rows to get hourly data
-# gen_de = gen_de.dropna()
-# gen_de
-
-# #%%
-# # drop unnecessary columns
-# gen_de = gen_de.drop(columns=['end_of_record', 'QLoNC', 'station_id'])
-# gen_de
+      # set end timestamps as index 
+      df_station.set_index(['timestamp_end'], inplace=True)
+      df_station.to_csv(str(dest)+'/wind_hourly_'+str(station)+'.csv')

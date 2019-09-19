@@ -380,8 +380,11 @@ data/output/*
 ## Archive folder
 archive/
 
-## Pandoc
+## Pandoc residual files
 tex2pdf*
 
-## login information to access API
+## login information to access API - saved in same directory as other scripts
 login.py
+
+## drafts
+draft*.py

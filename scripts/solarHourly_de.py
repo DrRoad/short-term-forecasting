@@ -2,8 +2,8 @@
 # import libraries
 import pandas as pd
 import os, errno
-import urllib.request
-import requests, zipfile, io
+import urllib.request, requests
+import glob, zipfile, io
 
 #%% 
 # weather data from meteorological service
@@ -46,7 +46,6 @@ for state in states:
   df_state = df_stn.loc[df_stn['state']==str(state)]
   stations = df_state['station_id'].tolist()
 
-#%%
   # download and extract data 
   for station in stations:
     station = str(station).zfill(5) # add leading zeros to station ids if less than 5 digits
@@ -60,3 +59,20 @@ for state in states:
       z.extractall(dest)
     except zipfile.BadZipFile: # exception if no zip file exists
       print ("No data exists for station "+str(station)+" in "+str(state))
+
+    # read weather data for station 
+    for file in glob.glob(str(dest)+'/produkt*.txt'):
+      df_station = pd.read_csv(file, sep=';')
+
+      # tanslate column titles to English
+      df_station = df_station.set_axis(['station_id', 'timestamp_end', 'QLoNC', 'longwave_downward_radiation', 'diffuse_radiation', 'incoming_radiation', 'sunshine_duration', 'zenith_angle', 'end_of_interval', 'end_of_record'], axis='columns', inplace=False)
+
+      # filter date range for first half of 2019
+      df_station = df_station.drop(df_station[(df_station.timestamp_end<'2019010100:00')|(df_station.timestamp_end>'2019060123:59')].index)
+
+      # convert to datetime
+      df_station['timestamp_end'] = pd.to_datetime(df_station['timestamp_end'], format="%Y%m%d%H:%M")
+
+      # set end timestamps as index 
+      df_station.set_index(['timestamp_end'], inplace=True)
+      df_station.to_csv(str(dest)+'/solar_hourly_'+str(station)+'.csv')
