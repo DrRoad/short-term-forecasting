@@ -14,7 +14,7 @@
 }
 
 body {
-  color: #444;
+  color: rgb(0, 0, 0);
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, Garamond, Georgia, Times, serif;
   font-size: 12px;
   line-height: 1.7;
@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   text-align: left;
   font-family: -apple-system, BlinkMacSystemFont, 
-               "Lato", "Segoe UI", "Roboto",
+               "Lato", "Roboto", "Segoe UI",
                "Oxygen", "Ubuntu", "Cantarell", 
                "Fira Sans", "Droid Sans", "Helvetica Neue", 
                sans-serif;
@@ -134,8 +134,8 @@ hr {
 }
 
 pre, code, kbd, samp {
-  color: #000;
-  font-family: monospace, monospace;
+  color: rgb(68, 67, 67);
+  font-family: "Consolas", monospace, monospace;
   _font-family: 'courier new', monospace;
   font-size: 0.98em;
 }

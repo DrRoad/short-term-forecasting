@@ -13,18 +13,18 @@
 
 As per the definition provided by the European MSP Platform [@North] and the CPMR North Sea Commission [@Membe15], the North Sea region consists of eight countries: Belgium, Denmark, France, Germany, Netherlands, Norway, Sweden and United Kingdom.
 
-The nomenclature of territorial units for statistics (NUTS) classifies territorial units in Europe in different levels [@NUTS]:
+The \gls{nuts} classifies territorial units in Europe in different levels [@NUTS]:
 
-* NUTS 0: country-level
-* NUTS 1: major socio-economic regions
-* NUTS 2: basic regions for the application of regional policies
-* NUTS 3: small regions for specific diagnoses
+* \gls{nuts} 0: country-level
+* \gls{nuts} 1: major socio-economic regions
+* \gls{nuts} 2: basic regions for the application of regional policies
+* \gls{nuts} 3: small regions for specific diagnoses
 
-As explained in the problem definition section, short-term operational planning and systems with a high penetration of VRE must be described using data of high temporal and spatial resolutions. Therefore, NUTS 3 territories will be used as a standard in this project for aggregating short-term forecasting data.
+As explained in the problem definition section, short-term operational planning and systems with a high penetration of \gls{vre} must be described using data of high temporal and spatial resolutions. Therefore, \gls{nuts} 3 territories will be used as a standard in this project for aggregating short-term forecasting data.
 
-This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts.ipynb) lists the NUTS territories in the North Sea region at all four NUTS levels. France is the only North Sea country with overseas territories included in the NUTS data (RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES), so these were removed accordingly.
+This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts.ipynb) lists the \gls{nuts} territories in the North Sea region at all four \gls{nuts} levels. France is the only North Sea country with overseas territories included in the \gls{nuts} data (RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES), so these were removed accordingly.
 
-Performing the forecasting task at NUTS 3 level would be straightforward if it does not include the electricity market. Since the electricity market is considered in this project, it is important to look at how the bidding zones overlap with NUTS 3 territories.
+Performing the forecasting task at \gls{nuts} 3 level would be straightforward if it does not include the electricity market. Since the electricity market is considered in this project, it is important to look at how the bidding zones overlap with \gls{nuts} 3 territories.
 
 
 ## Bidding zones in the North Sea region
@@ -41,7 +41,7 @@ The bidding zones in the North Sea electricity markets and surrounding regions a
 
 The power exchanges (market operators) that operate in the North Sea region are APX (Netherlands, United Kingdom), Belpex (Belgium), EEX (Germany, Denmark, France, Norway, Sweden), EPEX (Germany, France), N2EX (United Kingdom) and Nord Pool (Denmark, Norway, Sweden) [@Power], [@Overv16], [@Seem], [@EPEX]. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch [@Overv16]. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch [@Overv16].
 
-Both Nord Pool and EPEX are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [@PCRE17].
+Both Nord Pool and EPEX are part of the \gls{pcr} project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities [@PCRE17].
 
 @Tbl:zones below lists all bidding zones in the North Sea region by country and market operator. 
 
@@ -60,23 +60,19 @@ United Kingdom (UK) | APX, N2EX | GB, IE-SEM
 
 [^f4]: *Luxembourg (LU); Great Britain (GB); Irish single electricity market (IE-SEM), which includes Republic of Ireland and UK's Northern Ireland.*
 
-Prior to 01/10/2018, Germany was part of the DE-AT-LU bidding zone, together with Austria and Luxembourg, which had split into the DE-LU and AT bidding zones, as reported by ENTSO-E below [@DEATL] (EIC stands for Energy Identification Code [@Energa]).
+Prior to 01/10/2018, Germany was part of the DE-AT-LU bidding zone, together with Austria and Luxembourg, which had split into the DE-LU and AT bidding zones, as reported by \gls{entsoe} below [@DEATL].
 
-> *[...] DE-AT-LU bidding zone split on the 23rd of August. BZN|DE-AT-LU will be separated into 2 new bidding zones BZN|DE-LU and BZN|AT.*
+>*[...] DE-AT-LU bidding zone split on the 23rd of August. BZN|DE-AT-LU will be separated into 2 new bidding zones BZN|DE-LU and BZN|AT.*
 >
 >*New bidding zones will be active from the 1st of October, however, first data submissions, like month ahead forecasts, are expected from the 1st of September.*
 >
->*Validity end date for BZN|DE-AT-LU is the end of September 2018.* 
->
->*EIC codes for new bidding zones:* \
-*BZN|DE-LU - 10Y1001A1001A82H* \
-*BZN|AT - 10YAT-APG------L (same as control area or country)*
+>*Validity end date for BZN|DE-AT-LU is the end of September 2018. [...]*
 
-Mapping bidding zones to NUTS 3 territories is straightforward for Belgium, Germany, France and Netherlands (bidding zone type 1 or 2) -- all NUTS 3 territories in these countries have the same bidding zone. 
+Mapping bidding zones to \gls{nuts} 3 territories is straightforward for Belgium, Germany, France and Netherlands (bidding zone type 1 or 2) -- all \gls{nuts} 3 territories in these countries have the same bidding zone. 
 
-Denmark and United Kingdom are both conveniently separated into two zones that are easily distinguishable. For Denmark, these are Western Denmark (NUTS IDs containing DK03-DK05) and Southern Denmark (NUTS IDs containing DK01-DK02). For United Kingdom, these are Great Britain (NUTS IDs containing UKC-UKM) and Northern Ireland (NUTS IDs containing UKN). 
+Denmark and United Kingdom are both conveniently separated into two zones that are easily distinguishable. For Denmark, these are Western Denmark (\gls{nuts} IDs containing DK03-DK05) and Southern Denmark (\gls{nuts} IDs containing DK01-DK02). For United Kingdom, these are Great Britain (\gls{nuts} IDs containing UKC-UKM) and Northern Ireland (\gls{nuts} IDs containing UKN). 
 
-There is no clear indication of the bidding zone boundaries for Norway and Sweden, so some assumptions were made. Both countries have multiple smaller bidding zones (type 3) with flexible borders [@Europ10], [@List]. This was done to optimise allocation of resources and reduce the overall price of electricity [@Europ10], [@List]. Norway has five zones and Sweden has four zones. By cross-referencing Nord Pool market data [@Seem], NUTS 3 data and county maps of Norway [@Count19] and Sweden [@Count19a], the territories are split into the bidding zones as shown in @tbl:nord. Nord Pool associates each bidding zone with a major reference city in that zone. However, there were six cities for Norway instead of the expected five. Historical Nord Pool market data for Norway suggests that two cities, Trondheim and Molde, have had the same system price since 2003. The ELSPOT area change log [@List] also confirms that Trondheim and Molde are city references for the NO3 bidding zone . Therefore, these two cities are grouped into the same bidding zone, which also satisfies what the maps suggest.
+There is no clear indication of the bidding zone boundaries for Norway and Sweden, so some assumptions were made. Both countries have multiple smaller bidding zones (type 3) with flexible borders [@Europ10], [@List]. This was done to optimise allocation of resources and reduce the overall price of electricity [@Europ10], [@List]. Norway has five zones and Sweden has four zones. By cross-referencing Nord Pool market data [@Seem], \gls{nuts} 3 data and county maps of Norway [@Count19] and Sweden [@Count19a], the territories are split into the bidding zones as shown in @tbl:nord. Nord Pool associates each bidding zone with a major reference city in that zone. However, there were six cities for Norway instead of the expected five. Historical Nord Pool market data for Norway suggests that two cities, Trondheim and Molde, have had the same system price since 2003. The ELSPOT area change log [@List] also confirms that Trondheim and Molde are city references for the NO3 bidding zone . Therefore, these two cities are grouped into the same bidding zone, which also satisfies what the maps suggest.
 
 **Bidding zone** | **Reference cities** | **Counties** | **NUTS 3 IDs**
 -- | -- | ------ | ---
@@ -92,12 +88,12 @@ SE4 | Malmö | Kronoberg, Kalmar, Blekinge, Halland, Skåne | SE212-213, SE221-2
 
 : Bidding zones and their territories for Norway and Sweden, approximated based on Nord Pool market data [@Seem], [@List], NUTS 3 data and county maps of Norway [@Count19] and Sweden [@Count19a]. {#tbl:nord}
 
-This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts_biddingZones.ipynb) lists all NUTS 3 territories and their bidding zones in the North Sea region, and explains how the different bidding zones were assigned to the territories.
+This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts_biddingZones.ipynb) lists all \gls{nuts} 3 territories and their bidding zones in the North Sea region, and explains how the different bidding zones were assigned to the territories.
 
 
 ## Transmission system operators and interconnections
 
-The North Sea region consists of multiple TSOs and cross-border interconnections. These are listed, along with the bidding zones bidding zones, in @tbl:tso.
+The North Sea region consists of multiple \glspl{tso} and cross-border interconnections. These are listed, along with the bidding zones bidding zones, in @tbl:tso.
 
 **Ctry.**[^f5] | **TSOs** | **Cross-border interconnection**[^f6] | **Bidding zones**
 -|-----|---|---

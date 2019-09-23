@@ -28,7 +28,7 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 
 ## Documentation
 
-Documentation is written in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](docs/) folder contains the documentation and associated files in Markdown, [HTML](docs/index.html) and [PDF](docs/docs.pdf) formats. 
+Documentation is written in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](docs/) folder contains the documentation and associated files in Markdown and [PDF](docs/docs.pdf) formats. 
 
 The file [`docsshellscript`](docsshellscript) contains shell commands to perform the document conversions, and also copies the files from the wiki (which is a separate repository) into this repository. It is executed in Bash using the following command:
 

@@ -1,38 +1,36 @@
 <!-- 
 - [Data](#data)
   - [Folder navigation](#folder-navigation)
-  - [Generation and demand data](#generation-and-demand-data)
-    - [ENTSO-E Transparency Platform](#entso-e-transparency-platform)
-    - [Extracting data using ENTSO-E Transparency Platform's Restful API](#extracting-data-using-entso-e-transparency-platforms-restful-api)
+  - [Generation and load data](#generation-and-load-data)
+    - [Actual generation per production type](#actual-generation-per-production-type)
+    - [Installed capacity per production unit](#installed-capacity-per-production-unit)
+    - [Load](#load)
+    - [Extracting data through ENTSO-E Transparency Platform's Restful API](#extracting-data-through-entso-e-transparency-platforms-restful-api)
   - [Market data](#market-data)
     - [REMIT UMM](#remit-umm)
   - [Meteorological data](#meteorological-data)
-  - [Other data](#other-data)
+  - [Territorial units](#territorial-units)
   - [Terms of use](#terms-of-use)
  -->
 
 
 # Data
 
-All input and output data can be found in the [data](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) folder on Dropbox. Licenses and terms of the input data used can be found in their corresponding folders within the folder.
+All input and output data can be found in the [data](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) folder on Dropbox. Licenses and terms of the input data used can be found in their corresponding folders.
 
 ## Folder navigation
 
-* ENTSO-E 
-  * generation and load data for each bidding zone in the North Sea region, grouped by country
-* Meteo - meteorological data, grouped by country
-* Market - market data for the North Sea region
-* NUTS - territorial units
-* output - output or modified data from this project
+* **entsoe-api** - generation and load data at \gls{tso} level for each bidding zone, downloaded from the \gls{entsoe} Transparency Platform
+* **met** - meteorological data, grouped by country, downloaded from country-specific meteorological services
+* **nuts** - territorial units, downloaded from Eurostat
+* **output** - output data
 
 
-## Generation and demand data
+## Generation and load data
 
-### ENTSO-E Transparency Platform
+Generation and load data for each bidding zone are downloaded from the \gls{entsoe} Transparency Platform [@ENTSO]. The following descriptions of the data are from \gls{entsoe} Transparency Platform's Knowledge Base [@Help]. Three types of data will be used. 
 
-Generation and demand data for each bidding zone are downloaded from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/). The following descriptions of the data are from ENTSO-E Transparency Platform's [Knowledge Base](https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/knowledge%20base.html).
-
-#### [Actual Generation per Production Type](https://transparency.entsoe.eu/generation/r2/actualGenerationPerProductionType/show)
+### Actual generation per production type
 
 - Actual aggregated net generation output (MW) per market time unit and per production type
 - Published no later than one hour after the operational period
@@ -40,67 +38,31 @@ Generation and demand data for each bidding zone are downloaded from the [ENTSO-
 - If unknown, it is estimated 
 - The actual generation of small-scale units might be estimated if no real-time measurement devices exist
 
-#### [Production and Generation Units](https://transparency.entsoe.eu/generation/r2/productionAndGenerationUnits/show)
+### Installed capacity per production unit
 
-The knowledge base did not provide any information about this data.
+This data contains information about production units (existing and planned) with an installed generation capacity of at least 100 MW, which includes the following:
 
-Based on available information, the data describes the production and generation units, including their code, name, validity dates, status (commissioned, decommissioned or cancelled), type (e.g., fossil gas, wind offshore), location, installed capacity (MW) and voltage. 
+- unit name
+- code
+- installed net generation capacity (MW)
+- voltage connection level (kV)
+- bidding zone (\gls{eic})
+- production type (e.g., fossil gas, wind offshore)
 
-<!-- The data on [Installed Capacity Per Production Unit](https://transparency.entsoe.eu/generation/r2/installedCapacityPerProductionUnit/show) includes only power plants with an installed generation capacity equalling to or exceeding 100 MW. This is assumed to also apply for the Production and Generating Units data. -->
+This information is published annually at the start of the year and is valid for the three following years.
 
-The codes for production unit types in the downloaded data (cross-referenced with the tables rendered on the transparency platform):
-
-- B01: Biomass
-- B02: Fossil brown coal / lignite
-- B03: Fossil coal-derived gas
-- B04: Fossil gas
-- B05: Fossil hard coal
-- B06: Fossil oil
-- B07: Fossil oil shale
-- B08: Fossil peat 
-- B09: Geothermal
-- B10: Hydro pumped storage
-- B11: Hydro run-of-river and poundage
-- B12: Hydro water reservoir
-- B13: Marine
-- B14: Nuclear
-- B15: Other renewable
-- B16: Solar
-- B17: Waste
-- B18: Wind offshore
-- B19: Wind onshore
-- B20: Other
-
-#### [Installed Capacity Per Production Unit](https://transparency.entsoe.eu/generation/r2/installedCapacityPerProductionUnit/show)
-
-Information about production units (existing and planned) with an installed generation capacity equalling to or exceeding 100 MW. The information shall contain:
-
-- the unit name
-- the installed net generation capacity (MW)
-- the location
-- the voltage connection levels
-- the bidding zone
-- the control area
-- the production type
-- the commissioning date (when available)
-- the decommissioning date (when available)
-
-<!-- Note: The definitions of the commissioning and decommissioning date are out of scope for TSOs and, in order to ensure qualitative data publications, it shall be drafted by NRAs in coordination with primary owners of the data taking into account the ongoing discussions. -->
-
-The information shall be published annually for the three following years no later than one week before the beginning of the first year to which the data refers. Information should refer to January 1st of each year for the 3 following years.
-
-#### [Installed Capacity per Production Type](https://transparency.entsoe.eu/generation/r2/installedGenerationCapacityAggregation/show)
+<!-- #### [Installed Capacity per Production Type](https://transparency.entsoe.eu/generation/r2/installedGenerationCapacityAggregation/show)
 
 The sum of installed net generation capacity (MW) per control area for all existing production units equalling to or exceeding 1 MW installed generation capacity, per production type. The information shall be published annually no later than one week before the end of the previous year. The installed net generation capacity refers to to the generation capacity which is effectively installed on January 1st of the following year.
 
 **Incomplete data**: 
 
-- Data for Sweden is unavailable at the bidding zone level for 2018 and 2019 (last checked on 15/08/2019)
+- Data for Sweden is unavailable at the bidding zone level for 2018 and 2019 (last checked on 15/08/2019) -->
 
-#### [Total Load - Day Ahead / Actual](https://transparency.entsoe.eu/load-domain/r2/totalLoadR2/show)
+### Load
 
 - Actual total load per bidding zone per market time unit
-- The total load is defined as equal to the sum of power generated by plants on both TSO/DSO networks, from which is deduced:
+- The total load is defined as equal to the sum of power generated by plants on both \gls{tso}/\gls{dno} networks, from which is deduced:
   - the balance (export-import) of exchanges on interconnections between neighbouring bidding zones
   - the power absorbed by energy storage resources
 - The information is published no later than one hour after the end of the operating period
@@ -109,19 +71,30 @@ The sum of installed net generation capacity (MW) per control area for all exist
 - Net generation is preferred, but gross generation could be used where it is available with the better precision
 - TSOs should decide gross or net generation will be used but the net/gross characteristic should be consistent per bidding zone
 - Absorbed energy is also provided as separate information with the aggregated generation output of the hydro pumped storage
-- The physical flow on the tie line is measured as agreed by neighbouring TSOs or bidding zones, where applicable
+- The physical flow on the tie line is measured as agreed by neighbouring \glspl{tso} or bidding zones, where applicable
 
-### Extracting data using ENTSO-E Transparency Platform's Restful API
+### Extracting data through ENTSO-E Transparency Platform's Restful API
 
-ENTSO-E Transparency Platform's Restful Application Programming Interface (API) can be used to automate the data extraction process [@ENTSO16], [@Trans]. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk. For example, to access article 6.1.A, the following URL is used:
+\gls{entsoe} Transparency Platform's RESTful \gls{api} can be used to automate the data extraction process [@ENTSO16], [@Trans]. Registration to the transparency platform is required to access the \gls{api}. The security token can be requested by sending an email to the \gls{entsoe} Helpdesk. 
 
+The \gls{entsoe} \gls{api} Python client [@Energ19] is used to easily query the required data and return them as Pandas dataframes or series. The queries for generation and installed generation capacity per unit return dataframes, while the query for load returns a series. [`entsoe_api.py`](https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py) is the script used to perform this. 
+
+```python
+import pandas as pd
+from entsoe import EntsoePandasClient
+from entsoe.mappings import DOMAIN_MAPPINGS, BIDDING_ZONES
+# combine domain and bidding zone keys and values into the DOMAIN_MAPPINGS dictionary
+DOMAIN_MAPPINGS.update(BIDDING_ZONES) 
 ```
-https://transparency.entsoe.eu/api?securityToken=TOKEN&documentType=A44&in_Domain=10Y1001A1001A63L&out_Domain=10Y1001A1001A63L&periodStart=201809242300&periodEnd=201809302300
+
+```python
+# import security token saved in a separate file (login.py)
+from login import token
+# use security token to access the api through the entsoe pandas client
+client = EntsoePandasClient(api_key=token)
 ```
 
-The [ENTSO-E API Python client](https://github.com/EnergieID/entsoe-py) is used to easily extract the required data and return them as Pandas dataframes or series [@Energ19].
-
-The following bidding zones, mapped to their corresponding EIC, in the North Sea region are used when querying using the Python client:
+The bidding zones in the North Sea region, mapped to their corresponding \glspl{eic} as shown in @tbl:eic, are used when querying using the Pandas client. Note that `DE-LU` only works for timestamps starting 01/10/2018. Use `DE-AT-LU` for timestamps prior to this date.
 
 **Bidding zone** | **EIC**
 --- | ---
@@ -143,23 +116,14 @@ SE-2 | 10Y1001A1001A45N
 SE-3 | 10Y1001A1001A46L
 SE-4 | 10Y1001A1001A47
 
-Note that `DE-LU` only works for timestamps starting 01/10/2018. Use `DE-AT-LU` for timestamps prior to this date. [`entsoe_api.py`](https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py) is the script used to extract this data.
+: Bidding zones in the North Sea region and their corresponding EICs. {#tbl:eic}
 
-Load (returns a series)
-```py
-client.query_load(country_code, start=start, end=end)
-```
-
-Generation (returns a dataframe)
-```py
-client.query_generation(country_code, start=start, end=end, psr_type=None)
-```
 
 ## Market data
 
 [Nord Pool](https://www.nordpoolgroup.com/historical-market-data/)
 
-Historical market data from Nord Pool is stored as .xls files can be accessed using the following URL: 
+Historical market data from Nord Pool is stored as `.xls` files can be accessed using the following URL: 
 
 ```
 https://www.nordpoolgroup.com/globalassets/marketdata-excel-files/FILENAME.xls
@@ -183,7 +147,7 @@ REMIT Urgent Market Messaging (UMM) is used by market operators and companies in
 - Areas (bidding zone and/or country and/or control area)
 - Types of unavailability (planned or unplanned)
 - Stations (production and consumption units)
-- Fuel types (same as the production units used by ENTSO-E)
+- Fuel types (same as the production units used by \gls{entsoe})
 - Connections (between control areas and/or bidding zone)
 - Status (active or cancelled)
 - Publishers (companies that publish the information)
@@ -204,7 +168,7 @@ REMIT Urgent Market Messaging (UMM) is used by market operators and companies in
 
 #### Germany
 
-[Deutscher Wetterdienst](https://www.dwd.de/EN/climate_environment/cdc/cdc_node.html)
+Deutscher Wetterdienst [@Wette]
 
 [Hourly wind data](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/)
 
@@ -248,7 +212,7 @@ REMIT Urgent Market Messaging (UMM) is used by market operators and companies in
 [Met Office](https://www.metoffice.gov.uk/datapoint)
 
 
-## Other data
+## Territorial units
 
 [NUTS (Nomenclature of territorial units for statistics)](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts)
 

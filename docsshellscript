@@ -3,40 +3,14 @@ cp -a wiki/* docs/
 
 # change directory to docs/
 cd docs
-
-# convert wiki to html
-pandoc --standalone \
-    --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
-    --metadata author="Nithiya Streethran" \
-    --metadata date="`date '+%-d %B %Y'`" \
-    --toc \
-    --toc-depth=1 \
-    --css pandoc.css \
-    --filter pandoc-crossref \
-    --metadata autoSectionLabels=true \
-    --bibliography References.bib \
-    --filter pandoc-citeproc \
-    --csl IEEEurl.csl \
-    --metadata link-citations=true \
-    ../wiki/Home.md \
-    logos.html \
-    ../wiki/Background.md \
-    ../wiki/Problem-definition.md \
-    ../wiki/Objectives.md \
-    ../wiki/Regions.md \
-    ../wiki/Data.md \
-    ../wiki/Methodology.md \
-    ../wiki/Glossary.md \
-    References.md \
-    ../wiki/License.md \
-    --output index.html
-
+    
 # convert homepage to tex, which will be inserted via the template
 pandoc ../wiki/Home.md --output preface.tex
 
 # convert wiki to pdf via pdflatex
 pandoc \
     --template=pandoc.tex \
+    --from markdown+backtick_code_blocks \
     --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
     --metadata author="Nithiya Streethran" \
     --metadata subject="ENergy SYStems in TRAnsition (ENSYSTRA)" \
@@ -65,15 +39,14 @@ pandoc \
     --metadata link-citations=true \
     --reference-location=block \
     --listings \
-    --pdf-engine=pdflatex \
+    --metadata glossaries=true \
     ../wiki/Background.md \
     ../wiki/Problem-definition.md \
     ../wiki/Objectives.md \
     ../wiki/Regions.md \
     ../wiki/Data.md \
     ../wiki/Methodology.md \
-    ../wiki/Glossary.md \
-    References.md \
+    refs.md \
     ../wiki/License.md \
     --output docs.pdf
 

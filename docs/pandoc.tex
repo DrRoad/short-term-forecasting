@@ -426,6 +426,11 @@ $if(beamer)$
     \logo{\includegraphics{$logo$}}
   $endif$
 $endif$
+$if(glossaries)$
+  \usepackage[acronym,toc,nonumberlist,nopostdot,nogroupskip,style=index]{glossaries} % glossary for abbreviation
+  \makenoidxglossaries % generate glossaries
+  \IfFileExists{glossary.tex}{\input{glossary.tex}}{}
+$endif$
 
 \begin{document}
 $if(title)$
@@ -470,6 +475,9 @@ $if(lot)$
 $endif$
 $if(lof)$
   \listoffigures
+$endif$
+$if(glossaries)$
+  \printnoidxglossaries
 $endif$
 $body$
 $if(natbib)$

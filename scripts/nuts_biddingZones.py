@@ -14,7 +14,7 @@ pd.set_option('display.max_colwidth', -1)
 
 #%%
 # read csv files with NUTS data
-nuts = pd.read_csv('data/output/NUTS_NS_2016.csv', encoding="cp1252")
+nuts = pd.read_csv('data/nuts/NUTS_NS_2016.csv', encoding="cp1252")
 
 #%%
 # sort values by NUTS_ID
@@ -120,7 +120,7 @@ nuts3.loc[nuts3['NUTS_ID'].str.contains("UKN"), 'BIDDING_ZONE'] = "IE-SEM"
 
 #%%
 # cp1252 encoding used for latin characters
-nuts3.to_csv('data/output/NUTS3_BIDDING.csv', index=None, encoding="cp1252")
+nuts3.to_csv('data/nuts/NUTS3_BIDDING.csv', index=None, encoding="cp1252")
 
 #%%
 nuts3 = nuts3.reset_index(drop=True) # reset index

@@ -19,9 +19,14 @@
 [**Data**](../wiki/Data)
   - [Folder navigation](../wiki/Data#folder-navigation)
   - [Generation and demand data](../wiki/Data#generation-and-demand-data)
+    - [Actual generation per production type](../wiki/Data#actual-generation-per-production-type)
+    - [Installed capacity per production unit](../wiki/Data#installed-capacity-per-production-unit)
+    - [Load](../wiki/Data#load)
+    - [Extracting data through ENTSO-E Transparency Platform's Restful API](../wiki/Data#extracting-data-through-entso-e-transparency-platforms-restful-api)
   - [Market data](../wiki/Data#market-data)
+    - [REMIT UMM](../wiki/Data#remit-umm)
   - [Meteorological data](../wiki/Data#meteorological-data)
-  - [Other data](../wiki/Data#other-data)
+  - [Territorial units](../wiki/Data#territorial-units)
   - [Terms of use](../wiki/Data#terms-of-use)
 
 [**Methodology**](../wiki/Methodology)
@@ -29,11 +34,11 @@
   - [Data management](../wiki/Methodology#data-management)
   - [Time series forecasting](../wiki/Methodology#time-series-forecasting) -->
 
-[**Glossary**](../wiki/Glossary)
+<!-- [**Glossary**](../wiki/Glossary)
   - [Abbreviations](../wiki/Glossary#abbreviations)
-  - [Units](../wiki/Glossary#units)
+  - [Units](../wiki/Glossary#units) -->
 
-[**Bibliography**](../wiki/Bibliography)
+[**References**](../wiki/References)
 
 [**License**](../wiki/License)
   - [GNU Free Documentation License](../wiki/License#gnu-free-documentation-license)
