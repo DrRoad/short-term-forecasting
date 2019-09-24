@@ -135,7 +135,7 @@ hr {
 
 pre, code, kbd, samp {
   color: rgb(68, 67, 67);
-  font-family: "Consolas", monospace, monospace;
+  font-family: "Consolas", "Ubuntu Mono", monospace, monospace;
   _font-family: 'courier new', monospace;
   font-size: 0.98em;
 }
@@ -361,31 +361,32 @@ table td {
   }
 }
 
-/* top nav bar */
+/* nav bar */
 nav ul {
   list-style-type: none;
-  margin: 0;
+  margin-left: -220px; /* shift nav bar to the left */
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: rgb(254, 255, 198);
   position: fixed;
-  top: 0;
-  max-width: 45em;
+  width: 170px;
+  top: 30px;
+  /* max-width: 45em; */
   font-family: -apple-system, BlinkMacSystemFont,
-                "Segoe UI", "Roboto", "Oxygen",
+                "Lato", "Segoe UI", "Roboto", "Oxygen",
                 "Ubuntu", "Cantarell", "Fira Sans",
                 "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-nav li {
+/* nav li {
   float: left;
-}
+} */
 
 nav li a {
   display: block;
   color: black;
-  text-align: center;
-  padding: 12px 12px;
+  text-align: left;
+  padding: 8px 12px;
   text-decoration: none;
 }
 
@@ -394,7 +395,7 @@ nav li a:hover:not(.active) {
 }
 
 /* adjust nav anchors */
-h1 { 
+/* h1 { 
   padding-top: 130px;
   margin-top: -100px;
-}
+} */
