@@ -35,7 +35,7 @@ Wind | yes | renewable | very low | zero-emission | | |
 *Offshore wind* | | | | | very high | low | high 
 Geothermal | no | renewable | high | zero-emission | high | medium | high
 
-: Characteristics of the main energy generation technologies, adapted from Erbach 2016 [@Erbac16] and Tidball, et al. 2010 [@Tidba10] {#tbl:entech}
+: Characteristics of the main energy generation technologies, adapted from Erbach 2016 [@Erbac16] and Tidball, et al. 2010 [@Tidba10]. {#tbl:entech}
 
 [^f1]: *Costs for natural gas, biomass, solar and geothermal are that of advanced combustion turbine, biomass gasification plant, utility-scale photovoltaic and hydrothermal plant respectively.*
 

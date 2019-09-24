@@ -7,10 +7,6 @@
 * modified by nmstreethran@gmail.com for personal use
 */
 
-@import url(http://fonts.googleapis.com/css?family=Inconsolata);
-@import url(http://fonts.googleapis.com/css?family=PT+Sans);
-@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
-
 article, aside, details, footer, header, hgroup, nav, section, summary{
   display:block
 }
@@ -20,10 +16,15 @@ figure{ /* centre alignment of figure */
   text-align:center
 }
 
-caption, figcaption{ /* table and figure captions */
+figcaption{ /* figure captions */
   font-style:italic;
   margin:0 0 .8em;
-  font-size: 90%
+  font-size: 80%
+}
+
+caption{ /* table captions */
+  font-style:italic;
+  margin:0 0 .8em
 }
 
 img{ /* prevents img from scaling beyond margins */
@@ -185,6 +186,7 @@ textarea{
 
 table{
   margin: 0 auto; /* allows table centre alignment */
+  font-size: 80%; /* reduce table font size */
   border-collapse:collapse;
   border-spacing:0;
   border-bottom: 1px solid #ddd /* table bottom border */
@@ -196,16 +198,17 @@ table th, table td{ /* add top border and padding around cells */
 }
 
 html{
-  font-family:'PT Sans', sans-serif
+  font-family:'Segoe UI', 'Lato', -apple-system, BlinkMacSystemFont, 'Ubuntu', sans-serif;
 }
 
 pre, code{
-  font-family:'Inconsolata', sans-serif
+  font-family:'Consolas', 'Ubuntu Mono', monospace;
+  font-size: 0.93em 
 }
 
 h1, h2, h3, h4, h5, h6{
-  font-family:'PT Sans Narrow', sans-serif;
-  font-weight:700
+  font-family:'Segoe UI', 'Lato', -apple-system, BlinkMacSystemFont, 'Ubuntu', sans-serif;
+  font-weight:600
 }
 
 html{

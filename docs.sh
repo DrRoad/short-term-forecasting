@@ -53,6 +53,7 @@ pandoc \
 # convert wiki to html
 pandoc --standalone \
     --from markdown+backtick_code_blocks \
+    --highlight-style=tango \
     --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
     --metadata author="Nithiya Streethran" \
     --metadata date="`date '+%-d %B %Y'`" \
