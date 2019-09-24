@@ -75,7 +75,7 @@ The sum of installed net generation capacity (MW) per control area for all exist
 
 ### Extracting data through ENTSO-E Transparency Platform's Restful API
 
-ENTSO-E Transparency Platform's RESTful application programming interface (API) can be used to automate the data extraction process [@ENTSO16], [@Trans]. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk. 
+ENTSO-E Transparency Platform's Restful application programming interface (API) can be used to automate the data extraction process [@ENTSO16], [@Trans]. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk. 
 
 The ENTSO-E API Python client [@Energ19] is used to easily query the required data and return them as Pandas dataframes or series. The queries for generation and installed generation capacity per unit return dataframes, while the query for load returns a series. [`entsoe_api.py`](https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py) is the script used to perform this. 
 

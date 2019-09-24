@@ -6,7 +6,7 @@
  * based on https://www.w3schools.com/ tutorials
  */
 
- html {
+html {
   font-size: 100%;
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
@@ -78,7 +78,7 @@ img {
 h1, h2, h3, h4, h5, h6 {
   color: #111;
   line-height: 125%;
-  margin-top: 1.5em;
+  /* margin-top: 1.5em; */
   font-weight: normal;
   text-align: left;
   font-family: -apple-system, BlinkMacSystemFont, 

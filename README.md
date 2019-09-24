@@ -109,7 +109,9 @@ License badges: [lukas-h/license-badges.md](https://gist.github.com/lukas-h/2a5d
 
 Markdown-formatted Creative Commons licenses: [idleberg/Creative-Commons-Markdown](https://github.com/idleberg/Creative-Commons-Markdown).
 
-[IEEEurl.csl](docs/IEEEurl.csl): Citation Style Language for [Zotero](https://www.zotero.org/), originally by [Michael Berkowitz](mailto:mberkowi@gmu.edu), [Julian Onions](mailto:julian.onions@gmail.com), [Rintze Zelle](http://twitter.com/rintzezelle), [Stephen Frank](http://www.zotero.org/sfrank) and Sebastian Karcher.
+[IEEEurl.csl](docs/IEEEurl.csl): Citation Style Language for [Zotero](https://www.zotero.org/), originally by [Michael Berkowitz](mailto:mberkowi@gmu.edu), [Julian Onions](mailto:julian.onions@gmail.com), [Rintze Zelle](http://twitter.com/rintzezelle), [Stephen Frank](http://www.zotero.org/sfrank) and Sebastian Karcher. 
+
+[solarized.css](docs/solarized.css): CSS for HTML documents, originally by [Thomas Frössman](https://github.com/thomasf/solarized-css). 
 
 [pandoc.css](docs/pandoc.css): CSS for HTML documents generated using Pandoc, originally by [killercup](https://gist.github.com/killercup/5917178#file-pandoc-css).
 

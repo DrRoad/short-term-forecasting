@@ -76,7 +76,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="pandoc.css" />
+  <link rel="stylesheet" href="solarized.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -91,14 +91,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><a href="#sec:preface">Preface</a></li>
 <li><a href="#sec:background">Background</a></li>
-<li><a href="#sec:problem-definition">Problem definition</a></li>
+<li><a href="#sec:problem-definition">Problem definition</a><ul>
+<li><a href="#sec:electricity-system">Electricity system</a></li>
+<li><a href="#sec:generation-technologies">Generation technologies</a></li>
+<li><a href="#sec:electricity-market">Electricity market</a></li>
+</ul></li>
 <li><a href="#sec:objectives">Objectives</a></li>
-<li><a href="#sec:regions">Regions</a></li>
-<li><a href="#sec:data">Data</a></li>
+<li><a href="#sec:regions">Regions</a><ul>
+<li><a href="#sec:territories-in-the-north-sea-region">Territories in the North Sea region</a></li>
+<li><a href="#sec:bidding-zones-in-the-north-sea-region">Bidding zones in the North Sea region</a></li>
+<li><a href="#sec:transmission-system-operators-and-interconnections">Transmission system operators and interconnections</a></li>
+</ul></li>
+<li><a href="#sec:data">Data</a><ul>
+<li><a href="#sec:folder-navigation">Folder navigation</a></li>
+<li><a href="#sec:generation-and-load-data">Generation and load data</a><ul>
+<li><a href="#sec:actual-generation-per-production-type">Actual generation per production type</a></li>
+<li><a href="#sec:installed-capacity-per-production-unit">Installed capacity per production unit</a></li>
+<li><a href="#sec:load">Load</a></li>
+<li><a href="#sec:extracting-data-through-entso-e-transparency-platforms-restful-api">Extracting data through ENTSO-E Transparency Platform’s Restful API</a></li>
+</ul></li>
+<li><a href="#sec:market-data">Market data</a><ul>
+<li><a href="#sec:remit-umm">REMIT UMM</a></li>
+</ul></li>
+<li><a href="#sec:meteorological-data">Meteorological data</a></li>
+<li><a href="#sec:territorial-units">Territorial units</a></li>
+<li><a href="#sec:terms-of-use">Terms of use</a></li>
+</ul></li>
 <li><a href="#sec:methodology">Methodology</a></li>
 <li><a href="#sec:abbreviations">Abbreviations</a></li>
 <li><a href="#sec:references">References</a></li>
-<li><a href="#sec:license">License</a></li>
+<li><a href="#sec:license">License</a><ul>
+<li><a href="#sec:gnu-free-documentation-license">GNU Free Documentation License</a><ul>
+<li><a href="#sec:addendum-how-to-use-this-license-for-your-documents">ADDENDUM: How to use this License for your documents</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
 <h1 id="sec:preface">Preface</h1>
@@ -608,7 +634,7 @@ The sum of installed net generation capacity (MW) per control area for all exist
 <li>The physical flow on the tie line is measured as agreed by neighbouring TSOs or bidding zones, where applicable</li>
 </ul>
 <h3 id="sec:extracting-data-through-entso-e-transparency-platforms-restful-api">Extracting data through ENTSO-E Transparency Platform’s Restful API</h3>
-<p>ENTSO-E Transparency Platform’s RESTful application programming interface (API) can be used to automate the data extraction process <span class="citation" data-cites="ENTSO16">[<a href="#ref-ENTSO16">38</a>]</span>, <span class="citation" data-cites="Trans">[<a href="#ref-Trans">39</a>]</span>. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk.</p>
+<p>ENTSO-E Transparency Platform’s Restful application programming interface (API) can be used to automate the data extraction process <span class="citation" data-cites="ENTSO16">[<a href="#ref-ENTSO16">38</a>]</span>, <span class="citation" data-cites="Trans">[<a href="#ref-Trans">39</a>]</span>. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk.</p>
 <p>The ENTSO-E API Python client <span class="citation" data-cites="Energ19">[<a href="#ref-Energ19">40</a>]</span> is used to easily query the required data and return them as Pandas dataframes or series. The queries for generation and installed generation capacity per unit return dataframes, while the query for load returns a series. <a href="https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py"><code>entsoe_api.py</code></a> is the script used to perform this.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">import</span> pandas <span class="im">as</span> pd</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="im">from</span> entsoe <span class="im">import</span> EntsoePandasClient</a>

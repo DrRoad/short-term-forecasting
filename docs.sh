@@ -57,8 +57,8 @@ pandoc --standalone \
     --metadata author="Nithiya Streethran" \
     --metadata date="`date '+%-d %B %Y'`" \
     --toc \
-    --toc-depth=1 \
-    --css pandoc.css \
+    --toc-depth=3 \
+    --css solarized.css \
     --filter pandoc-crossref \
     --metadata autoSectionLabels=true \
     --bibliography References.bib \
