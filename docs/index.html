@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Nithiya Streethran" />
+  <meta name="dcterms.date" content="2019-09-24" />
+  <title>Short-term forecasting of electricity generation, demand and market prices using machine learning</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="pandoc.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Short-term forecasting of electricity generation, demand and market prices using machine learning</h1>
+<p class="author">Nithiya Streethran</p>
+<p class="date">24 September 2019</p>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#sec:preface">Preface</a></li>
+<li><a href="#sec:background">Background</a></li>
+<li><a href="#sec:problem-definition">Problem definition</a></li>
+<li><a href="#sec:objectives">Objectives</a></li>
+<li><a href="#sec:regions">Regions</a></li>
+<li><a href="#sec:data">Data</a></li>
+<li><a href="#sec:methodology">Methodology</a></li>
+<li><a href="#sec:abbreviations">Abbreviations</a></li>
+<li><a href="#sec:references">References</a></li>
+<li><a href="#sec:license">License</a></li>
+</ul>
+</nav>
+<h1 id="sec:preface">Preface</h1>
+<p>Repository: <a href="https://github.com/ENSYSTRA/short-term-forecasting">ENSYSTRA/short-term-forecasting</a></p>
+<p>Short-term forecasting of electricity generation, demand and prices using machine learning [WIP].</p>
+<p>Copyright (C) 2019 <a href="mailto:nmstreethran@gmail.com">Nithiya Streethran</a>.</p>
+<p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="https://www.gnu.org/licenses/fdl-1.3">GNU Free Documentation License</a>, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled “GNU Free Documentation License”.</p>
+<p>Content sources have been attributed where appropriate. Images are licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a> license, where the image source has not been specified.</p>
+<p>This work is part of Nithiya Streethran’s research as Early-Stage Researcher (ESR) 9 of the <a href="https://ensystra.eu/">ENSYSTRA - ENergy SYStems in TRAnsition</a> Innovative Training Network, based at the <a href="https://www.uis.no/">University of Stavanger</a>. ENSYSTRA is funded by the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No: 765515.</p>
+<p align="center">
+<img src="logos/ensystra-ls.png" alt="ENSYSTRA" height="100" title="ENSYSTRA">   <img src="logos/eu.jpg" alt="European Union" height="100" title="European Union">
+</p>
+<p align="center">
+<img src="logos/rug.png" alt="University of Groningen" height="50" title="University of Groningen">   <img src="logos/uoe.png" alt="University of Edinburgh" height="50" title="University of Edinburgh">   <img src="logos/chalmers.png" alt="Chalmers University of Technology" height="50" title="Chalmers University of Technology">
+</p>
+<p align="center">
+<img src="logos/uis.png" alt="University of Stavanger" height="100" title="University of Stavanger">      <img src="logos/aau.png" alt="Aalborg University" height="120" title="Aalborg University">      <img src="logos/euf.png" alt="University of Flensburg" height="100" title="University of Flensburg">
+</p>
+<p align="center">
+<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/code-GPL%20v3-blue.svg" title="Code License: GPL v3" alt="Code License: GPL v3"></a>    <a href="https://www.gnu.org/licenses/fdl-1.3"><img src="https://img.shields.io/badge/docs-FDL%20v1.3-blue.svg" title="Documentation License: FDL 1.3" alt="Documentation License: FDL 1.3"></a>    <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/images-CC%20BY--SA%204.0-lightgrey.svg" title="Image License: CC BY-SA 4.0" alt="Image License: CC BY-SA 4.0"></a>    <a href="https://opendatacommons.org/licenses/odbl/"><img src="https://img.shields.io/badge/output%20data-ODbL-brightgreen.svg" title="Output Data License: ODbL" alt="Output Data License: ODbL"></a>
+</p>
+<!-- 
+- [Background](#background)
+ -->
+<h1 id="sec:background">Background</h1>
+<p>The transition towards a future low-carbon economy is driven globally by the Paris Agreement <span class="citation" data-cites="Paris15">[<a href="#ref-Paris15">1</a>]</span>, which recognises the need for sustainable development worldwide to counter the threats of climate change. The European Union (EU) is committed to reduce greenhouse gas (GHG) emissions by 2050 to 80-90 % below 1990 levels <span class="citation" data-cites="Energ12">[<a href="#ref-Energ12">2</a>]</span>. As the energy industry is responsible for the highest share of anthropogenic GHG emissions, importance is placed on how changes in energy systems can help achieve these GHG emission reduction targets <span class="citation" data-cites="Energ12">[<a href="#ref-Energ12">2</a>]</span>.</p>
+<p>A number of opportunities exist for the decarbonisation of the energy industry. The International Renewable Energy Agency (IRENA), in their renewable energy roadmap study, has identified renewable energy as having the highest potential in reducing energy-related carbon dioxide (CO<sub>2</sub>) emissions globally, which is closely followed by energy efficiency and electrification with renewable energy <span class="citation" data-cites="Globa18">[<a href="#ref-Globa18">3</a>]</span>. In a 2018 political agreement, the EU member states agreed upon a target of at least 32 % of the demand being met with renewables by 2030, through national targets of the individual member states <span class="citation" data-cites="Renew">[<a href="#ref-Renew">4</a>]</span>. The electricity demand in the transport sector is also expected to increase due to expected petrol and diesel engine bans and subsequently the electrification of road transport <span class="citation" data-cites="World17">[<a href="#ref-World17">5</a>]</span>.</p>
+<p>The energy system is also transitioning towards a decentralised system with more consumer participation and new forms of flexibilities, including sector coupling, demand-side management (DSM), energy conversion and storage, cross-border interconnection and curtailment. This allows demand patterns to shift to better suit the generation patterns in systems with high penetration of variable renewable energy (VRE) resources, such as solar and wind <span class="citation" data-cites="Lund17">[<a href="#ref-Lund17">6</a>]</span>, <span class="citation" data-cites="Towar18">[<a href="#ref-Towar18">7</a>]</span>. However, this requires cooperation involving many actors with various responsibilities and dependencies that interact within this energy system, and opens up the opportunity to perform interdisciplinary research work in the area of energy system analysis.</p>
+<p>The ENSYSTRA - ENergy SYStems in TRAnsition Innovative Training Network has been established to address the challenges of the energy transition with interdisciplinary collaboration and regional cooperation involving academia, government and industry <span class="citation" data-cites="About">[<a href="#ref-About">8</a>]</span>. ENSYSTRA is centred on the North Sea region and focusses on performing interdisciplinary modelling work involving technology, economics, social science and humanities, and combining various modelling approaches in different levels and resolutions. ENSYSTRA aims to keep an open science approach, which will allow the resulting models to be subject to full scientific scrutiny.</p>
+<p>Energy systems models, which are tools used to project the future energy supply of a country or region <span class="citation" data-cites="Herbs12">[<a href="#ref-Herbs12">9</a>]</span>, is the centre of ENSYSTRA. Fig. 1 explains the energy systems modelling process using a system analysis approach. This process starts with creating a model of the actual energy system by simplifying and conceptualising the present system. This conceptualised system with all assumptions is then mathematically solved to produce numerical results. These results can then be interpreted and conclusions can be drawn regarding the future energy system. Such conclusions form the evidence-base for decision makers, resulting in policy implications or operational strategies that help achieve these climate targets.</p>
+<figure>
+<img src="images/system-analysis.png" title="The system analysis approach applied on the energy system modelling process, adapted from Krook-Riekkola 2015 [@Krook15]." alt="Figure 1: The system analysis approach applied on the energy system modelling process, adapted from Krook-Riekkola 2015 [10]." id="fig:system" /><figcaption>Figure 1: The system analysis approach applied on the energy system modelling process, adapted from Krook-Riekkola 2015 <span class="citation" data-cites="Krook15">[<a href="#ref-Krook15">10</a>]</span>.</figcaption>
+</figure>
+<p>There are 15 early-stage researchers (ESRs) across four work packages (WPs) in ENSYSTRA, as shown in fig. 2. The research project entitled “Development of a real-time optimisation solution for dispatchable energy supply units” is conducted by ESR 9, who is enrolled as a PhD student at University of Stavanger (UiS) in Norway. This project is within WP 2 (technology prospects and development pathways), which focusses on technological options for the energy transition, mainly in terms of techno-economic performance over time. For this research project, the technology focus is on the digitalisation of the electricity sector. As the electricity system transitions into smart systems, the system will have an increasing amount of sensors and controllers that continuously record measurements of the system <span class="citation" data-cites="Lund17">[<a href="#ref-Lund17">6</a>]</span>. Advancements in these technologies mean that data that is fast, heterogeneous and high in volume from the electricity system will be generated. Data with these characteristics must be managed and analysed effectively to gain insights on the electricity system, which can then be converted to strategies that optimise the system <span class="citation" data-cites="Manag12">[<a href="#ref-Manag12">11</a>]</span>. This project will specifically investigate how artificial intelligence can play a role in the transition to a low-carbon electricity system by utilising high resolution data of the system. The next section will investigate this, as well as explain what is meant by “real-time” and “dispatchable” in the context of electricity systems in this project.</p>
+<figure>
+<img src="images/wp.png" title="Interactions between the four WPs of the ENSYSTRA project. Source: ENSYSTRA [@About]." alt="Figure 2: Interactions between the four WPs of the ENSYSTRA project. Source: ENSYSTRA [8]." id="fig:wp" /><figcaption>Figure 2: Interactions between the four WPs of the ENSYSTRA project. Source: ENSYSTRA <span class="citation" data-cites="About">[<a href="#ref-About">8</a>]</span>.</figcaption>
+</figure>
+<!-- 
+- [Problem definition](#problem-definition)
+  - [Electricity system](#electricity-system)
+  - [Generation technologies](#generation-technologies)
+  - [Electricity market](#electricity-market)
+ -->
+<h1 id="sec:problem-definition">Problem definition</h1>
+<h2 id="sec:electricity-system">Electricity system</h2>
+<p>The electricity system can be seen as having two components; the physical grid consisting of generators and transmission and distribution systems, and the electricity market consisting of a number of actors <span class="citation" data-cites="Erbac16">[<a href="#ref-Erbac16">12</a>]</span>.</p>
+<p>Electricity systems exist in different resolutions and levels of uncertainty. Fig. 3 represents the different scales of electricity systems, mainly in terms of temporal resolution, but also uncertainty and spatial resolution <span class="citation" data-cites="Glism18">[<a href="#ref-Glism18">13</a>]</span>, <span class="citation" data-cites="Pfenn14">[<a href="#ref-Pfenn14">14</a>]</span>. Temporally, “real-time” is referred to as the time of dispatch. It can be observed that the operational planning scale has high spatial and temporal resolution, and relatively low uncertainty. Operational planning includes dispatch planning and plant scheduling (i.e., unit commitment), which ranges from a few minutes to a week before dispatch. Maintenance planning can take a few weeks to years, as it involves upgrade and maintenance work which may require shut-down of units or assets, in turn affecting the availability of generation units and grid infrastructure. Adequacy assessments, which takes years, involve assessing the existing generation and storage capacities and planning for new installations based on demand projections, to ensure this demand will be met in the future. Finally, grid investment decisions, including planning transmission and distribution grid networks, cross-border and regional interconnections and grid capacity expansions, take many years to decades and have very high uncertainty as a result.</p>
+<figure>
+<img src="images/resolution.png" title="The various scales of electricity systems in terms of their approximate temporal resolution, as well as spatial resolution and uncertainty, adapted from Glismann 2018 and Pfenninger, et al. 2014 [@Glism18], [@Pfenn14]." alt="Figure 3: The various scales of electricity systems in terms of their approximate temporal resolution, as well as spatial resolution and uncertainty, adapted from Glismann 2018 and Pfenninger, et al. 2014 [13], [14]." id="fig:res" /><figcaption>Figure 3: The various scales of electricity systems in terms of their approximate temporal resolution, as well as spatial resolution and uncertainty, adapted from Glismann 2018 and Pfenninger, et al. 2014 <span class="citation" data-cites="Glism18">[<a href="#ref-Glism18">13</a>]</span>, <span class="citation" data-cites="Pfenn14">[<a href="#ref-Pfenn14">14</a>]</span>.</figcaption>
+</figure>
+<h2 id="sec:generation-technologies">Generation technologies</h2>
+<p>Tbl. 1 shows the characteristics of the main energy generation technologies, including their costs. These generation sources have different variabilities, fuel types, flexibilities, costs and carbon emissions. According to the EU reference scenario 2016 <span class="citation" data-cites="Energ">[<a href="#ref-Energ">15</a>]</span>, wind and solar energy resources, which are VRE resources, are expected to generate a total of 35 % of EU’s electricity by 2050, which is a significant increase (23 %) from 2015 levels. Conversely, generation from nuclear and solids, which are not variable and provide base load generation, are expected to decrease significantly. Unlike conventional generators, VRE are intermittent as they are dependent on atmospheric conditions, such as wind speed and cloud cover, and they vary both spatially (i.e., location-dependent) and temporally <span class="citation" data-cites="Josko11">[<a href="#ref-Josko11">16</a>]</span>. Therefore, VRE generation cannot be controlled to meet the demand patterns and needs of the energy system <span class="citation" data-cites="Josko11">[<a href="#ref-Josko11">16</a>]</span>, which is a challenge to electricity and energy system operators in general. The costs listed in tbl. 1 are derived based on National Renewable Energy Laboratory (NREL)’s NREL-SEAC 2008 Data Set <span class="citation" data-cites="Tidba10">[<a href="#ref-Tidba10">17</a>]</span>. VRE generation technologies have high capital expenditure (CAPEX) compared to conventional fossil-powered and biomass generation. Conversely, the operational expenditure (OPEX), which includes fuel and fixed operational and maintenance (O&amp;M) costs, is low for VRE generation technologies, as they have no fuel costs unlike conventional generators.</p>
+<div id="tbl:entech">
+<table>
+<caption>Table 1: Characteristics of the main energy generation technologies, adapted from Erbach 2016 <span class="citation" data-cites="Erbac16">[<a href="#ref-Erbac16">12</a>]</span> and Tidball, et al. 2010 <span class="citation" data-cites="Tidba10">[<a href="#ref-Tidba10">17</a>]</span></caption>
+<thead>
+<tr class="header">
+<th><strong>Type</strong><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></th>
+<th><strong>Variable</strong></th>
+<th><strong>Fuel type</strong></th>
+<th><strong>Flexibility</strong></th>
+<th><strong>Low carbon</strong></th>
+<th><strong>CAPEX</strong></th>
+<th><strong>OPEX</strong></th>
+<th><strong>LCOE</strong><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coal</td>
+<td>no</td>
+<td>fossil</td>
+<td>medium</td>
+<td>no</td>
+<td>low</td>
+<td>high</td>
+<td>very low</td>
+</tr>
+<tr class="even">
+<td>Natural gas</td>
+<td>no</td>
+<td>fossil</td>
+<td>high</td>
+<td>no</td>
+<td>very low</td>
+<td>very high</td>
+<td>low</td>
+</tr>
+<tr class="odd">
+<td>Biomass</td>
+<td>no</td>
+<td>renewable</td>
+<td>medium</td>
+<td>yes<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></td>
+<td>low</td>
+<td>very high</td>
+<td>very high</td>
+</tr>
+<tr class="even">
+<td>Nuclear</td>
+<td>no</td>
+<td>nuclear</td>
+<td>low</td>
+<td>zero-emission</td>
+<td>medium</td>
+<td>medium</td>
+<td>medium</td>
+</tr>
+<tr class="odd">
+<td>Hydro</td>
+<td>no</td>
+<td>renewable</td>
+<td>very high</td>
+<td>zero-emission</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Solar</td>
+<td>yes</td>
+<td>renewable</td>
+<td>very low</td>
+<td>zero-emission</td>
+<td>very high</td>
+<td>very low</td>
+<td>very high</td>
+</tr>
+<tr class="odd">
+<td>Wind</td>
+<td>yes</td>
+<td>renewable</td>
+<td>very low</td>
+<td>zero-emission</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>Onshore wind</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>high</td>
+<td>very low</td>
+<td>very low</td>
+</tr>
+<tr class="odd">
+<td><em>Offshore wind</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>very high</td>
+<td>low</td>
+<td>high</td>
+</tr>
+<tr class="even">
+<td>Geothermal</td>
+<td>no</td>
+<td>renewable</td>
+<td>high</td>
+<td>zero-emission</td>
+<td>high</td>
+<td>medium</td>
+<td>high</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="sec:electricity-market">Electricity market</h2>
+<p>The actors in the electricity market include generators, retailers, large and small consumers, transmission system operators (TSOs), distribution network operators (DNOs), balance responsible parties (BRPs), aggregators, regulators, and market operators <span class="citation" data-cites="Erbac16">[<a href="#ref-Erbac16">12</a>]</span>, <span class="citation" data-cites="Pinso">[<a href="#ref-Pinso">18</a>]</span>, <span class="citation" data-cites="Thec15">[<a href="#ref-Thec15">19</a>]</span>.</p>
+<p>There are two types of electricity markets; the retail market and the wholesale market <span class="citation" data-cites="Erbac16">[<a href="#ref-Erbac16">12</a>]</span>. The retail market involves the retailers buying electricity from generators and selling it to consumers. The wholesale market involves generators, retailers and (large) consumers, who buy and sell electricity. Energy-only transactions in the wholesale market have different temporal resolutions <span class="citation" data-cites="Pinso">[<a href="#ref-Pinso">18</a>]</span>, <span class="citation" data-cites="Thec15">[<a href="#ref-Thec15">19</a>]</span> and take place before dispatch, shown in green in fig. 4. Balancing markets, shown in pink in fig. 4, which involve both energy and services, operate both before and after dispatch <span class="citation" data-cites="Thec15">[<a href="#ref-Thec15">19</a>]</span>. The energy-only markets are operated by the market operator or power exchanges, while the balancing market is operated by the system operator. The day-ahead and intra-day markets can be considered short-term electricity markets, as the former takes place 24 hours in advance of dispatch, while the latter takes place continuously after the day-ahead market, up to minutes before dispatch <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>.</p>
+<figure>
+<img src="images/market-resolution.png" title="The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [@Pinso], [@Thec15]." alt="Figure 4: The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 [18], [19]." id="fig:market" /><figcaption>Figure 4: The various electricity markets in terms of operator and temporal resolution, before and after dispatch, adapted from KU Leuven Energy Institute 2015 and Pinson 2018 <span class="citation" data-cites="Pinso">[<a href="#ref-Pinso">18</a>]</span>, <span class="citation" data-cites="Thec15">[<a href="#ref-Thec15">19</a>]</span>.</figcaption>
+</figure>
+<p>In short-term electricity market auctions, such as the day-ahead market auction, generating companies have the incentive to bid as low as possible, as the supply bids are ranked in ascending order of price. Conversely, on the demand side, consumers have the incentive to bid as high as possible, as the demand bids are ranked in descending order of price. These two curves form a so called merit order, and the intersection between these two curves is the equilibrium point. The price at this equilibrium point is the market clearing price, which is what all accepted bids will receive, regardless of their initial bid. All supply and demand bids to the left of the equilibrium point will be accepted, and those to the right are rejected.</p>
+<p>In the case of generating companies, the OPEX of their generators determine the price at which it is bid. For conventional power plants, this OPEX includes fuel costs and carbon costs (except nuclear power plants). For solar and wind power plants, the OPEX is close to zero, as they do not require fuel to run. The revenue received by generating companies in the day-ahead market for each power plant contributes towards their CAPEX. Since conventional power plants have relatively low CAPEX, and fuel costs are high, the main decision generating companies have to make in short-term electricity markets is whether it is economical to run these power plants. For solar and wind power plants, which have relatively high CAPEX, companies are interested in getting as many bids accepted and as much of the electricity generated sold as possible.</p>
+<!-- The figure below is a typical supply and demand curve with merit order ranking [Pins18]. In an electricity market auction, the demand bids are ranked in descending order of price, and the generation bids are ranked in ascending order of price. An equilibrium point is formed at the intersection between the supply and demand curves, which allows the social welfare to be maximised. Maximisation of social welfare means that both the supply and demand sides do not suffer from revenue losses.  -->
+<!-- ![Merit order ranking of supply and demand bids in an electricity market auction, illustrating the equilibrium point and maximisation of the social welfare. Source: Pinson 2018 [Pins18].](images/merit-order.png "Merit order ranking of supply and demand bids in an electricity market auction, illustrating the equilibrium point and maximisation of the social welfare. Source: Pinson 2018 [Pins18].") -->
+<!-- Increase in revenue for generators due to electricity generated by VRE resources, and increased utilisation of renewable electricity in the demand side would facilitate more investments in renewable electricity technologies and infrastructure. Current energy systems models focus more on longer time horizons and therefore lack the spatial and temporal resolution that appropriately includes VRE and their intermittent nature. Increased investments and utilisation of renewables is important to ensure cheaper electricity for consumers and enable the transition to a low-carbon electricity system. -->
+<!-- 
+- [Objectives](#objectives)
+ -->
+<h1 id="sec:objectives">Objectives</h1>
+<p>The main research objective of this project is:</p>
+<blockquote>
+<p><em>To develop an open-source electricity market model for the North Sea region which will help electricity generating companies that participate in short-term electricity markets (i.e., day-ahead and intra-day markets) to develop operational and bidding strategies that maximise their revenue under uncertainty of VRE generation. The model will consist of a forecaster based on machine learning, which will use high resolution time series weather forecasts for the upcoming period, and recent historical measurements of electricity generation, demand and market prices, to forecast the latter three quantities for the upcoming period. These forecasts will serve as inputs to a decision-making tool, which decides whether to sell, store and/or convert the electricity based on the most economical approach for the company’s production portfolio.</em></p>
+</blockquote>
+<p>Based on the main research objective, the following research questions have been derived:</p>
+<ul>
+<li>What methods and resources are needed to process and store the large volume of high resolution data required for this model?</li>
+<li>What type of machine learning algorithms are suited for the time series forecasting of electricity prices, demand and generation?</li>
+<li>What methods can be used to analyse the inputs and outputs of the model and translate them into operational strategies relevant to the market participant?</li>
+<li>How can this model be standardised and published so that it is available for use openly by any participant in the electricity market, as well as other interested parties, such as policymakers?</li>
+<li>How can this high resolution electricity market operational model be integrated with the overall North Sea energy systems model to provide insights on long-term planning and investments in the energy sector?</li>
+</ul>
+<!-- 
+- [Regions](#regions)
+  - [Territories in the North Sea region](#territories-in-the-north-sea-region)
+  - [Bidding zones in the North Sea region](#bidding-zones-in-the-north-sea-region)
+  - [Transmission system operators and interconnections](#transmission-system-operators-and-interconnections)
+ -->
+<h1 id="sec:regions">Regions</h1>
+<h2 id="sec:territories-in-the-north-sea-region">Territories in the North Sea region</h2>
+<p>As per the definition provided by the European MSP Platform <span class="citation" data-cites="North">[<a href="#ref-North">21</a>]</span> and the CPMR North Sea Commission <span class="citation" data-cites="Membe15">[<a href="#ref-Membe15">22</a>]</span>, the North Sea region consists of eight countries: Belgium, Denmark, France, Germany, Netherlands, Norway, Sweden and United Kingdom.</p>
+<p>The nomenclature of territorial units for statistics (NUTS) classifies territorial units in Europe in different levels <span class="citation" data-cites="NUTS">[<a href="#ref-NUTS">23</a>]</span>:</p>
+<ul>
+<li>NUTS 0: country-level</li>
+<li>NUTS 1: major socio-economic regions</li>
+<li>NUTS 2: basic regions for the application of regional policies</li>
+<li>NUTS 3: small regions for specific diagnoses</li>
+</ul>
+<p>As explained in the problem definition section, short-term operational planning and systems with a high penetration of VRE must be described using data of high temporal and spatial resolutions. Therefore, NUTS 3 territories will be used as a standard in this project for aggregating short-term forecasting data.</p>
+<p>This <a href="https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts.ipynb">Jupyter notebook</a> lists the NUTS territories in the North Sea region at all four NUTS levels. France is the only North Sea country with overseas territories included in the NUTS data (RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES), so these were removed accordingly.</p>
+<p>Performing the forecasting task at NUTS 3 level would be straightforward if it does not include the electricity market. Since the electricity market is considered in this project, it is important to look at how the bidding zones overlap with NUTS 3 territories.</p>
+<h2 id="sec:bidding-zones-in-the-north-sea-region">Bidding zones in the North Sea region</h2>
+<p>A bidding zone is the largest geographical area within which market participants are able to exchange energy without capacity allocation <span class="citation" data-cites="Biddi14">[<a href="#ref-Biddi14">24</a>]</span>. According to <span class="citation" data-cites="Biddi14">[<a href="#ref-Biddi14">24</a>]</span>, there are three types of bidding zones:</p>
+<ol type="1">
+<li>national borders (e.g., France or the Netherlands) - majority of bidding zones in Europe</li>
+<li>larger than national borders (e.g., Germany and Luxembourg or the Single Electricity Market for the island of Ireland)</li>
+<li>smaller zones within individual countries (e.g., Italy, Norway or Sweden)</li>
+</ol>
+<p>The bidding zones in the North Sea electricity markets and surrounding regions are illustrated in fig. 5.</p>
+<figure>
+<img src="images/market-map.png" title="Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) [@Nordw15]." alt="Figure 5: Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) [25]." id="fig:map" /><figcaption>Figure 5: Bidding zones in the North Sea electricity markets and surrounding regions. Countries in the North Sea region are in blue, while neighbouring contries with interconnections are in purple. Made using a blank SVG map of Europe from Wikimedia Commons (CC-BY-SA-4.0) <span class="citation" data-cites="Nordw15">[<a href="#ref-Nordw15">25</a>]</span>.</figcaption>
+</figure>
+<p>The power exchanges (market operators) that operate in the North Sea region are APX (Netherlands, United Kingdom), Belpex (Belgium), EEX (Germany, Denmark, France, Norway, Sweden), EPEX (Germany, France), N2EX (United Kingdom) and Nord Pool (Denmark, Norway, Sweden) <span class="citation" data-cites="Power">[<a href="#ref-Power">26</a>]</span>, <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>, <span class="citation" data-cites="Seem">[<a href="#ref-Seem">27</a>]</span>, <span class="citation" data-cites="EPEX">[<a href="#ref-EPEX">28</a>]</span>. The day-ahead market takes place generally as an hourly auction 24 hours prior to dispatch <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>. The intra-day market has continuous trading and will operate until two hours and up to five minutes before dispatch <span class="citation" data-cites="Overv16">[<a href="#ref-Overv16">20</a>]</span>.</p>
+<p>Both Nord Pool and EPEX are part of the Price Coupling of Regions (PCR) project which aims to develop a single price coupling solution for the calculation of day-ahead electricity prices in Europe, taking into account day-ahead network capacities <span class="citation" data-cites="PCRE17">[<a href="#ref-PCRE17">29</a>]</span>.</p>
+<p>Tbl. 2 below lists all bidding zones in the North Sea region by country and market operator.</p>
+<div id="tbl:zones">
+<table>
+<caption>Table 2: Bidding zones and market operators in the North Sea region.</caption>
+<thead>
+<tr class="header">
+<th><strong>Country</strong></th>
+<th><strong>Markets</strong></th>
+<th><strong>Zones</strong><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Belgium (BE)</td>
+<td>Belpex</td>
+<td>BE</td>
+</tr>
+<tr class="even">
+<td>Germany (DE)</td>
+<td>EEX, EPEX</td>
+<td>DE-LU</td>
+</tr>
+<tr class="odd">
+<td>Denmark (DK)</td>
+<td>EEX, Nord Pool</td>
+<td>DK1, DK2</td>
+</tr>
+<tr class="even">
+<td>France (FR)</td>
+<td>EEX, EPEX</td>
+<td>FR</td>
+</tr>
+<tr class="odd">
+<td>Netherlands (NL)</td>
+<td>APX</td>
+<td>NL</td>
+</tr>
+<tr class="even">
+<td>Norway (NO)</td>
+<td>EEX, Nord Pool</td>
+<td>NO1, NO2, NO3, NO4, NO5</td>
+</tr>
+<tr class="odd">
+<td>Sweden (SE)</td>
+<td>EEX, Nord Pool</td>
+<td>SE1, SE2, SE3, SE4</td>
+</tr>
+<tr class="even">
+<td>United Kingdom (UK)</td>
+<td>APX, N2EX</td>
+<td>GB, IE-SEM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Prior to 01/10/2018, Germany was part of the DE-AT-LU bidding zone, together with Austria and Luxembourg, which had split into the DE-LU and AT bidding zones, as reported by European Network of Transmission Systems Operators for Electricity (ENTSO-E) below <span class="citation" data-cites="DEATL">[<a href="#ref-DEATL">30</a>]</span>.</p>
+<blockquote>
+<p><em>[…] DE-AT-LU bidding zone split on the 23rd of August. BZN|DE-AT-LU will be separated into 2 new bidding zones BZN|DE-LU and BZN|AT.</em></p>
+<p><em>New bidding zones will be active from the 1st of October, however, first data submissions, like month ahead forecasts, are expected from the 1st of September.</em></p>
+<p><em>Validity end date for BZN|DE-AT-LU is the end of September 2018. […]</em></p>
+</blockquote>
+<p>Mapping bidding zones to NUTS 3 territories is straightforward for Belgium, Germany, France and Netherlands (bidding zone type 1 or 2) – all NUTS 3 territories in these countries have the same bidding zone.</p>
+<p>Denmark and United Kingdom are both conveniently separated into two zones that are easily distinguishable. For Denmark, these are Western Denmark (NUTS IDs containing DK03-DK05) and Southern Denmark (NUTS IDs containing DK01-DK02). For United Kingdom, these are Great Britain (NUTS IDs containing UKC-UKM) and Northern Ireland (NUTS IDs containing UKN).</p>
+<p>There is no clear indication of the bidding zone boundaries for Norway and Sweden, so some assumptions were made. Both countries have multiple smaller bidding zones (type 3) with flexible borders <span class="citation" data-cites="Europ10">[<a href="#ref-Europ10">31</a>]</span>, <span class="citation" data-cites="List">[<a href="#ref-List">32</a>]</span>. This was done to optimise allocation of resources and reduce the overall price of electricity <span class="citation" data-cites="Europ10">[<a href="#ref-Europ10">31</a>]</span>, <span class="citation" data-cites="List">[<a href="#ref-List">32</a>]</span>. Norway has five zones and Sweden has four zones. By cross-referencing Nord Pool market data <span class="citation" data-cites="Seem">[<a href="#ref-Seem">27</a>]</span>, NUTS 3 data and county maps of Norway <span class="citation" data-cites="Count19">[<a href="#ref-Count19">33</a>]</span> and Sweden <span class="citation" data-cites="Count19a">[<a href="#ref-Count19a">34</a>]</span>, the territories are split into the bidding zones as shown in tbl. 3. Nord Pool associates each bidding zone with a major reference city in that zone. However, there were six cities for Norway instead of the expected five. Historical Nord Pool market data for Norway suggests that two cities, Trondheim and Molde, have had the same system price since 2003. The ELSPOT area change log <span class="citation" data-cites="List">[<a href="#ref-List">32</a>]</span> also confirms that Trondheim and Molde are city references for the NO3 bidding zone . Therefore, these two cities are grouped into the same bidding zone, which also satisfies what the maps suggest.</p>
+<div id="tbl:nord">
+<table>
+<caption>Table 3: Bidding zones and their territories for Norway and Sweden, approximated based on Nord Pool market data <span class="citation" data-cites="Seem">[<a href="#ref-Seem">27</a>]</span>, <span class="citation" data-cites="List">[<a href="#ref-List">32</a>]</span>, NUTS 3 data and county maps of Norway <span class="citation" data-cites="Count19">[<a href="#ref-Count19">33</a>]</span> and Sweden <span class="citation" data-cites="Count19a">[<a href="#ref-Count19a">34</a>]</span>.</caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 46%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Bidding zone</strong></th>
+<th><strong>Reference cities</strong></th>
+<th><strong>Counties</strong></th>
+<th><strong>NUTS 3 IDs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NO1</td>
+<td>Oslo</td>
+<td>Oslo, Akershus, Hedmark, Oppland, Østfold, Buskerud, Vestfold, Telemark</td>
+<td>NO011-034</td>
+</tr>
+<tr class="even">
+<td>NO2</td>
+<td>Kristiansand</td>
+<td>Aust-Agder, Vest-Agder, Rogaland</td>
+<td>NO041-043</td>
+</tr>
+<tr class="odd">
+<td>NO3</td>
+<td>Trondheim, Molde</td>
+<td>Sogn og Fjordane, Møre og Romsdal, Trøndelag</td>
+<td>NO052-060</td>
+</tr>
+<tr class="even">
+<td>NO4</td>
+<td>Tromsø</td>
+<td>Nordland, Troms, Finnmark</td>
+<td>NO071-073</td>
+</tr>
+<tr class="odd">
+<td>NO5</td>
+<td>Bergen</td>
+<td>Hordaland</td>
+<td>NO051</td>
+</tr>
+<tr class="even">
+<td>SE1</td>
+<td>Luleå</td>
+<td>Norrbotten</td>
+<td>SE332</td>
+</tr>
+<tr class="odd">
+<td>SE2</td>
+<td>Sundsvall</td>
+<td>Gävleborg, Västernorrland, Jämtland, Västerbotten</td>
+<td>SE313-331</td>
+</tr>
+<tr class="even">
+<td>SE3</td>
+<td>Stockholm</td>
+<td>Stockholm, Uppsala, Södermanland, Östergötland, Örebro, Västmanland, Jönköping, Gotland, Västra Götaland, Värmland, Dalarna</td>
+<td>SE110-211, SE214, SE232-312</td>
+</tr>
+<tr class="odd">
+<td>SE4</td>
+<td>Malmö</td>
+<td>Kronoberg, Kalmar, Blekinge, Halland, Skåne</td>
+<td>SE212-213, SE221-231</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This <a href="https://github.com/ENSYSTRA/short-term-forecasting/tree/master/jupyter-notebooks/nuts_biddingZones.ipynb">Jupyter notebook</a> lists all NUTS 3 territories and their bidding zones in the North Sea region, and explains how the different bidding zones were assigned to the territories.</p>
+<h2 id="sec:transmission-system-operators-and-interconnections">Transmission system operators and interconnections</h2>
+<p>The North Sea region consists of multiple TSOs and cross-border interconnections. These are listed, along with the bidding zones bidding zones, in tbl. 4.</p>
+<div id="tbl:tso">
+<table>
+<caption>Table 4: TSOs and cross-border interconnections in the North Sea region. Data: European Network of Transmission System Operators for Electricity <span class="citation" data-cites="ENTSO">[<a href="#ref-ENTSO">35</a>]</span>, <span class="citation" data-cites="Regio">[<a href="#ref-Regio">36</a>]</span>.</caption>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 41%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ctry.</strong><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></th>
+<th><strong>TSOs</strong></th>
+<th><strong>Cross-border interconnection</strong><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></th>
+<th><strong>Bidding zones</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BE</td>
+<td>Elia System Operator</td>
+<td>FR, LU, NL, UK</td>
+<td>BE</td>
+</tr>
+<tr class="even">
+<td>DK</td>
+<td>Energinet</td>
+<td>DE, NO, SE</td>
+<td>DK1, DK2</td>
+</tr>
+<tr class="odd">
+<td>DE</td>
+<td>TransnetBW, TenneT TSO, Amprion, 50Hertz Transmission</td>
+<td>AT, CH, CZ, DK, FR, LU, NL, PL, SE</td>
+<td>DE-LU</td>
+</tr>
+<tr class="even">
+<td>FR</td>
+<td>Réseau de Transport d’Electricité</td>
+<td>BE, CH, DE, ES, IT, UK</td>
+<td>FR</td>
+</tr>
+<tr class="odd">
+<td>NL</td>
+<td>TenneT TSO</td>
+<td>BE, DE, NO, UK</td>
+<td>NL</td>
+</tr>
+<tr class="even">
+<td>NO</td>
+<td>Statnett</td>
+<td>DK, FI, NL, SE</td>
+<td>NO1, NO2, NO3, NO4, NO5</td>
+</tr>
+<tr class="odd">
+<td>SE</td>
+<td>Svenska Kraftnät</td>
+<td>DK, FI, DE, LT, NO, PL</td>
+<td>SE1, SE2, SE3, SE4</td>
+</tr>
+<tr class="even">
+<td>UK</td>
+<td>National Grid Electricity Transmission, System Operator for Northern Ireland, Scottish Hydro Electric Transmission, ScottishPower Transmission</td>
+<td>BE, FR, IE, NL</td>
+<td>GB, IE-SEM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 
+- [Data](#data)
+  - [Folder navigation](#folder-navigation)
+  - [Generation and load data](#generation-and-load-data)
+    - [Actual generation per production type](#actual-generation-per-production-type)
+    - [Installed capacity per production unit](#installed-capacity-per-production-unit)
+    - [Load](#load)
+    - [Extracting data through ENTSO-E Transparency Platform's Restful API](#extracting-data-through-entso-e-transparency-platforms-restful-api)
+  - [Market data](#market-data)
+    - [REMIT UMM](#remit-umm)
+  - [Meteorological data](#meteorological-data)
+  - [Territorial units](#territorial-units)
+  - [Terms of use](#terms-of-use)
+ -->
+<h1 id="sec:data">Data</h1>
+<p>All input and output data can be found in the <a href="https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0">data</a> folder on Dropbox. Licenses and terms of the input data used can be found in their corresponding folders.</p>
+<h2 id="sec:folder-navigation">Folder navigation</h2>
+<ul>
+<li><strong>entsoe-api</strong> - generation and load data at TSO level for each bidding zone, downloaded from the ENTSO-E Transparency Platform</li>
+<li><strong>met</strong> - meteorological data, grouped by country, downloaded from country-specific meteorological services</li>
+<li><strong>nuts</strong> - territorial units, downloaded from Eurostat</li>
+<li><strong>output</strong> - output data</li>
+</ul>
+<h2 id="sec:generation-and-load-data">Generation and load data</h2>
+<p>Generation and load data for each bidding zone are downloaded from the ENTSO-E Transparency Platform <span class="citation" data-cites="ENTSO">[<a href="#ref-ENTSO">35</a>]</span>. The following descriptions of the data are from ENTSO-E Transparency Platform’s Knowledge Base <span class="citation" data-cites="Help">[<a href="#ref-Help">37</a>]</span>. Three types of data will be used.</p>
+<h3 id="sec:actual-generation-per-production-type">Actual generation per production type</h3>
+<ul>
+<li>Actual aggregated net generation output (MW) per market time unit and per production type</li>
+<li>Published no later than one hour after the operational period</li>
+<li>Computed as the average of all available instantaneous net generation output values on each market time unit</li>
+<li>If unknown, it is estimated</li>
+<li>The actual generation of small-scale units might be estimated if no real-time measurement devices exist</li>
+</ul>
+<h3 id="sec:installed-capacity-per-production-unit">Installed capacity per production unit</h3>
+<p>This data contains information about production units (existing and planned) with an installed generation capacity of at least 100 MW, which includes the following:</p>
+<ul>
+<li>unit name</li>
+<li>code</li>
+<li>installed net generation capacity (MW)</li>
+<li>voltage connection level (kV)</li>
+<li>bidding zone (denoted using Energy Identification Codes (EICs))</li>
+<li>production type (e.g., fossil gas, wind offshore)</li>
+</ul>
+<p>This information is published annually at the start of the year and is valid for the three following years.</p>
+<!-- #### [Installed Capacity per Production Type](https://transparency.entsoe.eu/generation/r2/installedGenerationCapacityAggregation/show)
+
+The sum of installed net generation capacity (MW) per control area for all existing production units equalling to or exceeding 1 MW installed generation capacity, per production type. The information shall be published annually no later than one week before the end of the previous year. The installed net generation capacity refers to to the generation capacity which is effectively installed on January 1st of the following year.
+
+**Incomplete data**: 
+
+- Data for Sweden is unavailable at the bidding zone level for 2018 and 2019 (last checked on 15/08/2019) -->
+<h3 id="sec:load">Load</h3>
+<ul>
+<li>Actual total load per bidding zone per market time unit</li>
+<li>The total load is defined as equal to the sum of power generated by plants on both TSO/DNO networks, from which is deduced:
+<ul>
+<li>the balance (export-import) of exchanges on interconnections between neighbouring bidding zones</li>
+<li>the power absorbed by energy storage resources</li>
+</ul></li>
+<li>The information is published no later than one hour after the end of the operating period</li>
+<li>Calculated using the average of real-time load values per bidding zone per market time unit</li>
+<li>Actual total Load (including losses without stored energy) = Net Generation – Exports + Imports – Absorbed Energy</li>
+<li>Net generation is preferred, but gross generation could be used where it is available with the better precision</li>
+<li>TSOs should decide gross or net generation will be used but the net/gross characteristic should be consistent per bidding zone</li>
+<li>Absorbed energy is also provided as separate information with the aggregated generation output of the hydro pumped storage</li>
+<li>The physical flow on the tie line is measured as agreed by neighbouring TSOs or bidding zones, where applicable</li>
+</ul>
+<h3 id="sec:extracting-data-through-entso-e-transparency-platforms-restful-api">Extracting data through ENTSO-E Transparency Platform’s Restful API</h3>
+<p>ENTSO-E Transparency Platform’s RESTful application programming interface (API) can be used to automate the data extraction process <span class="citation" data-cites="ENTSO16">[<a href="#ref-ENTSO16">38</a>]</span>, <span class="citation" data-cites="Trans">[<a href="#ref-Trans">39</a>]</span>. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk.</p>
+<p>The ENTSO-E API Python client <span class="citation" data-cites="Energ19">[<a href="#ref-Energ19">40</a>]</span> is used to easily query the required data and return them as Pandas dataframes or series. The queries for generation and installed generation capacity per unit return dataframes, while the query for load returns a series. <a href="https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py"><code>entsoe_api.py</code></a> is the script used to perform this.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">import</span> pandas <span class="im">as</span> pd</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="im">from</span> entsoe <span class="im">import</span> EntsoePandasClient</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="im">from</span> entsoe.mappings <span class="im">import</span> DOMAIN_MAPPINGS, BIDDING_ZONES</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># combine domain and bidding zone keys and values into the DOMAIN_MAPPINGS dictionary</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">DOMAIN_MAPPINGS.update(BIDDING_ZONES) </a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># import security token saved in a separate file (login.py)</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="im">from</span> login <span class="im">import</span> token</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># use security token to access the api through the entsoe pandas client</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">client <span class="op">=</span> EntsoePandasClient(api_key<span class="op">=</span>token)</a></code></pre></div>
+<p>The bidding zones in the North Sea region, mapped to their corresponding EICs as shown in tbl. 5, are used when querying using the Pandas client. Note that <code>DE-LU</code> only works for timestamps starting 01/10/2018. Use <code>DE-AT-LU</code> for timestamps prior to this date.</p>
+<div id="tbl:eic">
+<table>
+<caption>Table 5: Bidding zones in the North Sea region and their corresponding EICs.</caption>
+<thead>
+<tr class="header">
+<th><strong>Bidding zone</strong></th>
+<th><strong>EIC</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BE</td>
+<td>10YBE———-2</td>
+</tr>
+<tr class="even">
+<td>DE-LU</td>
+<td>10Y1001A1001A82H</td>
+</tr>
+<tr class="odd">
+<td>DK-1</td>
+<td>10YDK-1——–W</td>
+</tr>
+<tr class="even">
+<td>DK-2</td>
+<td>10YDK-2——–M</td>
+</tr>
+<tr class="odd">
+<td>FR</td>
+<td>10YFR-RTE——C</td>
+</tr>
+<tr class="even">
+<td>GB</td>
+<td>10YGB———-A</td>
+</tr>
+<tr class="odd">
+<td>IE-SEM</td>
+<td>10Y1001A1001A59C</td>
+</tr>
+<tr class="even">
+<td>NL</td>
+<td>10YNL———-L</td>
+</tr>
+<tr class="odd">
+<td>NO-1</td>
+<td>10YNO-1——–2</td>
+</tr>
+<tr class="even">
+<td>NO-2</td>
+<td>10YNO-2——–T</td>
+</tr>
+<tr class="odd">
+<td>NO-3</td>
+<td>10YNO-3——–J</td>
+</tr>
+<tr class="even">
+<td>NO-4</td>
+<td>10YNO-4——–9</td>
+</tr>
+<tr class="odd">
+<td>NO-5</td>
+<td>10Y1001A1001A48H</td>
+</tr>
+<tr class="even">
+<td>SE-1</td>
+<td>10Y1001A1001A44P</td>
+</tr>
+<tr class="odd">
+<td>SE-2</td>
+<td>10Y1001A1001A45N</td>
+</tr>
+<tr class="even">
+<td>SE-3</td>
+<td>10Y1001A1001A46L</td>
+</tr>
+<tr class="odd">
+<td>SE-4</td>
+<td>10Y1001A1001A47</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="sec:market-data">Market data</h2>
+<p><a href="https://www.nordpoolgroup.com/historical-market-data/">Nord Pool</a></p>
+<p>Historical market data from Nord Pool is stored as <code>.xls</code> files can be accessed using the following URL:</p>
+<pre><code>https://www.nordpoolgroup.com/globalassets/marketdata-excel-files/FILENAME.xls</code></pre>
+<ul>
+<li><a href="https://www.nordpoolgroup.com/trading/join-our-markets/membership/">Membership list - Nord Pool</a></li>
+<li><a href="https://www.nordpoolgroup.com/About-us/Terms-and-conditions-for-use/">Terms and conditions for use</a></li>
+</ul>
+<p><a href="https://www.epexspot.com/en/extras/download-center/market_data">EPEX Spot</a></p>
+<ul>
+<li><a href="https://www.epexspot.com/en/membership/list_of_members">EPEX SPOT Exchange Members</a></li>
+</ul>
+<h3 id="sec:remit-umm">REMIT UMM</h3>
+<p>REMIT Urgent Market Messaging (UMM) is used by market operators and companies involved in balancing and settlements, including Nord Pool and ELEXON, for market members and participants to publish information on outages in production, consumption and transmission and other relevant market information according to European transparency regulations <span class="citation" data-cites="REMIT16">[<a href="#ref-REMIT16">41</a>]</span>, <span class="citation" data-cites="NordP">[<a href="#ref-NordP">42</a>]</span>, <span class="citation" data-cites="Abouta">[<a href="#ref-Abouta">43</a>]</span>, <span class="citation" data-cites="Aboutb">[<a href="#ref-Aboutb">44</a>]</span>, <span class="citation" data-cites="Publi">[<a href="#ref-Publi">45</a>]</span>. The information is publicly available and is classified as follows:</p>
+<ul>
+<li>Event
+<ul>
+<li>Unavailability of electrical facilities (production, consumption, transmission)</li>
+<li>Market information</li>
+</ul></li>
+<li>Infrastructure (the electrical facility(ies) that are affected)</li>
+<li>Areas (bidding zone and/or country and/or control area)</li>
+<li>Types of unavailability (planned or unplanned)</li>
+<li>Stations (production and consumption units)</li>
+<li>Fuel types (same as the production units used by ENTSO-E)</li>
+<li>Connections (between control areas and/or bidding zone)</li>
+<li>Status (active or cancelled)</li>
+<li>Publishers (companies that publish the information)</li>
+<li>Market participants</li>
+<li>Publication time</li>
+<li>Event start and stop time</li>
+<li>Duration of event</li>
+<li>Unavailable capacity (MW)</li>
+<li>Available capacity (MW)</li>
+<li>Assets (grid components, e.g., AC link, DC link, transformer, substation)</li>
+<li>Remarks</li>
+</ul>
+<h2 id="sec:meteorological-data">Meteorological data</h2>
+<h4 id="sec:belgium">Belgium</h4>
+<p><a href="https://opendata.meteo.be/">The Royal Meteorological Institute of Belgium</a></p>
+<h4 id="sec:germany">Germany</h4>
+<p>Deutscher Wetterdienst <span class="citation" data-cites="Wette">[<a href="#ref-Wette">46</a>]</span></p>
+<p><a href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/">Hourly wind data</a></p>
+<!-- * [CDC (Climate Data Center) portal](https://cdc.dwd.de/portal/)
+* [CDC OpenData](https://opendata.dwd.de/climate_environment/CDC/)
+* Data set descriptions
+  * [Hourly station observations of air temperature at 2 m above ground in °C for Germany](https://cdc.dwd.de/sdi/pid/TT_TU_MN009/DESCRIPTION_TT_TU_MN009_en.pdf)
+  * [Hourly station observations of relative humidity in % for Germany](https://cdc.dwd.de/sdi/pid/RF_TU_MN009/DESCRIPTION_RF_TU_MN009_en.pdf)
+  * [Hourly station observations of precipitation amount in mm for Germany](https://cdc.dwd.de/sdi/pid/R1_MN008/DESCRIPTION_R1_MN008_en.pdf)
+  * [Hourly station observations of form of precipitation (WR code) for Germany](https://cdc.dwd.de/sdi/pid/WRTR_MN008/DESCRIPTION_WRTR_MN008_en.pdf)
+  * [Hourly station observations of index whether precipitation has fallen for Germany](https://cdc.dwd.de/sdi/pid/RS_IND_MN008/DESCRIPTION_RS_IND_MN008_en.pdf)
+  * [Hourly mean of station observations of wind speed ca. 10 m above ground in m/s for Germany](https://cdc.dwd.de/sdi/pid/F_MN003/DESCRIPTION_F_MN003_en.pdf)
+  * [Hourly mean of station observations of wind direction at ca. 10 m above ground in degree for Germany](https://cdc.dwd.de/sdi/pid/D_MN003/DESCRIPTION_D_MN003_en.pdf)
+  * [Hourly station observations of air pressure at station level in hpa for Germany](https://cdc.dwd.de/sdi/pid/P0_MN008/DESCRIPTION_P0_MN008_en.pdf)
+  * [Hourly station observations of air pressure at mean sea level in hpa for Germany](https://cdc.dwd.de/sdi/pid/P_MN008/DESCRIPTION_P_MN008_en.pdf)
+  * [Hourly station observations of cloud coverage in eighths for Germany](https://cdc.dwd.de/sdi/pid/N_MN008/DESCRIPTION_N_MN008_en.pdf)
+  -->
+<h4 id="sec:denmark">Denmark</h4>
+<p><a href="http://research.dmi.dk/data/">Danish Meteorological Institute</a></p>
+<h4 id="sec:france">France</h4>
+<p><a href="https://donneespubliques.meteofrance.fr/">Météo-France</a></p>
+<h4 id="sec:netherlands">Netherlands</h4>
+<p><a href="https://data.knmi.nl/datasets">Royal Netherlands Meteorological Institute</a></p>
+<h4 id="sec:norway">Norway</h4>
+<p><a href="https://www.met.no/en/free-meteorological-data">Norwegian Meteorological Institute</a></p>
+<h4 id="sec:sweden">Sweden</h4>
+<p><a href="https://www.smhi.se/en/services/professional-services/data-and-statistics">Swedish Meteorological and Hydrological Institute</a></p>
+<h4 id="sec:united-kingdom">United Kingdom</h4>
+<p><a href="https://www.metoffice.gov.uk/datapoint">Met Office</a></p>
+<h2 id="sec:territorial-units">Territorial units</h2>
+<p><a href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">NUTS (Nomenclature of territorial units for statistics)</a></p>
+<h2 id="sec:terms-of-use">Terms of use</h2>
+<h4 id="sec:deutscher-wetterdienst">Deutscher Wetterdienst</h4>
+<ul>
+<li><a href="https://opendata.dwd.de/climate_environment/CDC/Terms_of_use.pdf">Terms of use for data on the CDC ftp server</a></li>
+</ul>
+<h4 id="sec:entso-e-transparency-platform">ENTSO-E Transparency Platform</h4>
+<ul>
+<li><a href="https://docstore.entsoe.eu/Documents/MC%20documents/Transparency%20Platform/ENTSOE_Transparency_Terms_Conditions.pdf">GENERAL TERMS AND CONDITIONS FOR THE USE OF THE ENTSO-E TRANSPARENCY PLATFORM</a></li>
+<li><a href="https://docstore.entsoe.eu/Documents/MC%20documents/Transparency%20Platform/List_of_Data_available_for_reuse.pdf">LIST OF DATA AVAILABLE FOR FREE RE-USE</a></li>
+</ul>
+<!-- 
+- [Methodology](#Methodology)
+ -->
+<h1 id="sec:methodology">Methodology</h1>
+<p>In progress</p>
+<!-- ## Modelling framework -->
+<!-- ![Modelling framework. License: CC BY-SA 4.0.](images/model_framework.png "Modelling framework. License: CC BY-SA 4.0.") -->
+<!-- ## Data management -->
+<!-- ## Time series forecasting -->
+<!-- * Variable renewable energy generators
+  * Installed capacity
+  * Capacity factor
+  * Available capacity (installed capacity * capacity factor)
+* Conventional generators
+  * Installed capacity
+  * Fuel efficiency
+  * Availability (either available or unavailable)
+  * Fuel cost
+  * Fuel consumption
+  * Fuel price
+  * Fuel energy value -->
+<!-- ## Market optimisation -->
+<!-- ## Translating inputs and outputs into operational strategies -->
+<!-- ## Standardisation and publication of model -->
+<!-- ## Integrating operational time scales with long-term energy systems models  -->
+<p><!-- - [Market optimisation](../wiki/Methodology#market-optimisation)
+  - [Translating inputs and outputs into operational strategies](../wiki/Methodology#translating-inputs-and-outputs-into-operational-strategies)
+  - [Standardisation and publication of model](../wiki/Methodology#standardisation-and-publication-of-model)
+  - [Integrating operational time scales with long-term energy systems models](../wiki/Methodology#integrating-operational-time-scales-with-long-term-energy-systems-models) --></p>
+<!-- 
+- [Abbreviations](#abbreviations)
+ -->
+<h1 id="sec:abbreviations">Abbreviations</h1>
+<p>API - application programming interface<br />
+BRP - balance responsible party<br />
+CAPEX - capital expenditure<br />
+CO<sub>2</sub> - carbon dioxide<br />
+DNO - distribution network operator<br />
+DSM - demand-side management<br />
+EIC - Energy Identification Code<br />
+ENSYSTRA - ENergy SYStems in TRAnsition<br />
+ENTSO-E - European Network of Transmission Systems Operators for Electricity<br />
+ESR - early-stage researcher<br />
+EU - European Union<br />
+GHG - greenhouse gas<br />
+NUTS - Nomenclature of territorial units for statistics<br />
+O&amp;M - operation and maintenance<br />
+OPEX - operational expenditure<br />
+PCR - Price Coupling of Regions<br />
+TSO - transmission system operator<br />
+VRE - variable renewable energy<br />
+WP - work package</p>
+<!-- COMPETES - COmprehensive Market Power in Electricity Transmission and Energy Simulator \
+AI - artificial intelligence \
+DC - direct current \
+EMMA - The European Electricity Market Model \
+ETSAP - Energy Technology Systems Analysis Program \
+GAMS - General Algebraic Modeling System \
+IEA - International Energy Agency \
+IRENA - International Renewable Energy Agency \
+MARKAL - MARKet ALlocation \
+NREL - National Renewable Energy Laboratory \
+openmod - Open Energy Modelling Initiative \
+PhD - Doctor of Philosophy \
+renpass - Renewable Energy Pathways Simulation System \
+stELMOD - Stochastic Electricity Market Model \
+TIMES - The Integrated MARKAL-EFOM System \
+UiS - University of Stavanger \ -->
+<h1 id="sec:references">References</h1>
+<div id="refs">
+<div id="ref-Paris15">
+<p>[1] “Paris Agreement.” United Nations Framework Convention on Climate Change, 2015 [Online]. Available: <a href="https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement" class="uri">https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement</a>. [Accessed: 23 April 2018]</p>
+</div>
+<div id="ref-Energ12">
+<p>[2] “Energy roadmap 2050,” Publications Office of the European Union, Luxembourg, 2012 [Online]. Available: <a href="https://doi.org/10.2833/10759" class="uri">https://doi.org/10.2833/10759</a></p>
+</div>
+<div id="ref-Globa18">
+<p>[3] “Global Energy Transformation: A Roadmap to 2050,” International Renewable Energy Agency, 2018 [Online]. Available: <a href="http://www.irena.org/publications/2018/Apr/Global-Energy-Transition-A-Roadmap-to-2050" class="uri">http://www.irena.org/publications/2018/Apr/Global-Energy-Transition-A-Roadmap-to-2050</a>. [Accessed: 14 November 2018]</p>
+</div>
+<div id="ref-Renew">
+<p>[4] “Renewable energy - Energy - European Commission.” [Online]. Available: <a href="https://ec.europa.eu/energy/en/topics/renewable-energy" class="uri">https://ec.europa.eu/energy/en/topics/renewable-energy</a>. [Accessed: 12 October 2018]</p>
+</div>
+<div id="ref-World17">
+<p>[5] “World Energy Outlook 2017,” International Energy Agency, Paris, France, 2017 [Online]. Available: <a href="https://www.iea.org/weo2017/" class="uri">https://www.iea.org/weo2017/</a>. [Accessed: 20 May 2018]</p>
+</div>
+<div id="ref-Lund17">
+<p>[6] H. Lund, P. A. Østergaard, D. Connolly, and B. V. Mathiesen, “Smart energy and smart energy systems,” <em>Energy</em>, vol. 137, pp. 556–565, October 2017 [Online]. Available: <a href="https://doi.org/10.1016/j.energy.2017.05.123" class="uri">https://doi.org/10.1016/j.energy.2017.05.123</a></p>
+</div>
+<div id="ref-Towar18">
+<p>[7] “Towards a consumer-centric system,” Elia Group, Brussels, Belgium, 2018 [Online]. Available: <a href="http://www.elia.be/~/media/files/Elia/StakeholderDay/Elia-Vision-paper-2018_Front-Spreads-Back.pdf" class="uri">http://www.elia.be/~/media/files/Elia/StakeholderDay/Elia-Vision-paper-2018_Front-Spreads-Back.pdf</a></p>
+</div>
+<div id="ref-About">
+<p>[8] “About the project | ENSYSTRA.” [Online]. Available: <a href="https://ensystra.eu/about-the-project/" class="uri">https://ensystra.eu/about-the-project/</a>. [Accessed: 23 April 2018]</p>
+</div>
+<div id="ref-Herbs12">
+<p>[9] A. Herbst, F. Toro, F. Reitze, and E. Jochem, “Introduction to Energy Systems Modelling,” <em>Swiss Journal of Economics and Statistics</em>, vol. 148, no. 2, pp. 111–135, April 2012 [Online]. Available: <a href="https://doi.org/10.1007/BF03399363" class="uri">https://doi.org/10.1007/BF03399363</a></p>
+</div>
+<div id="ref-Krook15">
+<p>[10] A. Krook-Riekkola, “National Energy System Modelling for Supporting Energy and Climate Policy Decision-making : The Case of Sweden,” Chalmers University of Technology, Göteborg, Sweden, 2015 [Online]. Available: <a href="http://urn.kb.se/resolve?urn=urn:nbn:se:ltu:diva-17594" class="uri">http://urn.kb.se/resolve?urn=urn:nbn:se:ltu:diva-17594</a>. [Accessed: 24 September 2018]</p>
+</div>
+<div id="ref-Manag12">
+<p>[11] “Managing big data for smart grids and smart meters,” IBM Corporation, Somers, NY, USA, 2012 [Online]. Available: <a href="http://www.ibmbigdatahub.com/whitepaper/managing-big-data-smart-grids-and-smart-meters" class="uri">http://www.ibmbigdatahub.com/whitepaper/managing-big-data-smart-grids-and-smart-meters</a>. [Accessed: 18 June 2018]</p>
+</div>
+<div id="ref-Erbac16">
+<p>[12] G. Erbach, “Understanding electricity markets in the EU,” European Union, Briefing, November 2016 [Online]. Available: <a href="http://www.europarl.europa.eu/RegData/etudes/BRIE/2016/593519/EPRS_BRI(2016)593519_EN.pdf" class="uri">http://www.europarl.europa.eu/RegData/etudes/BRIE/2016/593519/EPRS_BRI(2016)593519_EN.pdf</a>. [Accessed: 22 November 2018]</p>
+</div>
+<div id="ref-Glism18">
+<p>[13] S. Glismann, “Modelling from a TSO Perspective - TenneT NL,” 6 September 2018. </p>
+</div>
+<div id="ref-Pfenn14">
+<p>[14] S. Pfenninger, A. Hawkes, and J. Keirstead, “Energy systems modeling for twenty-first century energy challenges,” <em>Renewable and Sustainable Energy Reviews</em>, vol. 33, pp. 74–86, May 2014 [Online]. Available: <a href="https://doi.org/10.1016/j.rser.2014.02.003" class="uri">https://doi.org/10.1016/j.rser.2014.02.003</a></p>
+</div>
+<div id="ref-Energ">
+<p>[15] “Energy modelling - EU Reference Scenario 2016.” [Online]. Available: <a href="https://data.europa.eu/euodp/data/dataset/energy-modelling" class="uri">https://data.europa.eu/euodp/data/dataset/energy-modelling</a>. [Accessed: 1 November 2018]</p>
+</div>
+<div id="ref-Josko11">
+<p>[16] P. L. Joskow, “Comparing the Costs of Intermittent and Dispatchable Electricity Generating Technologies,” <em>American Economic Review</em>, vol. 101, no. 3, pp. 238–241, May 2011 [Online]. Available: <a href="https://doi.org/10.1257/aer.101.3.238" class="uri">https://doi.org/10.1257/aer.101.3.238</a></p>
+</div>
+<div id="ref-Tidba10">
+<p>[17] R. Tidball, J. Bluestein, N. Rodriguez, S. Knoke, and J. Macknick, “Cost and Performance Assumptions for Modeling Electricity Generation Technologies,” National Renewable Energy Laboratory, Subcontract Report NREL/SR-6A20-48595, 2010 [Online]. Available: <a href="https://www.nrel.gov/docs/fy11osti/48595.pdf" class="uri">https://www.nrel.gov/docs/fy11osti/48595.pdf</a></p>
+</div>
+<div id="ref-Pinso">
+<p>[18] P. Pinson, “Renewables in Electricity Markets « Pierre Pinson.” [Online]. Available: <a href="http://pierrepinson.com/?page_id=913" class="uri">http://pierrepinson.com/?page_id=913</a>. [Accessed: 9 December 2018]</p>
+</div>
+<div id="ref-Thec15">
+<p>[19] “The current electricity market design in Europe,” KU Leuven Energy Institute, Heverlee, Belgium, January 2015 [Online]. Available: <a href="https://set.kuleuven.be/ei/factsheets" class="uri">https://set.kuleuven.be/ei/factsheets</a>. [Accessed: 29 November 2018]</p>
+</div>
+<div id="ref-Overv16">
+<p>[20] “Overview of European Electricity Markets,” European Union, Brussels, Belgium, February 2016 [Online]. Available: <a href="https://ec.europa.eu/energy/sites/ener/files/documents/overview_of_european_electricity_markets.pdf" class="uri">https://ec.europa.eu/energy/sites/ener/files/documents/overview_of_european_electricity_markets.pdf</a>. [Accessed: 26 November 2018]</p>
+</div>
+<div id="ref-North">
+<p>[21] “North Sea | European MSP Platform.” [Online]. Available: <a href="https://www.msp-platform.eu/sea-basins/north-sea-0" class="uri">https://www.msp-platform.eu/sea-basins/north-sea-0</a>. [Accessed: 1 June 2018]</p>
+</div>
+<div id="ref-Membe15">
+<p>[22] “Member Directory &amp; Map – CPMR North Sea Commission,” 21 October 2015. [Online]. Available: <a href="https://cpmr-northsea.org/who-we-are/member-directory-map/" class="uri">https://cpmr-northsea.org/who-we-are/member-directory-map/</a>. [Accessed: 3 March 2019]</p>
+</div>
+<div id="ref-NUTS">
+<p>[23] “NUTS - Nomenclature of territorial units for statistics - Eurostat.” [Online]. Available: <a href="https://ec.europa.eu/eurostat/web/nuts/background" class="uri">https://ec.europa.eu/eurostat/web/nuts/background</a>. [Accessed: 11 June 2019]</p>
+</div>
+<div id="ref-Biddi14">
+<p>[24] “Bidding Zones Literature Review,” Ofgem, July 2014 [Online]. Available: <a href="https://www.ofgem.gov.uk/sites/default/files/docs/2014/10/fta_bidding_zone_configuration_literature_review_1.pdf" class="uri">https://www.ofgem.gov.uk/sites/default/files/docs/2014/10/fta_bidding_zone_configuration_literature_review_1.pdf</a></p>
+</div>
+<div id="ref-Nordw15">
+<p>[25] of derivative work: Nordwestern, <em>English: A blank Map of Europe in SVG format without disputed areas and conflict regions.</em> 2015 [Online]. Available: <a href="https://commons.wikimedia.org/wiki/File:Blank_map_of_Europe_(without_disputed_regions).svg" class="uri">https://commons.wikimedia.org/wiki/File:Blank_map_of_Europe_(without_disputed_regions).svg</a>. [Accessed: 8 July 2019]</p>
+</div>
+<div id="ref-Power">
+<p>[26] “Power | Statkraft.” [Online]. Available: <a href="https://www.statkraft.com/market-operations/standard-energy-products/power-electricity/" class="uri">https://www.statkraft.com/market-operations/standard-energy-products/power-electricity/</a>. [Accessed: 26 July 2019]</p>
+</div>
+<div id="ref-Seem">
+<p>[27] “See market data for all areas | Nord Pool.” [Online]. Available: <a href="http://www.nordpoolspot.com/Market-data1/" class="uri">http://www.nordpoolspot.com/Market-data1/</a>. [Accessed: 23 November 2018]</p>
+</div>
+<div id="ref-EPEX">
+<p>[28] “EPEX SPOT SE: About EPEX SPOT.” [Online]. Available: <a href="http://www.epexspot.com/en/company-info/about_epex_spot" class="uri">http://www.epexspot.com/en/company-info/about_epex_spot</a>. [Accessed: 23 November 2018]</p>
+</div>
+<div id="ref-PCRE17">
+<p>[29] “PCR &amp; EUPHEMIA algorithm, the European Power Exchanges project to couple electricity market!” <em>N-SIDE</em>, 9 September 2017. [Online]. Available: <a href="https://www.n-side.com/pcr-euphemia-algorithm-european-power-exchanges-price-coupling-electricity-market/" class="uri">https://www.n-side.com/pcr-euphemia-algorithm-european-power-exchanges-price-coupling-electricity-market/</a>. [Accessed: 29 January 2019]</p>
+</div>
+<div id="ref-DEATL">
+<p>[30] “DE-AT-LU Bidding zone split - News - ENTSO-E Transparency Platform.” [Online]. Available: <a href="https://transparency.entsoe.eu/news/widget?id=5b7c1e9b5092e75a10bab903" class="uri">https://transparency.entsoe.eu/news/widget?id=5b7c1e9b5092e75a10bab903</a>. [Accessed: 18 September 2019]</p>
+</div>
+<div id="ref-Europ10">
+<p>[31] “European Commission - PRESS RELEASES - Press release - Antitrust: Commission increases electricity trading capacity on the Swedish borders,” 14 April 2010. [Online]. Available: <a href="http://europa.eu/rapid/press-release_IP-10-425_en.htm?locale=en" class="uri">http://europa.eu/rapid/press-release_IP-10-425_en.htm?locale=en</a>. [Accessed: 25 June 2019]</p>
+</div>
+<div id="ref-List">
+<p>[32] “List of changes in day-ahead and intraday areas,” Nord Pool [Online]. Available: <a href="https://www.nordpoolspot.com/globalassets/download-center/day-ahead/elspot-area-change-log.pdf" class="uri">https://www.nordpoolspot.com/globalassets/download-center/day-ahead/elspot-area-change-log.pdf</a>. [Accessed: 24 June 2019]</p>
+</div>
+<div id="ref-Count19">
+<p>[33] “Counties of Norway,” <em>Wikipedia</em>. 2 April 2019 [Online]. Available: <a href="https://en.wikipedia.org/w/index.php?title=Counties_of_Norway&amp;oldid=890663009" class="uri">https://en.wikipedia.org/w/index.php?title=Counties_of_Norway&amp;oldid=890663009</a>. [Accessed: 11 June 2019]</p>
+</div>
+<div id="ref-Count19a">
+<p>[34] “Counties of Sweden,” <em>Wikipedia</em>. 11 February 2019 [Online]. Available: <a href="https://en.wikipedia.org/w/index.php?title=Counties_of_Sweden&amp;oldid=882806371" class="uri">https://en.wikipedia.org/w/index.php?title=Counties_of_Sweden&amp;oldid=882806371</a>. [Accessed: 11 June 2019]</p>
+</div>
+<div id="ref-ENTSO">
+<p>[35] “ENTSO-E Transparency Platform.” [Online]. Available: <a href="https://transparency.entsoe.eu/" class="uri">https://transparency.entsoe.eu/</a>. [Accessed: 7 November 2018]</p>
+</div>
+<div id="ref-Regio">
+<p>[36] “Regional Security Coordinators FAQ.” [Online]. Available: <a href="https://www.entsoe.eu/major-projects/rscis/" class="uri">https://www.entsoe.eu/major-projects/rscis/</a>. [Accessed: 18 November 2018]</p>
+</div>
+<div id="ref-Help">
+<p>[37] “Help Page - ENTSO-E Transparency Platform.” [Online]. Available: <a href="https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/knowledge%20base.html">https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/knowledge%20base.html</a>. [Accessed: 12 August 2019]</p>
+</div>
+<div id="ref-ENTSO16">
+<p>[38] “ENTSO-E Transparency Platform Data Extraction Process Implementation Guide,” ENTSO-E AISBL, Brussels, Belgium, July 2016 [Online]. Available: <a href="https://transparency.entsoe.eu/content/static_content/download?path=/Static%20content/web%20api/RestfulAPI_IG.pdf">https://transparency.entsoe.eu/content/static_content/download?path=/Static%20content/web%20api/RestfulAPI_IG.pdf</a></p>
+</div>
+<div id="ref-Trans">
+<p>[39] “Transparency Platform restful API - user guide.” [Online]. Available: <a href="https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html">https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html</a>. [Accessed: 13 September 2019]</p>
+</div>
+<div id="ref-Energ19">
+<p>[40] <em>EnergieID/entsoe-py</em>. EnergieID cvba-so, 2019 [Online]. Available: <a href="https://github.com/EnergieID/entsoe-py" class="uri">https://github.com/EnergieID/entsoe-py</a>. [Accessed: 18 September 2019]</p>
+</div>
+<div id="ref-REMIT16">
+<p>[41] “REMIT UMM User Manual,” Nord Pool, December 2016 [Online]. Available: <a href="https://www.nordpoolspot.com/globalassets/download-center/remit/remit-umm-user-manual-20161130.pdf" class="uri">https://www.nordpoolspot.com/globalassets/download-center/remit/remit-umm-user-manual-20161130.pdf</a></p>
+</div>
+<div id="ref-NordP">
+<p>[42] “NordPool - REMIT UMM.” [Online]. Available: <a href="https://umm.nordpoolgroup.com/" class="uri">https://umm.nordpoolgroup.com/</a>. [Accessed: 26 July 2019]</p>
+</div>
+<div id="ref-Abouta">
+<p>[43] “About Us | BMRS.” [Online]. Available: <a href="https://www2.bmreports.com/bmrs/?q=help/about-us" class="uri">https://www2.bmreports.com/bmrs/?q=help/about-us</a>. [Accessed: 29 August 2019]</p>
+</div>
+<div id="ref-Aboutb">
+<p>[44] “About ELEXON - ELEXON.” [Online]. Available: <a href="https://www.elexon.co.uk/about/about-elexon/" class="uri">https://www.elexon.co.uk/about/about-elexon/</a>. [Accessed: 29 August 2019]</p>
+</div>
+<div id="ref-Publi">
+<p>[45] “Publish and receive urgent market messages quickly and easily | Nord Pool.” [Online]. Available: <a href="http://www.nordpoolgroup.com/services/compliance/umm/" class="uri">http://www.nordpoolgroup.com/services/compliance/umm/</a>. [Accessed: 29 August 2019]</p>
+</div>
+<div id="ref-Wette">
+<p>[46] “Wetter und Klima - Deutscher Wetterdienst - CDC (Climate Data Center).” [Online]. Available: <a href="https://www.dwd.de/EN/climate_environment/cdc/cdc_node.html" class="uri">https://www.dwd.de/EN/climate_environment/cdc/cdc_node.html</a>. [Accessed: 19 September 2019]</p>
+</div>
+</div>
+<!--  
+- [License](#License)
+  - [GNU Free Documentation License](#GNU-Free-Documentation-License)
+    - [ADDENDUM: How to use this License for your documents](#ADDENDUM-How-to-use-this-License-for-your-documents)
+-->
+<h1 id="sec:license">License</h1>
+<h2 id="sec:gnu-free-documentation-license">GNU Free Documentation License</h2>
+<p>Version 1.3, 3 November 2008</p>
+<p>Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc. <a href="https://fsf.org/" class="uri">https://fsf.org/</a></p>
+<p>Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.</p>
+<h4 id="sec:preamble">0. PREAMBLE</h4>
+<p>The purpose of this License is to make a manual, textbook, or other functional and useful document “free” in the sense of freedom: to assure everyone the effective freedom to copy and redistribute it, with or without modifying it, either commercially or noncommercially. Secondarily, this License preserves for the author and publisher a way to get credit for their work, while not being considered responsible for modifications made by others.</p>
+<p>This License is a kind of “copyleft”, which means that derivative works of the document must themselves be free in the same sense. It complements the GNU General Public License, which is a copyleft license designed for free software.</p>
+<p>We have designed this License in order to use it for manuals for free software, because free software needs free documentation: a free program should come with manuals providing the same freedoms that the software does. But this License is not limited to software manuals; it can be used for any textual work, regardless of subject matter or whether it is published as a printed book. We recommend this License principally for works whose purpose is instruction or reference.</p>
+<h4 id="sec:applicability-and-definitions">1. APPLICABILITY AND DEFINITIONS</h4>
+<p>This License applies to any manual or other work, in any medium, that contains a notice placed by the copyright holder saying it can be distributed under the terms of this License. Such a notice grants a world-wide, royalty-free license, unlimited in duration, to use that work under the conditions stated herein. The “Document”, below, refers to any such manual or work. Any member of the public is a licensee, and is addressed as “you”. You accept the license if you copy, modify or distribute the work in a way requiring permission under copyright law.</p>
+<p>A “Modified Version” of the Document means any work containing the Document or a portion of it, either copied verbatim, or with modifications and/or translated into another language.</p>
+<p>A “Secondary Section” is a named appendix or a front-matter section of the Document that deals exclusively with the relationship of the publishers or authors of the Document to the Document’s overall subject (or to related matters) and contains nothing that could fall directly within that overall subject. (Thus, if the Document is in part a textbook of mathematics, a Secondary Section may not explain any mathematics.) The relationship could be a matter of historical connection with the subject or with related matters, or of legal, commercial, philosophical, ethical or political position regarding them.</p>
+<p>The “Invariant Sections” are certain Secondary Sections whose titles are designated, as being those of Invariant Sections, in the notice that says that the Document is released under this License. If a section does not fit the above definition of Secondary then it is not allowed to be designated as Invariant. The Document may contain zero Invariant Sections. If the Document does not identify any Invariant Sections then there are none.</p>
+<p>The “Cover Texts” are certain short passages of text that are listed, as Front-Cover Texts or Back-Cover Texts, in the notice that says that the Document is released under this License. A Front-Cover Text may be at most 5 words, and a Back-Cover Text may be at most 25 words.</p>
+<p>A “Transparent” copy of the Document means a machine-readable copy, represented in a format whose specification is available to the general public, that is suitable for revising the document straightforwardly with generic text editors or (for images composed of pixels) generic paint programs or (for drawings) some widely available drawing editor, and that is suitable for input to text formatters or for automatic translation to a variety of formats suitable for input to text formatters. A copy made in an otherwise Transparent file format whose markup, or absence of markup, has been arranged to thwart or discourage subsequent modification by readers is not Transparent. An image format is not Transparent if used for any substantial amount of text. A copy that is not “Transparent” is called “Opaque”.</p>
+<p>Examples of suitable formats for Transparent copies include plain ASCII without markup, Texinfo input format, LaTeX input format, SGML or XML using a publicly available DTD, and standard-conforming simple HTML, PostScript or PDF designed for human modification. Examples of transparent image formats include PNG, XCF and JPG. Opaque formats include proprietary formats that can be read and edited only by proprietary word processors, SGML or XML for which the DTD and/or processing tools are not generally available, and the machine-generated HTML, PostScript or PDF produced by some word processors for output purposes only.</p>
+<p>The “Title Page” means, for a printed book, the title page itself, plus such following pages as are needed to hold, legibly, the material this License requires to appear in the title page. For works in formats which do not have any title page as such, “Title Page” means the text near the most prominent appearance of the work’s title, preceding the beginning of the body of the text.</p>
+<p>The “publisher” means any person or entity that distributes copies of the Document to the public.</p>
+<p>A section “Entitled XYZ” means a named subunit of the Document whose title either is precisely XYZ or contains XYZ in parentheses following text that translates XYZ in another language. (Here XYZ stands for a specific section name mentioned below, such as “Acknowledgements”, “Dedications”, “Endorsements”, or “History”.) To “Preserve the Title” of such a section when you modify the Document means that it remains a section “Entitled XYZ” according to this definition.</p>
+<p>The Document may include Warranty Disclaimers next to the notice which states that this License applies to the Document. These Warranty Disclaimers are considered to be included by reference in this License, but only as regards disclaiming warranties: any other implication that these Warranty Disclaimers may have is void and has no effect on the meaning of this License.</p>
+<h4 id="sec:verbatim-copying">2. VERBATIM COPYING</h4>
+<p>You may copy and distribute the Document in any medium, either commercially or noncommercially, provided that this License, the copyright notices, and the license notice saying this License applies to the Document are reproduced in all copies, and that you add no other conditions whatsoever to those of this License. You may not use technical measures to obstruct or control the reading or further copying of the copies you make or distribute. However, you may accept compensation in exchange for copies. If you distribute a large enough number of copies you must also follow the conditions in section 3.</p>
+<p>You may also lend copies, under the same conditions stated above, and you may publicly display copies.</p>
+<h4 id="sec:copying-in-quantity">3. COPYING IN QUANTITY</h4>
+<p>If you publish printed copies (or copies in media that commonly have printed covers) of the Document, numbering more than 100, and the Document’s license notice requires Cover Texts, you must enclose the copies in covers that carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on the back cover. Both covers must also clearly and legibly identify you as the publisher of these copies. The front cover must present the full title with all words of the title equally prominent and visible. You may add other material on the covers in addition. Copying with changes limited to the covers, as long as they preserve the title of the Document and satisfy these conditions, can be treated as verbatim copying in other respects.</p>
+<p>If the required texts for either cover are too voluminous to fit legibly, you should put the first ones listed (as many as fit reasonably) on the actual cover, and continue the rest onto adjacent pages.</p>
+<p>If you publish or distribute Opaque copies of the Document numbering more than 100, you must either include a machine-readable Transparent copy along with each Opaque copy, or state in or with each Opaque copy a computer-network location from which the general network-using public has access to download using public-standard network protocols a complete Transparent copy of the Document, free of added material. If you use the latter option, you must take reasonably prudent steps, when you begin distribution of Opaque copies in quantity, to ensure that this Transparent copy will remain thus accessible at the stated location until at least one year after the last time you distribute an Opaque copy (directly or through your agents or retailers) of that edition to the public.</p>
+<p>It is requested, but not required, that you contact the authors of the Document well before redistributing any large number of copies, to give them a chance to provide you with an updated version of the Document.</p>
+<h4 id="sec:modifications">4. MODIFICATIONS</h4>
+<p>You may copy and distribute a Modified Version of the Document under the conditions of sections 2 and 3 above, provided that you release the Modified Version under precisely this License, with the Modified Version filling the role of the Document, thus licensing distribution and modification of the Modified Version to whoever possesses a copy of it. In addition, you must do these things in the Modified Version:</p>
+<ul>
+<li>A. Use in the Title Page (and on the covers, if any) a title distinct from that of the Document, and from those of previous versions (which should, if there were any, be listed in the History section of the Document). You may use the same title as a previous version if the original publisher of that version gives permission.</li>
+<li>B. List on the Title Page, as authors, one or more persons or entities responsible for authorship of the modifications in the Modified Version, together with at least five of the principal authors of the Document (all of its principal authors, if it has fewer than five), unless they release you from this requirement.</li>
+<li>C. State on the Title page the name of the publisher of the Modified Version, as the publisher.</li>
+<li>D. Preserve all the copyright notices of the Document.</li>
+<li>E. Add an appropriate copyright notice for your modifications adjacent to the other copyright notices.</li>
+<li>F. Include, immediately after the copyright notices, a license notice giving the public permission to use the Modified Version under the terms of this License, in the form shown in the Addendum below.</li>
+<li>G. Preserve in that license notice the full lists of Invariant Sections and required Cover Texts given in the Document’s license notice.</li>
+<li>H. Include an unaltered copy of this License.</li>
+<li>I. Preserve the section Entitled “History”, Preserve its Title, and add to it an item stating at least the title, year, new authors, and publisher of the Modified Version as given on the Title Page. If there is no section Entitled “History” in the Document, create one stating the title, year, authors, and publisher of the Document as given on its Title Page, then add an item describing the Modified Version as stated in the previous sentence.</li>
+<li>J. Preserve the network location, if any, given in the Document for public access to a Transparent copy of the Document, and likewise the network locations given in the Document for previous versions it was based on. These may be placed in the “History” section. You may omit a network location for a work that was published at least four years before the Document itself, or if the original publisher of the version it refers to gives permission.</li>
+<li>K. For any section Entitled “Acknowledgements” or “Dedications”, Preserve the Title of the section, and preserve in the section all the substance and tone of each of the contributor acknowledgements and/or dedications given therein.</li>
+<li>L. Preserve all the Invariant Sections of the Document, unaltered in their text and in their titles. Section numbers or the equivalent are not considered part of the section titles.</li>
+<li>M. Delete any section Entitled “Endorsements”. Such a section may not be included in the Modified Version.</li>
+<li>N. Do not retitle any existing section to be Entitled “Endorsements” or to conflict in title with any Invariant Section.</li>
+<li>O. Preserve any Warranty Disclaimers.</li>
+</ul>
+<p>If the Modified Version includes new front-matter sections or appendices that qualify as Secondary Sections and contain no material copied from the Document, you may at your option designate some or all of these sections as invariant. To do this, add their titles to the list of Invariant Sections in the Modified Version’s license notice. These titles must be distinct from any other section titles.</p>
+<p>You may add a section Entitled “Endorsements”, provided it contains nothing but endorsements of your Modified Version by various partiesâ€”for example, statements of peer review or that the text has been approved by an organization as the authoritative definition of a standard.</p>
+<p>You may add a passage of up to five words as a Front-Cover Text, and a passage of up to 25 words as a Back-Cover Text, to the end of the list of Cover Texts in the Modified Version. Only one passage of Front-Cover Text and one of Back-Cover Text may be added by (or through arrangements made by) any one entity. If the Document already includes a cover text for the same cover, previously added by you or by arrangement made by the same entity you are acting on behalf of, you may not add another; but you may replace the old one, on explicit permission from the previous publisher that added the old one.</p>
+<p>The author(s) and publisher(s) of the Document do not by this License give permission to use their names for publicity for or to assert or imply endorsement of any Modified Version.</p>
+<h4 id="sec:combining-documents">5. COMBINING DOCUMENTS</h4>
+<p>You may combine the Document with other documents released under this License, under the terms defined in section 4 above for modified versions, provided that you include in the combination all of the Invariant Sections of all of the original documents, unmodified, and list them all as Invariant Sections of your combined work in its license notice, and that you preserve all their Warranty Disclaimers.</p>
+<p>The combined work need only contain one copy of this License, and multiple identical Invariant Sections may be replaced with a single copy. If there are multiple Invariant Sections with the same name but different contents, make the title of each such section unique by adding at the end of it, in parentheses, the name of the original author or publisher of that section if known, or else a unique number. Make the same adjustment to the section titles in the list of Invariant Sections in the license notice of the combined work.</p>
+<p>In the combination, you must combine any sections Entitled “History” in the various original documents, forming one section Entitled “History”; likewise combine any sections Entitled “Acknowledgements”, and any sections Entitled “Dedications”. You must delete all sections Entitled “Endorsements”.</p>
+<h4 id="sec:collections-of-documents">6. COLLECTIONS OF DOCUMENTS</h4>
+<p>You may make a collection consisting of the Document and other documents released under this License, and replace the individual copies of this License in the various documents with a single copy that is included in the collection, provided that you follow the rules of this License for verbatim copying of each of the documents in all other respects.</p>
+<p>You may extract a single document from such a collection, and distribute it individually under this License, provided you insert a copy of this License into the extracted document, and follow this License in all other respects regarding verbatim copying of that document.</p>
+<h4 id="sec:aggregation-with-independent-works">7. AGGREGATION WITH INDEPENDENT WORKS</h4>
+<p>A compilation of the Document or its derivatives with other separate and independent documents or works, in or on a volume of a storage or distribution medium, is called an “aggregate” if the copyright resulting from the compilation is not used to limit the legal rights of the compilation’s users beyond what the individual works permit. When the Document is included in an aggregate, this License does not apply to the other works in the aggregate which are not themselves derivative works of the Document.</p>
+<p>If the Cover Text requirement of section 3 is applicable to these copies of the Document, then if the Document is less than one half of the entire aggregate, the Document’s Cover Texts may be placed on covers that bracket the Document within the aggregate, or the electronic equivalent of covers if the Document is in electronic form. Otherwise they must appear on printed covers that bracket the whole aggregate.</p>
+<h4 id="sec:translation">8. TRANSLATION</h4>
+<p>Translation is considered a kind of modification, so you may distribute translations of the Document under the terms of section 4. Replacing Invariant Sections with translations requires special permission from their copyright holders, but you may include translations of some or all Invariant Sections in addition to the original versions of these Invariant Sections. You may include a translation of this License, and all the license notices in the Document, and any Warranty Disclaimers, provided that you also include the original English version of this License and the original versions of those notices and disclaimers. In case of a disagreement between the translation and the original version of this License or a notice or disclaimer, the original version will prevail.</p>
+<p>If a section in the Document is Entitled “Acknowledgements”, “Dedications”, or “History”, the requirement (section 4) to Preserve its Title (section 1) will typically require changing the actual title.</p>
+<h4 id="sec:termination">9. TERMINATION</h4>
+<p>You may not copy, modify, sublicense, or distribute the Document except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense, or distribute it is void, and will automatically terminate your rights under this License.</p>
+<p>However, if you cease all violation of this License, then your license from a particular copyright holder is reinstated (a) provisionally, unless and until the copyright holder explicitly and finally terminates your license, and (b) permanently, if the copyright holder fails to notify you of the violation by some reasonable means prior to 60 days after the cessation.</p>
+<p>Moreover, your license from a particular copyright holder is reinstated permanently if the copyright holder notifies you of the violation by some reasonable means, this is the first time you have received notice of violation of this License (for any work) from that copyright holder, and you cure the violation prior to 30 days after your receipt of the notice.</p>
+<p>Termination of your rights under this section does not terminate the licenses of parties who have received copies or rights from you under this License. If your rights have been terminated and not permanently reinstated, receipt of a copy of some or all of the same material does not give you any rights to use it.</p>
+<h4 id="sec:future-revisions-of-this-license">10. FUTURE REVISIONS OF THIS LICENSE</h4>
+<p>The Free Software Foundation may publish new, revised versions of the GNU Free Documentation License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns. See <a href="https://www.gnu.org/licenses/" class="uri">https://www.gnu.org/licenses/</a>.</p>
+<p>Each version of the License is given a distinguishing version number. If the Document specifies that a particular numbered version of this License “or any later version” applies to it, you have the option of following the terms and conditions either of that specified version or of any later version that has been published (not as a draft) by the Free Software Foundation. If the Document does not specify a version number of this License, you may choose any version ever published (not as a draft) by the Free Software Foundation. If the Document specifies that a proxy can decide which future versions of this License can be used, that proxy’s public statement of acceptance of a version permanently authorizes you to choose that version for the Document.</p>
+<h4 id="sec:relicensing">11. RELICENSING</h4>
+<p>“Massive Multiauthor Collaboration Site” (or “MMC Site”) means any World Wide Web server that publishes copyrightable works and also provides prominent facilities for anybody to edit those works. A public wiki that anybody can edit is an example of such a server. A “Massive Multiauthor Collaboration” (or “MMC”) contained in the site means any set of copyrightable works thus published on the MMC site.</p>
+<p>“CC-BY-SA” means the Creative Commons Attribution-Share Alike 3.0 license published by Creative Commons Corporation, a not-for-profit corporation with a principal place of business in San Francisco, California, as well as future copyleft versions of that license published by that same organization.</p>
+<p>“Incorporate” means to publish or republish a Document, in whole or in part, as part of another Document.</p>
+<p>An MMC is “eligible for relicensing” if it is licensed under this License, and if all works that were first published under this License somewhere other than this MMC, and subsequently incorporated in whole or in part into the MMC, (1) had no cover texts or invariant sections, and (2) were thus incorporated prior to November 1, 2008.</p>
+<p>The operator of an MMC Site may republish an MMC contained in the site under CC-BY-SA on the same site at any time before August 1, 2009, provided the MMC is eligible for relicensing.</p>
+<h3 id="sec:addendum-how-to-use-this-license-for-your-documents">ADDENDUM: How to use this License for your documents</h3>
+<p>To use this License in a document you have written, include a copy of the License in the document and put the following copyright and license notices just after the title page:</p>
+<pre><code>    Copyright (C)  YEAR  YOUR NAME.
+    Permission is granted to copy, distribute and/or modify this document
+    under the terms of the GNU Free Documentation License, Version 1.3
+    or any later version published by the Free Software Foundation;
+    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+    A copy of the license is included in the section entitled &quot;GNU
+    Free Documentation License&quot;.</code></pre>
+<p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts, replace the “with â€¦ Texts.” line with this:</p>
+<pre><code>    with the Invariant Sections being LIST THEIR TITLES, with the
+    Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.</code></pre>
+<p>If you have Invariant Sections without Cover Texts, or some other combination of the three, merge those two alternatives to suit the situation.</p>
+<p>If your document contains nontrivial examples of program code, we recommend releasing these examples in parallel under your choice of free software license, such as the GNU General Public License, to permit their use in free software.</p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><em>Costs for natural gas, biomass, solar and geothermal are that of advanced combustion turbine, biomass gasification plant, utility-scale photovoltaic and hydrothermal plant respectively.</em><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p><em>LCOE - levelised cost of electricity.</em><a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p><em>Regrowth of biomass compensates emissions.</em><a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p><em>Luxembourg (LU); Great Britain (GB); Irish single electricity market (IE-SEM), which includes Republic of Ireland and UK’s Northern Ireland.</em><a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p><em>Ctry. - Country; AT - Austria; BE - Belgium; CH - Switzerland; CZ - Czech Republic; DE - Germany; DK - Denmark; ES - Spain; FI - Finland; FR - France; GB - Great Britain; IE - Ireland; IT - Italy; LT - Lithuania; LU - Luxembourg; NL - Netherlands; NO - Norway; PL - Poland; SE - Sweden; SK - Slovakia; UK - United Kingdom; SEM - Single electricity market.</em><a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p><em>These countries are not part of the North Sea region: AT, CH, CZ, ES, FI, IE, IT, LT, LU, PL.</em><a href="#fnref6" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+</body>
+</html>

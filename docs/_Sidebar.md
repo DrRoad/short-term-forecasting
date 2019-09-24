@@ -34,9 +34,7 @@
   - [Data management](../wiki/Methodology#data-management)
   - [Time series forecasting](../wiki/Methodology#time-series-forecasting) -->
 
-<!-- [**Glossary**](../wiki/Glossary)
-  - [Abbreviations](../wiki/Glossary#abbreviations)
-  - [Units](../wiki/Glossary#units) -->
+[**Abbreviations**](../wiki/Glossary#abbreviations)
 
 [**References**](../wiki/References)
 

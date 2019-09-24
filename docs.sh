@@ -39,16 +39,44 @@ pandoc \
     --metadata link-citations=true \
     --reference-location=block \
     --listings \
-    --metadata glossaries=true \
     ../wiki/Background.md \
     ../wiki/Problem-definition.md \
     ../wiki/Objectives.md \
     ../wiki/Regions.md \
     ../wiki/Data.md \
     ../wiki/Methodology.md \
+    ../wiki/Abbreviations.md \
     refs.md \
     ../wiki/License.md \
     --output docs.pdf
+
+# convert wiki to html
+pandoc --standalone \
+    --from markdown+backtick_code_blocks \
+    --metadata title="Short-term forecasting of electricity generation, demand and market prices using machine learning" \
+    --metadata author="Nithiya Streethran" \
+    --metadata date="`date '+%-d %B %Y'`" \
+    --toc \
+    --toc-depth=1 \
+    --css pandoc.css \
+    --filter pandoc-crossref \
+    --metadata autoSectionLabels=true \
+    --bibliography References.bib \
+    --filter pandoc-citeproc \
+    --csl IEEEurl.csl \
+    --metadata link-citations=true \
+    ../wiki/Home.md \
+    logos.html \
+    ../wiki/Background.md \
+    ../wiki/Problem-definition.md \
+    ../wiki/Objectives.md \
+    ../wiki/Regions.md \
+    ../wiki/Data.md \
+    ../wiki/Methodology.md \
+    ../wiki/Abbreviations.md \
+    refs.md \
+    ../wiki/License.md \
+    --output index.html
 
 # change directory back to the previous level
 cd ..

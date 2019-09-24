@@ -387,3 +387,4 @@ login.py
 
 ## drafts
 draft*.py
+*.tmp
