@@ -35,14 +35,14 @@ bz_ns = ['BE', 'DE-LU', 'DK-1', 'DK-2', # Belgium, Germany + Luxembourg, Denmark
 
 #%%
 # create a directory to store files if it does not exist
-path = "data/entsoe_api"
+path = 'data/entsoe_api'
 try:
     os.makedirs(path)
 except OSError as exception:
     if exception.errno != errno.EEXIST:
         raise
     else:
-        print ("\nBE CAREFUL! Directory %s already exists." % path)
+        print ('\nBE CAREFUL! Directory %s already exists.' % path)
 
 #%%
 # extracting data for each bidding zone in a loop

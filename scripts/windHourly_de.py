@@ -66,7 +66,7 @@ for state in states:
       else:
           print ('\nBE CAREFUL! Directory %s already exists.' % path)
 
-  # list of station ids and start+end dates in the state
+  # list of station ids and start + end dates in the state
   df_state = df_stn.loc[df_stn['state']==str(state)]
   station_ids = df_state['station_id'].tolist()
   start_dates = df_state['start_date'].tolist()
@@ -105,7 +105,7 @@ for state in states:
       # convert to datetime
       df_station['timestamp_end'] = pd.to_datetime(df_station['timestamp_end'], format='%Y%m%d%H')
 
-      # filter date range for first half of 2019
+      # filter for date range
       df_station = df_station.drop(df_station[(df_station.timestamp_end<start)|(df_station.timestamp_end>end)].index)
 
       # set end timestamps as index 

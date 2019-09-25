@@ -93,9 +93,9 @@ This [Jupyter notebook](https://github.com/ENSYSTRA/short-term-forecasting/tree/
 
 ## Transmission system operators and interconnections
 
-The North Sea region consists of multiple TSOs and cross-border interconnections. These are listed, along with the bidding zones bidding zones, in @tbl:tso.
+The North Sea region consists of multiple TSOs and cross-border interconnections. These are listed, along with the bidding zones, in @tbl:tso.
 
-**Ctry.**[^f5] | **TSOs** | **Cross-border interconnection**[^f6] | **Bidding zones**
+**Ctry.**[^f5] | **TSOs** | **Cross-border interconnections**[^f6] | **Bidding zones**
 -|-----|---|---
 BE | Elia System Operator | FR, LU, NL, UK | BE 
 DK | Energinet | DE, NO, SE | DK1, DK2 

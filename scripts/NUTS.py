@@ -138,12 +138,12 @@ fr_nuts1 = fr_nuts1.reset_index(drop=True) # reset index
 fr_nuts1
 
 #%%
-# drop entries corresponding to "RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES" (FRY) - French Overseas Territories
-fr = fr[~fr.NUTS_ID.str.contains("FRY")]
-nuts = nuts[~nuts.NUTS_ID.str.contains("FRY")]
-nuts2 = nuts2[~nuts2.NUTS_ID.str.contains("FRY")]
-nuts3 = nuts3[~nuts3.NUTS_ID.str.contains("FRY")]
-fr_nuts1 = fr_nuts1[~fr_nuts1.NUTS_ID.str.contains("FRY")]
+# drop entries corresponding to 'RUP FR - RÉGIONS ULTRAPÉRIPHÉRIQUES FRANÇAISES' (FRY) - French Overseas Territories
+fr = fr[~fr.NUTS_ID.str.contains('FRY')]
+nuts = nuts[~nuts.NUTS_ID.str.contains('FRY')]
+nuts2 = nuts2[~nuts2.NUTS_ID.str.contains('FRY')]
+nuts3 = nuts3[~nuts3.NUTS_ID.str.contains('FRY')]
+fr_nuts1 = fr_nuts1[~fr_nuts1.NUTS_ID.str.contains('FRY')]
 
 #%%
 # NUTS 2
@@ -262,7 +262,7 @@ uk_nuts3
 
 #%%
 # cp1252 encoding used for latin characters
-nuts.to_csv('data/nuts/NUTS_NS_2016.csv', index=None, encoding="cp1252")
+nuts.to_csv('data/nuts/NUTS_NS_2016.csv', index=None, encoding='cp1252')
 
 #%% [markdown]
 # ## Number of NUTS 1, 2 and 3 territories in the North Sea region (excluding French Overseas Territories)
