@@ -5,9 +5,9 @@
 [![Image License: CC BY-SA 4.0](https://img.shields.io/badge/images-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 [![Output Data License: ODbL](https://img.shields.io/badge/output%20data-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/)
 
-Short-term forecasting of electricity generation, demand and prices using machine learning, by Nithiya Streethran (nmstreethran@gmail.com). 
+Short-term forecasting of electricity generation, demand and prices using machine learning, by Nithiya Streethran (nmstreethran@gmail.com).
 
-This is a work-in-progress. Please feel free to suggest improvements (see the [code of conduct](CODE_OF_CONDUCT.md) and [contributing guidelines](CONTRIBUTING.md)). 
+This is a work-in-progress. Please feel free to suggest improvements (see the [code of conduct](CODE_OF_CONDUCT.md) and [contributing guidelines](CONTRIBUTING.md)).
 
 ## Table of contents <!-- omit in toc -->
 
@@ -23,12 +23,12 @@ This is a work-in-progress. Please feel free to suggest improvements (see the [c
 * [data](https://www.dropbox.com/sh/vjo4gkfk6dlye6h/AAAQNltY7-Y4N9SQYjGZDHY5a?dl=0) contains datasets (both input and output) and their terms of use (available externally on Dropbox)
 * [scripts](scripts/) contains all Python scripts
 * [jupyter-notebooks](jupyter-notebooks/) contains Python files with outputs in Jupyter notebook format
-* [docs](docs/) contains the documentation and associated files 
+* [docs](docs/) contains the documentation and associated files
 * [images](images/) contains images and their license
 
 ## Documentation
 
-Documentation is written in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](docs/) folder contains the documentation and associated files in Markdown, [PDF](docs/docs.pdf) and [HTML](docs/index.html) formats. 
+Documentation is written in the repository's [GitHub Wiki](https://github.com/ENSYSTRA/short-term-forecasting/wiki). The [docs](docs/) folder contains the documentation and associated files in Markdown, [PDF](docs/docs.pdf) and [HTML](docs/index.html) formats.
 
 The file [`docs.sh`](docs.sh) contains shell commands to perform the document conversions, and also copies the files from the wiki (which is a separate repository) into this repository. It is executed in Bash using the following command:
 
@@ -52,7 +52,7 @@ git submodule add https://github.com/ENSYSTRA/short-term-forecasting.wiki.git wi
 
 The submodule allows the wiki to be cloned locally into the same directory as the main repository, which allows its [inclusion in releases](https://brendancleary.com/2013/03/08/including-a-github-wiki-in-a-repository-as-a-submodule/). Once changes to the wiki within the submodule are made (e.g., new markdown files, images), these changes are first committed and pushed to the wiki's branch, before committing and pushing to the main repository's branch.
 
-The list of works cited can be found in [Zotero](https://www.zotero.org/groups/2327899/nmstreethrans_library/items/collectionKey/FLUWHNV2), and in this repository as a [BibTeX bibliography database (.bib)](docs/References.bib) file. 
+The list of works cited can be found in [Zotero](https://www.zotero.org/groups/2327899/nmstreethrans_library/items/collectionKey/FLUWHNV2), and in this repository as a [BibTeX bibliography database (.bib)](docs/References.bib) file.
 
 The in-text citation keys used are automatically generated using [Zotero](https://www.zotero.org/) with the [Better BibTeX](https://retorque.re/zotero-better-bibtex/) extension using the following format (changed via `Edit > Preferences > Better BibTeX > Citation keys` in the Zotero desktop application):
 
@@ -109,8 +109,8 @@ License badges: [lukas-h/license-badges.md](https://gist.github.com/lukas-h/2a5d
 
 Markdown-formatted Creative Commons licenses: [idleberg/Creative-Commons-Markdown](https://github.com/idleberg/Creative-Commons-Markdown).
 
-[IEEEurl.csl](docs/IEEEurl.csl): Citation Style Language for [Zotero](https://www.zotero.org/), originally by [Michael Berkowitz](mailto:mberkowi@gmu.edu), [Julian Onions](mailto:julian.onions@gmail.com), [Rintze Zelle](http://twitter.com/rintzezelle), [Stephen Frank](http://www.zotero.org/sfrank) and Sebastian Karcher. 
+[IEEEurl.csl](docs/IEEEurl.csl): Citation Style Language for [Zotero](https://www.zotero.org/), originally by [Michael Berkowitz](mailto:mberkowi@gmu.edu), [Julian Onions](mailto:julian.onions@gmail.com), [Rintze Zelle](http://twitter.com/rintzezelle), [Stephen Frank](http://www.zotero.org/sfrank) and Sebastian Karcher.
 
-[solarized.css](docs/solarized.css): CSS for HTML documents, originally by [Thomas Frössman](https://github.com/thomasf/solarized-css), modified using some elements from [pandoc.css by killercup](https://gist.github.com/killercup/5917178#file-pandoc-css). 
+[solarized.css](docs/solarized.css): CSS for HTML documents, originally by [Thomas Frössman](https://github.com/thomasf/solarized-css), modified using some elements from [pandoc.css by killercup](https://gist.github.com/killercup/5917178#file-pandoc-css). The Solarized color theme was originally developed by [Ethan Schoonover](https://ethanschoonover.com/solarized/).
 
 [pandoc.tex](docs/pandoc.tex): LaTeX template for formatting PDFs generated using Pandoc and a LaTeX PDF engine, originally downloaded from Pandoc's [demo page](https://pandoc.org/demo/template.tex).

@@ -28,7 +28,7 @@ All input and output data can be found in the [data](https://www.dropbox.com/sh/
 
 ## Generation and load data
 
-Generation and load data for each bidding zone are downloaded from the ENTSO-E Transparency Platform [@ENTSO]. The following descriptions of the data are from ENTSO-E Transparency Platform's Knowledge Base [@Help]. Three types of data will be used. 
+Generation and load data for each bidding zone are downloaded from the ENTSO-E Transparency Platform [@ENTSO]. The following descriptions of the data are from ENTSO-E Transparency Platform's Knowledge Base [@Help]. Three types of data will be used.
 
 ### Actual generation per production type
 
@@ -75,16 +75,16 @@ The sum of installed net generation capacity (MW) per control area for all exist
 
 ### Extracting data through ENTSO-E Transparency Platform's Restful API
 
-ENTSO-E Transparency Platform's Restful application programming interface (API) can be used to automate the data extraction process [@ENTSO16], [@Trans]. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk. 
+ENTSO-E Transparency Platform's Restful application programming interface (API) can be used to automate the data extraction process [@ENTSO16], [@Trans]. Registration to the transparency platform is required to access the API. The security token can be requested by sending an email to the ENTSO-E Helpdesk.
 
-The ENTSO-E API Python client [@Energ19] is used to easily query the required data and return them as Pandas dataframes or series. The queries for generation and installed generation capacity per unit return dataframes, while the query for load returns a series. [`entsoe_api.py`](https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py) is the script used to perform this. 
+The ENTSO-E API Python client [@Energ19] is used to easily query the required data and return them as Pandas dataframes or series. The queries for generation and installed generation capacity per unit return dataframes, while the query for load returns a series. [`entsoe_api.py`](https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/entsoe_api.py) is the script used to perform this.
 
 ```python
 import pandas as pd
 from entsoe import EntsoePandasClient
 from entsoe.mappings import DOMAIN_MAPPINGS, BIDDING_ZONES
 # combine domain and bidding zone keys and values into the DOMAIN_MAPPINGS dictionary
-DOMAIN_MAPPINGS.update(BIDDING_ZONES) 
+DOMAIN_MAPPINGS.update(BIDDING_ZONES)
 ```
 
 ```python
@@ -123,7 +123,7 @@ SE-4 | 10Y1001A1001A47
 
 [Nord Pool](https://www.nordpoolgroup.com/historical-market-data/)
 
-Historical market data from Nord Pool is stored as `.xls` files can be accessed using the following URL: 
+Historical market data from Nord Pool is stored as `.xls` files can be accessed using the following URL:
 
 ```
 https://www.nordpoolgroup.com/globalassets/marketdata-excel-files/FILENAME.xls
@@ -160,7 +160,7 @@ REMIT Urgent Market Messaging (UMM) is used by market operators and companies in
 - Assets (grid components, e.g., AC link, DC link, transformer, substation)
 - Remarks
 
-## Meteorological data 
+## Meteorological data
 
 #### Belgium
 
@@ -168,9 +168,9 @@ REMIT Urgent Market Messaging (UMM) is used by market operators and companies in
 
 #### Germany
 
-Deutscher Wetterdienst [@Wette]
+Weather data for Germany is extracted from Deutscher Wetterdienst's Climate Data Center (CDC) OpenData [@Wette]. [`windHourly_de.py`](https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/windHourly_de.py) and [`solarHourly_de.py`](https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/solarHourly_de.py) are the script used to extract hourly wind and solar data respectively.
 
-[Hourly wind data](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/)
+<!-- [Hourly wind data](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/) -->
 
 <!-- * [CDC (Climate Data Center) portal](https://cdc.dwd.de/portal/)
 * [CDC OpenData](https://opendata.dwd.de/climate_environment/CDC/)

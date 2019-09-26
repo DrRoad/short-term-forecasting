@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Nithiya Streethran" />
-  <meta name="dcterms.date" content="2019-09-25" />
+  <meta name="dcterms.date" content="2019-09-26" />
   <title>Short-term forecasting of electricity generation, demand and market prices using machine learning</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -84,7 +84,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <header>
 <h1 class="title">Short-term forecasting of electricity generation, demand and market prices using machine learning</h1>
 <p class="author">Nithiya Streethran</p>
-<p class="date">25 September 2019</p>
+<p class="date">26 September 2019</p>
 </header>
 <nav id="TOC">
 <ul>
@@ -639,7 +639,7 @@ The sum of installed net generation capacity (MW) per control area for all exist
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="im">from</span> entsoe <span class="im">import</span> EntsoePandasClient</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="im">from</span> entsoe.mappings <span class="im">import</span> DOMAIN_MAPPINGS, BIDDING_ZONES</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># combine domain and bidding zone keys and values into the DOMAIN_MAPPINGS dictionary</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">DOMAIN_MAPPINGS.update(BIDDING_ZONES) </a></code></pre></div>
+<a class="sourceLine" id="cb1-5" data-line-number="5">DOMAIN_MAPPINGS.update(BIDDING_ZONES)</a></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># import security token saved in a separate file (login.py)</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="im">from</span> login <span class="im">import</span> token</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># use security token to access the api through the entsoe pandas client</span></a>
@@ -767,8 +767,8 @@ The sum of installed net generation capacity (MW) per control area for all exist
 <h4 id="sec:belgium">Belgium</h4>
 <p><a href="https://opendata.meteo.be/">The Royal Meteorological Institute of Belgium</a></p>
 <h4 id="sec:germany">Germany</h4>
-<p>Deutscher Wetterdienst <span class="citation" data-cites="Wette">[<a href="#ref-Wette">46</a>]</span></p>
-<p><a href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/">Hourly wind data</a></p>
+<p>Weather data for Germany is extracted from Deutscher Wetterdienst’s Climate Data Center (CDC) OpenData <span class="citation" data-cites="Wette">[<a href="#ref-Wette">46</a>]</span>. <a href="https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/windHourly_de.py"><code>windHourly_de.py</code></a> and <a href="https://github.com/ENSYSTRA/short-term-forecasting/blob/master/scripts/solarHourly_de.py"><code>solarHourly_de.py</code></a> are the script used to extract hourly wind and solar data respectively.</p>
+<!-- [Hourly wind data](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/) -->
 <!-- * [CDC (Climate Data Center) portal](https://cdc.dwd.de/portal/)
 * [CDC OpenData](https://opendata.dwd.de/climate_environment/CDC/)
 * Data set descriptions
